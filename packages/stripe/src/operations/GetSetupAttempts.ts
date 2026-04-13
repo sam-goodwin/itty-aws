@@ -168,6 +168,7 @@ export const GetSetupAttemptsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             }),
           ),
           type: Schema.String,
+          upi: Schema.optional(Schema.Struct({})),
           us_bank_account: Schema.optional(Schema.Struct({})),
         }),
         setup_error: Schema.Unknown,

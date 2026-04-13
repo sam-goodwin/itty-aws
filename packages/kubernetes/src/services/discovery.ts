@@ -191,6 +191,11 @@ export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -254,6 +259,11 @@ export const DeleteDiscoveryV1NamespacedEndpointSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -492,6 +502,11 @@ export const ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -641,6 +656,11 @@ export const ListDiscoveryV1NamespacedEndpointSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });

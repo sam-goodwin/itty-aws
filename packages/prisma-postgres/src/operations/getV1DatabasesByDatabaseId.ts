@@ -82,6 +82,7 @@ export const GetV1DatabasesByDatabaseIdOutput =
           name: Schema.String,
         }),
       ),
+      source: Schema.Unknown,
     }),
   });
 export type GetV1DatabasesByDatabaseIdOutput =

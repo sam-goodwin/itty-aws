@@ -178,14 +178,15 @@ export type RegionName =
   | "eu-west-2"
   | "eu-west-3"
   | "eu-central-1"
+  | "eu-north-1"
   | "ca-central-1"
   | "ap-south-1"
   | "ap-southeast-1"
   | "ap-southeast-2"
   | "ap-northeast-1"
   | "ap-northeast-2"
-  | "eu-north-1"
   | "ap-southeast-3"
+  | "ap-southeast-5"
   | (string & {});
 export const RegionName = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ResourceLocation {
@@ -1098,10 +1099,15 @@ export const ContactProtocol = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateContactMethodRequest {
   protocol: ContactProtocol;
   contactEndpoint: string;
+  tags?: Tag[];
 }
 export const CreateContactMethodRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
-    S.Struct({ protocol: ContactProtocol, contactEndpoint: S.String }).pipe(
+    S.Struct({
+      protocol: ContactProtocol,
+      contactEndpoint: S.String,
+      tags: S.optional(TagList),
+    }).pipe(
       T.all(
         T.Http({
           method: "POST",
@@ -3522,6 +3528,7 @@ export interface Alarm {
   contactProtocols?: ContactProtocol[];
   notificationTriggers?: AlarmState[];
   notificationEnabled?: boolean;
+  tags?: Tag[];
 }
 export const Alarm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3545,6 +3552,7 @@ export const Alarm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     contactProtocols: S.optional(ContactProtocolsList),
     notificationTriggers: S.optional(NotificationTriggerList),
     notificationEnabled: S.optional(S.Boolean),
+    tags: S.optional(TagList),
   }),
 ).annotate({ identifier: "Alarm" }) as any as S.Schema<Alarm>;
 export type AlarmsList = Alarm[];
@@ -4188,6 +4196,7 @@ export interface ContactMethod {
   location?: ResourceLocation;
   resourceType?: ResourceType;
   supportCode?: string;
+  tags?: Tag[];
 }
 export const ContactMethod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4200,6 +4209,7 @@ export const ContactMethod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     location: S.optional(ResourceLocation),
     resourceType: S.optional(ResourceType),
     supportCode: S.optional(S.String),
+    tags: S.optional(TagList),
   }),
 ).annotate({ identifier: "ContactMethod" }) as any as S.Schema<ContactMethod>;
 export type ContactMethodsList = ContactMethod[];
@@ -7677,6 +7687,7 @@ export interface PutAlarmRequest {
   contactProtocols?: ContactProtocol[];
   notificationTriggers?: AlarmState[];
   notificationEnabled?: boolean;
+  tags?: Tag[];
 }
 export const PutAlarmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7691,6 +7702,7 @@ export const PutAlarmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     contactProtocols: S.optional(ContactProtocolsList),
     notificationTriggers: S.optional(NotificationTriggerList),
     notificationEnabled: S.optional(S.Boolean),
+    tags: S.optional(TagList),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/ls/api/2016-11-28/PutAlarm" }),
@@ -9250,6 +9262,9 @@ export type CreateContactMethodError =
  * You can add one email address and one mobile phone number contact method in each Amazon Web Services Region. However, SMS text messaging is not supported in some Amazon Web Services
  * Regions, and SMS text messages cannot be sent to some countries/regions. For more information,
  * see Notifications in Amazon Lightsail.
+ *
+ * The `create contact method` operation supports tag-based access control via request
+ * tags. For more information, see the Lightsail Developer Guide.
  */
 export const createContactMethod: API.OperationMethod<
   CreateContactMethodRequest,
@@ -13321,6 +13336,9 @@ export type PutAlarmError =
  * When you update an existing alarm, its state is left unchanged, but the update completely
  * overwrites the previous configuration of the alarm. The alarm is then evaluated with the
  * updated configuration.
+ *
+ * The `put alarm` operation supports tag-based access control via request
+ * tags. For more information, see the Lightsail Developer Guide.
  */
 export const putAlarm: API.OperationMethod<
   PutAlarmRequest,

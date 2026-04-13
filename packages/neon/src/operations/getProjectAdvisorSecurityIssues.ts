@@ -41,7 +41,7 @@ export type GetProjectAdvisorSecurityIssuesOutput =
  *
  * Analyzes the database for security and performance issues.
  * Returns a list of issues categorized by severity (ERROR, WARN, INFO).
- * Requires read access to the project.
+ * Requires read access to the project and Data API enabled.
  *
  * @param project_id - Neon project ID
  * @param branch_id - Branch ID to analyze. If not specified, the project's default branch is used.

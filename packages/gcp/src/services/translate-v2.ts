@@ -22,23 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export type DetectionsResource = unknown;
-export const DetectionsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-
-export interface DetectionsListResponse {
-  /** A detections contains detection results of several text */
-  detections?: Array<DetectionsResource>;
-}
-
-export const DetectionsListResponse: Schema.Schema<DetectionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detections: Schema.optional(Schema.Array(DetectionsResource)),
-    }),
-  ).annotate({
-    identifier: "DetectionsListResponse",
-  }) as any as Schema.Schema<DetectionsListResponse>;
-
 export interface LanguagesResource {
   /** Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') */
   language?: string;
@@ -69,6 +52,77 @@ export const LanguagesListResponse: Schema.Schema<LanguagesListResponse> =
   ).annotate({
     identifier: "LanguagesListResponse",
   }) as any as Schema.Schema<LanguagesListResponse>;
+
+export type DetectionsResource = unknown;
+export const DetectionsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+
+export interface DetectionsListResponse {
+  /** A detections contains detection results of several text */
+  detections?: Array<DetectionsResource>;
+}
+
+export const DetectionsListResponse: Schema.Schema<DetectionsListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      detections: Schema.optional(Schema.Array(DetectionsResource)),
+    }),
+  ).annotate({
+    identifier: "DetectionsListResponse",
+  }) as any as Schema.Schema<DetectionsListResponse>;
+
+export interface DetectLanguageRequest {
+  /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
+  q?: Array<string>;
+}
+
+export const DetectLanguageRequest: Schema.Schema<DetectLanguageRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      q: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "DetectLanguageRequest",
+  }) as any as Schema.Schema<DetectLanguageRequest>;
+
+export interface TranslateTextRequest {
+  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
+  format?: string;
+  /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
+  source?: string;
+  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
+  model?: string;
+  /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
+  q?: Array<string>;
+  /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
+  target?: string;
+}
+
+export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      format: Schema.optional(Schema.String),
+      source: Schema.optional(Schema.String),
+      model: Schema.optional(Schema.String),
+      q: Schema.optional(Schema.Array(Schema.String)),
+      target: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "TranslateTextRequest",
+  }) as any as Schema.Schema<TranslateTextRequest>;
+
+export interface GetSupportedLanguagesRequest {
+  /** The language to use to return localized, human readable names of supported languages. */
+  target?: string;
+}
+
+export const GetSupportedLanguagesRequest: Schema.Schema<GetSupportedLanguagesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      target: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GetSupportedLanguagesRequest",
+  }) as any as Schema.Schema<GetSupportedLanguagesRequest>;
 
 export interface TranslationsResource {
   /** The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be empty. */
@@ -103,60 +157,6 @@ export const TranslationsListResponse: Schema.Schema<TranslationsListResponse> =
   ).annotate({
     identifier: "TranslationsListResponse",
   }) as any as Schema.Schema<TranslationsListResponse>;
-
-export interface TranslateTextRequest {
-  /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
-  target?: string;
-  /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
-  q?: Array<string>;
-  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
-  format?: string;
-  /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
-  source?: string;
-  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
-  model?: string;
-}
-
-export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      q: Schema.optional(Schema.Array(Schema.String)),
-      format: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranslateTextRequest",
-  }) as any as Schema.Schema<TranslateTextRequest>;
-
-export interface DetectLanguageRequest {
-  /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
-  q?: Array<string>;
-}
-
-export const DetectLanguageRequest: Schema.Schema<DetectLanguageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      q: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DetectLanguageRequest",
-  }) as any as Schema.Schema<DetectLanguageRequest>;
-
-export interface GetSupportedLanguagesRequest {
-  /** The language to use to return localized, human readable names of supported languages. */
-  target?: string;
-}
-
-export const GetSupportedLanguagesRequest: Schema.Schema<GetSupportedLanguagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetSupportedLanguagesRequest",
-  }) as any as Schema.Schema<GetSupportedLanguagesRequest>;
 
 // ==========================================================================
 // Operations
@@ -280,60 +280,6 @@ export const listLanguages: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListTranslationsRequest {
-  /** Pretty-print response. */
-  pp?: boolean;
-  /** OAuth bearer token. */
-  bearer_token?: string;
-  /** The customization id for translate */
-  cid?: string[];
-  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
-  format?: "html" | "text" | (string & {});
-  /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
-  q: string[];
-  /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
-  source?: string;
-  /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
-  target: string;
-  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
-  model?: string;
-}
-
-export const ListTranslationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pp: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("pp")),
-    bearer_token: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("bearer_token"),
-    ),
-    cid: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("cid")),
-    format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
-    q: Schema.Array(Schema.String).pipe(T.HttpQuery("q")),
-    source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
-    target: Schema.String.pipe(T.HttpQuery("target")),
-    model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2" }),
-    svc,
-  ) as unknown as Schema.Schema<ListTranslationsRequest>;
-
-export type ListTranslationsResponse = TranslationsListResponse;
-export const ListTranslationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TranslationsListResponse;
-
-export type ListTranslationsError = DefaultErrors;
-
-/** Translates input text, returning translated text. */
-export const listTranslations: API.OperationMethod<
-  ListTranslationsRequest,
-  ListTranslationsResponse,
-  ListTranslationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListTranslationsRequest,
-  output: ListTranslationsResponse,
-  errors: [],
-}));
-
 export interface TranslateTranslationsRequest {
   /** Pretty-print response. */
   pp?: boolean;
@@ -370,5 +316,59 @@ export const translateTranslations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTranslationsRequest,
   output: TranslateTranslationsResponse,
+  errors: [],
+}));
+
+export interface ListTranslationsRequest {
+  /** Pretty-print response. */
+  pp?: boolean;
+  /** OAuth bearer token. */
+  bearer_token?: string;
+  /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
+  q: string[];
+  /** The customization id for translate */
+  cid?: string[];
+  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
+  format?: "html" | "text" | (string & {});
+  /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
+  source?: string;
+  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
+  model?: string;
+  /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
+  target: string;
+}
+
+export const ListTranslationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pp: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("pp")),
+    bearer_token: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("bearer_token"),
+    ),
+    q: Schema.Array(Schema.String).pipe(T.HttpQuery("q")),
+    cid: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("cid")),
+    format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
+    source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
+    model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
+    target: Schema.String.pipe(T.HttpQuery("target")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2" }),
+    svc,
+  ) as unknown as Schema.Schema<ListTranslationsRequest>;
+
+export type ListTranslationsResponse = TranslationsListResponse;
+export const ListTranslationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TranslationsListResponse;
+
+export type ListTranslationsError = DefaultErrors;
+
+/** Translates input text, returning translated text. */
+export const listTranslations: API.OperationMethod<
+  ListTranslationsRequest,
+  ListTranslationsResponse,
+  ListTranslationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListTranslationsRequest,
+  output: ListTranslationsResponse,
   errors: [],
 }));

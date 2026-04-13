@@ -59,7 +59,7 @@ export const GetIssuingTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             type: Schema.Literals(["mastercard", "visa"]),
             visa: Schema.optional(
               Schema.Struct({
-                card_reference_id: Schema.String,
+                card_reference_id: Schema.NullOr(Schema.String),
                 token_reference_id: Schema.String,
                 token_requestor_id: Schema.String,
                 token_risk_score: Schema.optional(Schema.String),

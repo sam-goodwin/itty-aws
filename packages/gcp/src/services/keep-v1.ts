@@ -22,6 +22,32 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface TextContent {
+  /** The text of the note. The limits on this vary with the specific field using this type. */
+  text?: string;
+}
+
+export const TextContent: Schema.Schema<TextContent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      text: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "TextContent",
+  }) as any as Schema.Schema<TextContent>;
+
+export interface Group {
+  /** The group email. */
+  email?: string;
+}
+
+export const Group: Schema.Schema<Group> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      email: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
+
 export interface Attachment {
   /** The resource name; */
   name?: string;
@@ -37,6 +63,13 @@ export const Attachment: Schema.Schema<Attachment> =
     }),
   ).annotate({ identifier: "Attachment" }) as any as Schema.Schema<Attachment>;
 
+export interface Family {}
+
+export const Family: Schema.Schema<Family> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+    identifier: "Family",
+  }) as any as Schema.Schema<Family>;
+
 export interface User {
   /** The user's email. */
   email?: string;
@@ -49,84 +82,82 @@ export const User: Schema.Schema<User> =
     }),
   ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
 
-export interface Group {
-  /** The group email. */
-  email?: string;
-}
-
-export const Group: Schema.Schema<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
-
-export interface Family {}
-
-export const Family: Schema.Schema<Family> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Family",
-  }) as any as Schema.Schema<Family>;
-
 export interface Permission {
-  /** Output only. The resource name. */
-  name?: string;
-  /** The role granted by this permission. The role determines the entity’s ability to read, write, and share notes. */
-  role?: "ROLE_UNSPECIFIED" | "OWNER" | "WRITER" | (string & {});
-  /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
-  email?: string;
-  /** Output only. The user to whom this role applies. */
-  user?: User;
-  /** Output only. The group to which this role applies. */
-  group?: Group;
-  /** Output only. The Google Family to which this role applies. */
-  family?: Family;
   /** Output only. Whether this member has been deleted. If the member is recovered, this value is set to false and the recovered member retains the role on the note. */
   deleted?: boolean;
+  /** The role granted by this permission. The role determines the entity’s ability to read, write, and share notes. */
+  role?: "ROLE_UNSPECIFIED" | "OWNER" | "WRITER" | (string & {});
+  /** Output only. The group to which this role applies. */
+  group?: Group;
+  /** Output only. The user to whom this role applies. */
+  user?: User;
+  /** Output only. The Google Family to which this role applies. */
+  family?: Family;
+  /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
+  email?: string;
+  /** Output only. The resource name. */
+  name?: string;
 }
 
 export const Permission: Schema.Schema<Permission> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      name: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      user: Schema.optional(User),
-      group: Schema.optional(Group),
-      family: Schema.optional(Family),
       deleted: Schema.optional(Schema.Boolean),
+      role: Schema.optional(Schema.String),
+      group: Schema.optional(Group),
+      user: Schema.optional(User),
+      family: Schema.optional(Family),
+      email: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Permission" }) as any as Schema.Schema<Permission>;
 
-export interface TextContent {
-  /** The text of the note. The limits on this vary with the specific field using this type. */
-  text?: string;
+export interface CreatePermissionRequest {
+  /** Required. The parent note where this permission will be created. Format: `notes/{note}` */
+  parent?: string;
+  /** Required. The permission to create. One of Permission.email, User.email or Group.email must be supplied. */
+  permission?: Permission;
 }
 
-export const TextContent: Schema.Schema<TextContent> =
+export const CreatePermissionRequest: Schema.Schema<CreatePermissionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      text: Schema.optional(Schema.String),
+      parent: Schema.optional(Schema.String),
+      permission: Schema.optional(Permission),
     }),
   ).annotate({
-    identifier: "TextContent",
-  }) as any as Schema.Schema<TextContent>;
+    identifier: "CreatePermissionRequest",
+  }) as any as Schema.Schema<CreatePermissionRequest>;
+
+export interface BatchCreatePermissionsResponse {
+  /** Permissions created. */
+  permissions?: Array<Permission>;
+}
+
+export const BatchCreatePermissionsResponse: Schema.Schema<BatchCreatePermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      permissions: Schema.optional(Schema.Array(Permission)),
+    }),
+  ).annotate({
+    identifier: "BatchCreatePermissionsResponse",
+  }) as any as Schema.Schema<BatchCreatePermissionsResponse>;
 
 export interface ListItem {
-  /** If set, list of list items nested under this list item. Only one level of nesting is allowed. */
-  childListItems?: Array<ListItem>;
-  /** The text of this item. Length must be less than 1,000 characters. */
-  text?: TextContent;
   /** Whether this item has been checked off or not. */
   checked?: boolean;
+  /** The text of this item. Length must be less than 1,000 characters. */
+  text?: TextContent;
+  /** If set, list of list items nested under this list item. Only one level of nesting is allowed. */
+  childListItems?: Array<ListItem>;
 }
 
 export const ListItem: Schema.Schema<ListItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      childListItems: Schema.optional(Schema.Array(ListItem)),
-      text: Schema.optional(TextContent),
       checked: Schema.optional(Schema.Boolean),
+      text: Schema.optional(TextContent),
+      childListItems: Schema.optional(Schema.Array(ListItem)),
     }),
   ).annotate({ identifier: "ListItem" }) as any as Schema.Schema<ListItem>;
 
@@ -160,38 +191,38 @@ export const Section: Schema.Schema<Section> =
   ).annotate({ identifier: "Section" }) as any as Schema.Schema<Section>;
 
 export interface Note {
-  /** Output only. The resource name of this note. See general note on identifiers in KeepService. */
-  name?: string;
-  /** Output only. When this note was created. */
-  createTime?: string;
   /** Output only. When this note was last modified. */
   updateTime?: string;
   /** Output only. When this note was trashed. If `trashed`, the note is eventually deleted. If the note is not trashed, this field is not set (and the trashed field is `false`). */
   trashTime?: string;
-  /** Output only. `true` if this note has been trashed. If trashed, the note is eventually deleted. */
-  trashed?: boolean;
   /** Output only. The attachments attached to this note. */
   attachments?: Array<Attachment>;
-  /** Output only. The list of permissions set on the note. Contains at least one entry for the note owner. */
-  permissions?: Array<Permission>;
-  /** The title of the note. Length must be less than 1,000 characters. */
-  title?: string;
   /** The body of the note. */
   body?: Section;
+  /** Output only. `true` if this note has been trashed. If trashed, the note is eventually deleted. */
+  trashed?: boolean;
+  /** Output only. The resource name of this note. See general note on identifiers in KeepService. */
+  name?: string;
+  /** Output only. When this note was created. */
+  createTime?: string;
+  /** The title of the note. Length must be less than 1,000 characters. */
+  title?: string;
+  /** Output only. The list of permissions set on the note. Contains at least one entry for the note owner. */
+  permissions?: Array<Permission>;
 }
 
 export const Note: Schema.Schema<Note> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
       updateTime: Schema.optional(Schema.String),
       trashTime: Schema.optional(Schema.String),
-      trashed: Schema.optional(Schema.Boolean),
       attachments: Schema.optional(Schema.Array(Attachment)),
-      permissions: Schema.optional(Schema.Array(Permission)),
-      title: Schema.optional(Schema.String),
       body: Schema.optional(Section),
+      trashed: Schema.optional(Schema.Boolean),
+      name: Schema.optional(Schema.String),
+      createTime: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+      permissions: Schema.optional(Schema.Array(Permission)),
     }),
   ).annotate({ identifier: "Note" }) as any as Schema.Schema<Note>;
 
@@ -219,23 +250,6 @@ export const Empty: Schema.Schema<Empty> =
     identifier: "Empty",
   }) as any as Schema.Schema<Empty>;
 
-export interface CreatePermissionRequest {
-  /** Required. The parent note where this permission will be created. Format: `notes/{note}` */
-  parent?: string;
-  /** Required. The permission to create. One of Permission.email, User.email or Group.email must be supplied. */
-  permission?: Permission;
-}
-
-export const CreatePermissionRequest: Schema.Schema<CreatePermissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      permission: Schema.optional(Permission),
-    }),
-  ).annotate({
-    identifier: "CreatePermissionRequest",
-  }) as any as Schema.Schema<CreatePermissionRequest>;
-
 export interface BatchCreatePermissionsRequest {
   /** The request message specifying the resources to create. */
   requests?: Array<CreatePermissionRequest>;
@@ -249,20 +263,6 @@ export const BatchCreatePermissionsRequest: Schema.Schema<BatchCreatePermissions
   ).annotate({
     identifier: "BatchCreatePermissionsRequest",
   }) as any as Schema.Schema<BatchCreatePermissionsRequest>;
-
-export interface BatchCreatePermissionsResponse {
-  /** Permissions created. */
-  permissions?: Array<Permission>;
-}
-
-export const BatchCreatePermissionsResponse: Schema.Schema<BatchCreatePermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Permission)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePermissionsResponse",
-  }) as any as Schema.Schema<BatchCreatePermissionsResponse>;
 
 export interface BatchDeletePermissionsRequest {
   /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
@@ -311,35 +311,6 @@ export const createNotes: API.OperationMethod<
   errors: [],
 }));
 
-export interface GetNotesRequest {
-  /** Required. Name of the resource. */
-  name: string;
-}
-
-export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/notes/{notesId}" }),
-  svc,
-) as unknown as Schema.Schema<GetNotesRequest>;
-
-export type GetNotesResponse = Note;
-export const GetNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
-
-export type GetNotesError = DefaultErrors;
-
-/** Gets a note. */
-export const getNotes: API.OperationMethod<
-  GetNotesRequest,
-  GetNotesResponse,
-  GetNotesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetNotesRequest,
-  output: GetNotesResponse,
-  errors: [],
-}));
-
 export interface ListNotesRequest {
   /** The maximum number of results to return. */
   pageSize?: number;
@@ -380,6 +351,35 @@ export const listNotes: API.PaginatedOperationMethod<
   },
 }));
 
+export interface GetNotesRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/notes/{notesId}" }),
+  svc,
+) as unknown as Schema.Schema<GetNotesRequest>;
+
+export type GetNotesResponse = Note;
+export const GetNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
+
+export type GetNotesError = DefaultErrors;
+
+/** Gets a note. */
+export const getNotes: API.OperationMethod<
+  GetNotesRequest,
+  GetNotesResponse,
+  GetNotesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetNotesRequest,
+  output: GetNotesResponse,
+  errors: [],
+}));
+
 export interface DeleteNotesRequest {
   /** Required. Name of the note to delete. */
   name: string;
@@ -406,6 +406,44 @@ export const deleteNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNotesRequest,
   output: DeleteNotesResponse,
+  errors: [],
+}));
+
+export interface BatchDeleteNotesPermissionsRequest {
+  /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeletePermissionsRequest;
+}
+
+export const BatchDeleteNotesPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(BatchDeletePermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/notes/{notesId}/permissions:batchDelete",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchDeleteNotesPermissionsRequest>;
+
+export type BatchDeleteNotesPermissionsResponse = Empty;
+export const BatchDeleteNotesPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type BatchDeleteNotesPermissionsError = DefaultErrors;
+
+/** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
+export const batchDeleteNotesPermissions: API.OperationMethod<
+  BatchDeleteNotesPermissionsRequest,
+  BatchDeleteNotesPermissionsResponse,
+  BatchDeleteNotesPermissionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteNotesPermissionsRequest,
+  output: BatchDeleteNotesPermissionsResponse,
   errors: [],
 }));
 
@@ -445,44 +483,6 @@ export const batchCreateNotesPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateNotesPermissionsRequest,
   output: BatchCreateNotesPermissionsResponse,
-  errors: [],
-}));
-
-export interface BatchDeleteNotesPermissionsRequest {
-  /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeletePermissionsRequest;
-}
-
-export const BatchDeleteNotesPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BatchDeletePermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notes/{notesId}/permissions:batchDelete",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchDeleteNotesPermissionsRequest>;
-
-export type BatchDeleteNotesPermissionsResponse = Empty;
-export const BatchDeleteNotesPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type BatchDeleteNotesPermissionsError = DefaultErrors;
-
-/** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
-export const batchDeleteNotesPermissions: API.OperationMethod<
-  BatchDeleteNotesPermissionsRequest,
-  BatchDeleteNotesPermissionsResponse,
-  BatchDeleteNotesPermissionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchDeleteNotesPermissionsRequest,
-  output: BatchDeleteNotesPermissionsResponse,
   errors: [],
 }));
 

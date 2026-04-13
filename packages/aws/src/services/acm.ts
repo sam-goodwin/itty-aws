@@ -93,6 +93,8 @@ export type Arn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type AvailabilityErrorMessage = string;
+export type CoralAvailabilityThrottlingReason = string;
+export type CoralAvailabilityThrottledResource = string;
 export type ServiceErrorMessage = string;
 export type DomainNameString = string;
 export type PassphraseBlob = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -108,6 +110,9 @@ export type MaxItems = number;
 export type ValidationExceptionMessage = string;
 export type IdempotencyToken = string;
 export type PcaArn = string;
+export type FilterString = string;
+export type SerialNumber = string;
+export type SearchMaxResults = number;
 
 //# Schemas
 export interface Tag {
@@ -136,6 +141,18 @@ export const AddTagsToCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AddTagsToCertificateResponse",
   }) as any as S.Schema<AddTagsToCertificateResponse>;
+export interface ThrottlingReason {
+  reason?: string;
+  resource?: string;
+}
+export const ThrottlingReason = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+).annotate({
+  identifier: "ThrottlingReason",
+}) as any as S.Schema<ThrottlingReason>;
+export type ThrottlingReasonList = ThrottlingReason[];
+export const ThrottlingReasonList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ThrottlingReason);
 export interface DeleteCertificateRequest {
   CertificateArn: string;
 }
@@ -855,6 +872,575 @@ export const RevokeCertificateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RevokeCertificateResponse",
 }) as any as S.Schema<RevokeCertificateResponse>;
+export type CertificateFilterStatementList = CertificateFilterStatement[];
+export const CertificateFilterStatementList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    S.suspend(() => CertificateFilterStatement).annotate({
+      identifier: "CertificateFilterStatement",
+    }),
+  ) as any as S.Schema<CertificateFilterStatementList>;
+export type ComparisonOperator = "CONTAINS" | "EQUALS" | (string & {});
+export const ComparisonOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CommonNameFilter {
+  Value: string;
+  ComparisonOperator: ComparisonOperator;
+}
+export const CommonNameFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
+).annotate({
+  identifier: "CommonNameFilter",
+}) as any as S.Schema<CommonNameFilter>;
+export type SubjectFilter = { CommonName: CommonNameFilter };
+export const SubjectFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ CommonName: CommonNameFilter }),
+]);
+export interface DnsNameFilter {
+  Value: string;
+  ComparisonOperator: ComparisonOperator;
+}
+export const DnsNameFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
+).annotate({ identifier: "DnsNameFilter" }) as any as S.Schema<DnsNameFilter>;
+export type SubjectAlternativeNameFilter = { DnsName: DnsNameFilter };
+export const SubjectAlternativeNameFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union(
+  [S.Struct({ DnsName: DnsNameFilter })],
+);
+export interface TimestampRange {
+  Start?: Date;
+  End?: Date;
+}
+export const TimestampRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    End: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "TimestampRange" }) as any as S.Schema<TimestampRange>;
+export type X509AttributeFilter =
+  | {
+      Subject: SubjectFilter;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage?: never;
+      KeyUsage?: never;
+      KeyAlgorithm?: never;
+      SerialNumber?: never;
+      NotAfter?: never;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName: SubjectAlternativeNameFilter;
+      ExtendedKeyUsage?: never;
+      KeyUsage?: never;
+      KeyAlgorithm?: never;
+      SerialNumber?: never;
+      NotAfter?: never;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage: ExtendedKeyUsageName;
+      KeyUsage?: never;
+      KeyAlgorithm?: never;
+      SerialNumber?: never;
+      NotAfter?: never;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage?: never;
+      KeyUsage: KeyUsageName;
+      KeyAlgorithm?: never;
+      SerialNumber?: never;
+      NotAfter?: never;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage?: never;
+      KeyUsage?: never;
+      KeyAlgorithm: KeyAlgorithm;
+      SerialNumber?: never;
+      NotAfter?: never;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage?: never;
+      KeyUsage?: never;
+      KeyAlgorithm?: never;
+      SerialNumber: string;
+      NotAfter?: never;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage?: never;
+      KeyUsage?: never;
+      KeyAlgorithm?: never;
+      SerialNumber?: never;
+      NotAfter: TimestampRange;
+      NotBefore?: never;
+    }
+  | {
+      Subject?: never;
+      SubjectAlternativeName?: never;
+      ExtendedKeyUsage?: never;
+      KeyUsage?: never;
+      KeyAlgorithm?: never;
+      SerialNumber?: never;
+      NotAfter?: never;
+      NotBefore: TimestampRange;
+    };
+export const X509AttributeFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ Subject: SubjectFilter }),
+  S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
+  S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
+  S.Struct({ KeyUsage: KeyUsageName }),
+  S.Struct({ KeyAlgorithm: KeyAlgorithm }),
+  S.Struct({ SerialNumber: S.String }),
+  S.Struct({ NotAfter: TimestampRange }),
+  S.Struct({ NotBefore: TimestampRange }),
+]);
+export type AcmCertificateMetadataFilter =
+  | {
+      Status: CertificateStatus;
+      RenewalStatus?: never;
+      Type?: never;
+      InUse?: never;
+      Exported?: never;
+      ExportOption?: never;
+      ManagedBy?: never;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus: RenewalStatus;
+      Type?: never;
+      InUse?: never;
+      Exported?: never;
+      ExportOption?: never;
+      ManagedBy?: never;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus?: never;
+      Type: CertificateType;
+      InUse?: never;
+      Exported?: never;
+      ExportOption?: never;
+      ManagedBy?: never;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus?: never;
+      Type?: never;
+      InUse: boolean;
+      Exported?: never;
+      ExportOption?: never;
+      ManagedBy?: never;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus?: never;
+      Type?: never;
+      InUse?: never;
+      Exported: boolean;
+      ExportOption?: never;
+      ManagedBy?: never;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus?: never;
+      Type?: never;
+      InUse?: never;
+      Exported?: never;
+      ExportOption: CertificateExport;
+      ManagedBy?: never;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus?: never;
+      Type?: never;
+      InUse?: never;
+      Exported?: never;
+      ExportOption?: never;
+      ManagedBy: CertificateManagedBy;
+      ValidationMethod?: never;
+    }
+  | {
+      Status?: never;
+      RenewalStatus?: never;
+      Type?: never;
+      InUse?: never;
+      Exported?: never;
+      ExportOption?: never;
+      ManagedBy?: never;
+      ValidationMethod: ValidationMethod;
+    };
+export const AcmCertificateMetadataFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union(
+  [
+    S.Struct({ Status: CertificateStatus }),
+    S.Struct({ RenewalStatus: RenewalStatus }),
+    S.Struct({ Type: CertificateType }),
+    S.Struct({ InUse: S.Boolean }),
+    S.Struct({ Exported: S.Boolean }),
+    S.Struct({ ExportOption: CertificateExport }),
+    S.Struct({ ManagedBy: CertificateManagedBy }),
+    S.Struct({ ValidationMethod: ValidationMethod }),
+  ],
+);
+export type CertificateFilter =
+  | {
+      CertificateArn: string;
+      X509AttributeFilter?: never;
+      AcmCertificateMetadataFilter?: never;
+    }
+  | {
+      CertificateArn?: never;
+      X509AttributeFilter: X509AttributeFilter;
+      AcmCertificateMetadataFilter?: never;
+    }
+  | {
+      CertificateArn?: never;
+      X509AttributeFilter?: never;
+      AcmCertificateMetadataFilter: AcmCertificateMetadataFilter;
+    };
+export const CertificateFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ CertificateArn: S.String }),
+  S.Struct({ X509AttributeFilter: X509AttributeFilter }),
+  S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
+]);
+export type CertificateFilterStatement =
+  | {
+      And: CertificateFilterStatement[];
+      Or?: never;
+      Not?: never;
+      Filter?: never;
+    }
+  | {
+      And?: never;
+      Or: CertificateFilterStatement[];
+      Not?: never;
+      Filter?: never;
+    }
+  | { And?: never; Or?: never; Not: CertificateFilterStatement; Filter?: never }
+  | { And?: never; Or?: never; Not?: never; Filter: CertificateFilter };
+export const CertificateFilterStatement = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({
+    And: S.suspend(() => CertificateFilterStatementList).annotate({
+      identifier: "CertificateFilterStatementList",
+    }),
+  }),
+  S.Struct({
+    Or: S.suspend(() => CertificateFilterStatementList).annotate({
+      identifier: "CertificateFilterStatementList",
+    }),
+  }),
+  S.Struct({
+    Not: S.suspend(() => CertificateFilterStatement).annotate({
+      identifier: "CertificateFilterStatement",
+    }),
+  }),
+  S.Struct({ Filter: CertificateFilter }),
+]) as any as S.Schema<CertificateFilterStatement>;
+export type SearchCertificatesSortBy =
+  | "CREATED_AT"
+  | "NOT_AFTER"
+  | "STATUS"
+  | "RENEWAL_STATUS"
+  | "EXPORTED"
+  | "IN_USE"
+  | "NOT_BEFORE"
+  | "KEY_ALGORITHM"
+  | "TYPE"
+  | "CERTIFICATE_ARN"
+  | "COMMON_NAME"
+  | "REVOKED_AT"
+  | "RENEWAL_ELIGIBILITY"
+  | "ISSUED_AT"
+  | "MANAGED_BY"
+  | "EXPORT_OPTION"
+  | "VALIDATION_METHOD"
+  | "IMPORTED_AT"
+  | (string & {});
+export const SearchCertificatesSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SearchCertificatesSortOrder =
+  | "ASCENDING"
+  | "DESCENDING"
+  | (string & {});
+export const SearchCertificatesSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SearchCertificatesRequest {
+  FilterStatement?: CertificateFilterStatement;
+  MaxResults?: number;
+  NextToken?: string;
+  SortBy?: SearchCertificatesSortBy;
+  SortOrder?: SearchCertificatesSortOrder;
+}
+export const SearchCertificatesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FilterStatement: S.optional(CertificateFilterStatement),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      SortBy: S.optional(SearchCertificatesSortBy),
+      SortOrder: S.optional(SearchCertificatesSortOrder),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "SearchCertificatesRequest",
+}) as any as S.Schema<SearchCertificatesRequest>;
+export type DomainComponentList = string[];
+export const DomainComponentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface CustomAttribute {
+  ObjectIdentifier?: string;
+  Value?: string;
+}
+export const CustomAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectIdentifier: S.optional(S.String),
+    Value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomAttribute",
+}) as any as S.Schema<CustomAttribute>;
+export type CustomAttributeList = CustomAttribute[];
+export const CustomAttributeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomAttribute);
+export interface DistinguishedName {
+  CommonName?: string;
+  DomainComponents?: string[];
+  Country?: string;
+  CustomAttributes?: CustomAttribute[];
+  DistinguishedNameQualifier?: string;
+  GenerationQualifier?: string;
+  GivenName?: string;
+  Initials?: string;
+  Locality?: string;
+  Organization?: string;
+  OrganizationalUnit?: string;
+  Pseudonym?: string;
+  SerialNumber?: string;
+  State?: string;
+  Surname?: string;
+  Title?: string;
+}
+export const DistinguishedName = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CommonName: S.optional(S.String),
+    DomainComponents: S.optional(DomainComponentList),
+    Country: S.optional(S.String),
+    CustomAttributes: S.optional(CustomAttributeList),
+    DistinguishedNameQualifier: S.optional(S.String),
+    GenerationQualifier: S.optional(S.String),
+    GivenName: S.optional(S.String),
+    Initials: S.optional(S.String),
+    Locality: S.optional(S.String),
+    Organization: S.optional(S.String),
+    OrganizationalUnit: S.optional(S.String),
+    Pseudonym: S.optional(S.String),
+    SerialNumber: S.optional(S.String),
+    State: S.optional(S.String),
+    Surname: S.optional(S.String),
+    Title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DistinguishedName",
+}) as any as S.Schema<DistinguishedName>;
+export interface OtherName {
+  ObjectIdentifier?: string;
+  Value?: string;
+}
+export const OtherName = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectIdentifier: S.optional(S.String),
+    Value: S.optional(S.String),
+  }),
+).annotate({ identifier: "OtherName" }) as any as S.Schema<OtherName>;
+export type GeneralName =
+  | {
+      DirectoryName: DistinguishedName;
+      DnsName?: never;
+      IpAddress?: never;
+      OtherName?: never;
+      RegisteredId?: never;
+      Rfc822Name?: never;
+      UniformResourceIdentifier?: never;
+    }
+  | {
+      DirectoryName?: never;
+      DnsName: string;
+      IpAddress?: never;
+      OtherName?: never;
+      RegisteredId?: never;
+      Rfc822Name?: never;
+      UniformResourceIdentifier?: never;
+    }
+  | {
+      DirectoryName?: never;
+      DnsName?: never;
+      IpAddress: string;
+      OtherName?: never;
+      RegisteredId?: never;
+      Rfc822Name?: never;
+      UniformResourceIdentifier?: never;
+    }
+  | {
+      DirectoryName?: never;
+      DnsName?: never;
+      IpAddress?: never;
+      OtherName: OtherName;
+      RegisteredId?: never;
+      Rfc822Name?: never;
+      UniformResourceIdentifier?: never;
+    }
+  | {
+      DirectoryName?: never;
+      DnsName?: never;
+      IpAddress?: never;
+      OtherName?: never;
+      RegisteredId: string;
+      Rfc822Name?: never;
+      UniformResourceIdentifier?: never;
+    }
+  | {
+      DirectoryName?: never;
+      DnsName?: never;
+      IpAddress?: never;
+      OtherName?: never;
+      RegisteredId?: never;
+      Rfc822Name: string;
+      UniformResourceIdentifier?: never;
+    }
+  | {
+      DirectoryName?: never;
+      DnsName?: never;
+      IpAddress?: never;
+      OtherName?: never;
+      RegisteredId?: never;
+      Rfc822Name?: never;
+      UniformResourceIdentifier: string;
+    };
+export const GeneralName = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ DirectoryName: DistinguishedName }),
+  S.Struct({ DnsName: S.String }),
+  S.Struct({ IpAddress: S.String }),
+  S.Struct({ OtherName: OtherName }),
+  S.Struct({ RegisteredId: S.String }),
+  S.Struct({ Rfc822Name: S.String }),
+  S.Struct({ UniformResourceIdentifier: S.String }),
+]);
+export type GeneralNameList = GeneralName[];
+export const GeneralNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(GeneralName);
+export interface X509Attributes {
+  Issuer?: DistinguishedName;
+  Subject?: DistinguishedName;
+  SubjectAlternativeNames?: GeneralName[];
+  ExtendedKeyUsages?: ExtendedKeyUsageName[];
+  KeyAlgorithm?: KeyAlgorithm;
+  KeyUsages?: KeyUsageName[];
+  SerialNumber?: string;
+  NotAfter?: Date;
+  NotBefore?: Date;
+}
+export const X509Attributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Issuer: S.optional(DistinguishedName),
+    Subject: S.optional(DistinguishedName),
+    SubjectAlternativeNames: S.optional(GeneralNameList),
+    ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
+    KeyAlgorithm: S.optional(KeyAlgorithm),
+    KeyUsages: S.optional(KeyUsageNames),
+    SerialNumber: S.optional(S.String),
+    NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "X509Attributes" }) as any as S.Schema<X509Attributes>;
+export interface AcmCertificateMetadata {
+  CreatedAt?: Date;
+  Exported?: boolean;
+  ImportedAt?: Date;
+  InUse?: boolean;
+  IssuedAt?: Date;
+  RenewalEligibility?: RenewalEligibility;
+  RevokedAt?: Date;
+  Status?: CertificateStatus;
+  RenewalStatus?: RenewalStatus;
+  Type?: CertificateType;
+  ExportOption?: CertificateExport;
+  ManagedBy?: CertificateManagedBy;
+  ValidationMethod?: ValidationMethod;
+}
+export const AcmCertificateMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      Exported: S.optional(S.Boolean),
+      ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      InUse: S.optional(S.Boolean),
+      IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      RenewalEligibility: S.optional(RenewalEligibility),
+      RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      Status: S.optional(CertificateStatus),
+      RenewalStatus: S.optional(RenewalStatus),
+      Type: S.optional(CertificateType),
+      ExportOption: S.optional(CertificateExport),
+      ManagedBy: S.optional(CertificateManagedBy),
+      ValidationMethod: S.optional(ValidationMethod),
+    }),
+).annotate({
+  identifier: "AcmCertificateMetadata",
+}) as any as S.Schema<AcmCertificateMetadata>;
+export type CertificateMetadata = {
+  AcmCertificateMetadata: AcmCertificateMetadata;
+};
+export const CertificateMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata }),
+]);
+export interface CertificateSearchResult {
+  CertificateArn?: string;
+  X509Attributes?: X509Attributes;
+  CertificateMetadata?: CertificateMetadata;
+}
+export const CertificateSearchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      CertificateArn: S.optional(S.String),
+      X509Attributes: S.optional(X509Attributes),
+      CertificateMetadata: S.optional(CertificateMetadata),
+    }),
+).annotate({
+  identifier: "CertificateSearchResult",
+}) as any as S.Schema<CertificateSearchResult>;
+export type CertificateSearchResultList = CertificateSearchResult[];
+export const CertificateSearchResultList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  CertificateSearchResult,
+);
+export interface SearchCertificatesResponse {
+  Results?: CertificateSearchResult[];
+  NextToken?: string;
+}
+export const SearchCertificatesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Results: S.optional(CertificateSearchResultList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SearchCertificatesResponse",
+}) as any as S.Schema<SearchCertificatesResponse>;
 export interface UpdateCertificateOptionsRequest {
   CertificateArn: string;
   Options: CertificateOptions;
@@ -896,7 +1482,10 @@ export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()
 ) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
-  { message: S.optional(S.String) },
+  {
+    message: S.optional(S.String),
+    throttlingReasons: S.optional(ThrottlingReasonList),
+  },
   T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
@@ -986,9 +1575,13 @@ export type DeleteCertificateError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.
+ * Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action.
  *
- * You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, the certificate association must first be removed.
+ * You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service.
+ *
+ * Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting Your Private CA in the *Private Certificate Authority User Guide*.
+ *
+ * Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting your private CA in the *Amazon Web Services Private Certificate Authority User Guide*.
  */
 export const deleteCertificate: API.OperationMethod<
   DeleteCertificateRequest,
@@ -1030,11 +1623,14 @@ export type ExportCertificateError =
   | InvalidArnException
   | RequestInProgressException
   | ResourceNotFoundException
+  | ThrottlingException
   | CommonErrors;
 /**
- * Exports a private certificate issued by a private certificate authority (CA) or public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
+ * Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it.
  *
  * For information about exporting and formatting a certificate using the ACM console or CLI, see Export a private certificate and Export a public certificate.
+ *
+ * ACM public certificates created prior to June 17, 2025 cannot be exported.
  */
 export const exportCertificate: API.OperationMethod<
   ExportCertificateRequest,
@@ -1048,6 +1644,7 @@ export const exportCertificate: API.OperationMethod<
     InvalidArnException,
     RequestInProgressException,
     ResourceNotFoundException,
+    ThrottlingException,
   ],
 }));
 export type GetAccountConfigurationError =
@@ -1090,6 +1687,7 @@ export const getCertificate: API.OperationMethod<
   ],
 }));
 export type ImportCertificateError =
+  | ConflictException
   | InvalidArnException
   | InvalidParameterException
   | InvalidTagException
@@ -1138,6 +1736,7 @@ export const importCertificate: API.OperationMethod<
   input: ImportCertificateRequest,
   output: ImportCertificateResponse,
   errors: [
+    ConflictException,
     InvalidArnException,
     InvalidParameterException,
     InvalidTagException,
@@ -1350,6 +1949,8 @@ export type RevokeCertificateError =
   | CommonErrors;
 /**
  * Revokes a public ACM certificate. You can only revoke certificates that have been previously exported.
+ *
+ * Once a certificate is revoked, you cannot reuse the certificate. Revoking a certificate is permanent.
  */
 export const revokeCertificate: API.OperationMethod<
   RevokeCertificateRequest,
@@ -1367,6 +1968,45 @@ export const revokeCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+}));
+export type SearchCertificatesError =
+  | AccessDeniedException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a list of certificates matching search criteria. You can filter certificates by X.509 attributes and ACM specific properties like certificate status, type and renewal eligibility. This operation provides more flexible filtering than ListCertificates by supporting complex filter statements.
+ */
+export const searchCertificates: API.OperationMethod<
+  SearchCertificatesRequest,
+  SearchCertificatesResponse,
+  SearchCertificatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchCertificatesRequest,
+  ) => stream.Stream<
+    SearchCertificatesResponse,
+    SearchCertificatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchCertificatesRequest,
+  ) => stream.Stream<
+    CertificateSearchResult,
+    SearchCertificatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SearchCertificatesRequest,
+  output: SearchCertificatesResponse,
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Results",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type UpdateCertificateOptionsError =
   | InvalidArnException

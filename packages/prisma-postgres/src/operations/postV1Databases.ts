@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { SensitiveString } from "../sensitive";
 
 // Input Schema
 export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -18,6 +19,7 @@ export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.String),
   isDefault: Schema.optional(Schema.Boolean),
+  source: Schema.optional(Schema.Unknown),
 }).pipe(T.Http({ method: "POST", path: "/v1/databases" }));
 export type PostV1DatabasesInput = typeof PostV1DatabasesInput.Type;
 
@@ -45,18 +47,21 @@ export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
+              connectionString: Schema.optional(SensitiveString),
             }),
           ),
           pooled: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
+              connectionString: Schema.optional(SensitiveString),
             }),
           ),
           accelerate: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
+              connectionString: Schema.optional(SensitiveString),
             }),
           ),
         }),
@@ -87,6 +92,7 @@ export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         name: Schema.String,
       }),
     ),
+    source: Schema.Unknown,
   }),
 });
 export type PostV1DatabasesOutput = typeof PostV1DatabasesOutput.Type;

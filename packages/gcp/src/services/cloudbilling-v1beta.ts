@@ -22,6 +22,506 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface BillingDataResource {
+  /** Optional. If not provided the billing account currently associated with the resource will be used. */
+  billingAccount?: string;
+  /** Required. Resource name for an entitity that can be used for authorization to access billing data such as `projects/{project}` or `billingAccounts/{billing_account}` */
+  resource?: string;
+}
+
+export const BillingDataResource: Schema.Schema<BillingDataResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      billingAccount: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "BillingDataResource",
+  }) as any as Schema.Schema<BillingDataResource>;
+
+export interface UserContext {
+  /** Optional. The user's persona (e.g., FinOps Manager, Developer). */
+  persona?:
+    | "PERSONA_UNSPECIFIED"
+    | "FINOPS_MANAGER"
+    | "DEVELOPER"
+    | (string & {});
+  /** Optional. The user's role (e.g., Billing Admin, Project Owner, etc.). */
+  role?: string;
+}
+
+export const UserContext: Schema.Schema<UserContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      persona: Schema.optional(Schema.String),
+      role: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "UserContext",
+  }) as any as Schema.Schema<UserContext>;
+
+export interface GenerateInsightsRequest {
+  /** Optional. The billing account or projects to analyze. */
+  parents?: Array<BillingDataResource>;
+  /** Optional. Filters cost data by service id. Follows https://google.aip.dev/160 for the filter syntax. eg. filter: "service = 'C7E2-9256-1C43'" */
+  filter?: string;
+  /** Required. The natural language prompt from the user. */
+  prompt?: string;
+  /** Optional. Additional context for personalization (e.g., user persona, role). */
+  userContext?: UserContext;
+  /** Optional. Overrides the maximum iterations for any selected strategy. */
+  overriddenMaxIterationCounts?: number;
+}
+
+export const GenerateInsightsRequest: Schema.Schema<GenerateInsightsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      parents: Schema.optional(Schema.Array(BillingDataResource)),
+      filter: Schema.optional(Schema.String),
+      prompt: Schema.optional(Schema.String),
+      userContext: Schema.optional(UserContext),
+      overriddenMaxIterationCounts: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "GenerateInsightsRequest",
+  }) as any as Schema.Schema<GenerateInsightsRequest>;
+
+export interface Insight {
+  /** Output only. The title of the insight. */
+  title?: string;
+  /** Output only. The description of the insight. */
+  description?: string;
+  /** Output only. The severity of the insight, used for UI rendering (e.g., color-coding). */
+  severity?:
+    | "SEVERITY_UNSPECIFIED"
+    | "INFO"
+    | "WARNING"
+    | "CRITICAL"
+    | (string & {});
+}
+
+export const Insight: Schema.Schema<Insight> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      title: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      severity: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "Insight" }) as any as Schema.Schema<Insight>;
+
+export interface ColumnInfo {
+  /** Name of the column. */
+  column?: string;
+}
+
+export const ColumnInfo: Schema.Schema<ColumnInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      column: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "ColumnInfo" }) as any as Schema.Schema<ColumnInfo>;
+
+export interface Cloudbilling_Array {
+  /** The elements of the array. */
+  element?: Array<ValueProto>;
+}
+
+export const Cloudbilling_Array: Schema.Schema<Cloudbilling_Array> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      element: Schema.optional(Schema.Array(ValueProto)),
+    }),
+  ).annotate({
+    identifier: "Cloudbilling_Array",
+  }) as any as Schema.Schema<Cloudbilling_Array>;
+
+export interface Struct {
+  /** The fields in the struct */
+  field?: Array<ValueProto>;
+}
+
+export const Struct: Schema.Schema<Struct> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      field: Schema.optional(Schema.Array(ValueProto)),
+    }),
+  ).annotate({ identifier: "Struct" }) as any as Schema.Schema<Struct>;
+
+export interface Datetime {
+  /** Represents bit field encoding of year/month/day/hour/minute/second. See class DatetimeValue in civil_time.h for details of encoding. */
+  bitFieldDatetimeSeconds?: string;
+  /** Non-negative fractions of a second at nanosecond resolution. */
+  nanos?: number;
+}
+
+export const Datetime: Schema.Schema<Datetime> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      bitFieldDatetimeSeconds: Schema.optional(Schema.String),
+      nanos: Schema.optional(Schema.Number),
+    }),
+  ).annotate({ identifier: "Datetime" }) as any as Schema.Schema<Datetime>;
+
+export interface Range {
+  /** Represents the start of the range. */
+  start?: ValueProto;
+  /** Represents the end of the range. */
+  end?: ValueProto;
+}
+
+export const Range: Schema.Schema<Range> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      start: Schema.optional(ValueProto),
+      end: Schema.optional(ValueProto),
+    }),
+  ).annotate({ identifier: "Range" }) as any as Schema.Schema<Range>;
+
+export interface MapEntry {
+  /** Represents the serialized map key for the entry. */
+  key?: ValueProto;
+  /** Represents the serialized map value of the entry. */
+  value?: ValueProto;
+}
+
+export const MapEntry: Schema.Schema<MapEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      key: Schema.optional(ValueProto),
+      value: Schema.optional(ValueProto),
+    }),
+  ).annotate({ identifier: "MapEntry" }) as any as Schema.Schema<MapEntry>;
+
+export interface Cloudbilling_Map {
+  /** Represents the map entries in the map. */
+  entry?: Array<MapEntry>;
+}
+
+export const Cloudbilling_Map: Schema.Schema<Cloudbilling_Map> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      entry: Schema.optional(Schema.Array(MapEntry)),
+    }),
+  ).annotate({
+    identifier: "Cloudbilling_Map",
+  }) as any as Schema.Schema<Cloudbilling_Map>;
+
+export interface ValueProto {
+  /** Primitive value for int32. */
+  int32Value?: number;
+  /** Primitive for int64. */
+  int64Value?: string;
+  /** Primitive for uint32. */
+  uint32Value?: number;
+  /** Primitive for uint64. */
+  uint64Value?: string;
+  /** Primitive for bool. */
+  boolValue?: boolean;
+  /** Primitive for float. */
+  floatValue?: number;
+  /** Primitive for double. */
+  doubleValue?: number;
+  /** Primitive for string. */
+  stringValue?: string;
+  /** Primitive for bytes. */
+  bytesValue?: string;
+  /** Primitive for date. */
+  dateValue?: number;
+  /** Tag 11 was used for specifying micros timestamps as int64, now obsolete. */
+  enumValue?: number;
+  /** An array of value */
+  arrayValue?: Cloudbilling_Array;
+  /** A struct of values */
+  structValue?: Struct;
+  /** Stores a serialized protocol message. */
+  protoValue?: string;
+  /** primitive for timestamp */
+  timestampValue?: string;
+  /** Encoded timestamp_pico value. For the encoding format see documentation for googlesql::TimestampPico::SerializeAsBytes(). */
+  timestampPicoValue?: string;
+  /** primitive for datetime */
+  datetimeValue?: Datetime;
+  /** Bit field encoding of hour/minute/second/nanos. See TimeValue class for details. */
+  timeValue?: string;
+  /** Geography encoded using ::stlib::STGeographyEncoder */
+  geographyValue?: string;
+  /** Encoded numeric value. For the encoding format see documentation for NumericValue::SerializeAsProtoBytes(). */
+  numericValue?: string;
+  /** Encoded bignumeric value. For the encoding format see documentation for BigNumericValue::SerializeAsProtoBytes(). */
+  bignumericValue?: string;
+  /** Tag 22 was used for json value as bytes, now obsolete. Json value represented as a string document. */
+  jsonValue?: string;
+  /** Encoded interval value. For the encoding format see documentation for IntervalValue::SerializeAsBytes(). */
+  intervalValue?: string;
+  /** Encoded tokenlist value. copybara:strip_begin(internal-comment) See //search/tokens:token_list. copybara:strip_end */
+  tokenlistValue?: string;
+  /** Encoded range value. See go/googlesql_range. */
+  rangeValue?: Range;
+  /** Encoded uuid value. For the encoding format see documentation for UuidValue::SerializeAsBytes(). */
+  uuidValue?: string;
+  /** Encoded map value. See go/googlesql_map. */
+  mapValue?: Cloudbilling_Map;
+  /** User code that switches on this oneoff enum must have a default case so builds won't break when new fields are added. */
+  ValueProtoSwitchMustHaveADefault?: boolean;
+}
+
+export const ValueProto: Schema.Schema<ValueProto> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      int32Value: Schema.optional(Schema.Number),
+      int64Value: Schema.optional(Schema.String),
+      uint32Value: Schema.optional(Schema.Number),
+      uint64Value: Schema.optional(Schema.String),
+      boolValue: Schema.optional(Schema.Boolean),
+      floatValue: Schema.optional(Schema.Number),
+      doubleValue: Schema.optional(Schema.Number),
+      stringValue: Schema.optional(Schema.String),
+      bytesValue: Schema.optional(Schema.String),
+      dateValue: Schema.optional(Schema.Number),
+      enumValue: Schema.optional(Schema.Number),
+      arrayValue: Schema.optional(Cloudbilling_Array),
+      structValue: Schema.optional(Struct),
+      protoValue: Schema.optional(Schema.String),
+      timestampValue: Schema.optional(Schema.String),
+      timestampPicoValue: Schema.optional(Schema.String),
+      datetimeValue: Schema.optional(Datetime),
+      timeValue: Schema.optional(Schema.String),
+      geographyValue: Schema.optional(Schema.String),
+      numericValue: Schema.optional(Schema.String),
+      bignumericValue: Schema.optional(Schema.String),
+      jsonValue: Schema.optional(Schema.String),
+      intervalValue: Schema.optional(Schema.String),
+      tokenlistValue: Schema.optional(Schema.String),
+      rangeValue: Schema.optional(Range),
+      uuidValue: Schema.optional(Schema.String),
+      mapValue: Schema.optional(Cloudbilling_Map),
+      ValueProtoSwitchMustHaveADefault: Schema.optional(Schema.Boolean),
+    }),
+  ).annotate({ identifier: "ValueProto" }) as any as Schema.Schema<ValueProto>;
+
+export interface Row {
+  /** Values for a row in the column order. */
+  values?: Array<ValueProto>;
+}
+
+export const Row: Schema.Schema<Row> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      values: Schema.optional(Schema.Array(ValueProto)),
+    }),
+  ).annotate({ identifier: "Row" }) as any as Schema.Schema<Row>;
+
+export interface BillingData {
+  /** Information about columns. */
+  columnInfo?: Array<ColumnInfo>;
+  /** Rows. */
+  rows?: Array<Row>;
+}
+
+export const BillingData: Schema.Schema<BillingData> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      columnInfo: Schema.optional(Schema.Array(ColumnInfo)),
+      rows: Schema.optional(Schema.Array(Row)),
+    }),
+  ).annotate({
+    identifier: "BillingData",
+  }) as any as Schema.Schema<BillingData>;
+
+export interface SuggestedChart {
+  /** The title of the chart. */
+  chartTitle?: string;
+  /** The label of the x-axis. */
+  xAxisLabel?: string;
+  /** The label of the y-axis. */
+  yAxisLabel?: string;
+  /** The field used for the x-axis. */
+  xAxisField?: string;
+  /** The field used for the y-axis. */
+  yAxisField?: string;
+  /** The field used for the series (e.g., color-coding). Optional, but recommended for time-series data. */
+  seriesField?: string;
+  /** The type of the chart. */
+  chartType?:
+    | "CHART_TYPE_UNSPECIFIED"
+    | "BAR_CHART"
+    | "UNCHARTABLE"
+    | "LINE_CHART"
+    | "AREA_CHART"
+    | (string & {});
+}
+
+export const SuggestedChart: Schema.Schema<SuggestedChart> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      chartTitle: Schema.optional(Schema.String),
+      xAxisLabel: Schema.optional(Schema.String),
+      yAxisLabel: Schema.optional(Schema.String),
+      xAxisField: Schema.optional(Schema.String),
+      yAxisField: Schema.optional(Schema.String),
+      seriesField: Schema.optional(Schema.String),
+      chartType: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "SuggestedChart",
+  }) as any as Schema.Schema<SuggestedChart>;
+
+export interface AgenticQueryInfo {
+  /** The parents (e.g. projects, billing accounts) queried. */
+  parents?: Array<string>;
+  /** The view queried. */
+  view?: string;
+  /** The columns queried. */
+  columns?: string;
+  /** The filter applied to the query. */
+  filter?: string;
+  /** The order-by clause applied to the query. */
+  orderBy?: string;
+  /** The group-by clause applied to the query. */
+  groupBy?: string;
+  /** The row limit applied to the query. */
+  limit?: number;
+}
+
+export const AgenticQueryInfo: Schema.Schema<AgenticQueryInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      parents: Schema.optional(Schema.Array(Schema.String)),
+      view: Schema.optional(Schema.String),
+      columns: Schema.optional(Schema.String),
+      filter: Schema.optional(Schema.String),
+      orderBy: Schema.optional(Schema.String),
+      groupBy: Schema.optional(Schema.String),
+      limit: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "AgenticQueryInfo",
+  }) as any as Schema.Schema<AgenticQueryInfo>;
+
+export interface DataSet {
+  /** Output only. Actual billing data returned from the Data Mart. Uses the formal message from the Billing Data Service. */
+  billingData?: BillingData;
+  /** Output only. A suggested chart for the data set, used for UI rendering. */
+  suggestedChart?: SuggestedChart;
+  /** Output only. The query used to fetch this data. */
+  queryInfo?: AgenticQueryInfo;
+}
+
+export const DataSet: Schema.Schema<DataSet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      billingData: Schema.optional(BillingData),
+      suggestedChart: Schema.optional(SuggestedChart),
+      queryInfo: Schema.optional(AgenticQueryInfo),
+    }),
+  ).annotate({ identifier: "DataSet" }) as any as Schema.Schema<DataSet>;
+
+export interface InteropLink {
+  /** Output only. The label of the link, suitable for UI rendering. */
+  label?: string;
+  /** Output only. The URL of the link. */
+  url?: string;
+  /** Output only. The type of the interop link, e.g., "COST_REPORT", "BQE_QUERY", etc. */
+  linkType?:
+    | "LINK_TYPE_UNSPECIFIED"
+    | "COST_REPORT"
+    | "BQE_QUERY"
+    | "FINOPS_HUB"
+    | (string & {});
+}
+
+export const InteropLink: Schema.Schema<InteropLink> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      label: Schema.optional(Schema.String),
+      url: Schema.optional(Schema.String),
+      linkType: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "InteropLink",
+  }) as any as Schema.Schema<InteropLink>;
+
+export interface SuggestedQuery {
+  /** The natural language query. */
+  query?: string;
+}
+
+export const SuggestedQuery: Schema.Schema<SuggestedQuery> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      query: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "SuggestedQuery",
+  }) as any as Schema.Schema<SuggestedQuery>;
+
+export interface FinalResult {
+  /** Output only. The full natural language summary (re-sent for consistency). */
+  summary?: string;
+  /** Output only. Contains the full natural language analysis, including thoughts, reasoning, and references. */
+  fullAnalysis?: string;
+  /** Output only. A list of discrete insights gleaned from the data. */
+  insights?: Array<Insight>;
+  /** Output only. Data sets used to support the insights, suitable for UI rendering (tables/charts). */
+  dataSets?: Array<DataSet>;
+  /** Output only. Links to interoperable tools (e.g., pre-filtered Cost Reports or BQE queries). */
+  interopLinks?: Array<InteropLink>;
+  /** Output only. A list of suggested follow-up queries for the user. */
+  suggestedQueries?: Array<SuggestedQuery>;
+}
+
+export const FinalResult: Schema.Schema<FinalResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      summary: Schema.optional(Schema.String),
+      fullAnalysis: Schema.optional(Schema.String),
+      insights: Schema.optional(Schema.Array(Insight)),
+      dataSets: Schema.optional(Schema.Array(DataSet)),
+      interopLinks: Schema.optional(Schema.Array(InteropLink)),
+      suggestedQueries: Schema.optional(Schema.Array(SuggestedQuery)),
+    }),
+  ).annotate({
+    identifier: "FinalResult",
+  }) as any as Schema.Schema<FinalResult>;
+
+export interface Rejection {
+  /** Output only. The reason for the rejection. */
+  reason?: "REASON_UNSPECIFIED" | "EXPLICIT_OUT_OF_SCOPE" | (string & {});
+  /** Output only. A user-facing message explaining the rejection. */
+  displayMessage?: string;
+}
+
+export const Rejection: Schema.Schema<Rejection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      reason: Schema.optional(Schema.String),
+      displayMessage: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "Rejection" }) as any as Schema.Schema<Rejection>;
+
+export interface GenerateInsightsResponse {
+  /** Output only. A chunk of the agent's internal reasoning process. The UI can use this to render a "Thinking..." log or status. */
+  thoughtChunk?: string;
+  /** Output only. A chunk of the natural language summary (customer-facing). The UI can append these chunks to provide a real-time "typing" effect. */
+  summaryChunk?: string;
+  /** Output only. The final structured results and metadata. Usually sent as the final message in the stream. */
+  finalResult?: FinalResult;
+  /** Output only. The request was rejected (e.g. out of scope). */
+  rejection?: Rejection;
+}
+
+export const GenerateInsightsResponse: Schema.Schema<GenerateInsightsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      thoughtChunk: Schema.optional(Schema.String),
+      summaryChunk: Schema.optional(Schema.String),
+      finalResult: Schema.optional(FinalResult),
+      rejection: Schema.optional(Rejection),
+    }),
+  ).annotate({
+    identifier: "GenerateInsightsResponse",
+  }) as any as Schema.Schema<GenerateInsightsResponse>;
+
 export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
@@ -1111,6 +1611,37 @@ export const GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse: Schem
 // ==========================================================================
 // Operations
 // ==========================================================================
+
+export interface GenerateInsightsV1betaRequest {
+  /** Request body */
+  body?: GenerateInsightsRequest;
+}
+
+export const GenerateInsightsV1betaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(GenerateInsightsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta:generateInsights", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Schema<GenerateInsightsV1betaRequest>;
+
+export type GenerateInsightsV1betaResponse = GenerateInsightsResponse;
+export const GenerateInsightsV1betaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GenerateInsightsResponse;
+
+export type GenerateInsightsV1betaError = DefaultErrors;
+
+/** Analyzes cost data for a billing account and/or specific projects. Returns a natural language summary and supporting datasets. */
+export const generateInsightsV1beta: API.OperationMethod<
+  GenerateInsightsV1betaRequest,
+  GenerateInsightsV1betaResponse,
+  GenerateInsightsV1betaError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateInsightsV1betaRequest,
+  output: GenerateInsightsV1betaResponse,
+  errors: [],
+}));
 
 export interface ListBillingAccountsServicesRequest {
   /** Required. The billing account to list billing account service from. Format: billingAccounts/{billing_account} */

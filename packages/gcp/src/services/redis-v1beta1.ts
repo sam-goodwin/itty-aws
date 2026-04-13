@@ -253,6 +253,9 @@ export interface UpdateInfo {
     | "REDIS_HIGHMEM_MEDIUM"
     | "REDIS_HIGHMEM_XLARGE"
     | "REDIS_STANDARD_SMALL"
+    | "REDIS_HIGHCPU_MEDIUM"
+    | "REDIS_STANDARD_LARGE"
+    | "REDIS_HIGHMEM_2XLARGE"
     | (string & {});
 }
 
@@ -708,6 +711,7 @@ export interface Cluster {
     | "AUTH_MODE_UNSPECIFIED"
     | "AUTH_MODE_IAM_AUTH"
     | "AUTH_MODE_DISABLED"
+    | "AUTH_MODE_TOKEN_AUTH"
     | (string & {});
   /** Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. */
   transitEncryptionMode?:
@@ -734,6 +738,9 @@ export interface Cluster {
     | "REDIS_HIGHMEM_MEDIUM"
     | "REDIS_HIGHMEM_XLARGE"
     | "REDIS_STANDARD_SMALL"
+    | "REDIS_HIGHCPU_MEDIUM"
+    | "REDIS_STANDARD_LARGE"
+    | "REDIS_HIGHMEM_2XLARGE"
     | (string & {});
   /** Optional. Persistence config (RDB, AOF) for the cluster. */
   persistenceConfig?: ClusterPersistenceConfig;
@@ -794,6 +801,10 @@ export interface Cluster {
   serverCaPool?: string;
   /** Optional. Input only. Rotate the server certificates. */
   rotateServerCertificate?: boolean;
+  /** Optional. The ACL policy to be applied to the cluster. */
+  aclPolicy?: string;
+  /** Optional. Output only. Indicates whether the ACL rules applied to the cluster are in sync with the latest ACL policy rules. This field is only applicable if the ACL policy is set for the cluster. */
+  aclPolicyInSync?: boolean;
 }
 
 export const Cluster: Schema.Schema<Cluster> =
@@ -850,6 +861,8 @@ export const Cluster: Schema.Schema<Cluster> =
       serverCaMode: Schema.optional(Schema.String),
       serverCaPool: Schema.optional(Schema.String),
       rotateServerCertificate: Schema.optional(Schema.Boolean),
+      aclPolicy: Schema.optional(Schema.String),
+      aclPolicyInSync: Schema.optional(Schema.Boolean),
     }),
   ).annotate({ identifier: "Cluster" }) as any as Schema.Schema<Cluster>;
 
@@ -872,6 +885,70 @@ export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
   ).annotate({
     identifier: "ListClustersResponse",
   }) as any as Schema.Schema<ListClustersResponse>;
+
+export interface AclRule {
+  /** Required. Specifies the IAM user or service account to be added to the ACL policy. This username will be directly set on the Redis OSS. */
+  username?: string;
+  /** Required. The rule to be applied to the username. Ex: "on >password123 ~* +@all" The format of the rule is defined by Redis OSS: https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/ */
+  rule?: string;
+}
+
+export const AclRule: Schema.Schema<AclRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      username: Schema.optional(Schema.String),
+      rule: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "AclRule" }) as any as Schema.Schema<AclRule>;
+
+export interface AclPolicy {
+  /** Identifier. Full resource path of the ACL policy. */
+  name?: string;
+  /** Required. The ACL rules within the ACL policy. */
+  rules?: Array<AclRule>;
+  /** Output only. The state of the ACL policy. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "UPDATING"
+    | "DELETING"
+    | (string & {});
+  /** Output only. The version of the ACL policy. Used in drift resolution. */
+  version?: string;
+  /** Output only. Etag for the ACL policy. */
+  etag?: string;
+}
+
+export const AclPolicy: Schema.Schema<AclPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      rules: Schema.optional(Schema.Array(AclRule)),
+      state: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+      etag: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "AclPolicy" }) as any as Schema.Schema<AclPolicy>;
+
+export interface ListAclPoliciesResponse {
+  /** A list of ACL policies in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. */
+  aclPolicies?: Array<AclPolicy>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListAclPoliciesResponse: Schema.Schema<ListAclPoliciesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      aclPolicies: Schema.optional(Schema.Array(AclPolicy)),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListAclPoliciesResponse",
+  }) as any as Schema.Schema<ListAclPoliciesResponse>;
 
 export interface CertChain {
   /** The certificates that form the CA chain, from leaf to root order. */
@@ -1081,6 +1158,9 @@ export interface Backup {
     | "REDIS_HIGHMEM_MEDIUM"
     | "REDIS_HIGHMEM_XLARGE"
     | "REDIS_STANDARD_SMALL"
+    | "REDIS_HIGHCPU_MEDIUM"
+    | "REDIS_STANDARD_LARGE"
+    | "REDIS_HIGHMEM_2XLARGE"
     | (string & {});
   /** Output only. Number of replicas for the cluster. */
   replicaCount?: number;
@@ -1177,6 +1257,123 @@ export const BackupClusterRequest: Schema.Schema<BackupClusterRequest> =
   ).annotate({
     identifier: "BackupClusterRequest",
   }) as any as Schema.Schema<BackupClusterRequest>;
+
+export interface TokenAuthUser {
+  /** Identifier. The resource name of the token based auth user. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
+  name?: string;
+  /** Output only. The state of the token based auth user. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "CREATING"
+    | "UPDATING"
+    | "DELETING"
+    | (string & {});
+}
+
+export const TokenAuthUser: Schema.Schema<TokenAuthUser> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "TokenAuthUser",
+  }) as any as Schema.Schema<TokenAuthUser>;
+
+export interface ListTokenAuthUsersResponse {
+  /** A list of token auth users in the project. */
+  tokenAuthUsers?: Array<TokenAuthUser>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** Unordered list. Token auth users that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListTokenAuthUsersResponse: Schema.Schema<ListTokenAuthUsersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      tokenAuthUsers: Schema.optional(Schema.Array(TokenAuthUser)),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListTokenAuthUsersResponse",
+  }) as any as Schema.Schema<ListTokenAuthUsersResponse>;
+
+export interface AuthToken {
+  /** Identifier. Name of the auth token. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
+  name?: string;
+  /** Output only. The service generated authentication token used to connect to the Redis cluster. */
+  token?: string;
+  /** Output only. Create time of the auth token. */
+  createTime?: string;
+  /** Output only. State of the auth token. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "CREATING"
+    | "DELETING"
+    | (string & {});
+}
+
+export const AuthToken: Schema.Schema<AuthToken> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      token: Schema.optional(Schema.String),
+      createTime: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "AuthToken" }) as any as Schema.Schema<AuthToken>;
+
+export interface ListAuthTokensResponse {
+  /** A list of auth tokens in the project. */
+  authTokens?: Array<AuthToken>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** Unordered list. Auth tokens that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListAuthTokensResponse: Schema.Schema<ListAuthTokensResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      authTokens: Schema.optional(Schema.Array(AuthToken)),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListAuthTokensResponse",
+  }) as any as Schema.Schema<ListAuthTokensResponse>;
+
+export interface AddTokenAuthUserRequest {
+  /** Required. The id of the token auth user to add. */
+  tokenAuthUser?: string;
+}
+
+export const AddTokenAuthUserRequest: Schema.Schema<AddTokenAuthUserRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      tokenAuthUser: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "AddTokenAuthUserRequest",
+  }) as any as Schema.Schema<AddTokenAuthUserRequest>;
+
+export interface AddAuthTokenRequest {
+  /** Required. The auth token to add. */
+  authToken?: AuthToken;
+}
+
+export const AddAuthTokenRequest: Schema.Schema<AddAuthTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      authToken: Schema.optional(AuthToken),
+    }),
+  ).annotate({
+    identifier: "AddAuthTokenRequest",
+  }) as any as Schema.Schema<AddAuthTokenRequest>;
 
 export interface TlsCertificate {
   /** Serial number, as extracted from the certificate. */
@@ -1368,7 +1565,7 @@ export interface Instance {
     | (string & {});
   /** Output only. Additional information about the current status of this instance, if available. */
   statusMessage?: string;
-  /** Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries */
+  /** Optional. Redis configuration parameters, according to [Redis configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/). Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries */
   redisConfigs?: Record<string, string>;
   /** Required. The service tier of the instance. */
   tier?: "TIER_UNSPECIFIED" | "BASIC" | "STANDARD_HA" | (string & {});
@@ -2270,6 +2467,9 @@ export interface DatabaseResourceMetadata {
     | "SUB_RESOURCE_TYPE_SECONDARY"
     | "SUB_RESOURCE_TYPE_READ_REPLICA"
     | "SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY"
+    | "SUB_RESOURCE_TYPE_READ_POOL"
+    | "SUB_RESOURCE_TYPE_RESERVATION"
+    | "SUB_RESOURCE_TYPE_DATASET"
     | "SUB_RESOURCE_TYPE_OTHER"
     | (string & {});
   /** The product this resource represents. */
@@ -2317,6 +2517,13 @@ export interface DatabaseResourceMetadata {
   isDeletionProtectionEnabled?: boolean;
   /** Optional. List of resource flags for the database resource. */
   resourceFlags?: Array<ResourceFlags>;
+  /** Optional. The modes of the database resource. */
+  modes?: Array<
+    | "MODE_UNSPECIFIED"
+    | "MODE_NATIVE"
+    | "MODE_MONGODB_COMPATIBLE"
+    | (string & {})
+  >;
 }
 
 export const DatabaseResourceMetadata: Schema.Schema<DatabaseResourceMetadata> =
@@ -2350,6 +2557,7 @@ export const DatabaseResourceMetadata: Schema.Schema<DatabaseResourceMetadata> =
       maintenanceInfo: Schema.optional(ResourceMaintenanceInfo),
       isDeletionProtectionEnabled: Schema.optional(Schema.Boolean),
       resourceFlags: Schema.optional(Schema.Array(ResourceFlags)),
+      modes: Schema.optional(Schema.Array(Schema.String)),
     }),
   ).annotate({
     identifier: "DatabaseResourceMetadata",
@@ -2525,6 +2733,7 @@ export interface DatabaseResourceHealthSignalData {
     | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
     | "SIGNAL_TYPE_EXTENDED_SUPPORT"
     | "SIGNAL_TYPE_PERFORMANCE_KPI_CHANGE"
+    | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
     | (string & {});
   /** This is used to identify the location of the resource. Example: "us-central1" */
   location?: string;
@@ -2666,6 +2875,7 @@ export interface DatabaseResourceRecommendationSignalData {
     | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
     | "SIGNAL_TYPE_EXTENDED_SUPPORT"
     | "SIGNAL_TYPE_PERFORMANCE_KPI_CHANGE"
+    | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
     | (string & {});
   /** Required. last time recommendationw as refreshed */
   lastRefreshTime?: string;
@@ -2786,6 +2996,9 @@ export interface ConfigBasedSignalData {
     | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
     | "SIGNAL_TYPE_EXTENDED_SUPPORT"
     | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+    | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+    | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+    | "SIGNAL_TYPE_NOT_PROTECTED_BY_AUTOMATIC_FAILOVER"
     | (string & {});
   /** Signal data for boolean signals. */
   signalBoolValue?: boolean;
@@ -2833,6 +3046,23 @@ export const BackupDRMetadata: Schema.Schema<BackupDRMetadata> =
     identifier: "BackupDRMetadata",
   }) as any as Schema.Schema<BackupDRMetadata>;
 
+export interface SignalMetadata {
+  /** Signal data for boolean signals. */
+  signalBoolValue?: boolean;
+  /** Signal data for backup runs. */
+  backupRun?: BackupRun;
+}
+
+export const SignalMetadata: Schema.Schema<SignalMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      signalBoolValue: Schema.optional(Schema.Boolean),
+      backupRun: Schema.optional(BackupRun),
+    }),
+  ).annotate({
+    identifier: "SignalMetadata",
+  }) as any as Schema.Schema<SignalMetadata>;
+
 export interface DatabaseResourceSignalData {
   /** Database resource id. */
   resourceId?: DatabaseResourceId;
@@ -2850,6 +3080,9 @@ export interface DatabaseResourceSignalData {
     | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
     | "SIGNAL_TYPE_EXTENDED_SUPPORT"
     | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+    | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+    | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+    | "SIGNAL_TYPE_NOT_PROTECTED_BY_AUTOMATIC_FAILOVER"
     | (string & {});
   /** Required. Output only. Signal state of the signal */
   signalState?:
@@ -2858,8 +3091,14 @@ export interface DatabaseResourceSignalData {
     | "INACTIVE"
     | "DISMISSED"
     | (string & {});
-  /** Signal data for boolean signals. */
+  /** Deprecated: Use signal_metadata_list instead. */
   signalBoolValue?: boolean;
+  /** Deprecated: Use signal_metadata_list instead. */
+  backupRun?: BackupRun;
+  /** This will support array of OneOf signal metadata information for a given signal type. */
+  signalMetadataList?: Array<SignalMetadata>;
+  /** Resource location. */
+  location?: string;
 }
 
 export const DatabaseResourceSignalData: Schema.Schema<DatabaseResourceSignalData> =
@@ -2871,6 +3110,9 @@ export const DatabaseResourceSignalData: Schema.Schema<DatabaseResourceSignalDat
       signalType: Schema.optional(Schema.String),
       signalState: Schema.optional(Schema.String),
       signalBoolValue: Schema.optional(Schema.Boolean),
+      backupRun: Schema.optional(BackupRun),
+      signalMetadataList: Schema.optional(Schema.Array(SignalMetadata)),
+      location: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "DatabaseResourceSignalData",
@@ -3021,7 +3263,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -3267,7 +3509,7 @@ export interface ListProjectsLocationsClustersRequest {
   parent: string;
   /** The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
   pageSize?: number;
-  /** The `next_page_token` value returned from a previous ListClusters request, if any. */
+  /** The `next_page_token` value returned from a previous `ListClusters` request, if any. */
   pageToken?: string;
 }
 
@@ -3578,6 +3820,541 @@ export const backupProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BackupProjectsLocationsClustersRequest,
   output: BackupProjectsLocationsClustersResponse,
+  errors: [],
+}));
+
+export interface AddTokenAuthUserProjectsLocationsClustersRequest {
+  /** Required. The cluster resource that this token auth user will be added for. Format: projects/{project}/locations/{location}/clusters/{cluster} */
+  cluster: string;
+  /** Request body */
+  body?: AddTokenAuthUserRequest;
+}
+
+export const AddTokenAuthUserProjectsLocationsClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.String.pipe(T.HttpPath("cluster")),
+    body: Schema.optional(AddTokenAuthUserRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:addTokenAuthUser",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AddTokenAuthUserProjectsLocationsClustersRequest>;
+
+export type AddTokenAuthUserProjectsLocationsClustersResponse = Operation;
+export const AddTokenAuthUserProjectsLocationsClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type AddTokenAuthUserProjectsLocationsClustersError = DefaultErrors;
+
+/** Adds a token auth user for a token based auth enabled cluster. */
+export const addTokenAuthUserProjectsLocationsClusters: API.OperationMethod<
+  AddTokenAuthUserProjectsLocationsClustersRequest,
+  AddTokenAuthUserProjectsLocationsClustersResponse,
+  AddTokenAuthUserProjectsLocationsClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AddTokenAuthUserProjectsLocationsClustersRequest,
+  output: AddTokenAuthUserProjectsLocationsClustersResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsClustersTokenAuthUsersRequest {
+  /** Required. The parent resource that this token based auth user will be listed for. Format: projects/{project}/locations/{location}/clusters/{cluster} */
+  parent: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's The maximum value is 1000; values above 1000 will be coerced to 1000. `next_page_token` to determine if there are more clusters left to be queried. */
+  pageSize?: number;
+  /** Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers] request, if any. */
+  pageToken?: string;
+  /** Optional. Expression for filtering results. */
+  filter?: string;
+  /** Optional. Sort results by a defined order. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsClustersTokenAuthUsersRequest>;
+
+export type ListProjectsLocationsClustersTokenAuthUsersResponse =
+  ListTokenAuthUsersResponse;
+export const ListProjectsLocationsClustersTokenAuthUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListTokenAuthUsersResponse;
+
+export type ListProjectsLocationsClustersTokenAuthUsersError = DefaultErrors;
+
+/** Lists all the token auth users for a token based auth enabled cluster. */
+export const listProjectsLocationsClustersTokenAuthUsers: API.PaginatedOperationMethod<
+  ListProjectsLocationsClustersTokenAuthUsersRequest,
+  ListProjectsLocationsClustersTokenAuthUsersResponse,
+  ListProjectsLocationsClustersTokenAuthUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsClustersTokenAuthUsersRequest,
+  output: ListProjectsLocationsClustersTokenAuthUsersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsClustersTokenAuthUsersRequest {
+  /** Required. The name of token auth user for a token based auth enabled cluster. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
+  name: string;
+}
+
+export const GetProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsClustersTokenAuthUsersRequest>;
+
+export type GetProjectsLocationsClustersTokenAuthUsersResponse = TokenAuthUser;
+export const GetProjectsLocationsClustersTokenAuthUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TokenAuthUser;
+
+export type GetProjectsLocationsClustersTokenAuthUsersError = DefaultErrors;
+
+/** Gets a specific token auth user for a basic auth enabled cluster. */
+export const getProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
+  GetProjectsLocationsClustersTokenAuthUsersRequest,
+  GetProjectsLocationsClustersTokenAuthUsersResponse,
+  GetProjectsLocationsClustersTokenAuthUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsClustersTokenAuthUsersRequest,
+  output: GetProjectsLocationsClustersTokenAuthUsersResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsClustersTokenAuthUsersRequest {
+  /** Required. The name of the token auth user to delete. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. If set to true, any child auth tokens of this user will also be deleted. Otherwise, the request will only work if the user has no auth tokens. */
+  force?: boolean;
+}
+
+export const DeleteProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersTokenAuthUsersRequest>;
+
+export type DeleteProjectsLocationsClustersTokenAuthUsersResponse = Operation;
+export const DeleteProjectsLocationsClustersTokenAuthUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsClustersTokenAuthUsersError = DefaultErrors;
+
+/** Deletes a token auth user for a token based auth enabled cluster. */
+export const deleteProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
+  DeleteProjectsLocationsClustersTokenAuthUsersRequest,
+  DeleteProjectsLocationsClustersTokenAuthUsersResponse,
+  DeleteProjectsLocationsClustersTokenAuthUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsClustersTokenAuthUsersRequest,
+  output: DeleteProjectsLocationsClustersTokenAuthUsersResponse,
+  errors: [],
+}));
+
+export interface AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest {
+  /** Required. The name of the token auth user resource that this auth token will be added for. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
+  tokenAuthUser: string;
+  /** Request body */
+  body?: AddAuthTokenRequest;
+}
+
+export const AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenAuthUser: Schema.String.pipe(T.HttpPath("tokenAuthUser")),
+    body: Schema.optional(AddAuthTokenRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}:addAuthToken",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest>;
+
+export type AddAuthTokenProjectsLocationsClustersTokenAuthUsersResponse =
+  Operation;
+export const AddAuthTokenProjectsLocationsClustersTokenAuthUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type AddAuthTokenProjectsLocationsClustersTokenAuthUsersError =
+  DefaultErrors;
+
+/** Adds a auth token for a user of a token based auth enabled cluster. */
+export const addAuthTokenProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
+  AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest,
+  AddAuthTokenProjectsLocationsClustersTokenAuthUsersResponse,
+  AddAuthTokenProjectsLocationsClustersTokenAuthUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest,
+  output: AddAuthTokenProjectsLocationsClustersTokenAuthUsersResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
+  /** Required. The parent resource that this auth token will be listed for. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
+  parent: string;
+  /** Optional. The maximum number of items to return. The maximum value is 1000; values above 1000 will be coerced to 1000. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
+  pageSize?: number;
+  /** Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers] request, if any. */
+  pageToken?: string;
+  /** Optional. Expression for filtering results. */
+  filter?: string;
+  /** Optional. Sort results by a defined order. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}/authTokens",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
+
+export type ListProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
+  ListAuthTokensResponse;
+export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAuthTokensResponse;
+
+export type ListProjectsLocationsClustersTokenAuthUsersAuthTokensError =
+  DefaultErrors;
+
+/** Lists all the auth tokens for a specific token auth user. */
+export const listProjectsLocationsClustersTokenAuthUsersAuthTokens: API.PaginatedOperationMethod<
+  ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
+  ListProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
+  ListProjectsLocationsClustersTokenAuthUsersAuthTokensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
+  output: ListProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
+  /** Required. The name of auth token for a token based auth enabled cluster. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
+  name: string;
+}
+
+export const GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}/authTokens/{authTokensId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
+
+export type GetProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
+  AuthToken;
+export const GetProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthToken;
+
+export type GetProjectsLocationsClustersTokenAuthUsersAuthTokensError =
+  DefaultErrors;
+
+/** Gets a specific auth token for a specific token auth user. */
+export const getProjectsLocationsClustersTokenAuthUsersAuthTokens: API.OperationMethod<
+  GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
+  GetProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
+  GetProjectsLocationsClustersTokenAuthUsersAuthTokensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
+  output: GetProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
+  /** Required. The name of the token auth user resource that this auth token will be deleted from. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
+  name: string;
+}
+
+export const DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}/authTokens/{authTokensId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
+
+export type DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
+  Operation;
+export const DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensError =
+  DefaultErrors;
+
+/** Removes a auth token for a user of a token based auth enabled instance. */
+export const deleteProjectsLocationsClustersTokenAuthUsersAuthTokens: API.OperationMethod<
+  DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
+  DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
+  DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
+  output: DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsAclPoliciesRequest {
+  /** Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. */
+  parent: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more ACL policies left to be queried. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. The `next_page_token` value returned from a previous `ListAclPolicies` request, if any. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/aclPolicies",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsAclPoliciesRequest>;
+
+export type ListProjectsLocationsAclPoliciesResponse = ListAclPoliciesResponse;
+export const ListProjectsLocationsAclPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAclPoliciesResponse;
+
+export type ListProjectsLocationsAclPoliciesError = DefaultErrors;
+
+/** Lists all ACL Policies owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
+export const listProjectsLocationsAclPolicies: API.PaginatedOperationMethod<
+  ListProjectsLocationsAclPoliciesRequest,
+  ListProjectsLocationsAclPoliciesResponse,
+  ListProjectsLocationsAclPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsAclPoliciesRequest,
+  output: ListProjectsLocationsAclPoliciesResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsAclPoliciesRequest {
+  /** Required. Redis ACL Policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. */
+  name: string;
+}
+
+export const GetProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/aclPolicies/{aclPoliciesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsAclPoliciesRequest>;
+
+export type GetProjectsLocationsAclPoliciesResponse = AclPolicy;
+export const GetProjectsLocationsAclPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AclPolicy;
+
+export type GetProjectsLocationsAclPoliciesError = DefaultErrors;
+
+/** Gets the details of a specific Redis Cluster ACL Policy. */
+export const getProjectsLocationsAclPolicies: API.OperationMethod<
+  GetProjectsLocationsAclPoliciesRequest,
+  GetProjectsLocationsAclPoliciesResponse,
+  GetProjectsLocationsAclPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsAclPoliciesRequest,
+  output: GetProjectsLocationsAclPoliciesResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsAclPoliciesRequest {
+  /** Identifier. Full resource path of the ACL policy. */
+  name: string;
+  /** Optional. Mask of fields to be updated. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from `AclPolicy`: * `rules` */
+  updateMask?: string;
+  /** Optional. Idempotent request UUID. */
+  requestId?: string;
+  /** Request body */
+  body?: AclPolicy;
+}
+
+export const PatchProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(AclPolicy).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/aclPolicies/{aclPoliciesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsAclPoliciesRequest>;
+
+export type PatchProjectsLocationsAclPoliciesResponse = Operation;
+export const PatchProjectsLocationsAclPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsAclPoliciesError = DefaultErrors;
+
+/** Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters. If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will contain the new ACL Policy object in the response field. */
+export const patchProjectsLocationsAclPolicies: API.OperationMethod<
+  PatchProjectsLocationsAclPoliciesRequest,
+  PatchProjectsLocationsAclPoliciesResponse,
+  PatchProjectsLocationsAclPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsAclPoliciesRequest,
+  output: PatchProjectsLocationsAclPoliciesResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsAclPoliciesRequest {
+  /** Required. Redis ACL Policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. */
+  name: string;
+  /** Optional. Idempotent request UUID. */
+  requestId?: string;
+  /** Optional. Etag of the ACL policy. If this is different from the server's etag, the request will fail with an ABORTED error. */
+  etag?: string;
+}
+
+export const DeleteProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/aclPolicies/{aclPoliciesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsAclPoliciesRequest>;
+
+export type DeleteProjectsLocationsAclPoliciesResponse = Operation;
+export const DeleteProjectsLocationsAclPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsAclPoliciesError = DefaultErrors;
+
+/** Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated with it. An ACL policy cannot be deleted if it is attached to a cluster. */
+export const deleteProjectsLocationsAclPolicies: API.OperationMethod<
+  DeleteProjectsLocationsAclPoliciesRequest,
+  DeleteProjectsLocationsAclPoliciesResponse,
+  DeleteProjectsLocationsAclPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsAclPoliciesRequest,
+  output: DeleteProjectsLocationsAclPoliciesResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsAclPoliciesRequest {
+  /** Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. */
+  parent: string;
+  /** Required. The logical name of the ACL Policy in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the customer project / location */
+  aclPolicyId?: string;
+  /** Optional. Idempotent request UUID. . */
+  requestId?: string;
+  /** Request body */
+  body?: AclPolicy;
+}
+
+export const CreateProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    aclPolicyId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("aclPolicyId"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(AclPolicy).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/aclPolicies",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsAclPoliciesRequest>;
+
+export type CreateProjectsLocationsAclPoliciesResponse = AclPolicy;
+export const CreateProjectsLocationsAclPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AclPolicy;
+
+export type CreateProjectsLocationsAclPoliciesError = DefaultErrors;
+
+/** Creates an ACL Policy. The creation is executed synchronously and the policy is available for use immediately after the RPC returns. */
+export const createProjectsLocationsAclPolicies: API.OperationMethod<
+  CreateProjectsLocationsAclPoliciesRequest,
+  CreateProjectsLocationsAclPoliciesResponse,
+  CreateProjectsLocationsAclPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsAclPoliciesRequest,
+  output: CreateProjectsLocationsAclPoliciesResponse,
   errors: [],
 }));
 

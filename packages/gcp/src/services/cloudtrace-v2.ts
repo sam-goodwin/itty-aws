@@ -23,17 +23,17 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface TruncatableString {
-  /** The shortened string. For example, if the original string is 500 bytes long and the limit of the string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of the shortened string might be less than the size limit. */
-  value?: string;
   /** The number of bytes removed from the original string. If this value is 0, then the string was not shortened. */
   truncatedByteCount?: number;
+  /** The shortened string. For example, if the original string is 500 bytes long and the limit of the string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of the shortened string might be less than the size limit. */
+  value?: string;
 }
 
 export const TruncatableString: Schema.Schema<TruncatableString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      value: Schema.optional(Schema.String),
       truncatedByteCount: Schema.optional(Schema.Number),
+      value: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "TruncatableString",
@@ -76,6 +76,100 @@ export const Attributes: Schema.Schema<Attributes> =
     }),
   ).annotate({ identifier: "Attributes" }) as any as Schema.Schema<Attributes>;
 
+export interface Annotation {
+  /** A user-supplied message describing the event. The maximum length for the description is 256 bytes. */
+  description?: TruncatableString;
+  /** A set of attributes on the annotation. You can have up to 4 attributes per Annotation. */
+  attributes?: Attributes;
+}
+
+export const Annotation: Schema.Schema<Annotation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      description: Schema.optional(TruncatableString),
+      attributes: Schema.optional(Attributes),
+    }),
+  ).annotate({ identifier: "Annotation" }) as any as Schema.Schema<Annotation>;
+
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: Array<Record<string, unknown>>;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      message: Schema.optional(Schema.String),
+      code: Schema.optional(Schema.Number),
+      details: Schema.optional(
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      ),
+    }),
+  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+
+export interface MessageEvent {
+  /** An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents. */
+  id?: string;
+  /** Type of MessageEvent. Indicates whether the message was sent or received. */
+  type?: "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED" | (string & {});
+  /** The number of compressed bytes sent or received. If missing, the compressed size is assumed to be the same size as the uncompressed size. */
+  compressedSizeBytes?: string;
+  /** The number of uncompressed bytes sent or received. */
+  uncompressedSizeBytes?: string;
+}
+
+export const MessageEvent: Schema.Schema<MessageEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      compressedSizeBytes: Schema.optional(Schema.String),
+      uncompressedSizeBytes: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "MessageEvent",
+  }) as any as Schema.Schema<MessageEvent>;
+
+export interface TimeEvent {
+  /** Text annotation with a set of attributes. */
+  annotation?: Annotation;
+  /** The timestamp indicating the time the event occurred. */
+  time?: string;
+  /** An event describing a message sent/received between Spans. */
+  messageEvent?: MessageEvent;
+}
+
+export const TimeEvent: Schema.Schema<TimeEvent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      annotation: Schema.optional(Annotation),
+      time: Schema.optional(Schema.String),
+      messageEvent: Schema.optional(MessageEvent),
+    }),
+  ).annotate({ identifier: "TimeEvent" }) as any as Schema.Schema<TimeEvent>;
+
+export interface TimeEvents {
+  /** The number of dropped annotations in all the included time events. If the value is 0, then no annotations were dropped. */
+  droppedAnnotationsCount?: number;
+  /** A collection of `TimeEvent`s. */
+  timeEvent?: Array<TimeEvent>;
+  /** The number of dropped message events in all the included time events. If the value is 0, then no message events were dropped. */
+  droppedMessageEventsCount?: number;
+}
+
+export const TimeEvents: Schema.Schema<TimeEvents> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      droppedAnnotationsCount: Schema.optional(Schema.Number),
+      timeEvent: Schema.optional(Schema.Array(TimeEvent)),
+      droppedMessageEventsCount: Schema.optional(Schema.Number),
+    }),
+  ).annotate({ identifier: "TimeEvents" }) as any as Schema.Schema<TimeEvents>;
+
 export interface Module {
   /** For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256 bytes). */
   module?: TruncatableString;
@@ -94,14 +188,14 @@ export const Module: Schema.Schema<Module> =
 export interface StackFrame {
   /** The fully-qualified name that uniquely identifies the function or method that is active in this frame (up to 1024 bytes). */
   functionName?: TruncatableString;
+  /** The column number where the function call appears, if available. This is important in JavaScript because of its anonymous functions. */
+  columnNumber?: string;
   /** An un-mangled function name, if `function_name` is mangled. To get information about name mangling, run [this search](https://www.google.com/search?q=cxx+name+mangling). The name can be fully-qualified (up to 1024 bytes). */
   originalFunctionName?: TruncatableString;
   /** The name of the source file where the function call appears (up to 256 bytes). */
   fileName?: TruncatableString;
   /** The line number in `file_name` where the function call appears. */
   lineNumber?: string;
-  /** The column number where the function call appears, if available. This is important in JavaScript because of its anonymous functions. */
-  columnNumber?: string;
   /** The binary module from where the code was loaded. */
   loadModule?: Module;
   /** The version of the deployed source code (up to 128 bytes). */
@@ -112,10 +206,10 @@ export const StackFrame: Schema.Schema<StackFrame> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       functionName: Schema.optional(TruncatableString),
+      columnNumber: Schema.optional(Schema.String),
       originalFunctionName: Schema.optional(TruncatableString),
       fileName: Schema.optional(TruncatableString),
       lineNumber: Schema.optional(Schema.String),
-      columnNumber: Schema.optional(Schema.String),
       loadModule: Schema.optional(Module),
       sourceVersion: Schema.optional(TruncatableString),
     }),
@@ -139,97 +233,21 @@ export const StackFrames: Schema.Schema<StackFrames> =
   }) as any as Schema.Schema<StackFrames>;
 
 export interface StackTrace {
-  /** Stack frames in this stack trace. A maximum of 128 frames are allowed. */
-  stackFrames?: StackFrames;
   /** The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can refer to that stack trace by only setting `stackTraceHashId`. */
   stackTraceHashId?: string;
+  /** Stack frames in this stack trace. A maximum of 128 frames are allowed. */
+  stackFrames?: StackFrames;
 }
 
 export const StackTrace: Schema.Schema<StackTrace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      stackFrames: Schema.optional(StackFrames),
       stackTraceHashId: Schema.optional(Schema.String),
+      stackFrames: Schema.optional(StackFrames),
     }),
   ).annotate({ identifier: "StackTrace" }) as any as Schema.Schema<StackTrace>;
 
-export interface Annotation {
-  /** A user-supplied message describing the event. The maximum length for the description is 256 bytes. */
-  description?: TruncatableString;
-  /** A set of attributes on the annotation. You can have up to 4 attributes per Annotation. */
-  attributes?: Attributes;
-}
-
-export const Annotation: Schema.Schema<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(TruncatableString),
-      attributes: Schema.optional(Attributes),
-    }),
-  ).annotate({ identifier: "Annotation" }) as any as Schema.Schema<Annotation>;
-
-export interface MessageEvent {
-  /** Type of MessageEvent. Indicates whether the message was sent or received. */
-  type?: "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED" | (string & {});
-  /** An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents. */
-  id?: string;
-  /** The number of uncompressed bytes sent or received. */
-  uncompressedSizeBytes?: string;
-  /** The number of compressed bytes sent or received. If missing, the compressed size is assumed to be the same size as the uncompressed size. */
-  compressedSizeBytes?: string;
-}
-
-export const MessageEvent: Schema.Schema<MessageEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      uncompressedSizeBytes: Schema.optional(Schema.String),
-      compressedSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MessageEvent",
-  }) as any as Schema.Schema<MessageEvent>;
-
-export interface TimeEvent {
-  /** The timestamp indicating the time the event occurred. */
-  time?: string;
-  /** Text annotation with a set of attributes. */
-  annotation?: Annotation;
-  /** An event describing a message sent/received between Spans. */
-  messageEvent?: MessageEvent;
-}
-
-export const TimeEvent: Schema.Schema<TimeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      time: Schema.optional(Schema.String),
-      annotation: Schema.optional(Annotation),
-      messageEvent: Schema.optional(MessageEvent),
-    }),
-  ).annotate({ identifier: "TimeEvent" }) as any as Schema.Schema<TimeEvent>;
-
-export interface TimeEvents {
-  /** A collection of `TimeEvent`s. */
-  timeEvent?: Array<TimeEvent>;
-  /** The number of dropped annotations in all the included time events. If the value is 0, then no annotations were dropped. */
-  droppedAnnotationsCount?: number;
-  /** The number of dropped message events in all the included time events. If the value is 0, then no message events were dropped. */
-  droppedMessageEventsCount?: number;
-}
-
-export const TimeEvents: Schema.Schema<TimeEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeEvent: Schema.optional(Schema.Array(TimeEvent)),
-      droppedAnnotationsCount: Schema.optional(Schema.Number),
-      droppedMessageEventsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeEvents" }) as any as Schema.Schema<TimeEvents>;
-
 export interface Link {
-  /** The `[TRACE_ID]` for a trace within a project. */
-  traceId?: string;
   /** The `[SPAN_ID]` for a span within a trace. */
   spanId?: string;
   /** The relationship of the current span relative to the linked span. */
@@ -238,6 +256,8 @@ export interface Link {
     | "CHILD_LINKED_SPAN"
     | "PARENT_LINKED_SPAN"
     | (string & {});
+  /** The `[TRACE_ID]` for a trace within a project. */
+  traceId?: string;
   /** A set of attributes on the link. Up to 32 attributes can be specified per link. */
   attributes?: Attributes;
 }
@@ -245,9 +265,9 @@ export interface Link {
 export const Link: Schema.Schema<Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      traceId: Schema.optional(Schema.String),
       spanId: Schema.optional(Schema.String),
       type: Schema.optional(Schema.String),
+      traceId: Schema.optional(Schema.String),
       attributes: Schema.optional(Attributes),
     }),
   ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
@@ -267,53 +287,25 @@ export const Links: Schema.Schema<Links> =
     }),
   ).annotate({ identifier: "Links" }) as any as Schema.Schema<Links>;
 
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
-
 export interface Span {
-  /** Required. The resource name of the span in the following format: * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero. . */
-  name?: string;
+  /** Optional. The final status for this span. */
+  status?: Status;
   /** Required. The `[SPAN_ID]` portion of the span's resource name. */
   spanId?: string;
   /** The `[SPAN_ID]` of this span's parent span. If this is a root span, then this field must be empty. */
   parentSpanId?: string;
-  /** Required. A description of the span's operation (up to 128 bytes). Cloud Trace displays the description in the Cloud console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces. */
-  displayName?: TruncatableString;
-  /** Required. The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running. */
-  startTime?: string;
-  /** Required. The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running. */
-  endTime?: string;
-  /** A set of attributes on the span. You can have up to 32 attributes per span. */
-  attributes?: Attributes;
-  /** Stack trace captured at the start of the span. */
-  stackTrace?: StackTrace;
-  /** A set of time events. You can have up to 32 annotations and 128 message events per span. */
-  timeEvents?: TimeEvents;
-  /** Links associated with the span. You can have up to 128 links per Span. */
-  links?: Links;
-  /** Optional. The final status for this span. */
-  status?: Status;
   /** Optional. Set this parameter to indicate whether this span is in the same process as its parent. If you do not set this parameter, Trace is unable to take advantage of this helpful information. */
   sameProcessAsParentSpan?: boolean;
+  /** Required. The resource name of the span in the following format: * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero. . */
+  name?: string;
+  /** A set of attributes on the span. You can have up to 32 attributes per span. */
+  attributes?: Attributes;
+  /** A set of time events. You can have up to 32 annotations and 128 message events per span. */
+  timeEvents?: TimeEvents;
   /** Optional. The number of child spans that were generated while this span was active. If set, allows implementation to detect missing child spans. */
   childSpanCount?: number;
+  /** Stack trace captured at the start of the span. */
+  stackTrace?: StackTrace;
   /** Optional. Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call. */
   spanKind?:
     | "SPAN_KIND_UNSPECIFIED"
@@ -323,25 +315,33 @@ export interface Span {
     | "PRODUCER"
     | "CONSUMER"
     | (string & {});
+  /** Required. The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running. */
+  startTime?: string;
+  /** Required. A description of the span's operation (up to 128 bytes). Cloud Trace displays the description in the Cloud console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces. */
+  displayName?: TruncatableString;
+  /** Links associated with the span. You can have up to 128 links per Span. */
+  links?: Links;
+  /** Required. The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running. */
+  endTime?: string;
 }
 
 export const Span: Schema.Schema<Span> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      name: Schema.optional(Schema.String),
+      status: Schema.optional(Status),
       spanId: Schema.optional(Schema.String),
       parentSpanId: Schema.optional(Schema.String),
-      displayName: Schema.optional(TruncatableString),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(Attributes),
-      stackTrace: Schema.optional(StackTrace),
-      timeEvents: Schema.optional(TimeEvents),
-      links: Schema.optional(Links),
-      status: Schema.optional(Status),
       sameProcessAsParentSpan: Schema.optional(Schema.Boolean),
+      name: Schema.optional(Schema.String),
+      attributes: Schema.optional(Attributes),
+      timeEvents: Schema.optional(TimeEvents),
       childSpanCount: Schema.optional(Schema.Number),
+      stackTrace: Schema.optional(StackTrace),
       spanKind: Schema.optional(Schema.String),
+      startTime: Schema.optional(Schema.String),
+      displayName: Schema.optional(TruncatableString),
+      links: Schema.optional(Links),
+      endTime: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Span" }) as any as Schema.Schema<Span>;
 

@@ -22,7 +22,7 @@ export type V1RollbackMigrationsOutput = typeof V1RollbackMigrationsOutput.Type;
 
 // The operation
 /**
- * [Beta] Rollback database migrations and remove them from history table
+ * Rollback database migrations and remove them from history table
  *
  * Only available to selected partner OAuth apps
  *

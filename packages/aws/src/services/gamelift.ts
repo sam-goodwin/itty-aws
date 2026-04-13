@@ -164,6 +164,7 @@ export type LargeGameSessionData = string;
 export type IpAddress = string | redacted.Redacted<string>;
 export type DnsName = string;
 export type MatchmakerData = string;
+export type ComputeName = string;
 export type GameSessionQueueName = string;
 export type ArnStringModel = string;
 export type QueueCustomEventData = string;
@@ -188,7 +189,6 @@ export type GameSessionQueueNameOrArn = string;
 export type CustomLocationNameOrArnModel = string;
 export type MatchmakingConfigurationName = string;
 export type ComputeNameOrArn = string;
-export type ComputeName = string;
 export type ComputeArn = string;
 export type GameLiftServiceSdkEndpointOutput = string;
 export type GameLiftAgentEndpointOutput = string;
@@ -2310,6 +2310,7 @@ export interface GameSession {
   GameSessionData?: string;
   MatchmakerData?: string;
   Location?: string;
+  ComputeName?: string;
   PlayerGatewayStatus?: PlayerGatewayStatus;
 }
 export const GameSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2335,6 +2336,7 @@ export const GameSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     GameSessionData: S.optional(S.String),
     MatchmakerData: S.optional(S.String),
     Location: S.optional(S.String),
+    ComputeName: S.optional(S.String),
     PlayerGatewayStatus: S.optional(PlayerGatewayStatus),
   }),
 ).annotate({ identifier: "GameSession" }) as any as S.Schema<GameSession>;
@@ -12314,17 +12316,12 @@ export type ListLocationsError =
   | UnauthorizedException
   | CommonErrors;
 /**
- * **This API works with the following fleet types:** Anywhere
+ * **This API works with the following fleet types:** EC2, Anywhere, Container
  *
  * Lists all custom and Amazon Web Services locations where Amazon GameLift Servers can host game servers.
- *
- * Note that if you call this API using a location that doesn't have a service endpoint,
- * such as one that can only be a remote location in a multi-location fleet, the API
- * returns an error.
- *
- * Consult the table of supported locations in Amazon GameLift Servers service
- * locations to identify home Regions that support single and multi-location
- * fleets.
+ * This operation also returns UDP ping beacon information for
+ * locations, which you can use to measure network latency between player devices
+ * and potential hosting locations.
  *
  * **Learn more**
  *

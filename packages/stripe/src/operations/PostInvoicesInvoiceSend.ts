@@ -318,6 +318,7 @@ export const PostInvoicesInvoiceSendOutput =
           ),
           pricing: Schema.Unknown,
           quantity: Schema.NullOr(Schema.Number),
+          quantity_decimal: Schema.NullOr(Schema.String),
           subscription: Schema.Unknown,
           subtotal: Schema.Number,
           taxes: Schema.NullOr(

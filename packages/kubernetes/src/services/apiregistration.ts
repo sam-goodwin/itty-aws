@@ -163,6 +163,11 @@ export const DeleteApiregistrationV1APIServiceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -226,6 +231,11 @@ export const DeleteApiregistrationV1CollectionAPIServiceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -440,6 +450,11 @@ export const ListApiregistrationV1APIServiceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });

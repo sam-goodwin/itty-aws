@@ -133,6 +133,7 @@ export const GetCheckoutSessionsOutput =
         ),
         expires_at: Schema.Number,
         id: Schema.String,
+        integration_identifier: Schema.NullOr(Schema.String),
         invoice: Schema.Unknown,
         invoice_creation: Schema.Unknown,
         line_items: Schema.optional(
@@ -393,7 +394,7 @@ export const GetCheckoutSessionsOutput =
         ),
         total_details: Schema.Unknown,
         ui_mode: Schema.NullOr(
-          Schema.Literals(["custom", "embedded", "hosted"]),
+          Schema.Literals(["elements", "embedded_page", "form", "hosted_page"]),
         ),
         url: Schema.NullOr(Schema.String),
         wallet_options: Schema.Unknown,

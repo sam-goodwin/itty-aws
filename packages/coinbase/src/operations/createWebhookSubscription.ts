@@ -23,6 +23,7 @@ export type CreateWebhookSubscriptionInput =
 export const CreateWebhookSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
+    updatedAt: Schema.optional(Schema.String),
     description: Schema.optional(Schema.Struct({})),
     eventTypes: Schema.Array(Schema.String),
     isEnabled: Schema.Boolean,
@@ -62,6 +63,8 @@ export type CreateWebhookSubscriptionOutput =
  * - `payments.transfers.processing`
  * - `payments.transfers.completed`
  * - `payments.transfers.failed`
+ * - `payments.transfers.travel_rule_incomplete`
+ * - `payments.transfers.travel_rule_completed`
  * - **No labels required** - enable the transfers webhook to monitor status transitions
  * **Wallet Events** - Wallet activity notifications:
  * - `wallet.activity.detected`

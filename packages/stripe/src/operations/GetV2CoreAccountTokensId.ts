@@ -25,7 +25,7 @@ export type GetV2CoreAccountTokensIdOutput =
 
 // The operation
 /**
- * Retrieve an Account Token
+ * Retrieve an account token
  *
  * Retrieves an Account Token.
  *

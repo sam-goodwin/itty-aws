@@ -85,17 +85,17 @@ export const Empty: Schema.Schema<Empty> =
 export interface ListProjectsTraceSinksRequest {
   /** Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" */
   parent: string;
-  /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
-  pageToken?: string;
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. */
   pageSize?: number;
+  /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
+  pageToken?: string;
 }
 
 export const ListProjectsTraceSinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v2beta1/projects/{projectsId}/traceSinks" }),
     svc,
@@ -121,40 +121,6 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetProjectsTraceSinksRequest {
-  /** Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
-  name: string;
-}
-
-export const GetProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
-
-export type GetProjectsTraceSinksResponse = TraceSink;
-export const GetProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
-
-export type GetProjectsTraceSinksError = DefaultErrors;
-
-/** Get a trace sink by name under the parent resource (GCP project). */
-export const getProjectsTraceSinks: API.OperationMethod<
-  GetProjectsTraceSinksRequest,
-  GetProjectsTraceSinksResponse,
-  GetProjectsTraceSinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsTraceSinksRequest,
-  output: GetProjectsTraceSinksResponse,
-  errors: [],
 }));
 
 export interface CreateProjectsTraceSinksRequest {
@@ -192,6 +158,74 @@ export const createProjectsTraceSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTraceSinksRequest,
   output: CreateProjectsTraceSinksResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsTraceSinksRequest {
+  /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
+  name: string;
+}
+
+export const DeleteProjectsTraceSinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
+
+export type DeleteProjectsTraceSinksResponse = Empty;
+export const DeleteProjectsTraceSinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsTraceSinksError = DefaultErrors;
+
+/** Deletes a sink. */
+export const deleteProjectsTraceSinks: API.OperationMethod<
+  DeleteProjectsTraceSinksRequest,
+  DeleteProjectsTraceSinksResponse,
+  DeleteProjectsTraceSinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsTraceSinksRequest,
+  output: DeleteProjectsTraceSinksResponse,
+  errors: [],
+}));
+
+export interface GetProjectsTraceSinksRequest {
+  /** Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
+  name: string;
+}
+
+export const GetProjectsTraceSinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
+
+export type GetProjectsTraceSinksResponse = TraceSink;
+export const GetProjectsTraceSinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TraceSink;
+
+export type GetProjectsTraceSinksError = DefaultErrors;
+
+/** Get a trace sink by name under the parent resource (GCP project). */
+export const getProjectsTraceSinks: API.OperationMethod<
+  GetProjectsTraceSinksRequest,
+  GetProjectsTraceSinksResponse,
+  GetProjectsTraceSinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsTraceSinksRequest,
+  output: GetProjectsTraceSinksResponse,
   errors: [],
 }));
 
@@ -233,39 +267,5 @@ export const patchProjectsTraceSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTraceSinksRequest,
   output: PatchProjectsTraceSinksResponse,
-  errors: [],
-}));
-
-export interface DeleteProjectsTraceSinksRequest {
-  /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
-  name: string;
-}
-
-export const DeleteProjectsTraceSinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
-
-export type DeleteProjectsTraceSinksResponse = Empty;
-export const DeleteProjectsTraceSinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsTraceSinksError = DefaultErrors;
-
-/** Deletes a sink. */
-export const deleteProjectsTraceSinks: API.OperationMethod<
-  DeleteProjectsTraceSinksRequest,
-  DeleteProjectsTraceSinksResponse,
-  DeleteProjectsTraceSinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTraceSinksRequest,
-  output: DeleteProjectsTraceSinksResponse,
   errors: [],
 }));

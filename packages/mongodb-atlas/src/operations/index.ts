@@ -234,6 +234,7 @@ export * from "./getGroupPeer";
 export * from "./updateGroupPeer";
 export * from "./deleteGroupPeer";
 export * from "./createGroupPrivateEndpointEndpointService";
+export * from "./updateGroupPrivateEndpointEndpointService";
 export * from "./getGroupPrivateEndpointRegionalMode";
 export * from "./toggleGroupPrivateEndpointRegionalMode";
 export * from "./listGroupPrivateEndpointEndpointService";

@@ -1306,6 +1306,12 @@ export interface LinkedVpnTunnels {
   vpcNetwork?: string;
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
   includeImportRanges?: Array<string>;
+  /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
+  excludeImportRanges?: Array<string>;
+  /** Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub. */
+  includeExportRanges?: Array<string>;
+  /** Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub. */
+  excludeExportRanges?: Array<string>;
 }
 
 export const LinkedVpnTunnels: Schema.Schema<LinkedVpnTunnels> =
@@ -1315,6 +1321,9 @@ export const LinkedVpnTunnels: Schema.Schema<LinkedVpnTunnels> =
       siteToSiteDataTransfer: Schema.optional(Schema.Boolean),
       vpcNetwork: Schema.optional(Schema.String),
       includeImportRanges: Schema.optional(Schema.Array(Schema.String)),
+      excludeImportRanges: Schema.optional(Schema.Array(Schema.String)),
+      includeExportRanges: Schema.optional(Schema.Array(Schema.String)),
+      excludeExportRanges: Schema.optional(Schema.Array(Schema.String)),
     }),
   ).annotate({
     identifier: "LinkedVpnTunnels",
@@ -1329,6 +1338,12 @@ export interface LinkedInterconnectAttachments {
   vpcNetwork?: string;
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
   includeImportRanges?: Array<string>;
+  /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
+  excludeImportRanges?: Array<string>;
+  /** Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub. */
+  includeExportRanges?: Array<string>;
+  /** Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub. */
+  excludeExportRanges?: Array<string>;
 }
 
 export const LinkedInterconnectAttachments: Schema.Schema<LinkedInterconnectAttachments> =
@@ -1338,6 +1353,9 @@ export const LinkedInterconnectAttachments: Schema.Schema<LinkedInterconnectAtta
       siteToSiteDataTransfer: Schema.optional(Schema.Boolean),
       vpcNetwork: Schema.optional(Schema.String),
       includeImportRanges: Schema.optional(Schema.Array(Schema.String)),
+      excludeImportRanges: Schema.optional(Schema.Array(Schema.String)),
+      includeExportRanges: Schema.optional(Schema.Array(Schema.String)),
+      excludeExportRanges: Schema.optional(Schema.Array(Schema.String)),
     }),
   ).annotate({
     identifier: "LinkedInterconnectAttachments",
@@ -1369,6 +1387,12 @@ export interface LinkedRouterApplianceInstances {
   vpcNetwork?: string;
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
   includeImportRanges?: Array<string>;
+  /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
+  excludeImportRanges?: Array<string>;
+  /** Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub. */
+  includeExportRanges?: Array<string>;
+  /** Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub. */
+  excludeExportRanges?: Array<string>;
 }
 
 export const LinkedRouterApplianceInstances: Schema.Schema<LinkedRouterApplianceInstances> =
@@ -1378,6 +1402,9 @@ export const LinkedRouterApplianceInstances: Schema.Schema<LinkedRouterAppliance
       siteToSiteDataTransfer: Schema.optional(Schema.Boolean),
       vpcNetwork: Schema.optional(Schema.String),
       includeImportRanges: Schema.optional(Schema.Array(Schema.String)),
+      excludeImportRanges: Schema.optional(Schema.Array(Schema.String)),
+      includeExportRanges: Schema.optional(Schema.Array(Schema.String)),
+      excludeExportRanges: Schema.optional(Schema.Array(Schema.String)),
     }),
   ).annotate({
     identifier: "LinkedRouterApplianceInstances",
@@ -2449,6 +2476,198 @@ export const ListRegionalEndpointsResponse: Schema.Schema<ListRegionalEndpointsR
     identifier: "ListRegionalEndpointsResponse",
   }) as any as Schema.Schema<ListRegionalEndpointsResponse>;
 
+export interface RemoteTransportProfile {
+  /** Identifier. Name of the resource in the format of $provider-$site. */
+  name?: string;
+  /** Output only. Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Output only. Description of the profile. */
+  description?: string;
+  /** Output only. Name of the provider on the other end of this profile. E.g. “Amazon Web Services” or “Microsoft Azure”. */
+  provider?: string;
+  /** Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the region where connectivity is being established. If the profile provides facility-level selection, this is an identity of the facility any connections on this profile are going through. */
+  providerSite?: string;
+  /** Output only. List of bandwidth enum values that are supported by this profile. */
+  supportedBandwidths?: Array<
+    | "BANDWIDTH_UNSPECIFIED"
+    | "BPS_50M"
+    | "BPS_100M"
+    | "BPS_200M"
+    | "BPS_300M"
+    | "BPS_400M"
+    | "BPS_500M"
+    | "BPS_1G"
+    | "BPS_2G"
+    | "BPS_5G"
+    | "BPS_10G"
+    | "BPS_20G"
+    | "BPS_50G"
+    | "BPS_100G"
+    | (string & {})
+  >;
+  /** Output only. Availability class that will be configured for this particular RemoteTransportProfile. */
+  sla?:
+    | "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED"
+    | "HIGH"
+    | "MAXIMUM"
+    | (string & {});
+  /** Output only. Type of provisioning flows supported by this profile. */
+  flow?:
+    | "KEY_PROVISIONING_FLOW_UNSPECIFIED"
+    | "INPUT_ONLY"
+    | "OUTPUT_ONLY"
+    | "INPUT_OR_OUTPUT"
+    | (string & {});
+  /** Output only. Order state for this profile. */
+  orderState?: "STATE_UNSPECIFIED" | "CLOSED" | "OPEN" | (string & {});
+  /** Output only. Human readable name of this profile, used to identify this profile in the UI. */
+  displayName?: string;
+}
+
+export const RemoteTransportProfile: Schema.Schema<RemoteTransportProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      description: Schema.optional(Schema.String),
+      provider: Schema.optional(Schema.String),
+      providerSite: Schema.optional(Schema.String),
+      supportedBandwidths: Schema.optional(Schema.Array(Schema.String)),
+      sla: Schema.optional(Schema.String),
+      flow: Schema.optional(Schema.String),
+      orderState: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "RemoteTransportProfile",
+  }) as any as Schema.Schema<RemoteTransportProfile>;
+
+export interface ListRemoteTransportProfilesResponse {
+  /** The list of RemoteTransportProfiles. */
+  remoteTransportProfiles?: Array<RemoteTransportProfile>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListRemoteTransportProfilesResponse: Schema.Schema<ListRemoteTransportProfilesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      remoteTransportProfiles: Schema.optional(
+        Schema.Array(RemoteTransportProfile),
+      ),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListRemoteTransportProfilesResponse",
+  }) as any as Schema.Schema<ListRemoteTransportProfilesResponse>;
+
+export interface Transport {
+  /** Identifier. Name of the resource. */
+  name?: string;
+  /** Output only. Create time stamp. */
+  createTime?: string;
+  /** Output only. Update time stamp. */
+  updateTime?: string;
+  /** Optional. Labels as key value pairs. */
+  labels?: Record<string, string>;
+  /** Optional. Description of the Transport. */
+  description?: string;
+  /** Optional. Immutable. Name of the remoteTransportProfile that this Transport is connecting to. */
+  remoteProfile?: string;
+  /** Optional. Immutable. Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state. */
+  providedActivationKey?: string;
+  /** Output only. Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state. */
+  generatedActivationKey?: string;
+  /** Optional. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile, and must be set when no activation key is being provided. */
+  bandwidth?:
+    | "BANDWIDTH_UNSPECIFIED"
+    | "BPS_50M"
+    | "BPS_100M"
+    | "BPS_200M"
+    | "BPS_300M"
+    | "BPS_400M"
+    | "BPS_500M"
+    | "BPS_1G"
+    | "BPS_2G"
+    | "BPS_5G"
+    | "BPS_10G"
+    | "BPS_20G"
+    | "BPS_50G"
+    | "BPS_100G"
+    | (string & {});
+  /** Optional. IP version stack for the established connectivity. */
+  stackType?:
+    | "STACK_TYPE_UNSPECIFIED"
+    | "IPV4_ONLY"
+    | "IPV4_IPV6"
+    | (string & {});
+  /** Output only. State of the underlying connectivity. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "PENDING_CONFIG"
+    | "PENDING_KEY"
+    | "ACTIVE"
+    | "DELETING"
+    | "DEPROVISIONED"
+    | (string & {});
+  /** Output only. The maximum transmission unit (MTU) of a packet that can be sent over this transport. */
+  mtuLimit?: number;
+  /** Optional. Immutable. Resource URI of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed. */
+  network?: string;
+  /** Optional. List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported. */
+  advertisedRoutes?: Array<string>;
+  /** Optional. Immutable. The user supplied account id for the CSP associated with the remote profile. */
+  remoteAccountId?: string;
+  /** Output only. VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish. */
+  peeringNetwork?: string;
+}
+
+export const Transport: Schema.Schema<Transport> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      createTime: Schema.optional(Schema.String),
+      updateTime: Schema.optional(Schema.String),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      description: Schema.optional(Schema.String),
+      remoteProfile: Schema.optional(Schema.String),
+      providedActivationKey: Schema.optional(Schema.String),
+      generatedActivationKey: Schema.optional(Schema.String),
+      bandwidth: Schema.optional(Schema.String),
+      stackType: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+      mtuLimit: Schema.optional(Schema.Number),
+      network: Schema.optional(Schema.String),
+      advertisedRoutes: Schema.optional(Schema.Array(Schema.String)),
+      remoteAccountId: Schema.optional(Schema.String),
+      peeringNetwork: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "Transport" }) as any as Schema.Schema<Transport>;
+
+export interface ListTransportsResponse {
+  /** The list of Transport. */
+  transports?: Array<Transport>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListTransportsResponse: Schema.Schema<ListTransportsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      transports: Schema.optional(Schema.Array(Transport)),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListTransportsResponse",
+  }) as any as Schema.Schema<ListTransportsResponse>;
+
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
@@ -2673,6 +2892,7 @@ export interface LocationMetadata {
     | "SITE_TO_CLOUD_SPOKES"
     | "SITE_TO_SITE_SPOKES"
     | "GATEWAY_SPOKES"
+    | "TRANSPORTS"
     | (string & {})
   >;
 }
@@ -2790,7 +3010,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -3220,125 +3440,6 @@ export const deleteProjectsLocationsServiceConnectionMaps: API.OperationMethod<
   errors: [],
 }));
 
-export interface SetIamPolicyProjectsLocationsServiceConnectionMapsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsServiceConnectionMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps/{serviceConnectionMapsId}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServiceConnectionMapsRequest>;
-
-export type SetIamPolicyProjectsLocationsServiceConnectionMapsResponse = Policy;
-export const SetIamPolicyProjectsLocationsServiceConnectionMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsServiceConnectionMapsError =
-  DefaultErrors;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsServiceConnectionMaps: API.OperationMethod<
-  SetIamPolicyProjectsLocationsServiceConnectionMapsRequest,
-  SetIamPolicyProjectsLocationsServiceConnectionMapsResponse,
-  SetIamPolicyProjectsLocationsServiceConnectionMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsServiceConnectionMapsRequest,
-  output: SetIamPolicyProjectsLocationsServiceConnectionMapsResponse,
-  errors: [],
-}));
-
-export interface GetIamPolicyProjectsLocationsServiceConnectionMapsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsServiceConnectionMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps/{serviceConnectionMapsId}:getIamPolicy",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServiceConnectionMapsRequest>;
-
-export type GetIamPolicyProjectsLocationsServiceConnectionMapsResponse = Policy;
-export const GetIamPolicyProjectsLocationsServiceConnectionMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsServiceConnectionMapsError =
-  DefaultErrors;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsServiceConnectionMaps: API.OperationMethod<
-  GetIamPolicyProjectsLocationsServiceConnectionMapsRequest,
-  GetIamPolicyProjectsLocationsServiceConnectionMapsResponse,
-  GetIamPolicyProjectsLocationsServiceConnectionMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServiceConnectionMapsRequest,
-  output: GetIamPolicyProjectsLocationsServiceConnectionMapsResponse,
-  errors: [],
-}));
-
-export interface TestIamPermissionsProjectsLocationsServiceConnectionMapsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsServiceConnectionMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps/{serviceConnectionMapsId}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServiceConnectionMapsRequest>;
-
-export type TestIamPermissionsProjectsLocationsServiceConnectionMapsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsServiceConnectionMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsServiceConnectionMapsError =
-  DefaultErrors;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsServiceConnectionMaps: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsServiceConnectionMapsRequest,
-  TestIamPermissionsProjectsLocationsServiceConnectionMapsResponse,
-  TestIamPermissionsProjectsLocationsServiceConnectionMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsServiceConnectionMapsRequest,
-  output: TestIamPermissionsProjectsLocationsServiceConnectionMapsResponse,
-  errors: [],
-}));
-
 export interface ListProjectsLocationsServiceConnectionPoliciesRequest {
   /** Required. The parent resource's name. ex. projects/123/locations/us-east1 */
   parent: string;
@@ -3590,127 +3691,6 @@ export const deleteProjectsLocationsServiceConnectionPolicies: API.OperationMeth
   errors: [],
 }));
 
-export interface SetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies/{serviceConnectionPoliciesId}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest>;
-
-export type SetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse =
-  Policy;
-export const SetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsServiceConnectionPoliciesError =
-  DefaultErrors;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsServiceConnectionPolicies: API.OperationMethod<
-  SetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest,
-  SetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse,
-  SetIamPolicyProjectsLocationsServiceConnectionPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest,
-  output: SetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse,
-  errors: [],
-}));
-
-export interface GetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies/{serviceConnectionPoliciesId}:getIamPolicy",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest>;
-
-export type GetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse =
-  Policy;
-export const GetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsServiceConnectionPoliciesError =
-  DefaultErrors;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsServiceConnectionPolicies: API.OperationMethod<
-  GetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest,
-  GetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse,
-  GetIamPolicyProjectsLocationsServiceConnectionPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServiceConnectionPoliciesRequest,
-  output: GetIamPolicyProjectsLocationsServiceConnectionPoliciesResponse,
-  errors: [],
-}));
-
-export interface TestIamPermissionsProjectsLocationsServiceConnectionPoliciesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsServiceConnectionPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies/{serviceConnectionPoliciesId}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServiceConnectionPoliciesRequest>;
-
-export type TestIamPermissionsProjectsLocationsServiceConnectionPoliciesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsServiceConnectionPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsServiceConnectionPoliciesError =
-  DefaultErrors;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsServiceConnectionPolicies: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsServiceConnectionPoliciesRequest,
-  TestIamPermissionsProjectsLocationsServiceConnectionPoliciesResponse,
-  TestIamPermissionsProjectsLocationsServiceConnectionPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsServiceConnectionPoliciesRequest,
-  output: TestIamPermissionsProjectsLocationsServiceConnectionPoliciesResponse,
-  errors: [],
-}));
-
 export interface ListProjectsLocationsServiceClassesRequest {
   /** Required. The parent resource's name. ex. projects/123/locations/us-east1 */
   parent: string;
@@ -3879,123 +3859,6 @@ export const deleteProjectsLocationsServiceClasses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsServiceClassesRequest,
   output: DeleteProjectsLocationsServiceClassesResponse,
-  errors: [],
-}));
-
-export interface SetIamPolicyProjectsLocationsServiceClassesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsServiceClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses/{serviceClassesId}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServiceClassesRequest>;
-
-export type SetIamPolicyProjectsLocationsServiceClassesResponse = Policy;
-export const SetIamPolicyProjectsLocationsServiceClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsServiceClassesError = DefaultErrors;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsServiceClasses: API.OperationMethod<
-  SetIamPolicyProjectsLocationsServiceClassesRequest,
-  SetIamPolicyProjectsLocationsServiceClassesResponse,
-  SetIamPolicyProjectsLocationsServiceClassesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsServiceClassesRequest,
-  output: SetIamPolicyProjectsLocationsServiceClassesResponse,
-  errors: [],
-}));
-
-export interface GetIamPolicyProjectsLocationsServiceClassesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsServiceClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses/{serviceClassesId}:getIamPolicy",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServiceClassesRequest>;
-
-export type GetIamPolicyProjectsLocationsServiceClassesResponse = Policy;
-export const GetIamPolicyProjectsLocationsServiceClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsServiceClassesError = DefaultErrors;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsServiceClasses: API.OperationMethod<
-  GetIamPolicyProjectsLocationsServiceClassesRequest,
-  GetIamPolicyProjectsLocationsServiceClassesResponse,
-  GetIamPolicyProjectsLocationsServiceClassesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServiceClassesRequest,
-  output: GetIamPolicyProjectsLocationsServiceClassesResponse,
-  errors: [],
-}));
-
-export interface TestIamPermissionsProjectsLocationsServiceClassesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsServiceClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses/{serviceClassesId}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServiceClassesRequest>;
-
-export type TestIamPermissionsProjectsLocationsServiceClassesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsServiceClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsServiceClassesError =
-  DefaultErrors;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsServiceClasses: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsServiceClassesRequest,
-  TestIamPermissionsProjectsLocationsServiceClassesResponse,
-  TestIamPermissionsProjectsLocationsServiceClassesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsServiceClassesRequest,
-  output: TestIamPermissionsProjectsLocationsServiceClassesResponse,
   errors: [],
 }));
 
@@ -7038,5 +6901,305 @@ export const deleteProjectsLocationsRegionalEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRegionalEndpointsRequest,
   output: DeleteProjectsLocationsRegionalEndpointsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsRemoteTransportProfilesRequest {
+  /** Required. Parent value for ListRemoteTransportProfilesRequest. */
+  parent: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Optional. Filtering results. */
+  filter?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsRemoteTransportProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/remoteTransportProfiles",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsRemoteTransportProfilesRequest>;
+
+export type ListProjectsLocationsRemoteTransportProfilesResponse =
+  ListRemoteTransportProfilesResponse;
+export const ListProjectsLocationsRemoteTransportProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListRemoteTransportProfilesResponse;
+
+export type ListProjectsLocationsRemoteTransportProfilesError = DefaultErrors;
+
+/** Lists RemoteTransportProfiles in a given project and location. */
+export const listProjectsLocationsRemoteTransportProfiles: API.PaginatedOperationMethod<
+  ListProjectsLocationsRemoteTransportProfilesRequest,
+  ListProjectsLocationsRemoteTransportProfilesResponse,
+  ListProjectsLocationsRemoteTransportProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRemoteTransportProfilesRequest,
+  output: ListProjectsLocationsRemoteTransportProfilesResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsRemoteTransportProfilesRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsRemoteTransportProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/remoteTransportProfiles/{remoteTransportProfilesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsRemoteTransportProfilesRequest>;
+
+export type GetProjectsLocationsRemoteTransportProfilesResponse =
+  RemoteTransportProfile;
+export const GetProjectsLocationsRemoteTransportProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RemoteTransportProfile;
+
+export type GetProjectsLocationsRemoteTransportProfilesError = DefaultErrors;
+
+/** Gets details of a single RemoteTransportProfile. */
+export const getProjectsLocationsRemoteTransportProfiles: API.OperationMethod<
+  GetProjectsLocationsRemoteTransportProfilesRequest,
+  GetProjectsLocationsRemoteTransportProfilesResponse,
+  GetProjectsLocationsRemoteTransportProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsRemoteTransportProfilesRequest,
+  output: GetProjectsLocationsRemoteTransportProfilesResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsTransportsRequest {
+  /** Required. Parent value for ListTransportsRequest. */
+  parent: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Optional. Filtering results. */
+  filter?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsTransportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/transports",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsTransportsRequest>;
+
+export type ListProjectsLocationsTransportsResponse = ListTransportsResponse;
+export const ListProjectsLocationsTransportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListTransportsResponse;
+
+export type ListProjectsLocationsTransportsError = DefaultErrors;
+
+/** Lists Transports in a given project and location. */
+export const listProjectsLocationsTransports: API.PaginatedOperationMethod<
+  ListProjectsLocationsTransportsRequest,
+  ListProjectsLocationsTransportsResponse,
+  ListProjectsLocationsTransportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsTransportsRequest,
+  output: ListProjectsLocationsTransportsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsTransportsRequest {
+  /** Required. Name of the resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsTransportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsTransportsRequest>;
+
+export type GetProjectsLocationsTransportsResponse = Transport;
+export const GetProjectsLocationsTransportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Transport;
+
+export type GetProjectsLocationsTransportsError = DefaultErrors;
+
+/** Gets details of a single Transport. */
+export const getProjectsLocationsTransports: API.OperationMethod<
+  GetProjectsLocationsTransportsRequest,
+  GetProjectsLocationsTransportsResponse,
+  GetProjectsLocationsTransportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsTransportsRequest,
+  output: GetProjectsLocationsTransportsResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsTransportsRequest {
+  /** Required. Value for parent. */
+  parent: string;
+  /** Required. Id of the requesting object */
+  transportId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: Transport;
+}
+
+export const CreateProjectsLocationsTransportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    transportId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("transportId"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Transport).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/transports",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsTransportsRequest>;
+
+export type CreateProjectsLocationsTransportsResponse =
+  GoogleLongrunningOperation;
+export const CreateProjectsLocationsTransportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type CreateProjectsLocationsTransportsError = DefaultErrors;
+
+/** Creates a new Transport in a given project and location. */
+export const createProjectsLocationsTransports: API.OperationMethod<
+  CreateProjectsLocationsTransportsRequest,
+  CreateProjectsLocationsTransportsResponse,
+  CreateProjectsLocationsTransportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsTransportsRequest,
+  output: CreateProjectsLocationsTransportsResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsTransportsRequest {
+  /** Identifier. Name of the resource. */
+  name: string;
+  /** Optional. Field mask is used to specify the fields to be overwritten in the Transport resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields present in the request will be overwritten. */
+  updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: Transport;
+}
+
+export const PatchProjectsLocationsTransportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Transport).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsTransportsRequest>;
+
+export type PatchProjectsLocationsTransportsResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsTransportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsTransportsError = DefaultErrors;
+
+/** Updates the parameters of a single Transport. */
+export const patchProjectsLocationsTransports: API.OperationMethod<
+  PatchProjectsLocationsTransportsRequest,
+  PatchProjectsLocationsTransportsResponse,
+  PatchProjectsLocationsTransportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsTransportsRequest,
+  output: PatchProjectsLocationsTransportsResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsTransportsRequest {
+  /** Required. Name of the resource. */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsTransportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsTransportsRequest>;
+
+export type DeleteProjectsLocationsTransportsResponse =
+  GoogleLongrunningOperation;
+export const DeleteProjectsLocationsTransportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type DeleteProjectsLocationsTransportsError = DefaultErrors;
+
+/** Deletes a single Transport. */
+export const deleteProjectsLocationsTransports: API.OperationMethod<
+  DeleteProjectsLocationsTransportsRequest,
+  DeleteProjectsLocationsTransportsResponse,
+  DeleteProjectsLocationsTransportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsTransportsRequest,
+  output: DeleteProjectsLocationsTransportsResponse,
   errors: [],
 }));

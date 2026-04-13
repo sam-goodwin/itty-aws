@@ -85,6 +85,7 @@ export const PostPaymentIntentsInput =
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",
@@ -414,10 +415,25 @@ export const PostPaymentIntentsInput =
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",
         ]),
+        upi: Schema.optional(
+          Schema.Struct({
+            mandate_options: Schema.optional(
+              Schema.Struct({
+                amount: Schema.optional(Schema.Number),
+                amount_type: Schema.optional(
+                  Schema.Literals(["fixed", "maximum"]),
+                ),
+                description: Schema.optional(Schema.String),
+                end_date: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
         us_bank_account: Schema.optional(
           Schema.Struct({
             account_holder_type: Schema.optional(
@@ -486,6 +502,7 @@ export const PostPaymentIntentsInput =
         sofort: Schema.optional(Schema.Unknown),
         swish: Schema.optional(Schema.Unknown),
         twint: Schema.optional(Schema.Unknown),
+        upi: Schema.optional(Schema.Unknown),
         us_bank_account: Schema.optional(Schema.Unknown),
         wechat_pay: Schema.optional(Schema.Unknown),
         zip: Schema.optional(Schema.Unknown),
@@ -672,6 +689,7 @@ export const PostPaymentIntentsOutput =
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",

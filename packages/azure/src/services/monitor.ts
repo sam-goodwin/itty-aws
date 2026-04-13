@@ -9,116 +9,162 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const AzureMonitorWorkspacesCreateInput =
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Monitor/operations" }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const PipelineGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    pipelineGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
     }),
   );
-export type AzureMonitorWorkspacesCreateInput =
-  typeof AzureMonitorWorkspacesCreateInput.Type;
+export type PipelineGroupsCreateOrUpdateInput =
+  typeof PipelineGroupsCreateOrUpdateInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesCreateOutput =
+export const PipelineGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   });
-export type AzureMonitorWorkspacesCreateOutput =
-  typeof AzureMonitorWorkspacesCreateOutput.Type;
+export type PipelineGroupsCreateOrUpdateOutput =
+  typeof PipelineGroupsCreateOrUpdateOutput.Type;
 
 // The operation
 /**
- * Creates or updates an Azure Monitor Workspace
+ * Create or update a pipeline group instance.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const AzureMonitorWorkspacesCreate =
+export const PipelineGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesCreateInput,
-    outputSchema: AzureMonitorWorkspacesCreateOutput,
+    inputSchema: PipelineGroupsCreateOrUpdateInput,
+    outputSchema: PipelineGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
-export const AzureMonitorWorkspacesDeleteInput =
+export const PipelineGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    pipelineGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
     }),
   );
-export type AzureMonitorWorkspacesDeleteInput =
-  typeof AzureMonitorWorkspacesDeleteInput.Type;
+export type PipelineGroupsDeleteInput = typeof PipelineGroupsDeleteInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesDeleteOutput =
+export const PipelineGroupsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AzureMonitorWorkspacesDeleteOutput =
-  typeof AzureMonitorWorkspacesDeleteOutput.Type;
+export type PipelineGroupsDeleteOutput = typeof PipelineGroupsDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes an Azure Monitor Workspace
+ * Delete a pipeline group instance.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const AzureMonitorWorkspacesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesDeleteInput,
-    outputSchema: AzureMonitorWorkspacesDeleteOutput,
-  }));
+export const PipelineGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PipelineGroupsDeleteInput,
+    outputSchema: PipelineGroupsDeleteOutput,
+  }),
+);
 // Input Schema
-export const AzureMonitorWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PipelineGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    pipelineGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
-    }),
-  );
-export type AzureMonitorWorkspacesGetInput =
-  typeof AzureMonitorWorkspacesGetInput.Type;
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
+  }),
+);
+export type PipelineGroupsGetInput = typeof PipelineGroupsGetInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesGetOutput =
+export const PipelineGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   });
-export type AzureMonitorWorkspacesGetOutput =
-  typeof AzureMonitorWorkspacesGetOutput.Type;
+export type PipelineGroupsGetOutput = typeof PipelineGroupsGetOutput.Type;
 
 // The operation
 /**
- * Returns the specified Azure Monitor Workspace
+ * Returns the specific pipeline group instance.
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const AzureMonitorWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureMonitorWorkspacesGetInput,
-    outputSchema: AzureMonitorWorkspacesGetOutput,
-  }),
-);
+export const PipelineGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: PipelineGroupsGetInput,
+  outputSchema: PipelineGroupsGetOutput,
+}));
 // Input Schema
-export const AzureMonitorWorkspacesListByResourceGroupInput =
+export const PipelineGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -126,14 +172,14 @@ export const AzureMonitorWorkspacesListByResourceGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups",
     }),
   );
-export type AzureMonitorWorkspacesListByResourceGroupInput =
-  typeof AzureMonitorWorkspacesListByResourceGroupInput.Type;
+export type PipelineGroupsListByResourceGroupInput =
+  typeof PipelineGroupsListByResourceGroupInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesListByResourceGroupOutput =
+export const PipelineGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
@@ -143,38 +189,38 @@ export const AzureMonitorWorkspacesListByResourceGroupOutput =
     ),
     nextLink: Schema.optional(Schema.String),
   });
-export type AzureMonitorWorkspacesListByResourceGroupOutput =
-  typeof AzureMonitorWorkspacesListByResourceGroupOutput.Type;
+export type PipelineGroupsListByResourceGroupOutput =
+  typeof PipelineGroupsListByResourceGroupOutput.Type;
 
 // The operation
 /**
- * Lists all Azure Monitor Workspaces in the specified resource group
+ * Lists all workspaces in the specified resource group
  *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const AzureMonitorWorkspacesListByResourceGroup =
+export const PipelineGroupsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesListByResourceGroupInput,
-    outputSchema: AzureMonitorWorkspacesListByResourceGroupOutput,
+    inputSchema: PipelineGroupsListByResourceGroupInput,
+    outputSchema: PipelineGroupsListByResourceGroupOutput,
   }));
 // Input Schema
-export const AzureMonitorWorkspacesListBySubscriptionInput =
+export const PipelineGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Monitor/accounts",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Monitor/pipelineGroups",
     }),
   );
-export type AzureMonitorWorkspacesListBySubscriptionInput =
-  typeof AzureMonitorWorkspacesListBySubscriptionInput.Type;
+export type PipelineGroupsListBySubscriptionInput =
+  typeof PipelineGroupsListBySubscriptionInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesListBySubscriptionOutput =
+export const PipelineGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
@@ -184,105 +230,57 @@ export const AzureMonitorWorkspacesListBySubscriptionOutput =
     ),
     nextLink: Schema.optional(Schema.String),
   });
-export type AzureMonitorWorkspacesListBySubscriptionOutput =
-  typeof AzureMonitorWorkspacesListBySubscriptionOutput.Type;
+export type PipelineGroupsListBySubscriptionOutput =
+  typeof PipelineGroupsListBySubscriptionOutput.Type;
 
 // The operation
 /**
- * Lists all Azure Monitor Workspaces in the specified subscription
+ * Lists all workspaces in the specified subscription
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AzureMonitorWorkspacesListBySubscription =
+export const PipelineGroupsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesListBySubscriptionInput,
-    outputSchema: AzureMonitorWorkspacesListBySubscriptionOutput,
+    inputSchema: PipelineGroupsListBySubscriptionInput,
+    outputSchema: PipelineGroupsListBySubscriptionOutput,
   }));
 // Input Schema
-export const AzureMonitorWorkspacesUpdateInput =
+export const PipelineGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    pipelineGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
     }),
   );
-export type AzureMonitorWorkspacesUpdateInput =
-  typeof AzureMonitorWorkspacesUpdateInput.Type;
+export type PipelineGroupsUpdateInput = typeof PipelineGroupsUpdateInput.Type;
 
 // Output Schema
-export const AzureMonitorWorkspacesUpdateOutput =
+export const PipelineGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   });
-export type AzureMonitorWorkspacesUpdateOutput =
-  typeof AzureMonitorWorkspacesUpdateOutput.Type;
+export type PipelineGroupsUpdateOutput = typeof PipelineGroupsUpdateOutput.Type;
 
 // The operation
 /**
- * Updates part of an Azure Monitor Workspace
+ * Updates a pipeline group instance
  *
- * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const AzureMonitorWorkspacesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: AzureMonitorWorkspacesUpdateInput,
-    outputSchema: AzureMonitorWorkspacesUpdateOutput,
-  }));
-// Input Schema
-export const MonitorOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers/Microsoft.Monitor/operations" }),
-  );
-export type MonitorOperationsListInput = typeof MonitorOperationsListInput.Type;
-
-// Output Schema
-export const MonitorOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(
-            Schema.Literals(["user", "system", "user,system"]),
-          ),
-          actionType: Schema.optional(Schema.Literals(["Internal"])),
-        }),
-      ),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
-export type MonitorOperationsListOutput =
-  typeof MonitorOperationsListOutput.Type;
-
-// The operation
-/**
- * Lists available Operations for this Resource Provider
- *
- * @param api-version - The API version to use for this operation.
- */
-export const MonitorOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+export const PipelineGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
-    inputSchema: MonitorOperationsListInput,
-    outputSchema: MonitorOperationsListOutput,
+    inputSchema: PipelineGroupsUpdateInput,
+    outputSchema: PipelineGroupsUpdateOutput,
   }),
 );
 // Input Schema

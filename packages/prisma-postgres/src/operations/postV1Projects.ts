@@ -95,6 +95,7 @@ export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           id: Schema.String,
           name: Schema.String,
         }),
+        source: Schema.Unknown,
         apiKeys: Schema.Array(
           Schema.Struct({
             id: Schema.String,

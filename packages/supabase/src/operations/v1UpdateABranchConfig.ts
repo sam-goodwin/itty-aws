@@ -80,7 +80,7 @@ export type V1UpdateABranchConfigOutput =
  *
  * Updates the configuration of the specified database branch
  *
- * @param branch_id_or_ref - Branch ID
+ * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
 export const v1UpdateABranchConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

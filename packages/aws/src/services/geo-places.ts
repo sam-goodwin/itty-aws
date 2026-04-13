@@ -48,7 +48,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === false
         ) {
           return e(
-            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}/v2`,
+            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
           );
         }
         if (
@@ -57,7 +57,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === true
         ) {
           return e(
-            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}/v2`,
+            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
           );
         }
         if (
@@ -66,7 +66,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === false
         ) {
           return e(
-            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}/v2`,
+            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
           );
         }
         if (
@@ -75,7 +75,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === true
         ) {
           return e(
-            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}/v2`,
+            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
           );
         }
         if (
@@ -84,7 +84,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === false
         ) {
           return e(
-            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}/v2`,
+            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
           );
         }
         if (
@@ -93,7 +93,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === true
         ) {
           return e(
-            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}/v2`,
+            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
           );
         }
         if (
@@ -102,7 +102,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === false
         ) {
           return e(
-            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}/v2`,
+            `https://places.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
           );
         }
         if (
@@ -111,7 +111,7 @@ const rules = T.EndpointResolver((p, _) => {
           UseDualStack === true
         ) {
           return e(
-            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}/v2`,
+            `https://places.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
           );
         }
         if (UseFIPS === true && UseDualStack === true) {
@@ -263,7 +263,7 @@ export const AutocompleteRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/autocomplete" }),
+      T.Http({ method: "POST", uri: "/v2/autocomplete" }),
       svc,
       auth,
       proto,
@@ -619,7 +619,7 @@ export const GeocodeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/geocode" }),
+      T.Http({ method: "POST", uri: "/v2/geocode" }),
       svc,
       auth,
       proto,
@@ -1010,7 +1010,7 @@ export const GetPlaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
   }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/place/{PlaceId}" }),
+      T.Http({ method: "GET", uri: "/v2/place/{PlaceId}" }),
       svc,
       auth,
       proto,
@@ -1263,7 +1263,7 @@ export const ReverseGeocodeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Heading: S.optional(S.Number),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/reverse-geocode" }),
+      T.Http({ method: "POST", uri: "/v2/reverse-geocode" }),
       svc,
       auth,
       proto,
@@ -1392,7 +1392,7 @@ export const SearchNearbyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/search-nearby" }),
+      T.Http({ method: "POST", uri: "/v2/search-nearby" }),
       svc,
       auth,
       proto,
@@ -1511,7 +1511,7 @@ export const SearchTextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/search-text" }),
+      T.Http({ method: "POST", uri: "/v2/search-text" }),
       svc,
       auth,
       proto,
@@ -1625,7 +1625,7 @@ export const SuggestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/suggest" }),
+      T.Http({ method: "POST", uri: "/v2/suggest" }),
       svc,
       auth,
       proto,

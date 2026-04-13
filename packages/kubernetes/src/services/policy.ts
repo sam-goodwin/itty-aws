@@ -178,6 +178,11 @@ export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -241,6 +246,11 @@ export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -466,6 +476,11 @@ export const ListPolicyV1NamespacedPodDisruptionBudgetOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -599,6 +614,11 @@ export const ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });

@@ -119,6 +119,7 @@ export type QueryStatement = string;
 export type TableName = string;
 export type TableProperty = string;
 export type TablePropertyGenericString = string;
+export type AccountId = string;
 export type MaxResults = number;
 export type NextPageToken = string;
 export type ResourceTagKey = string;
@@ -190,6 +191,7 @@ export const S3OutputConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<S3OutputConfigurations>;
 export interface S3Destination {
   S3Bucket: string;
+  S3BucketOwner?: string;
   S3Prefix: string;
   S3Region: string;
   S3OutputConfigurations: S3OutputConfigurations;
@@ -197,6 +199,7 @@ export interface S3Destination {
 export const S3Destination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     S3Bucket: S.String,
+    S3BucketOwner: S.optional(S.String),
     S3Prefix: S.String,
     S3Region: S.String,
     S3OutputConfigurations: S3OutputConfigurations,

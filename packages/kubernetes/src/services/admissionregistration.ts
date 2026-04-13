@@ -1815,6 +1815,11 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutpu
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -1880,6 +1885,11 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -1945,6 +1955,11 @@ export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2010,6 +2025,11 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOut
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2075,6 +2095,11 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2140,6 +2165,11 @@ export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2205,6 +2235,11 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2268,6 +2303,11 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2333,6 +2373,11 @@ export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2397,6 +2442,11 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2460,6 +2510,11 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2525,6 +2580,11 @@ export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2590,6 +2650,11 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2655,6 +2720,11 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2720,6 +2790,11 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2785,6 +2860,11 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2850,6 +2930,11 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2915,6 +3000,11 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2980,6 +3070,11 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -3044,6 +3139,11 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -3425,6 +3525,11 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -3607,6 +3712,11 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -3773,6 +3883,11 @@ export const ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -4001,6 +4116,11 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -4178,6 +4298,11 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -4344,6 +4469,11 @@ export const ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -4544,6 +4674,11 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -4727,6 +4862,11 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -4928,6 +5068,11 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -5110,6 +5255,11 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });

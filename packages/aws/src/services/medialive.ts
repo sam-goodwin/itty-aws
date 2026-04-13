@@ -1500,6 +1500,36 @@ export type __listOfSrtOutputDestinationSettings =
   SrtOutputDestinationSettings[];
 export const __listOfSrtOutputDestinationSettings =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SrtOutputDestinationSettings);
+export type MediaConnectRouterOutputEncryptionType =
+  | "AUTOMATIC"
+  | "SECRETS_MANAGER"
+  | (string & {});
+export const MediaConnectRouterOutputEncryptionType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MediaConnectRouterOutputDestinationSettings {
+  EncryptionType?: MediaConnectRouterOutputEncryptionType;
+  SecretArn?: string;
+}
+export const MediaConnectRouterOutputDestinationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EncryptionType: S.optional(MediaConnectRouterOutputEncryptionType),
+      SecretArn: S.optional(S.String),
+    }).pipe(
+      S.encodeKeys({
+        EncryptionType: "encryptionType",
+        SecretArn: "secretArn",
+      }),
+    ),
+  ).annotate({
+    identifier: "MediaConnectRouterOutputDestinationSettings",
+  }) as any as S.Schema<MediaConnectRouterOutputDestinationSettings>;
+export type __listOfMediaConnectRouterOutputDestinationSettings =
+  MediaConnectRouterOutputDestinationSettings[];
+export const __listOfMediaConnectRouterOutputDestinationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    MediaConnectRouterOutputDestinationSettings,
+  );
 export interface OutputDestination {
   Id?: string;
   MediaPackageSettings?: MediaPackageOutputDestinationSettings[];
@@ -1507,6 +1537,7 @@ export interface OutputDestination {
   Settings?: OutputDestinationSettings[];
   SrtSettings?: SrtOutputDestinationSettings[];
   LogicalInterfaceNames?: string[];
+  MediaConnectRouterSettings?: MediaConnectRouterOutputDestinationSettings[];
 }
 export const OutputDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1518,6 +1549,9 @@ export const OutputDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Settings: S.optional(__listOfOutputDestinationSettings),
     SrtSettings: S.optional(__listOfSrtOutputDestinationSettings),
     LogicalInterfaceNames: S.optional(__listOf__string),
+    MediaConnectRouterSettings: S.optional(
+      __listOfMediaConnectRouterOutputDestinationSettings,
+    ),
   }).pipe(
     S.encodeKeys({
       Id: "id",
@@ -1526,6 +1560,7 @@ export const OutputDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       Settings: "settings",
       SrtSettings: "srtSettings",
       LogicalInterfaceNames: "logicalInterfaceNames",
+      MediaConnectRouterSettings: "mediaConnectRouterSettings",
     }),
   ),
 ).annotate({
@@ -4055,6 +4090,17 @@ export const SrtGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SrtGroupSettings",
 }) as any as S.Schema<SrtGroupSettings>;
+export interface MediaConnectRouterGroupSettings {
+  AvailabilityZones?: string[];
+}
+export const MediaConnectRouterGroupSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ AvailabilityZones: S.optional(__listOf__string) }).pipe(
+      S.encodeKeys({ AvailabilityZones: "availabilityZones" }),
+    ),
+  ).annotate({
+    identifier: "MediaConnectRouterGroupSettings",
+  }) as any as S.Schema<MediaConnectRouterGroupSettings>;
 export interface OutputGroupSettings {
   ArchiveGroupSettings?: ArchiveGroupSettings;
   FrameCaptureGroupSettings?: FrameCaptureGroupSettings;
@@ -4066,6 +4112,7 @@ export interface OutputGroupSettings {
   UdpGroupSettings?: UdpGroupSettings;
   CmafIngestGroupSettings?: CmafIngestGroupSettings;
   SrtGroupSettings?: SrtGroupSettings;
+  MediaConnectRouterGroupSettings?: MediaConnectRouterGroupSettings;
 }
 export const OutputGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4079,6 +4126,9 @@ export const OutputGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     UdpGroupSettings: S.optional(UdpGroupSettings),
     CmafIngestGroupSettings: S.optional(CmafIngestGroupSettings),
     SrtGroupSettings: S.optional(SrtGroupSettings),
+    MediaConnectRouterGroupSettings: S.optional(
+      MediaConnectRouterGroupSettings,
+    ),
   }).pipe(
     S.encodeKeys({
       ArchiveGroupSettings: "archiveGroupSettings",
@@ -4091,6 +4141,7 @@ export const OutputGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       UdpGroupSettings: "udpGroupSettings",
       CmafIngestGroupSettings: "cmafIngestGroupSettings",
       SrtGroupSettings: "srtGroupSettings",
+      MediaConnectRouterGroupSettings: "mediaConnectRouterGroupSettings",
     }),
   ),
 ).annotate({
@@ -4914,6 +4965,51 @@ export const SrtOutputSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SrtOutputSettings",
 }) as any as S.Schema<SrtOutputSettings>;
+export interface MediaConnectRouterOutputConnectionMap {
+  Pipeline0?: string;
+  Pipeline1?: string;
+}
+export const MediaConnectRouterOutputConnectionMap =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Pipeline0: S.optional(S.String),
+      Pipeline1: S.optional(S.String),
+    }).pipe(S.encodeKeys({ Pipeline0: "pipeline0", Pipeline1: "pipeline1" })),
+  ).annotate({
+    identifier: "MediaConnectRouterOutputConnectionMap",
+  }) as any as S.Schema<MediaConnectRouterOutputConnectionMap>;
+export interface MediaConnectRouterContainerSettings {
+  M2tsSettings?: M2tsSettings;
+}
+export const MediaConnectRouterContainerSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ M2tsSettings: S.optional(M2tsSettings) }).pipe(
+      S.encodeKeys({ M2tsSettings: "m2tsSettings" }),
+    ),
+  ).annotate({
+    identifier: "MediaConnectRouterContainerSettings",
+  }) as any as S.Schema<MediaConnectRouterContainerSettings>;
+export interface MediaConnectRouterOutputSettings {
+  ConnectedRouterInputs?: MediaConnectRouterOutputConnectionMap;
+  ContainerSettings?: MediaConnectRouterContainerSettings;
+  Destination?: OutputLocationRef;
+}
+export const MediaConnectRouterOutputSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ConnectedRouterInputs: S.optional(MediaConnectRouterOutputConnectionMap),
+      ContainerSettings: S.optional(MediaConnectRouterContainerSettings),
+      Destination: S.optional(OutputLocationRef),
+    }).pipe(
+      S.encodeKeys({
+        ConnectedRouterInputs: "connectedRouterInputs",
+        ContainerSettings: "containerSettings",
+        Destination: "destination",
+      }),
+    ),
+  ).annotate({
+    identifier: "MediaConnectRouterOutputSettings",
+  }) as any as S.Schema<MediaConnectRouterOutputSettings>;
 export interface OutputSettings {
   ArchiveOutputSettings?: ArchiveOutputSettings;
   FrameCaptureOutputSettings?: FrameCaptureOutputSettings;
@@ -4925,6 +5021,7 @@ export interface OutputSettings {
   UdpOutputSettings?: UdpOutputSettings;
   CmafIngestOutputSettings?: CmafIngestOutputSettings;
   SrtOutputSettings?: SrtOutputSettings;
+  MediaConnectRouterOutputSettings?: MediaConnectRouterOutputSettings;
 }
 export const OutputSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4938,6 +5035,9 @@ export const OutputSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     UdpOutputSettings: S.optional(UdpOutputSettings),
     CmafIngestOutputSettings: S.optional(CmafIngestOutputSettings),
     SrtOutputSettings: S.optional(SrtOutputSettings),
+    MediaConnectRouterOutputSettings: S.optional(
+      MediaConnectRouterOutputSettings,
+    ),
   }).pipe(
     S.encodeKeys({
       ArchiveOutputSettings: "archiveOutputSettings",
@@ -4950,6 +5050,7 @@ export const OutputSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       UdpOutputSettings: "udpOutputSettings",
       CmafIngestOutputSettings: "cmafIngestOutputSettings",
       SrtOutputSettings: "srtOutputSettings",
+      MediaConnectRouterOutputSettings: "mediaConnectRouterOutputSettings",
     }),
   ),
 ).annotate({ identifier: "OutputSettings" }) as any as S.Schema<OutputSettings>;
@@ -5853,6 +5954,7 @@ export interface Av1ColorSpaceSettings {
   Hdr10Settings?: Hdr10Settings;
   Rec601Settings?: Rec601Settings;
   Rec709Settings?: Rec709Settings;
+  Hlg2020Settings?: Hlg2020Settings;
 }
 export const Av1ColorSpaceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5860,12 +5962,14 @@ export const Av1ColorSpaceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Hdr10Settings: S.optional(Hdr10Settings),
     Rec601Settings: S.optional(Rec601Settings),
     Rec709Settings: S.optional(Rec709Settings),
+    Hlg2020Settings: S.optional(Hlg2020Settings),
   }).pipe(
     S.encodeKeys({
       ColorSpacePassthroughSettings: "colorSpacePassthroughSettings",
       Hdr10Settings: "hdr10Settings",
       Rec601Settings: "rec601Settings",
       Rec709Settings: "rec709Settings",
+      Hlg2020Settings: "hlg2020Settings",
     }),
   ),
 ).annotate({
@@ -7500,6 +7604,17 @@ export interface CreateChannelResponse {
             };
             SrtOutputSettings: SrtOutputSettings & {
               ContainerSettings: UdpContainerSettings & {
+                M2tsSettings: M2tsSettings & {
+                  DvbNitSettings: DvbNitSettings & {
+                    NetworkId: __integerMin0Max65536;
+                    NetworkName: __stringMin1Max256;
+                  };
+                };
+              };
+              Destination: OutputLocationRef;
+            };
+            MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+              ContainerSettings: MediaConnectRouterContainerSettings & {
                 M2tsSettings: M2tsSettings & {
                   DvbNitSettings: DvbNitSettings & {
                     NetworkId: __integerMin0Max65536;
@@ -10601,6 +10716,17 @@ export interface DeleteChannelResponse {
             };
             Destination: OutputLocationRef;
           };
+          MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+            ContainerSettings: MediaConnectRouterContainerSettings & {
+              M2tsSettings: M2tsSettings & {
+                DvbNitSettings: DvbNitSettings & {
+                  NetworkId: __integerMin0Max65536;
+                  NetworkName: __stringMin1Max256;
+                };
+              };
+            };
+            Destination: OutputLocationRef;
+          };
         };
       })[];
     })[];
@@ -11795,6 +11921,17 @@ export interface DescribeChannelResponse {
           };
           SrtOutputSettings: SrtOutputSettings & {
             ContainerSettings: UdpContainerSettings & {
+              M2tsSettings: M2tsSettings & {
+                DvbNitSettings: DvbNitSettings & {
+                  NetworkId: __integerMin0Max65536;
+                  NetworkName: __stringMin1Max256;
+                };
+              };
+            };
+            Destination: OutputLocationRef;
+          };
+          MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+            ContainerSettings: MediaConnectRouterContainerSettings & {
               M2tsSettings: M2tsSettings & {
                 DvbNitSettings: DvbNitSettings & {
                   NetworkId: __integerMin0Max65536;
@@ -15920,6 +16057,17 @@ export interface RestartChannelPipelinesResponse {
             };
             Destination: OutputLocationRef;
           };
+          MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+            ContainerSettings: MediaConnectRouterContainerSettings & {
+              M2tsSettings: M2tsSettings & {
+                DvbNitSettings: DvbNitSettings & {
+                  NetworkId: __integerMin0Max65536;
+                  NetworkName: __stringMin1Max256;
+                };
+              };
+            };
+            Destination: OutputLocationRef;
+          };
         };
       })[];
     })[];
@@ -16271,6 +16419,17 @@ export interface StartChannelResponse {
           };
           SrtOutputSettings: SrtOutputSettings & {
             ContainerSettings: UdpContainerSettings & {
+              M2tsSettings: M2tsSettings & {
+                DvbNitSettings: DvbNitSettings & {
+                  NetworkId: __integerMin0Max65536;
+                  NetworkName: __stringMin1Max256;
+                };
+              };
+            };
+            Destination: OutputLocationRef;
+          };
+          MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+            ContainerSettings: MediaConnectRouterContainerSettings & {
               M2tsSettings: M2tsSettings & {
                 DvbNitSettings: DvbNitSettings & {
                   NetworkId: __integerMin0Max65536;
@@ -17161,6 +17320,17 @@ export interface StopChannelResponse {
             };
             Destination: OutputLocationRef;
           };
+          MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+            ContainerSettings: MediaConnectRouterContainerSettings & {
+              M2tsSettings: M2tsSettings & {
+                DvbNitSettings: DvbNitSettings & {
+                  NetworkId: __integerMin0Max65536;
+                  NetworkName: __stringMin1Max256;
+                };
+              };
+            };
+            Destination: OutputLocationRef;
+          };
         };
       })[];
     })[];
@@ -17552,6 +17722,16 @@ export const MaintenanceUpdateSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MaintenanceUpdateSettings",
 }) as any as S.Schema<MaintenanceUpdateSettings>;
+export interface SpecialRouterSettings {
+  RouterArn?: string;
+}
+export const SpecialRouterSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ RouterArn: S.optional(S.String) }).pipe(
+    S.encodeKeys({ RouterArn: "routerArn" }),
+  ),
+).annotate({
+  identifier: "SpecialRouterSettings",
+}) as any as S.Schema<SpecialRouterSettings>;
 export interface UpdateChannelRequest {
   CdiInputSpecification?: CdiInputSpecification;
   ChannelId: string;
@@ -17569,6 +17749,7 @@ export interface UpdateChannelRequest {
   LinkedChannelSettings?: LinkedChannelSettings;
   ChannelSecurityGroups?: string[];
   InferenceSettings?: InferenceSettings;
+  SpecialRouterSettings?: SpecialRouterSettings;
 }
 export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17588,6 +17769,7 @@ export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     LinkedChannelSettings: S.optional(LinkedChannelSettings),
     ChannelSecurityGroups: S.optional(__listOf__string),
     InferenceSettings: S.optional(InferenceSettings),
+    SpecialRouterSettings: S.optional(SpecialRouterSettings),
   })
     .pipe(
       S.encodeKeys({
@@ -17606,6 +17788,7 @@ export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
         LinkedChannelSettings: "linkedChannelSettings",
         ChannelSecurityGroups: "channelSecurityGroups",
         InferenceSettings: "inferenceSettings",
+        SpecialRouterSettings: "specialRouterSettings",
       }),
     )
     .pipe(
@@ -17740,6 +17923,17 @@ export interface UpdateChannelResponse {
             };
             SrtOutputSettings: SrtOutputSettings & {
               ContainerSettings: UdpContainerSettings & {
+                M2tsSettings: M2tsSettings & {
+                  DvbNitSettings: DvbNitSettings & {
+                    NetworkId: __integerMin0Max65536;
+                    NetworkName: __stringMin1Max256;
+                  };
+                };
+              };
+              Destination: OutputLocationRef;
+            };
+            MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+              ContainerSettings: MediaConnectRouterContainerSettings & {
                 M2tsSettings: M2tsSettings & {
                   DvbNitSettings: DvbNitSettings & {
                     NetworkId: __integerMin0Max65536;
@@ -18050,6 +18244,17 @@ export interface UpdateChannelClassResponse {
             };
             SrtOutputSettings: SrtOutputSettings & {
               ContainerSettings: UdpContainerSettings & {
+                M2tsSettings: M2tsSettings & {
+                  DvbNitSettings: DvbNitSettings & {
+                    NetworkId: __integerMin0Max65536;
+                    NetworkName: __stringMin1Max256;
+                  };
+                };
+              };
+              Destination: OutputLocationRef;
+            };
+            MediaConnectRouterOutputSettings: MediaConnectRouterOutputSettings & {
+              ContainerSettings: MediaConnectRouterContainerSettings & {
                 M2tsSettings: M2tsSettings & {
                   DvbNitSettings: DvbNitSettings & {
                     NetworkId: __integerMin0Max65536;
@@ -18760,16 +18965,6 @@ export const MulticastSettingsUpdateRequest =
   ).annotate({
     identifier: "MulticastSettingsUpdateRequest",
   }) as any as S.Schema<MulticastSettingsUpdateRequest>;
-export interface SpecialRouterSettings {
-  RouterArn?: string;
-}
-export const SpecialRouterSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ RouterArn: S.optional(S.String) }).pipe(
-    S.encodeKeys({ RouterArn: "routerArn" }),
-  ),
-).annotate({
-  identifier: "SpecialRouterSettings",
-}) as any as S.Schema<SpecialRouterSettings>;
 export interface UpdateInputRequest {
   Destinations?: InputDestinationRequest[];
   InputDevices?: InputDeviceRequest[];

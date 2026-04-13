@@ -156,6 +156,11 @@ export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutpu
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -221,6 +226,11 @@ export const DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -428,6 +438,11 @@ export const ListStoragemigrationV1beta1StorageVersionMigrationOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });

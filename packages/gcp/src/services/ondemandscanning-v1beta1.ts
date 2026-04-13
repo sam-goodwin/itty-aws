@@ -487,6 +487,8 @@ export interface GrafeasV1FileLocation {
   filePath?: string;
   /** Each package found in a file should have its own layer metadata (that is, information from the origin layer of the package). */
   layerDetails?: GrafeasV1LayerDetails;
+  /** Line number in the file where the package was found. Optional field that only applies to source repository scanning. */
+  lineNumber?: number;
 }
 
 export const GrafeasV1FileLocation: Schema.Schema<GrafeasV1FileLocation> =
@@ -494,6 +496,7 @@ export const GrafeasV1FileLocation: Schema.Schema<GrafeasV1FileLocation> =
     Schema.Struct({
       filePath: Schema.optional(Schema.String),
       layerDetails: Schema.optional(GrafeasV1LayerDetails),
+      lineNumber: Schema.optional(Schema.Number),
     }),
   ).annotate({
     identifier: "GrafeasV1FileLocation",
@@ -2324,6 +2327,8 @@ export interface Occurrence {
   secret?: SecretOccurrence;
   /** https://github.com/secure-systems-lab/dsse */
   envelope?: Envelope;
+  /** The time this advisory was published by the source. */
+  advisoryPublishTime?: string;
 }
 
 export const Occurrence: Schema.Schema<Occurrence> =
@@ -2349,6 +2354,7 @@ export const Occurrence: Schema.Schema<Occurrence> =
       sbomReference: Schema.optional(SBOMReferenceOccurrence),
       secret: Schema.optional(SecretOccurrence),
       envelope: Schema.optional(Envelope),
+      advisoryPublishTime: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Occurrence" }) as any as Schema.Schema<Occurrence>;
 

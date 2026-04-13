@@ -472,7 +472,7 @@ export interface BackendRule {
   minDeadline?: number;
   /** The number of seconds to wait for the completion of a long running operation. The default is no deadline. */
   operationDeadline?: number;
-  /** no-lint */
+  /** Path translation specifies how to combine the backend address with the request path in order to produce the appropriate forwarding URL for the request. See PathTranslation for more details. */
   pathTranslation?:
     | "PATH_TRANSLATION_UNSPECIFIED"
     | "CONSTANT_ADDRESS"
@@ -1466,7 +1466,7 @@ export interface CommonLanguageSettings {
     | "PACKAGE_MANAGER"
     | (string & {})
   >;
-  /** Configuration for which RPCs should be generated in the GAPIC client. */
+  /** Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases. */
   selectiveGapicGeneration?: SelectiveGapicGeneration;
 }
 
@@ -1817,7 +1817,7 @@ export interface Service {
   usage?: Usage;
   /** Custom error configuration. */
   customError?: CustomError;
-  /** Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list disables the automatic generation of default endpoint variations (e.g., `{service}.clients6.google.com`, `content-{service}.googleapis.com`, and mTLS variants like `{service}.mtls.googleapis.com`). To retain these default variations, you are required to explicitly include your main service endpoint (e.g., `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.). */
+  /** Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. */
   endpoints?: Array<Endpoint>;
   /** Configuration for the service control plane. */
   control?: Control;

@@ -3269,11 +3269,12 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/provisionManagedNetwork",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/provision",
     }),
   );
 export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
@@ -3295,6 +3296,7 @@ export type ManagedNetworkProvisionsProvisionManagedNetworkOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
  */
 export const ManagedNetworkProvisionsProvisionManagedNetwork =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

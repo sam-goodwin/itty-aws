@@ -369,6 +369,8 @@ export interface Assignment {
   enableGeminiInBigquery?: boolean;
   /** Optional. The scheduling policy to use for jobs and queries of this assignee when running under the associated reservation. The scheduling policy controls how the reservation's resources are distributed. This overrides the default scheduling policy specified on the reservation. This feature is not yet generally available. */
   schedulingPolicy?: SchedulingPolicy;
+  /** Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are: * `principal://goog/subject/USER_EMAIL_ADDRESS` for users, * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts, * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities. */
+  principal?: string;
 }
 
 export const Assignment: Schema.Schema<Assignment> =
@@ -380,6 +382,7 @@ export const Assignment: Schema.Schema<Assignment> =
       state: Schema.optional(Schema.String),
       enableGeminiInBigquery: Schema.optional(Schema.Boolean),
       schedulingPolicy: Schema.optional(SchedulingPolicy),
+      principal: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Assignment" }) as any as Schema.Schema<Assignment>;
 

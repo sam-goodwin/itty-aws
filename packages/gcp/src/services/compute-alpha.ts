@@ -1428,7 +1428,7 @@ export const CustomerEncryptionKey: Schema.Schema<CustomerEncryptionKey> =
   }) as any as Schema.Schema<CustomerEncryptionKey>;
 
 export interface GuestOsFeature {
-  /** The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE For more information, see Enabling guest operating system features. */
+  /** The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE - CCA_CAPABLE For more information, see Enabling guest operating system features. */
   type?:
     | "BARE_METAL_LINUX_COMPATIBLE"
     | "FEATURE_TYPE_UNSPECIFIED"
@@ -1980,9 +1980,9 @@ export interface Snapshot {
   satisfiesPzi?: boolean;
   /** Output only. [Output only] ResourceStatus of the Snapshot resource */
   resourceStatus?: SnapshotResourceStatus;
-  /** Output only. [Output only] The snapshot group that this snapshot belongs to. */
+  /** Output only. [Output only] The snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
   snapshotGroupName?: string;
-  /** Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. */
+  /** Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
   snapshotGroupId?: string;
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: SnapshotParams;
@@ -3122,7 +3122,7 @@ export interface BulkInsertDiskResource {
   sourceConsistencyGroupPolicy?: string;
   /** The parameters for the instant snapshot group. */
   instantSnapshotGroupParameters?: InstantSnapshotGroupParameters;
-  /** The parameters for the snapshot group. */
+  /** The parameters for the snapshot group. The usage of snapshot group feature is restricted. */
   snapshotGroupParameters?: SnapshotGroupParameters;
 }
 
@@ -6043,6 +6043,7 @@ export interface ReservationAffinity {
   /** Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default),SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples. */
   consumeReservationType?:
     | "ANY_RESERVATION"
+    | "ANY_RESERVATION_THEN_FAIL"
     | "NO_RESERVATION"
     | "SPECIFIC_RESERVATION"
     | "SPECIFIC_THEN_ANY_RESERVATION"
@@ -10065,39 +10066,39 @@ export const InstanceGroupManagerAllInstancesConfig: Schema.Schema<InstanceGroup
   }) as any as Schema.Schema<InstanceGroupManagerAllInstancesConfig>;
 
 export interface InstanceGroupManagerActionsSummary {
-  /** Output only. [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions. */
+  /** Output only. The number of instances in the managed instance group that are running and have no scheduled actions. */
   none?: number;
-  /** Output only. [Output Only] The number of instances that the managed instance group is currently queuing. */
+  /** Output only. The number of instances that the managed instance group is currently queuing. */
   queuing?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated. */
   creating?: number;
-  /** Output only. [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly. */
+  /** Output only. The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly. */
   creatingWithoutRetries?: number;
-  /** Output only. [Output Only] The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly. */
+  /** Output only. The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly. */
   creatingAtomically?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation. */
+  /** Output only. The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation. */
   verifying?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template. */
   recreating?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted. */
   deleting?: number;
-  /** Output only. [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it. */
+  /** Output only. The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it. */
   abandoning?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted. */
   restarting?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted. */
   restartingInPlace?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance. */
+  /** Output only. The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance. */
   refreshing?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended. */
   suspending?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed. */
   resuming?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped. */
   stopping?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be started or are currently being started. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be started or are currently being started. */
   starting?: number;
-  /** [Output Only] The number of instances in the managed instance group that are scheduled to be adopted or are currently being adopted. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be adopted or are currently being adopted. */
   adopting?: number;
 }
 
@@ -10127,9 +10128,9 @@ export const InstanceGroupManagerActionsSummary: Schema.Schema<InstanceGroupMana
   }) as any as Schema.Schema<InstanceGroupManagerActionsSummary>;
 
 export interface InstanceGroupManagerStatusAllInstancesConfig {
-  /** Output only. [Output Only] A bit indicating whether this configuration has been applied to all managed instances in the group. */
+  /** Output only. A bit indicating whether this configuration has been applied to all managed instances in the group. */
   effective?: boolean;
-  /** Output only. [Output Only] Current all-instances configuration revision. This value is in RFC3339 text format. */
+  /** Output only. Current all-instances configuration revision. This value is in RFC3339 text format. */
   currentRevision?: string;
 }
 
@@ -10144,7 +10145,7 @@ export const InstanceGroupManagerStatusAllInstancesConfig: Schema.Schema<Instanc
   }) as any as Schema.Schema<InstanceGroupManagerStatusAllInstancesConfig>;
 
 export interface InstanceGroupManagerStatusVersionTarget {
-  /** Output only. [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified byversion field on Instance Group Manager. */
+  /** Output only. A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified byversion field on Instance Group Manager. */
   isReached?: boolean;
 }
 
@@ -10172,11 +10173,11 @@ export const InstanceGroupManagerStatusStatefulPerInstanceConfigs: Schema.Schema
   }) as any as Schema.Schema<InstanceGroupManagerStatusStatefulPerInstanceConfigs>;
 
 export interface InstanceGroupManagerStatusStateful {
-  /** Output only. [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config. */
+  /** Output only. A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config. */
   isStateful?: boolean;
-  /** Output only. [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. */
+  /** Output only. A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. */
   hasStatefulConfig?: boolean;
-  /** Output only. [Output Only] Status of per-instance configurations on the instances. */
+  /** Output only. Status of per-instance configurations on the instances. */
   perInstanceConfigs?: InstanceGroupManagerStatusStatefulPerInstanceConfigs;
 }
 
@@ -10194,9 +10195,9 @@ export const InstanceGroupManagerStatusStateful: Schema.Schema<InstanceGroupMana
   }) as any as Schema.Schema<InstanceGroupManagerStatusStateful>;
 
 export interface InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck {
-  /** Output only. [Output Only] Timestamp of the last progress check of bulk instance operation. Timestamp is in RFC3339 text format. */
+  /** Output only. Timestamp of the last progress check of bulk instance operation. Timestamp is in RFC3339 text format. */
   timestamp?: string;
-  /** Output only. [Output Only] Errors encountered during bulk instance operation. */
+  /** Output only. Errors encountered during bulk instance operation. */
   error?: {
     errors?: Array<{
       code?: string;
@@ -10246,9 +10247,9 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck: S
   }) as any as Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck>;
 
 export interface InstanceGroupManagerStatusBulkInstanceOperation {
-  /** Output only. [Output Only] Informs whether bulk instance operation is in progress. */
+  /** Output only. Informs whether bulk instance operation is in progress. */
   inProgress?: boolean;
-  /** Output only. [Output Only] Information from the last progress check of bulk instance operation. */
+  /** Output only. Information from the last progress check of bulk instance operation. */
   lastProgressCheck?: InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck;
 }
 
@@ -10265,9 +10266,9 @@ export const InstanceGroupManagerStatusBulkInstanceOperation: Schema.Schema<Inst
   }) as any as Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperation>;
 
 export interface InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails {
-  /** Output only. [Output Only] Timestamp is shown only if there is an error. The field has // RFC3339 // text format. */
+  /** Output only. Timestamp is shown only if there is an error. The field has // RFC3339 // text format. */
   timestamp?: string;
-  /** Output only. [Output Only] Encountered errors. */
+  /** Output only. Encountered errors. */
   error?: {
     errors?: Array<{
       code?: string;
@@ -10317,9 +10318,9 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }) as any as Schema.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails>;
 
 export interface InstanceGroupManagerStatusAcceleratorTopology {
-  /** Output only. [Output Only] Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
+  /** Output only. Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
   acceleratorTopology?: string;
-  /** Output only. [Output Only] The state of the accelerator topology. */
+  /** Output only. The state of the accelerator topology. */
   state?:
     | "ACTIVATING"
     | "ACTIVE"
@@ -10329,7 +10330,7 @@ export interface InstanceGroupManagerStatusAcceleratorTopology {
     | "INCOMPLETE"
     | "REACTIVATING"
     | (string & {});
-  /** Output only. [Output Only] The result of the latest accelerator topology state check. */
+  /** Output only. The result of the latest accelerator topology state check. */
   stateDetails?: InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails;
 }
 
@@ -10347,31 +10348,31 @@ export const InstanceGroupManagerStatusAcceleratorTopology: Schema.Schema<Instan
   }) as any as Schema.Schema<InstanceGroupManagerStatusAcceleratorTopology>;
 
 export interface InstanceGroupManagerStatusInstanceStatusSummary {
-  /** Output only. [Output Only] The number of instances that have not been created yet or have been deleted. Includes only instances that would be shown in the listManagedInstances method and not all instances that have been deleted in the lifetime of the MIG. Does not include FlexStart instances that are waiting for the resources availability, they are considered as 'pending'. */
+  /** Output only. The number of instances that have not been created yet or have been deleted. Includes only instances that would be shown in the listManagedInstances method and not all instances that have been deleted in the lifetime of the MIG. Does not include FlexStart instances that are waiting for the resources availability, they are considered as 'pending'. */
   nonExistent?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have PROVISIONING status. */
+  /** Output only. The number of instances in the managed instance group that have PROVISIONING status. */
   provisioning?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have STAGING status. */
+  /** Output only. The number of instances in the managed instance group that have STAGING status. */
   staging?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have RUNNING status. */
+  /** Output only. The number of instances in the managed instance group that have RUNNING status. */
   running?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have STOPPING status. */
+  /** Output only. The number of instances in the managed instance group that have STOPPING status. */
   stopping?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have STOPPED status. */
+  /** Output only. The number of instances in the managed instance group that have STOPPED status. */
   stopped?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have TERMINATED status. */
+  /** Output only. The number of instances in the managed instance group that have TERMINATED status. */
   terminated?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have SUSPENDING status. */
+  /** Output only. The number of instances in the managed instance group that have SUSPENDING status. */
   suspending?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have SUSPENDED status. */
+  /** Output only. The number of instances in the managed instance group that have SUSPENDED status. */
   suspended?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have REPAIRING status. */
+  /** Output only. The number of instances in the managed instance group that have REPAIRING status. */
   repairing?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have DEPROVISIONING status. */
+  /** Output only. The number of instances in the managed instance group that have DEPROVISIONING status. */
   deprovisioning?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have PENDING_STOP status. */
+  /** Output only. The number of instances in the managed instance group that have PENDING_STOP status. */
   pendingStop?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that have PENDING status, that is FlexStart instances that are waiting for resources. Instances that do not exist because of the other reasons are counted as 'non_existent'. */
+  /** Output only. The number of instances in the managed instance group that have PENDING status, that is FlexStart instances that are waiting for resources. Instances that do not exist because of the other reasons are counted as 'non_existent'. */
   pending?: number;
 }
 
@@ -10397,21 +10398,21 @@ export const InstanceGroupManagerStatusInstanceStatusSummary: Schema.Schema<Inst
   }) as any as Schema.Schema<InstanceGroupManagerStatusInstanceStatusSummary>;
 
 export interface InstanceGroupManagerStatus {
-  /** Output only. [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified. */
+  /** Output only. A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified. */
   isStable?: boolean;
-  /** Output only. [Output only] Status of all-instances configuration on the group. */
+  /** Output only. Status of all-instances configuration on the group. */
   allInstancesConfig?: InstanceGroupManagerStatusAllInstancesConfig;
-  /** Output only. [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager. */
+  /** Output only. A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager. */
   versionTarget?: InstanceGroupManagerStatusVersionTarget;
-  /** Output only. [Output Only] Stateful status of the given Instance Group Manager. */
+  /** Output only. Stateful status of the given Instance Group Manager. */
   stateful?: InstanceGroupManagerStatusStateful;
-  /** Output only. [Output Only] The URL of theAutoscaler that targets this instance group manager. */
+  /** Output only. The URL of theAutoscaler that targets this instance group manager. */
   autoscaler?: string;
-  /** Output only. [Output Only] The status of bulk instance operation. */
+  /** Output only. The status of bulk instance operation. */
   bulkInstanceOperation?: InstanceGroupManagerStatusBulkInstanceOperation;
-  /** Output only. [Output Only] The accelerator topology applied to this MIG. Currently only one accelerator topology is supported. */
+  /** Output only. The accelerator topology applied to this MIG. Currently only one accelerator topology is supported. */
   appliedAcceleratorTopologies?: Array<InstanceGroupManagerStatusAcceleratorTopology>;
-  /** Output only. [Output Only] The list of instance statuses and the number of instances in this managed instance group that have the status. Currently only shown for TPU MIGs */
+  /** Output only. The list of instance statuses and the number of instances in this managed instance group that have the status. Currently only shown for TPU MIGs */
   currentInstanceStatuses?: InstanceGroupManagerStatusInstanceStatusSummary;
 }
 
@@ -10800,17 +10801,17 @@ export const InstanceGroupManagerResourcePolicies: Schema.Schema<InstanceGroupMa
   }) as any as Schema.Schema<InstanceGroupManagerResourcePolicies>;
 
 export interface InstanceGroupManager {
-  /** Output only. [Output Only] The resource type, which is alwayscompute#instanceGroupManager for managed instance groups. */
+  /** Output only. The resource type, which is alwayscompute#instanceGroupManager for managed instance groups. */
   kind?: string;
-  /** Output only. [Output Only] A unique identifier for this resource type. The server generates this identifier. */
+  /** Output only. A unique identifier for this resource type. The server generates this identifier. */
   id?: string;
-  /** Output only. [Output Only] The creation timestamp for this managed instance group inRFC3339 text format. */
+  /** Output only. The creation timestamp for this managed instance group inRFC3339 text format. */
   creationTimestamp?: string;
   /** The name of the managed instance group. The name must be 1-63 characters long, and comply withRFC1035. */
   name?: string;
   /** An optional description of this resource. */
   description?: string;
-  /** Output only. [Output Only] The URL of azone where the managed instance group is located (for zonal resources). */
+  /** Output only. The URL of azone where the managed instance group is located (for zonal resources). */
   zone?: string;
   /** Output only. [Output Only] The URL of theregion where the managed instance group resides (for regional resources). */
   region?: string;
@@ -10822,7 +10823,7 @@ export interface InstanceGroupManager {
   versions?: Array<InstanceGroupManagerVersion>;
   /** Specifies configuration that overrides the instance template configuration for the group. */
   allInstancesConfig?: InstanceGroupManagerAllInstancesConfig;
-  /** Output only. [Output Only] The URL of the Instance Group resource. */
+  /** Output only. The URL of the Instance Group resource. */
   instanceGroup?: string;
   /** The URLs for all TargetPool resources to which instances in theinstanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group. */
   targetPools?: Array<string>;
@@ -10830,9 +10831,9 @@ export interface InstanceGroupManager {
   baseInstanceName?: string;
   /** Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager. */
   fingerprint?: string;
-  /** Output only. [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions. */
+  /** Output only. The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions. */
   currentActions?: InstanceGroupManagerActionsSummary;
-  /** Output only. [Output Only] The status of this managed instance group. */
+  /** Output only. The status of this managed instance group. */
   status?: InstanceGroupManagerStatus;
   /** The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number. */
   targetSize?: number;
@@ -10850,9 +10851,9 @@ export interface InstanceGroupManager {
   listManagedInstancesResults?: "PAGELESS" | "PAGINATED" | (string & {});
   /** Standby policy for stopped and suspended instances. */
   standbyPolicy?: InstanceGroupManagerStandbyPolicy;
-  /** Output only. [Output Only] The URL for this managed instance group. The server defines this URL. */
+  /** Output only. The URL for this managed instance group. The server defines this URL. */
   selfLink?: string;
-  /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
+  /** Output only. Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** The autohealing policy for this managed instance group. You can specify only one value. */
   autoHealingPolicies?: Array<InstanceGroupManagerAutoHealingPolicy>;
@@ -10870,9 +10871,9 @@ export interface InstanceGroupManager {
   instanceLifecyclePolicy?: InstanceGroupManagerInstanceLifecyclePolicy;
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
   params?: InstanceGroupManagerParams;
-  /** Output only. [Output Only] Reserved for future use. */
+  /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
-  /** Output only. [Output Only] Reserved for future use. */
+  /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Resource policies for this managed instance group. */
   resourcePolicies?: InstanceGroupManagerResourcePolicies;
@@ -11271,6 +11272,8 @@ export const InstanceGroupManagersRecreateInstancesRequest: Schema.Schema<Instan
 export interface InstanceGroupManagersResizeAdvancedRequest {
   /** The number of running instances that the managed instance group should maintain at any given time. The group automatically adds or removes instances to maintain the number of instances specified by this parameter. */
   targetSize?: number;
+  /** If this flag is enabled within a request to decrease a MIG's target size, then the MIG declines that request. */
+  scaleInProtection?: boolean;
   /** If this flag is true, the managed instance group attempts to create all instances initiated by this resize request only once. If there is an error during creation, the managed instance group does not retry create this instance, and we will decrease the targetSize of the request instead. If the flag is false, the group attempts to recreate each instance continuously until it succeeds. This flag matters only in the first attempt of creation of an instance. After an instance is successfully created while this flag is enabled, the instance behaves the same way as all the other instances created with a regular resize request. In particular, if a running instance dies unexpectedly at a later time and needs to be recreated, this mode does not affect the recreation behavior in that scenario. This flag is applicable only to the current resize request. It does not influence other resize requests in any way. You can see which instances is being creating in which mode by calling the get or listManagedInstances API. */
   noCreationRetries?: boolean;
 }
@@ -11279,6 +11282,7 @@ export const InstanceGroupManagersResizeAdvancedRequest: Schema.Schema<InstanceG
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       targetSize: Schema.optional(Schema.Number),
+      scaleInProtection: Schema.optional(Schema.Boolean),
       noCreationRetries: Schema.optional(Schema.Boolean),
     }),
   ).annotate({
@@ -12048,6 +12052,8 @@ export interface InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseA
     | "INACTIVE"
     | "INCOMPLETE"
     | (string & {});
+  /** Identifier of the accelerator topology assigned externally to differentiate who is the owner of the topology. This is set in ConfigureAcceleratorTopologies. If it is provided on activating the sub-slice it will have to be provided on deactivating as well. This identifier is cleared on successful deform of a sub-slice. */
+  externalId?: string;
   /** Reason why the topology state change failed */
   error?: {
     errors?: Array<{
@@ -12070,6 +12076,7 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccel
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       currentState: Schema.optional(Schema.String),
+      externalId: Schema.optional(Schema.String),
       error: Schema.optional(
         Schema.Struct({
           errors: Schema.optional(
@@ -12107,7 +12114,6 @@ export interface InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseA
     | "DEGRADED"
     | "HEALTHY"
     | "UNHEALTHY"
-    | "UNKNOWN"
     | (string & {});
   instancesHealth?: "ALL_HEALTHY" | "UNHEALTHY_OR_MISSING" | (string & {});
   acceleratorTopologyState?: InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState;
@@ -12157,6 +12163,27 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse: Sch
       "InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse",
   }) as any as Schema.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponse>;
 
+export interface InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration {
+  /** Identifier of the accelerator topology assigned externally to differentiate who is the owner of the topology. The format needs to conform to RFC1035 and be unique. The uniqueness is guaranteed by the requestor. If it is provided on activating the sub-slice it will have to be provided on deactivating as well. This identifier is cleared on successful deform of a sub-slice. */
+  externalId?: string;
+  action?:
+    | "ACCELERATOR_TOPOLOGY_ACTION_UNSPECIFIED"
+    | "ACTIVATE"
+    | "DEACTIVATE"
+    | (string & {});
+}
+
+export const InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration: Schema.Schema<InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      externalId: Schema.optional(Schema.String),
+      action: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier:
+      "InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration",
+  }) as any as Schema.Schema<InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration>;
+
 export interface InstanceGroupManagersConfigureAcceleratorTopologiesRequest {
   /** Map of accelerator topologies that should have their state changed to the specified value. The key is the hashed topology locus id. It can be obtained from the GetAvailableAcceleratorTopologies rpc. */
   acceleratorTopologyActions?: Record<
@@ -12166,6 +12193,11 @@ export interface InstanceGroupManagersConfigureAcceleratorTopologiesRequest {
     | "DEACTIVATE"
     | (string & {})
   >;
+  /** Map of accelerator topologies that should have their state changed to the specified configuration. The map key is the hashed topology locus id. It can be obtained from the GetAvailableAcceleratorTopologies rpc. */
+  acceleratorTopologyConfigurations?: Record<
+    string,
+    InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration
+  >;
 }
 
 export const InstanceGroupManagersConfigureAcceleratorTopologiesRequest: Schema.Schema<InstanceGroupManagersConfigureAcceleratorTopologiesRequest> =
@@ -12173,6 +12205,12 @@ export const InstanceGroupManagersConfigureAcceleratorTopologiesRequest: Schema.
     Schema.Struct({
       acceleratorTopologyActions: Schema.optional(
         Schema.Record(Schema.String, Schema.String),
+      ),
+      acceleratorTopologyConfigurations: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration,
+        ),
       ),
     }),
   ).annotate({
@@ -12230,7 +12268,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttempt: Schema.Schema<I
 export interface InstanceGroupManagerResizeRequestStatus {
   /** Output only. This field is deprecated, setting queueing policy is no longer supported. Constraints for the time when the instances start provisioning. Always exposed as absolute time. */
   queuingPolicy?: QueuingPolicy;
-  /** Output only. [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry. */
+  /** Output only. Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry. */
   error?: {
     errors?: Array<{
       code?: string;
@@ -12244,7 +12282,7 @@ export interface InstanceGroupManagerResizeRequestStatus {
       }>;
     }>;
   };
-  /** Output only. [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only. */
+  /** Output only. Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be stored in the "error" field only. */
   lastAttempt?: InstanceGroupManagerResizeRequestStatusLastAttempt;
 }
 
@@ -12284,19 +12322,19 @@ export const InstanceGroupManagerResizeRequestStatus: Schema.Schema<InstanceGrou
   }) as any as Schema.Schema<InstanceGroupManagerResizeRequestStatus>;
 
 export interface InstanceGroupManagerResizeRequest {
-  /** Output only. [Output Only] The resource type, which is alwayscompute#instanceGroupManagerResizeRequest for resize requests. */
+  /** Output only. The resource type, which is alwayscompute#instanceGroupManagerResizeRequest for resize requests. */
   kind?: string;
-  /** Output only. [Output Only] A unique identifier for this resource type. The server generates this identifier. */
+  /** Output only. A unique identifier for this resource type. The server generates this identifier. */
   id?: string;
-  /** Output only. [Output Only] The creation timestamp for this resize request inRFC3339 text format. */
+  /** Output only. The creation timestamp for this resize request inRFC3339 text format. */
   creationTimestamp?: string;
   /** The name of this resize request. The name must be 1-63 characters long, and comply withRFC1035. */
   name?: string;
   /** An optional description of this resource. */
   description?: string;
-  /** Output only. [Output Only] The URL of azone where the resize request is located. Populated only for zonal resize requests. */
+  /** Output only. The URL of a zone where the resize request is located. Populated only for zonal resize requests. */
   zone?: string;
-  /** Output only. [Output Only] The URL of aregion where the resize request is located. Populated only for regional resize requests. */
+  /** Output only. The URL of a region where the resize request is located. Populated only for regional resize requests. */
   region?: string;
   /** This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request. */
   count?: number;
@@ -12308,7 +12346,7 @@ export interface InstanceGroupManagerResizeRequest {
   requestedRunDuration?: Duration;
   /** This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible. */
   queuingPolicy?: QueuingPolicy;
-  /** Output only. [Output only] Current state of the request. */
+  /** Output only. Current state of the request. */
   state?:
     | "ACCEPTED"
     | "CANCELLED"
@@ -12319,11 +12357,11 @@ export interface InstanceGroupManagerResizeRequest {
     | "STATE_UNSPECIFIED"
     | "SUCCEEDED"
     | (string & {});
-  /** Output only. [Output only] Status of the request. */
+  /** Output only. Status of the request. */
   status?: InstanceGroupManagerResizeRequestStatus;
-  /** Output only. [Output Only] The URL for this resize request. The server defines this URL. */
+  /** Output only. The URL for this resize request. The server defines this URL. */
   selfLink?: string;
-  /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
+  /** Output only. Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
 }
 
@@ -12629,6 +12667,8 @@ export interface RegionInstanceGroupManagersResizeAdvancedRequest {
   targetSize?: number;
   /** If this flag is true, the managed instance group attempts to create all instances initiated by this resize request only once. If there is an error during creation, the managed instance group does not retry create this instance, and we will decrease the targetSize of the request instead. If the flag is false, the group attempts to recreate each instance continuously until it succeeds. This flag matters only in the first attempt of creation of an instance. After an instance is successfully created while this flag is enabled, the instance behaves the same way as all the other instances created with a regular resize request. In particular, if a running instance dies unexpectedly at a later time and needs to be recreated, this mode does not affect the recreation behavior in that scenario. This flag is applicable only to the current resize request. It does not influence other resize requests in any way. You can see which instances ar being created in which mode by calling the get or listManagedInstances API. */
   noCreationRetries?: boolean;
+  /** If this flag is enabled within a request to decrease a MIG's target size, then the MIG declines that request. */
+  scaleInProtection?: boolean;
 }
 
 export const RegionInstanceGroupManagersResizeAdvancedRequest: Schema.Schema<RegionInstanceGroupManagersResizeAdvancedRequest> =
@@ -12636,6 +12676,7 @@ export const RegionInstanceGroupManagersResizeAdvancedRequest: Schema.Schema<Reg
     Schema.Struct({
       targetSize: Schema.optional(Schema.Number),
       noCreationRetries: Schema.optional(Schema.Boolean),
+      scaleInProtection: Schema.optional(Schema.Boolean),
     }),
   ).annotate({
     identifier: "RegionInstanceGroupManagersResizeAdvancedRequest",
@@ -13110,6 +13151,8 @@ export interface AutoscalingPolicy {
   scaleInControl?: AutoscalingPolicyScaleInControl;
   /** The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process. */
   coolDownPeriodSec?: number;
+  /** The number of seconds that autoscaler waits for load stabilization before making scale-in decisions. This is referred to as the [stabilization period](/compute/docs/autoscaler#stabilization_period). This might appear as a delay in scaling in but it is an important mechanism for your application to not have fluctuating size due to short term load fluctuations. The default stabilization period is 600 seconds. */
+  stabilizationPeriodSec?: number;
   /** Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group. */
   cpuUtilization?: AutoscalingPolicyCpuUtilization;
   /** Configuration parameters of autoscaling based on a custom metric. */
@@ -13130,6 +13173,7 @@ export const AutoscalingPolicy: Schema.Schema<AutoscalingPolicy> =
       scaleDownControl: Schema.optional(AutoscalingPolicyScaleDownControl),
       scaleInControl: Schema.optional(AutoscalingPolicyScaleInControl),
       coolDownPeriodSec: Schema.optional(Schema.Number),
+      stabilizationPeriodSec: Schema.optional(Schema.Number),
       cpuUtilization: Schema.optional(AutoscalingPolicyCpuUtilization),
       customMetricUtilizations: Schema.optional(
         Schema.Array(AutoscalingPolicyCustomMetricUtilization),
@@ -15455,7 +15499,7 @@ export interface BackendService {
   logConfig?: BackendServiceLogConfig;
   /** This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. */
   securitySettings?: SecuritySettings;
-  /** The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. - WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using weights computed from Backend reported Custom Metrics. If set, the Backend Service responses are expected to contain non-standard HTTP response header field Endpoint-Load-Metrics. The reported metrics to use for computing the weights are specified via thecustomMetrics field. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not configured—that is, if session affinity remains at the default value of NONE—then the default value for localityLbPolicy is ROUND_ROBIN. If session affinity is set to a value other than NONE, then the default value for localityLbPolicy isMAGLEV. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. localityLbPolicy cannot be specified with haPolicy. */
+  /** The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. - WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using weights computed from Backend reported Custom Metrics. If set, the Backend Service responses are expected to contain non-standard HTTP response header field Endpoint-Load-Metrics. The reported metrics to use for computing the weights are specified via thecustomMetrics field. This field is applicable to either: - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not configured—that is, if session affinity remains at the default value of NONE—then the default value for localityLbPolicy is ROUND_ROBIN. If session affinity is set to a value other than NONE, then the default value for localityLbPolicy isMAGLEV. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. localityLbPolicy cannot be specified with haPolicy. */
   localityLbPolicy?:
     | "INVALID_LB_POLICY"
     | "LEAST_REQUEST"
@@ -15468,10 +15512,10 @@ export interface BackendService {
     | "WEIGHTED_MAGLEV"
     | "WEIGHTED_ROUND_ROBIN"
     | (string & {});
-  /** Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable whenlocalityLbPolicy is set to MAGLEV orRING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. */
+  /** Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable whenlocalityLbPolicy is set to MAGLEV orRING_HASH. This field is applicable to either: - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. */
   consistentHash?: ConsistentHashLoadBalancerSettings;
   circuitBreakers?: CircuitBreakers;
-  /** Settings controlling the ejection of unhealthy backend endpoints from the load balancing pool of each individual proxy instance that processes the traffic for the given backend service. If not set, this feature is considered disabled. Results of the outlier detection algorithm (ejection of endpoints from the load balancing pool and returning them back to the pool) are executed independently by each proxy instance of the load balancer. In most cases, more than one proxy instance handles the traffic received by a backend service. Thus, it is possible that an unhealthy endpoint is detected and ejected by only some of the proxies, and while this happens, other proxies may continue to send requests to the same unhealthy endpoint until they detect and eject the unhealthy endpoint. Applicable backend endpoints can be: - VM instances in an Instance Group - Endpoints in a Zonal NEG (GCE_VM_IP, GCE_VM_IP_PORT) - Endpoints in a Hybrid Connectivity NEG (NON_GCP_PRIVATE_IP_PORT) - Serverless NEGs, that resolve to Cloud Run, App Engine, or Cloud Functions Services - Private Service Connect NEGs, that resolve to Google-managed regional API endpoints or managed services published using Private Service Connect Applicable backend service types can be: - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED. - A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not supported for Serverless NEGs. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. */
+  /** Settings controlling the ejection of unhealthy backend endpoints from the load balancing pool of each individual proxy instance that processes the traffic for the given backend service. If not set, this feature is considered disabled. Results of the outlier detection algorithm (ejection of endpoints from the load balancing pool and returning them back to the pool) are executed independently by each proxy instance of the load balancer. In most cases, more than one proxy instance handles the traffic received by a backend service. Thus, it is possible that an unhealthy endpoint is detected and ejected by only some of the proxies, and while this happens, other proxies may continue to send requests to the same unhealthy endpoint until they detect and eject the unhealthy endpoint. Applicable backend endpoints can be: - VM instances in an Instance Group - Endpoints in a Zonal NEG (GCE_VM_IP, GCE_VM_IP_PORT) - Endpoints in a Hybrid Connectivity NEG (NON_GCP_PRIVATE_IP_PORT) - Serverless NEGs, that resolve to Cloud Run, App Engine, or Cloud Functions Services - Private Service Connect NEGs, that resolve to Google-managed regional API endpoints or managed services published using Private Service Connect Applicable backend service types can be: - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED. - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not supported for Serverless NEGs. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. */
   outlierDetection?: OutlierDetection;
   /** The URL of the network to which this backend service belongs. This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled. This field can only be specified when the load balancing scheme is set toINTERNAL, or when the load balancing scheme is set toEXTERNAL and haPolicy fastIpMove is enabled. */
   network?: string;
@@ -15497,11 +15541,6 @@ export interface BackendService {
     | (string & {});
   /** Determines the fraction of requests that should be processed by the Global external Application Load Balancer. The value of this field must be in the range [0, 100]. Session affinity options will slightly affect this routing behavior, for more details, see:Session Affinity. This value can only be set if the loadBalancingScheme in the BackendService is set to EXTERNAL (when using the classic Application Load Balancer) and the migration state is TEST_BY_PERCENTAGE. */
   externalManagedMigrationTestingPercentage?: number;
-  /** The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK orREGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used. */
-  vpcNetworkScope?:
-    | "GLOBAL_VPC_NETWORK"
-    | "REGIONAL_VPC_NETWORK"
-    | (string & {});
   /** Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). */
   ipAddressSelectionPolicy?:
     | "IPV4_ONLY"
@@ -15583,7 +15622,6 @@ export const BackendService: Schema.Schema<BackendService> =
       ),
       externalManagedMigrationState: Schema.optional(Schema.String),
       externalManagedMigrationTestingPercentage: Schema.optional(Schema.Number),
-      vpcNetworkScope: Schema.optional(Schema.String),
       ipAddressSelectionPolicy: Schema.optional(Schema.String),
       metadatas: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       haPolicy: Schema.optional(BackendServiceHAPolicy),
@@ -16599,6 +16637,8 @@ export const CapacityAdviceRequestInstancePropertiesScheduling: Schema.Schema<Ca
 export interface CapacityAdviceRequestInstanceProperties {
   /** Specifies the scheduling options. */
   scheduling?: CapacityAdviceRequestInstancePropertiesScheduling;
+  /** Input only. Specifies the topology required to create a partition for VMs that have interconnected GPUs or TPUs. Example values: 2x2 for ct5l-hightpu-4t. */
+  acceleratorTopology?: string;
 }
 
 export const CapacityAdviceRequestInstanceProperties: Schema.Schema<CapacityAdviceRequestInstanceProperties> =
@@ -16607,20 +16647,46 @@ export const CapacityAdviceRequestInstanceProperties: Schema.Schema<CapacityAdvi
       scheduling: Schema.optional(
         CapacityAdviceRequestInstancePropertiesScheduling,
       ),
+      acceleratorTopology: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "CapacityAdviceRequestInstanceProperties",
   }) as any as Schema.Schema<CapacityAdviceRequestInstanceProperties>;
 
+export interface CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk {
+  /** Specifies the type of the disk. This field must be set to SCRATCH. */
+  type?: "DISK_TYPE_UNSPECIFIED" | "SCRATCH" | (string & {});
+}
+
+export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk: Schema.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier:
+      "CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk",
+  }) as any as Schema.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
+
 export interface CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection {
   /** Full machine-type names, e.g. "n1-standard-16". */
   machineTypes?: Array<string>;
+  /** Accelerators configuration. */
+  guestAccelerators?: Array<AcceleratorConfig>;
+  /** Local SSDs. */
+  disks?: Array<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
 }
 
 export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection: Schema.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       machineTypes: Schema.optional(Schema.Array(Schema.String)),
+      guestAccelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
+      disks: Schema.optional(
+        Schema.Array(
+          CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk,
+        ),
+      ),
     }),
   ).annotate({
     identifier:
@@ -16799,6 +16865,164 @@ export const CapacityAdviceResponse: Schema.Schema<CapacityAdviceResponse> =
     identifier: "CapacityAdviceResponse",
   }) as any as Schema.Schema<CapacityAdviceResponse>;
 
+export interface CapacityHistoryRequestInstancePropertiesScheduling {
+  /** The provisioning model to get capacity history for. This field must be set to SPOT. For more information, see Compute Engine instances provisioning models. */
+  provisioningModel?:
+    | "FLEX_START"
+    | "RESERVATION_BOUND"
+    | "SPOT"
+    | "STANDARD"
+    | (string & {});
+}
+
+export const CapacityHistoryRequestInstancePropertiesScheduling: Schema.Schema<CapacityHistoryRequestInstancePropertiesScheduling> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      provisioningModel: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryRequestInstancePropertiesScheduling",
+  }) as any as Schema.Schema<CapacityHistoryRequestInstancePropertiesScheduling>;
+
+export interface CapacityHistoryRequestInstanceProperties {
+  /** The machine type for the VM, such as `n2-standard-4`. */
+  machineType?: string;
+  scheduling?: CapacityHistoryRequestInstancePropertiesScheduling;
+}
+
+export const CapacityHistoryRequestInstanceProperties: Schema.Schema<CapacityHistoryRequestInstanceProperties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      machineType: Schema.optional(Schema.String),
+      scheduling: Schema.optional(
+        CapacityHistoryRequestInstancePropertiesScheduling,
+      ),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryRequestInstanceProperties",
+  }) as any as Schema.Schema<CapacityHistoryRequestInstanceProperties>;
+
+export interface CapacityHistoryRequestLocationPolicy {
+  /** The region or zone to get capacity history for. It can be a partial or full URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone - projects/project/zones/zone - zones/zone This field is optional. */
+  location?: string;
+}
+
+export const CapacityHistoryRequestLocationPolicy: Schema.Schema<CapacityHistoryRequestLocationPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      location: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryRequestLocationPolicy",
+  }) as any as Schema.Schema<CapacityHistoryRequestLocationPolicy>;
+
+export interface CapacityHistoryRequest {
+  instanceProperties?: CapacityHistoryRequestInstanceProperties;
+  locationPolicy?: CapacityHistoryRequestLocationPolicy;
+  types?: Array<
+    "HISTORY_TYPE_UNSPECIFIED" | "PREEMPTION" | "PRICE" | (string & {})
+  >;
+}
+
+export const CapacityHistoryRequest: Schema.Schema<CapacityHistoryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      instanceProperties: Schema.optional(
+        CapacityHistoryRequestInstanceProperties,
+      ),
+      locationPolicy: Schema.optional(CapacityHistoryRequestLocationPolicy),
+      types: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryRequest",
+  }) as any as Schema.Schema<CapacityHistoryRequest>;
+
+export interface Interval {
+  /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
+  startTime?: string;
+  /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
+  endTime?: string;
+}
+
+export const Interval: Schema.Schema<Interval> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      startTime: Schema.optional(Schema.String),
+      endTime: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+
+export interface CapacityHistoryResponsePreemptionRecord {
+  interval?: Interval;
+  preemptionRate?: number;
+}
+
+export const CapacityHistoryResponsePreemptionRecord: Schema.Schema<CapacityHistoryResponsePreemptionRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      interval: Schema.optional(Interval),
+      preemptionRate: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryResponsePreemptionRecord",
+  }) as any as Schema.Schema<CapacityHistoryResponsePreemptionRecord>;
+
+export interface Money {
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+}
+
+export const Money: Schema.Schema<Money> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      currencyCode: Schema.optional(Schema.String),
+      units: Schema.optional(Schema.String),
+      nanos: Schema.optional(Schema.Number),
+    }),
+  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+
+export interface CapacityHistoryResponsePriceRecord {
+  interval?: Interval;
+  listPrice?: Money;
+}
+
+export const CapacityHistoryResponsePriceRecord: Schema.Schema<CapacityHistoryResponsePriceRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      interval: Schema.optional(Interval),
+      listPrice: Schema.optional(Money),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryResponsePriceRecord",
+  }) as any as Schema.Schema<CapacityHistoryResponsePriceRecord>;
+
+export interface CapacityHistoryResponse {
+  machineType?: string;
+  location?: string;
+  preemptionHistory?: Array<CapacityHistoryResponsePreemptionRecord>;
+  priceHistory?: Array<CapacityHistoryResponsePriceRecord>;
+}
+
+export const CapacityHistoryResponse: Schema.Schema<CapacityHistoryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      machineType: Schema.optional(Schema.String),
+      location: Schema.optional(Schema.String),
+      preemptionHistory: Schema.optional(
+        Schema.Array(CapacityHistoryResponsePreemptionRecord),
+      ),
+      priceHistory: Schema.optional(
+        Schema.Array(CapacityHistoryResponsePriceRecord),
+      ),
+    }),
+  ).annotate({
+    identifier: "CapacityHistoryResponse",
+  }) as any as Schema.Schema<CapacityHistoryResponse>;
+
 export interface ResourceCommitment {
   /** The type of hardware resource that you want to specify. You can specify any of the following values: - VCPU - MEMORY - LOCAL_SSD - ACCELERATOR Specify as a separate entry in the list for each individual resource type. */
   type?:
@@ -16844,24 +17068,6 @@ export const LicenseResourceCommitment: Schema.Schema<LicenseResourceCommitment>
   ).annotate({
     identifier: "LicenseResourceCommitment",
   }) as any as Schema.Schema<LicenseResourceCommitment>;
-
-export interface Money {
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-}
-
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
 
 export interface CommitmentResourceStatusCancellationInformation {
   /** Output only. [Output Only] An optional, cancellation fee. */
@@ -16997,6 +17203,7 @@ export interface Commitment {
     | "GENERAL_PURPOSE_T2D"
     | "GRAPHICS_OPTIMIZED"
     | "GRAPHICS_OPTIMIZED_G4"
+    | "GRAPHICS_OPTIMIZED_G4_VGPU"
     | "MEMORY_OPTIMIZED"
     | "MEMORY_OPTIMIZED_M3"
     | "MEMORY_OPTIMIZED_M4"
@@ -21651,6 +21858,7 @@ export interface ForwardingRule {
   pscConnectionId?: string;
   pscConnectionStatus?:
     | "ACCEPTED"
+    | "ACCEPTED_LIMITED_CAPACITY"
     | "CLOSED"
     | "NEEDS_ATTENTION"
     | "PENDING"
@@ -24026,6 +24234,192 @@ export const HealthSourceHealth: Schema.Schema<HealthSourceHealth> =
   ).annotate({
     identifier: "HealthSourceHealth",
   }) as any as Schema.Schema<HealthSourceHealth>;
+
+export interface HostPhysicalTopology {
+  /** The cluster name of the reservation sub-block. */
+  cluster?: string;
+  /** The unique identifier of the capacity block within the cluster. */
+  block?: string;
+  /** The unique identifier of the capacity sub-block within the capacity block. */
+  subBlock?: string;
+  /** The unique identifier of the capacity host within the capacity sub-block. */
+  host?: string;
+}
+
+export const HostPhysicalTopology: Schema.Schema<HostPhysicalTopology> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cluster: Schema.optional(Schema.String),
+      block: Schema.optional(Schema.String),
+      subBlock: Schema.optional(Schema.String),
+      host: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "HostPhysicalTopology",
+  }) as any as Schema.Schema<HostPhysicalTopology>;
+
+export interface HostStatus {
+  /** Output only. The physical topology of the reservation sub-block, if present */
+  physicalTopology?: HostPhysicalTopology;
+  /** Output only. The URIs of the instances currently running on this host. */
+  runningInstances?: Array<string>;
+}
+
+export const HostStatus: Schema.Schema<HostStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      physicalTopology: Schema.optional(HostPhysicalTopology),
+      runningInstances: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({ identifier: "HostStatus" }) as any as Schema.Schema<HostStatus>;
+
+export interface Host {
+  /** Output only. The type of resource. Alwayscompute#host for hosts. */
+  kind?: string;
+  /** Output only. The unique identifier for this resource. This identifier is defined by the server. */
+  id?: string;
+  /** Output only. The creation timestamp, formatted asRFC3339 text. */
+  creationTimestamp?: string;
+  /** Output only. The name of the host. */
+  name?: string;
+  /** Output only. The zone in which the host resides. */
+  zone?: string;
+  /** Output only. The self link of the host. */
+  selfLink?: string;
+  /** Output only. The self link with id of the host. */
+  selfLinkWithId?: string;
+  /** Output only. All aliases for this resource. e.g. projects/123/zones/us-centra1-a/reservation/r1/reservationBlock/b1/hosts/h1 */
+  aliasLinks?: Array<string>;
+  /** An optional description of this resource. */
+  description?: string;
+  /** Output only. The state of the host. */
+  state?:
+    | "ACTIVE"
+    | "CREATING"
+    | "DELETING"
+    | "STATE_UNSPECIFIED"
+    | "UNAVAILABLE"
+    | (string & {});
+  /** Output only. The status of the host */
+  status?: HostStatus;
+}
+
+export const Host: Schema.Schema<Host> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      creationTimestamp: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      zone: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      selfLinkWithId: Schema.optional(Schema.String),
+      aliasLinks: Schema.optional(Schema.Array(Schema.String)),
+      description: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+      status: Schema.optional(HostStatus),
+    }),
+  ).annotate({ identifier: "Host" }) as any as Schema.Schema<Host>;
+
+export interface HostsListResponse {
+  /** The type of resource. Always compute#host for a list of hosts. */
+  kind?: string;
+  /** The unique identifier for the resource; defined by the server. */
+  id?: string;
+  /** A list of host resources. */
+  items?: Array<Host>;
+  /** This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
+  nextPageToken?: string;
+  /** The server-defined URL for this resource. */
+  selfLink?: string;
+  /** An informational warning message. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+  etag?: string;
+  /** Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
+  unreachables?: Array<string>;
+}
+
+export const HostsListResponse: Schema.Schema<HostsListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      items: Schema.optional(Schema.Array(Host)),
+      nextPageToken: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+      unreachables: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "HostsListResponse",
+  }) as any as Schema.Schema<HostsListResponse>;
+
+export interface HostsGetVersionRequest {
+  /** The SBOM selection to return. Duplicate values in the list will be ignored. */
+  sbomSelections?: Array<
+    | "SBOM_SELECTION_CURRENT"
+    | "SBOM_SELECTION_TARGET"
+    | "SBOM_SELECTION_UNSPECIFIED"
+    | (string & {})
+  >;
+}
+
+export const HostsGetVersionRequest: Schema.Schema<HostsGetVersionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sbomSelections: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "HostsGetVersionRequest",
+  }) as any as Schema.Schema<HostsGetVersionRequest>;
 
 export interface HttpHealthCheck {
   /** Output only. [Output Only] Type of the resource. Alwayscompute#httpHealthCheck for HTTP health checks. */
@@ -27486,6 +27880,7 @@ export interface NetworkEndpointGroupPscData {
   /** Output only. [Output Only] The connection status of the PSC Forwarding Rule. */
   pscConnectionStatus?:
     | "ACCEPTED"
+    | "ACCEPTED_LIMITED_CAPACITY"
     | "CLOSED"
     | "NEEDS_ATTENTION"
     | "PENDING"
@@ -31434,6 +31829,14 @@ export interface PublicAdvertisedPrefix {
   fingerprint?: string;
   /** Output only. [Output Only] The version of BYOIP API. */
   byoipApiVersion?: "V1" | "V2" | (string & {});
+  /** Network tier to be used for this prefix. All child delegated prefixes will inherit this field. If this field is not specified, it defaults to the network tier of the project that the PublicAdvertisedPrefix belongs to. */
+  networkTier?:
+    | "FIXED_STANDARD"
+    | "PREMIUM"
+    | "SELECT"
+    | "STANDARD"
+    | "STANDARD_OVERRIDES_FIXED_STANDARD"
+    | (string & {});
   /** The internet access type for IPv6 Public Advertised Prefixes. */
   ipv6AccessType?: "EXTERNAL" | "INTERNAL" | (string & {});
 }
@@ -31458,6 +31861,7 @@ export const PublicAdvertisedPrefix: Schema.Schema<PublicAdvertisedPrefix> =
       ),
       fingerprint: Schema.optional(Schema.String),
       byoipApiVersion: Schema.optional(Schema.String),
+      networkTier: Schema.optional(Schema.String),
       ipv6AccessType: Schema.optional(Schema.String),
     }),
   ).annotate({
@@ -31644,6 +32048,14 @@ export interface PublicDelegatedPrefix {
   allocatablePrefixLength?: number;
   /** Output only. [Output Only] The version of BYOIP API. */
   byoipApiVersion?: "V1" | "V2" | (string & {});
+  /** Network tier of the public delegated prefix. If populated, it must match the network tier of the parent public advertised prefix. If not populated, it defaults to the network tier of the parent public advertised prefix. */
+  networkTier?:
+    | "FIXED_STANDARD"
+    | "PREMIUM"
+    | "SELECT"
+    | "STANDARD"
+    | "STANDARD_OVERRIDES_FIXED_STANDARD"
+    | (string & {});
   /** Output only. [Output Only] The internet access type for IPv6 Public Delegated Prefixes. Inherited from parent prefix. */
   ipv6AccessType?: "EXTERNAL" | "INTERNAL" | (string & {});
   /** The purpose of the public delegated prefix. This field can only be set for the top-level global public delegated prefix. It is an output-only field for the sub-delegates that inherit the value from the top-level global public delegated prefix. Once the value is set, it cannot be changed. The field cannot be set for regional public delegated prefixes. The supported values are: - APPLICATION_AND_PROXY_LOAD_BALANCERS: The global public delegated prefix can only be used by Global External Application and Proxy Load Balancers to allocate addresses for forwarding rules. This is the default value. - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0: The global public delegated prefix can only be used by Global External Passthrough Network Load Balancers to allocate Availability Group 0 addresses for forwarding rules. - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1: The global public delegated prefix can only be used by Global External Passthrough Network Load Balancers to allocate Availability Group 1 addresses for forwarding rules. */
@@ -31678,6 +32090,7 @@ export const PublicDelegatedPrefix: Schema.Schema<PublicDelegatedPrefix> =
       mode: Schema.optional(Schema.String),
       allocatablePrefixLength: Schema.optional(Schema.Number),
       byoipApiVersion: Schema.optional(Schema.String),
+      networkTier: Schema.optional(Schema.String),
       ipv6AccessType: Schema.optional(Schema.String),
       purpose: Schema.optional(Schema.String),
       enableEnhancedIpv4Allocation: Schema.optional(Schema.Boolean),
@@ -32085,6 +32498,9 @@ export interface SubnetworkSecondaryRange {
   ipCidrRange?: string;
   /** The URL of the reserved internal range. Only IPv4 is supported. */
   reservedInternalRange?: string;
+  ipVersion?: "IPV4" | "IPV6" | "IP_VERSION_UNSPECIFIED" | (string & {});
+  /** Reference to a Public Delegated Prefix (PDP) for BYOIP. This field should be specified for configuring BYOGUA internal IPv6 secondary range. When specified along with the ip_cidr_range, the ip_cidr_range must lie within the PDP referenced by the `ipCollection` field. When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field. */
+  ipCollection?: string;
 }
 
 export const SubnetworkSecondaryRange: Schema.Schema<SubnetworkSecondaryRange> =
@@ -32093,6 +32509,8 @@ export const SubnetworkSecondaryRange: Schema.Schema<SubnetworkSecondaryRange> =
       rangeName: Schema.optional(Schema.String),
       ipCidrRange: Schema.optional(Schema.String),
       reservedInternalRange: Schema.optional(Schema.String),
+      ipVersion: Schema.optional(Schema.String),
+      ipCollection: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "SubnetworkSecondaryRange",
@@ -35106,6 +35524,10 @@ export interface Rollout {
   completionTime?: string;
   /** Output only. The timestamp at which the Rollout was cancelled. */
   cancellationTime?: string;
+  /** Output only. The timestamp at which the Rollout was paused. */
+  pauseTime?: string;
+  /** Output only. The timestamp at which the Rollout was resumed. */
+  resumeTime?: string;
 }
 
 export const Rollout: Schema.Schema<Rollout> =
@@ -35126,6 +35548,8 @@ export const Rollout: Schema.Schema<Rollout> =
       waveDetails: Schema.optional(Schema.Array(RolloutWaveDetails)),
       completionTime: Schema.optional(Schema.String),
       cancellationTime: Schema.optional(Schema.String),
+      pauseTime: Schema.optional(Schema.String),
+      resumeTime: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Rollout" }) as any as Schema.Schema<Rollout>;
 
@@ -37516,6 +37940,7 @@ export interface ServiceAttachmentConnectedEndpoint {
   /** The status of a connected endpoint to this service attachment. */
   status?:
     | "ACCEPTED"
+    | "ACCEPTED_LIMITED_CAPACITY"
     | "CLOSED"
     | "NEEDS_ATTENTION"
     | "PENDING"
@@ -37647,6 +38072,8 @@ export interface ServiceAttachment {
   propagatedConnectionLimit?: number;
   /** Metadata of the service attachment. */
   metadata?: Record<string, string>;
+  /** The number of NAT IP addresses to be allocated per connected endpoint. If not specified, the default value is 1. */
+  natIpsPerEndpoint?: number;
 }
 
 export const ServiceAttachment: Schema.Schema<ServiceAttachment> =
@@ -37678,6 +38105,7 @@ export const ServiceAttachment: Schema.Schema<ServiceAttachment> =
       tunnelingConfig: Schema.optional(ServiceAttachmentTunnelingConfig),
       propagatedConnectionLimit: Schema.optional(Schema.Number),
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      natIpsPerEndpoint: Schema.optional(Schema.Number),
     }),
   ).annotate({
     identifier: "ServiceAttachment",
@@ -39847,9 +40275,9 @@ export interface RecoverableSnapshotOriginalSnapshot {
   region?: string;
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
-  /** Output only. [Output only] The snapshot group that this snapshot belongs to. */
+  /** Output only. [Output only] The snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
   snapshotGroupName?: string;
-  /** Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. */
+  /** Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
   snapshotGroupId?: string;
 }
 
@@ -42570,11 +42998,11 @@ export interface CachePolicyCacheKeyPolicy {
   includeProtocol?: boolean;
   /** If true, requests to different hosts will be cached separately. Note: This setting is only applicable to routes that use a Backend Service. It does not affect requests served by a Backend Bucket, as the host is never included in a Backend Bucket's cache key. Attempting to set it on a route that points exclusively to Backend Buckets will result in a configuration error. */
   includeHost?: boolean;
-  /** If true, include query string parameters in the cache key according to included_query_parameters and excluded_query_parameters. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely. Note: This field applies to routes that use backend services. Attempting to set it on a route that points exclusively to Backend Buckets will result in a configuration error. For routes that point to a Backend Bucket, use includedQueryParameters to define which parameters should be a part of the cache key. */
+  /** If true, include query string parameters in the cache key according to `includedQueryParameters` and `excludedQueryParameters`. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely. Note: This field applies to routes that use backend services. Attempting to set it on a route that points exclusively to Backend Buckets will result in a configuration error. For routes that point to a Backend Bucket, use `includedQueryParameters` to define which parameters should be part of the cache key. */
   includeQueryString?: boolean;
-  /** Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify included_query_parameters or excluded_query_parameters, not both. '&' and '=' will be percent encoded and not treated as delimiters. */
+  /** Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify `includedQueryParameters` or `excludedQueryParameters`, not both. '&' and '=' will be percent encoded and not treated as delimiters. */
   includedQueryParameters?: Array<string>;
-  /** Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify excluded_query_parameters or included_query_parameters, not both. '&' and '=' will be percent encoded and not treated as delimiters. Note: This field applies to routes that use backend services. Attempting to set it on a route that points exclusively to Backend Buckets will result in a configuration error. For routes that point to a Backend Bucket, use includedQueryParameters to define which parameters should be a part of the cache key. */
+  /** Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify `excludedQueryParameters` or `includedQueryParameters`, not both. '&' and '=' will be percent encoded and not treated as delimiters. Note: This field applies to routes that use backend services. Attempting to set it on a route that points exclusively to Backend Buckets will result in a configuration error. For routes that point to a Backend Bucket, use `includedQueryParameters` to define which parameters should be part of the cache key. */
   excludedQueryParameters?: Array<string>;
   /** Allows HTTP request headers (by name) to be used in the cache key. */
   includedHeaderNames?: Array<string>;
@@ -42615,27 +43043,27 @@ export const CachePolicyNegativeCachingPolicy: Schema.Schema<CachePolicyNegative
   }) as any as Schema.Schema<CachePolicyNegativeCachingPolicy>;
 
 export interface CachePolicy {
-  /** The CacheKeyPolicy for this CachePolicy. */
+  /** The cache key configuration. If not specified, the default behavior depends on the backend type: for Backend Services, the complete request URI is used; for Backend Buckets, the request URI is used without the protocol or host, and only query parameters known to Cloud Storage are included. */
   cacheKeyPolicy?: CachePolicyCacheKeyPolicy;
-  /** If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin. */
+  /** If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin. If not specified, Cloud CDN applies request coalescing by default. */
   requestCoalescing?: boolean;
-  /** Specifies the cache setting for all responses from this route. If not specified, the default value is CACHE_ALL_STATIC. */
+  /** Specifies the cache setting for all responses from this route. If not specified, Cloud CDN uses `CACHE_ALL_STATIC` mode. */
   cacheMode?:
     | "CACHE_ALL_STATIC"
     | "FORCE_CACHE_ALL"
     | "USE_ORIGIN_HEADERS"
     | (string & {});
-  /** Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-maxage). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year). Infrequently accessed objects may be evicted from the cache before the defined TTL. */
+  /** Specifies the default TTL for cached content for responses that do not have an existing valid TTL (max-age or s-maxage). Setting a TTL of "0" means "always revalidate". The value of `defaultTtl` cannot be set to a value greater than that of `maxTtl`. When the `cacheMode` is set to `FORCE_CACHE_ALL`, the `defaultTtl` will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year). Infrequently accessed objects may be evicted from the cache before the defined TTL. If not specified, Cloud CDN uses 3600s (1 hour) for `CACHE_ALL_STATIC` and `FORCE_CACHE_ALL` modes. Cannot be specified when `cacheMode` is `USE_ORIGIN_HEADERS`. */
   defaultTtl?: Duration;
-  /** Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year). Infrequently accessed objects may be evicted from the cache before the defined TTL. */
+  /** Specifies the maximum allowed TTL for cached content. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than `maxTtl` seconds in the future will be capped at the value of `maxTtl`, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year). Infrequently accessed objects may be evicted from the cache before the defined TTL. If not specified, Cloud CDN uses 86400s (1 day) for `CACHE_ALL_STATIC` mode. Can be specified only for `CACHE_ALL_STATIC` cache mode. */
   maxTtl?: Duration;
-  /** Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year). */
+  /** Specifies a separate client (e.g. browser client) maximum TTL for cached content. This is used to clamp the max-age (or Expires) value sent to the client. With `FORCE_CACHE_ALL`, the lesser of `clientTtl` and `defaultTtl` is used for the response max-age directive, along with a "public" directive. For cacheable content in `CACHE_ALL_STATIC` mode, `clientTtl` clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the `clientTtl` and `defaultTtl`, and also ensures a "public" cache-control directive is present. The maximum allowed value is 31,622,400s (1 year). If not specified, Cloud CDN uses 3600s (1 hour) for `CACHE_ALL_STATIC` mode. Cannot exceed `maxTtl`. Cannot be specified when `cacheMode` is `USE_ORIGIN_HEADERS`. */
   clientTtl?: Duration;
-  /** Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy. */
+  /** Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the `cacheMode` is set to `CACHE_ALL_STATIC` or `USE_ORIGIN_HEADERS`, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the `cacheMode` is set to `FORCE_CACHE_ALL`, negative caching applies to all responses with the specified response code, and overrides any caching headers. By default, Cloud CDN applies the following TTLs to these HTTP status codes: * 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m * 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s * 405 (Method Not Found), 501 (Not Implemented): 60s These defaults can be overridden in `negativeCachingPolicy`. If not specified, Cloud CDN applies negative caching by default. */
   negativeCaching?: boolean;
-  /** Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists. */
+  /** Sets a cache TTL for the specified HTTP status code. `negativeCaching` must be enabled to configure `negativeCachingPolicy`. Omitting the policy and leaving `negativeCaching` enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit `negativeCachingPolicy`, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists. */
   negativeCachingPolicy?: Array<CachePolicyNegativeCachingPolicy>;
-  /** Bypass the cache when the specified request headers are matched by name, e.g. Pragma or Authorization headers. Values are case-insensitive. Up to 5 header names can be specified. The cache is bypassed for all cachePolicy.cacheMode settings. */
+  /** Bypass the cache when the specified request headers are matched by name, e.g. Pragma or Authorization headers. Values are case-insensitive. Up to 5 header names can be specified. The cache is bypassed for all `cacheMode` values. */
   cacheBypassRequestHeaderNames?: Array<string>;
   /** Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-maxage) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale. */
   serveWhileStale?: Duration;
@@ -42698,7 +43126,7 @@ export interface HttpRouteAction {
   faultInjectionPolicy?: HttpFaultInjection;
   /** Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as*end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximummaxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set toINTERNAL_SELF_MANAGED. */
   maxStreamDuration?: Duration;
-  /** Cache policy for this URL Map’s route. Available only for Global EXTERNAL_MANAGED load balancer schemes. */
+  /** Specifies the cache policy configuration for matched traffic. Available only for Global `EXTERNAL_MANAGED` load balancer schemes. At least one property must be specified. This policy cannot be specified if any target backend has Identity-Aware Proxy enabled. */
   cachePolicy?: CachePolicy;
   /** Image optimization policy for this URL Map’s route. Available only for Global EXTERNAL_MANAGED load balancer schemes. Either Cloud CDN must be enabled on the backend service or backend bucket serving the route, or cache policy must be configured on the same route */
   imageOptimizationPolicy?: ImageOptimizationPolicy;
@@ -43088,6 +43516,37 @@ export const UrlMapTest: Schema.Schema<UrlMapTest> =
     }),
   ).annotate({ identifier: "UrlMapTest" }) as any as Schema.Schema<UrlMapTest>;
 
+export interface UrlMapQuotaUsage {
+  /** Output only. The number of quota units calculated for this UrlMap. */
+  units?: string;
+  /** Output only. The number of forwarding rules that uses this UrlMap. */
+  forwardingRules?: number;
+}
+
+export const UrlMapQuotaUsage: Schema.Schema<UrlMapQuotaUsage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      units: Schema.optional(Schema.String),
+      forwardingRules: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "UrlMapQuotaUsage",
+  }) as any as Schema.Schema<UrlMapQuotaUsage>;
+
+export interface UrlMapStatus {
+  /** Output only. Summary of quota usage for given UrlMap. */
+  quotaUsage?: UrlMapQuotaUsage;
+}
+
+export const UrlMapStatus: Schema.Schema<UrlMapStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      quotaUsage: Schema.optional(UrlMapQuotaUsage),
+    }),
+  ).annotate({
+    identifier: "UrlMapStatus",
+  }) as any as Schema.Schema<UrlMapStatus>;
+
 export interface UrlMap {
   /** Output only. [Output Only] Type of the resource. Always compute#urlMaps for url maps. */
   kind?: string;
@@ -43121,6 +43580,8 @@ export interface UrlMap {
   fingerprint?: string;
   /** Output only. [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   region?: string;
+  /** Output only. [Output Only] The status of the URL map. */
+  status?: UrlMapStatus;
 }
 
 export const UrlMap: Schema.Schema<UrlMap> =
@@ -43144,6 +43605,7 @@ export const UrlMap: Schema.Schema<UrlMap> =
       ),
       fingerprint: Schema.optional(Schema.String),
       region: Schema.optional(Schema.String),
+      status: Schema.optional(UrlMapStatus),
     }),
   ).annotate({ identifier: "UrlMap" }) as any as Schema.Schema<UrlMap>;
 
@@ -43431,6 +43893,8 @@ export interface UrlMapValidationResult {
   /** If successfully loaded, this field indicates whether the test passed. If false, 'testFailures's indicate the reason of failure. */
   testPassed?: boolean;
   testFailures?: Array<TestFailure>;
+  /** Output only. Summary of quota usage for given UrlMap. */
+  quotaUsage?: UrlMapQuotaUsage;
 }
 
 export const UrlMapValidationResult: Schema.Schema<UrlMapValidationResult> =
@@ -43440,6 +43904,7 @@ export const UrlMapValidationResult: Schema.Schema<UrlMapValidationResult> =
       loadErrors: Schema.optional(Schema.Array(Schema.String)),
       testPassed: Schema.optional(Schema.Boolean),
       testFailures: Schema.optional(Schema.Array(TestFailure)),
+      quotaUsage: Schema.optional(UrlMapQuotaUsage),
     }),
   ).annotate({
     identifier: "UrlMapValidationResult",
@@ -45027,6 +45492,7 @@ export interface HaControllerZoneConfigurationReservationAffinity {
   /** Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default),SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples. */
   consumeReservationType?:
     | "ANY_RESERVATION"
+    | "ANY_RESERVATION_THEN_FAIL"
     | "NO_RESERVATION"
     | "SPECIFIC_RESERVATION"
     | "SPECIFIC_THEN_ANY_RESERVATION"
@@ -67282,6 +67748,47 @@ export const capacityAdvice: API.OperationMethod<
   errors: [],
 }));
 
+export interface CapacityHistoryAdviceRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** Request body */
+  body?: CapacityHistoryRequest;
+}
+
+export const CapacityHistoryAdviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    body: Schema.optional(CapacityHistoryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/advice/capacityHistory",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CapacityHistoryAdviceRequest>;
+
+export type CapacityHistoryAdviceResponse = CapacityHistoryResponse;
+export const CapacityHistoryAdviceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CapacityHistoryResponse;
+
+export type CapacityHistoryAdviceError = DefaultErrors;
+
+/** Gets the capacity history for Spot VMs. */
+export const capacityHistoryAdvice: API.OperationMethod<
+  CapacityHistoryAdviceRequest,
+  CapacityHistoryAdviceResponse,
+  CapacityHistoryAdviceError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CapacityHistoryAdviceRequest,
+  output: CapacityHistoryAdviceResponse,
+  errors: [],
+}));
+
 export interface ListRegionCommitmentsRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
   filter?: string;
@@ -74711,6 +75218,157 @@ export const getHealthRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthRegionHealthSourcesRequest,
   output: GetHealthRegionHealthSourcesResponse,
+  errors: [],
+}));
+
+export interface GetHostsRequest {
+  /** The parent resource association for the Host. This field specifies the hierarchical context (e.g., reservation, block, sub-block) when accessing the host. For example, reservations/reservation_name, reservations/reservation_name/reservationBlocks/reservation_block_name or reservations/reservation_name/reservationBlocks/reservation_block_name/reservationSubBlocks/reservation_sub_block_name. */
+  association: string;
+  /** The name of the host, formatted as RFC1035 or a resource ID number. */
+  host: string;
+  /** The project ID for this request. */
+  project: string;
+  /** The name of the zone for this request, formatted as RFC1035. */
+  zone: string;
+}
+
+export const GetHostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  association: Schema.String.pipe(T.HttpPath("association")),
+  host: Schema.String.pipe(T.HttpPath("host")),
+  project: Schema.String.pipe(T.HttpPath("project")),
+  zone: Schema.String.pipe(T.HttpPath("zone")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "projects/{project}/zones/{zone}/{association}/hosts/{host}",
+  }),
+  svc,
+) as unknown as Schema.Schema<GetHostsRequest>;
+
+export type GetHostsResponse = Host;
+export const GetHostsResponse = /*@__PURE__*/ /*#__PURE__*/ Host;
+
+export type GetHostsError = DefaultErrors;
+
+/** Retrieves information about the specified host. */
+export const getHosts: API.OperationMethod<
+  GetHostsRequest,
+  GetHostsResponse,
+  GetHostsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetHostsRequest,
+  output: GetHostsResponse,
+  errors: [],
+}));
+
+export interface ListHostsRequest {
+  /** The parent resource association for the Host. This field specifies the hierarchical context (e.g., reservation, block, sub-block) when accessing the host. For example, reservations/reservation_name, reservations/reservation_name/reservationBlocks/reservation_block_name or reservations/reservation_name/reservationBlocks/reservation_block_name/reservationSubBlocks/reservation_sub_block_name. */
+  association: string;
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** The project ID for this request. */
+  project: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+  /** The name of the zone for this request, formatted as RFC1035. */
+  zone: string;
+}
+
+export const ListHostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  association: Schema.String.pipe(T.HttpPath("association")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  project: Schema.String.pipe(T.HttpPath("project")),
+  returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("returnPartialSuccess"),
+  ),
+  zone: Schema.String.pipe(T.HttpPath("zone")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "projects/{project}/zones/{zone}/{association}/hosts",
+  }),
+  svc,
+) as unknown as Schema.Schema<ListHostsRequest>;
+
+export type ListHostsResponse = HostsListResponse;
+export const ListHostsResponse = /*@__PURE__*/ /*#__PURE__*/ HostsListResponse;
+
+export type ListHostsError = DefaultErrors;
+
+/** Retrieves a list of hosts. */
+export const listHosts: API.PaginatedOperationMethod<
+  ListHostsRequest,
+  ListHostsResponse,
+  ListHostsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListHostsRequest,
+  output: ListHostsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface GetVersionHostsRequest {
+  /** The parent resource association for the Host. This field specifies the hierarchical context (e.g., reservation, block, sub-block) when accessing the host. */
+  association: string;
+  /** The name of the host, formatted as RFC1035 or a resource ID number. */
+  host: string;
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. */
+  requestId?: string;
+  /** Name of the zone for this request. Zone name should conform to RFC1035. */
+  zone: string;
+  /** Request body */
+  body?: HostsGetVersionRequest;
+}
+
+export const GetVersionHostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    association: Schema.String.pipe(T.HttpPath("association")),
+    host: Schema.String.pipe(T.HttpPath("host")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(HostsGetVersionRequest).pipe(T.HttpBody()),
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "projects/{project}/zones/{zone}/{association}/hosts/{host}/getVersion",
+    hasBody: true,
+  }),
+  svc,
+) as unknown as Schema.Schema<GetVersionHostsRequest>;
+
+export type GetVersionHostsResponse = Operation;
+export const GetVersionHostsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetVersionHostsError = DefaultErrors;
+
+/** Allows customers to get SBOM versions of a host. */
+export const getVersionHosts: API.OperationMethod<
+  GetVersionHostsRequest,
+  GetVersionHostsResponse,
+  GetVersionHostsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetVersionHostsRequest,
+  output: GetVersionHostsResponse,
   errors: [],
 }));
 
@@ -87287,6 +87945,50 @@ export const resumeRollouts: API.OperationMethod<
   errors: [],
 }));
 
+export interface StartNextWaveRolloutsRequest {
+  /** Required. Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. Name of the Rollout resource to start next wave. */
+  rollout: string;
+  /** Required. Wave number of the current wave. */
+  waveNumber?: string;
+}
+
+export const StartNextWaveRolloutsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    rollout: Schema.String.pipe(T.HttpPath("rollout")),
+    waveNumber: Schema.optional(Schema.String).pipe(T.HttpQuery("waveNumber")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/global/rollouts/{rollout}/startNextWave",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<StartNextWaveRolloutsRequest>;
+
+export type StartNextWaveRolloutsResponse = Operation;
+export const StartNextWaveRolloutsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type StartNextWaveRolloutsError = DefaultErrors;
+
+/** Starts the next wave of a Rollout. */
+export const startNextWaveRollouts: API.OperationMethod<
+  StartNextWaveRolloutsRequest,
+  StartNextWaveRolloutsResponse,
+  StartNextWaveRolloutsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartNextWaveRolloutsRequest,
+  output: StartNextWaveRolloutsResponse,
+  errors: [],
+}));
+
 export interface GetRolloutPlansRequest {
   /** Project ID for this request. */
   project: string;
@@ -89569,8 +90271,6 @@ export interface PatchSnapshotRecycleBinPolicyRequest {
   project: string;
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** update_mask indicates fields to be updated as part of this request. */
-  updateMask?: string;
   /** Request body */
   body?: SnapshotRecycleBinPolicy;
 }
@@ -89579,7 +90279,6 @@ export const PatchSnapshotRecycleBinPolicyRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SnapshotRecycleBinPolicy).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -89648,8 +90347,6 @@ export interface PatchOrganizationSnapshotRecycleBinPolicyRequest {
   organization: string;
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** update_mask indicates fields to be updated as part of this request. */
-  updateMask?: string;
   /** Request body */
   body?: SnapshotRecycleBinPolicy;
 }
@@ -89658,7 +90355,6 @@ export const PatchOrganizationSnapshotRecycleBinPolicyRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.HttpPath("organization")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SnapshotRecycleBinPolicy).pipe(T.HttpBody()),
   }).pipe(
     T.Http({

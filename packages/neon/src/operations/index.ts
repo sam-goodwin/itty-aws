@@ -90,7 +90,6 @@ export * from "./deleteProjectEndpoint";
 export * from "./startProjectEndpoint";
 export * from "./suspendProjectEndpoint";
 export * from "./restartProjectEndpoint";
-export * from "./getConsumptionHistoryPerAccount";
 export * from "./getConsumptionHistoryPerProject";
 export * from "./getConsumptionHistoryPerProjectV2";
 export * from "./getOrganization";

@@ -928,6 +928,9 @@ export const GoogleCloudDialogflowV2AgentCoachingSuggestion: Schema.Schema<Googl
 
 export interface GoogleCloudDialogflowV2ToolCall {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   toolDisplayName?: string;
   toolDisplayDetails?: string;
   action?: string;
@@ -945,6 +948,9 @@ export const GoogleCloudDialogflowV2ToolCall: Schema.Schema<GoogleCloudDialogflo
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       toolDisplayName: Schema.optional(Schema.String),
       toolDisplayDetails: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
@@ -974,6 +980,9 @@ export const GoogleCloudDialogflowV2ToolCallResultError: Schema.Schema<GoogleClo
 
 export interface GoogleCloudDialogflowV2ToolCallResult {
   tool?: string;
+  cesToolset?: string;
+  cesTool?: string;
+  cesApp?: string;
   action?: string;
   error?: GoogleCloudDialogflowV2ToolCallResultError;
   rawContent?: string;
@@ -986,6 +995,9 @@ export const GoogleCloudDialogflowV2ToolCallResult: Schema.Schema<GoogleCloudDia
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
       error: Schema.optional(GoogleCloudDialogflowV2ToolCallResultError),
       rawContent: Schema.optional(Schema.String),
@@ -1119,6 +1131,65 @@ export const GoogleCloudDialogflowV2SuggestionDedupingConfig: Schema.Schema<Goog
     identifier: "GoogleCloudDialogflowV2SuggestionDedupingConfig",
   }) as any as Schema.Schema<GoogleCloudDialogflowV2SuggestionDedupingConfig>;
 
+export interface GoogleCloudDialogflowV2ToolsetTool {
+  toolset?: string;
+  operationId?: string;
+  confirmationRequirement?:
+    | "CONFIRMATION_REQUIREMENT_UNSPECIFIED"
+    | "REQUIRED"
+    | "NOT_REQUIRED"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowV2ToolsetTool: Schema.Schema<GoogleCloudDialogflowV2ToolsetTool> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      toolset: Schema.optional(Schema.String),
+      operationId: Schema.optional(Schema.String),
+      confirmationRequirement: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowV2ToolsetTool",
+  }) as any as Schema.Schema<GoogleCloudDialogflowV2ToolsetTool>;
+
+export interface GoogleCloudDialogflowV2CesToolSpec {
+  cesTool?: string;
+  confirmationRequirement?:
+    | "CONFIRMATION_REQUIREMENT_UNSPECIFIED"
+    | "REQUIRED"
+    | "NOT_REQUIRED"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowV2CesToolSpec: Schema.Schema<GoogleCloudDialogflowV2CesToolSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cesTool: Schema.optional(Schema.String),
+      confirmationRequirement: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowV2CesToolSpec",
+  }) as any as Schema.Schema<GoogleCloudDialogflowV2CesToolSpec>;
+
+export interface GoogleCloudDialogflowV2CesAppSpec {
+  cesApp?: string;
+  confirmationRequirement?:
+    | "CONFIRMATION_REQUIREMENT_UNSPECIFIED"
+    | "REQUIRED"
+    | "NOT_REQUIRED"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowV2CesAppSpec: Schema.Schema<GoogleCloudDialogflowV2CesAppSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cesApp: Schema.optional(Schema.String),
+      confirmationRequirement: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowV2CesAppSpec",
+  }) as any as Schema.Schema<GoogleCloudDialogflowV2CesAppSpec>;
+
 export interface GoogleCloudDialogflowV2Generator {
   name?: string;
   description?: string;
@@ -1138,6 +1209,9 @@ export interface GoogleCloudDialogflowV2Generator {
   updateTime?: string;
   tools?: Array<string>;
   suggestionDedupingConfig?: GoogleCloudDialogflowV2SuggestionDedupingConfig;
+  toolsetTools?: Array<GoogleCloudDialogflowV2ToolsetTool>;
+  cesToolSpecs?: Array<GoogleCloudDialogflowV2CesToolSpec>;
+  cesAppSpecs?: Array<GoogleCloudDialogflowV2CesAppSpec>;
 }
 
 export const GoogleCloudDialogflowV2Generator: Schema.Schema<GoogleCloudDialogflowV2Generator> =
@@ -1162,6 +1236,15 @@ export const GoogleCloudDialogflowV2Generator: Schema.Schema<GoogleCloudDialogfl
       tools: Schema.optional(Schema.Array(Schema.String)),
       suggestionDedupingConfig: Schema.optional(
         GoogleCloudDialogflowV2SuggestionDedupingConfig,
+      ),
+      toolsetTools: Schema.optional(
+        Schema.Array(GoogleCloudDialogflowV2ToolsetTool),
+      ),
+      cesToolSpecs: Schema.optional(
+        Schema.Array(GoogleCloudDialogflowV2CesToolSpec),
+      ),
+      cesAppSpecs: Schema.optional(
+        Schema.Array(GoogleCloudDialogflowV2CesAppSpec),
       ),
     }),
   ).annotate({
@@ -4824,6 +4907,27 @@ export const GoogleCloudDialogflowV2ConversationContextReference: Schema.Schema<
     identifier: "GoogleCloudDialogflowV2ConversationContextReference",
   }) as any as Schema.Schema<GoogleCloudDialogflowV2ConversationContextReference>;
 
+export interface GoogleCloudDialogflowV2ConversationGeneratorContext {
+  generatorType?:
+    | "GENERATOR_TYPE_UNSPECIFIED"
+    | "FREE_FORM"
+    | "AGENT_COACHING"
+    | "SUMMARIZATION"
+    | "TRANSLATION"
+    | "AGENT_FEEDBACK"
+    | "CUSTOMER_MESSAGE_GENERATION"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowV2ConversationGeneratorContext: Schema.Schema<GoogleCloudDialogflowV2ConversationGeneratorContext> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      generatorType: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowV2ConversationGeneratorContext",
+  }) as any as Schema.Schema<GoogleCloudDialogflowV2ConversationGeneratorContext>;
+
 export interface GoogleCloudDialogflowV2Conversation {
   name?: string;
   lifecycleState?:
@@ -4841,9 +4945,14 @@ export interface GoogleCloudDialogflowV2Conversation {
     | "HUMAN_ASSIST_STAGE"
     | (string & {});
   telephonyConnectionInfo?: GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo;
+  initialConversationProfile?: GoogleCloudDialogflowV2ConversationProfile;
   ingestedContextReferences?: Record<
     string,
     GoogleCloudDialogflowV2ConversationContextReference
+  >;
+  initialGeneratorContexts?: Record<
+    string,
+    GoogleCloudDialogflowV2ConversationGeneratorContext
   >;
 }
 
@@ -4862,10 +4971,19 @@ export const GoogleCloudDialogflowV2Conversation: Schema.Schema<GoogleCloudDialo
       telephonyConnectionInfo: Schema.optional(
         GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo,
       ),
+      initialConversationProfile: Schema.optional(
+        GoogleCloudDialogflowV2ConversationProfile,
+      ),
       ingestedContextReferences: Schema.optional(
         Schema.Record(
           Schema.String,
           GoogleCloudDialogflowV2ConversationContextReference,
+        ),
+      ),
+      initialGeneratorContexts: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          GoogleCloudDialogflowV2ConversationGeneratorContext,
         ),
       ),
     }),
@@ -7528,6 +7646,7 @@ export interface GoogleCloudDialogflowCxV3Intent {
   isFallback?: boolean;
   labels?: Record<string, string>;
   description?: string;
+  dtmfPattern?: string;
 }
 
 export const GoogleCloudDialogflowCxV3Intent: Schema.Schema<GoogleCloudDialogflowCxV3Intent> =
@@ -7545,6 +7664,7 @@ export const GoogleCloudDialogflowCxV3Intent: Schema.Schema<GoogleCloudDialogflo
       isFallback: Schema.optional(Schema.Boolean),
       labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       description: Schema.optional(Schema.String),
+      dtmfPattern: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDialogflowCxV3Intent",
@@ -9561,6 +9681,7 @@ export interface GoogleCloudDialogflowCxV3beta1Intent {
   isFallback?: boolean;
   labels?: Record<string, string>;
   description?: string;
+  dtmfPattern?: string;
 }
 
 export const GoogleCloudDialogflowCxV3beta1Intent: Schema.Schema<GoogleCloudDialogflowCxV3beta1Intent> =
@@ -9578,6 +9699,7 @@ export const GoogleCloudDialogflowCxV3beta1Intent: Schema.Schema<GoogleCloudDial
       isFallback: Schema.optional(Schema.Boolean),
       labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       description: Schema.optional(Schema.String),
+      dtmfPattern: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1Intent",
@@ -13433,6 +13555,9 @@ export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestion: Schema.Schema<
 
 export interface GoogleCloudDialogflowV2beta1ToolCall {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   toolDisplayName?: string;
   toolDisplayDetails?: string;
   action?: string;
@@ -13450,6 +13575,9 @@ export const GoogleCloudDialogflowV2beta1ToolCall: Schema.Schema<GoogleCloudDial
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       toolDisplayName: Schema.optional(Schema.String),
       toolDisplayDetails: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
@@ -13479,6 +13607,9 @@ export const GoogleCloudDialogflowV2beta1ToolCallResultError: Schema.Schema<Goog
 
 export interface GoogleCloudDialogflowV2beta1ToolCallResult {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   action?: string;
   error?: GoogleCloudDialogflowV2beta1ToolCallResultError;
   rawContent?: string;
@@ -13491,6 +13622,9 @@ export const GoogleCloudDialogflowV2beta1ToolCallResult: Schema.Schema<GoogleClo
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
       error: Schema.optional(GoogleCloudDialogflowV2beta1ToolCallResultError),
       rawContent: Schema.optional(Schema.String),

@@ -1057,6 +1057,7 @@ export const PostIssuingCardsCardOutput =
     id: Schema.String,
     last4: Schema.String,
     latest_fraud_warning: Schema.Unknown,
+    lifecycle_controls: Schema.Unknown,
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
     number: Schema.optional(Schema.String),

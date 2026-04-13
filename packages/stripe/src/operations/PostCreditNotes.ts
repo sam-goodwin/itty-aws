@@ -16,6 +16,7 @@ export const PostCreditNotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         amount: Schema.optional(Schema.Number),
         description: Schema.optional(Schema.String),
         invoice_line_item: Schema.optional(Schema.String),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
         quantity: Schema.optional(Schema.Number),
         tax_amounts: Schema.optional(Schema.Unknown),
         tax_rates: Schema.optional(Schema.Unknown),
@@ -102,6 +103,7 @@ export const PostCreditNotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.String,
         invoice_line_item: Schema.optional(Schema.String),
         livemode: Schema.Boolean,
+        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
         object: Schema.Literals(["credit_note_line_item"]),
         pretax_credit_amounts: Schema.Array(
           Schema.Struct({

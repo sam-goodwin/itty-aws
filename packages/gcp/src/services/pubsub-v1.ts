@@ -316,6 +316,7 @@ export interface AwsKinesis {
     | "PUBLISH_PERMISSION_DENIED"
     | "STREAM_NOT_FOUND"
     | "CONSUMER_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Required. The Kinesis stream ARN to ingest data from. */
   streamArn?: string;
@@ -373,6 +374,7 @@ export interface CloudStorage {
     | "PUBLISH_PERMISSION_DENIED"
     | "BUCKET_NOT_FOUND"
     | "TOO_MANY_OBJECTS"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Optional. Cloud Storage bucket. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming). */
   bucket?: string;
@@ -414,6 +416,7 @@ export interface AzureEventHubs {
     | "EVENT_HUB_NOT_FOUND"
     | "SUBSCRIPTION_NOT_FOUND"
     | "RESOURCE_GROUP_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Optional. Name of the resource group within the azure subscription. */
   resourceGroup?: string;
@@ -456,6 +459,7 @@ export interface AwsMsk {
     | "PUBLISH_PERMISSION_DENIED"
     | "CLUSTER_NOT_FOUND"
     | "TOPIC_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Required. The Amazon Resource Name (ARN) that uniquely identifies the cluster. */
   clusterArn?: string;
@@ -488,6 +492,7 @@ export interface ConfluentCloud {
     | "UNREACHABLE_BOOTSTRAP_SERVER"
     | "CLUSTER_NOT_FOUND"
     | "TOPIC_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Required. The address of the bootstrap server. The format is url:port. */
   bootstrapServer?: string;
@@ -986,6 +991,41 @@ export const CloudStorageConfig: Schema.Schema<CloudStorageConfig> =
     identifier: "CloudStorageConfig",
   }) as any as Schema.Schema<CloudStorageConfig>;
 
+export interface BigtableConfig {
+  /** Optional. The unique name of the table to write messages to. Values are of the form `projects//instances//tables/`. */
+  table?: string;
+  /** Optional. The app profile to use for the Bigtable writes. If not specified, the "default" application profile will be used. The app profile must use single-cluster routing. */
+  appProfileId?: string;
+  /** Optional. The service account to use to write to Bigtable. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used. */
+  serviceAccountEmail?: string;
+  /** Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table under the pubsub_metadata column family. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column. */
+  writeMetadata?: boolean;
+  /** Output only. An output-only field that indicates whether or not the subscription can receive messages. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "NOT_FOUND"
+    | "APP_PROFILE_MISCONFIGURED"
+    | "PERMISSION_DENIED"
+    | "SCHEMA_MISMATCH"
+    | "IN_TRANSIT_LOCATION_RESTRICTION"
+    | "VERTEX_AI_LOCATION_RESTRICTION"
+    | (string & {});
+}
+
+export const BigtableConfig: Schema.Schema<BigtableConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      table: Schema.optional(Schema.String),
+      appProfileId: Schema.optional(Schema.String),
+      serviceAccountEmail: Schema.optional(Schema.String),
+      writeMetadata: Schema.optional(Schema.Boolean),
+      state: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "BigtableConfig",
+  }) as any as Schema.Schema<BigtableConfig>;
+
 export interface ExpirationPolicy {
   /** Optional. Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires. */
   ttl?: string;
@@ -1062,6 +1102,8 @@ export interface Subscription {
   bigqueryConfig?: BigQueryConfig;
   /** Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it. */
   cloudStorageConfig?: CloudStorageConfig;
+  /** Optional. If delivery to Bigtable is used with this subscription, this field is used to configure it. */
+  bigtableConfig?: BigtableConfig;
   /** Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message. */
   ackDeadlineSeconds?: number;
   /** Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages. */
@@ -1104,6 +1146,7 @@ export const Subscription: Schema.Schema<Subscription> =
       pushConfig: Schema.optional(PushConfig),
       bigqueryConfig: Schema.optional(BigQueryConfig),
       cloudStorageConfig: Schema.optional(CloudStorageConfig),
+      bigtableConfig: Schema.optional(BigtableConfig),
       ackDeadlineSeconds: Schema.optional(Schema.Number),
       retainAckedMessages: Schema.optional(Schema.Boolean),
       messageRetentionDuration: Schema.optional(Schema.String),

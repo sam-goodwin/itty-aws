@@ -21,7 +21,7 @@ export type V1ApplyAMigrationOutput = typeof V1ApplyAMigrationOutput.Type;
 
 // The operation
 /**
- * [Beta] Apply a database migration
+ * Apply a database migration
  *
  * Only available to selected partner OAuth apps
  *

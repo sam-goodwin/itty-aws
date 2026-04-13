@@ -58,6 +58,7 @@ export const GetClimateProductsOutput =
               "biomass_carbon_removal_and_storage",
               "direct_air_capture",
               "enhanced_weathering",
+              "marine_carbon_removal",
             ]),
           }),
         ),

@@ -10,7 +10,9 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const CalculateExchangePostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/calculateExchange",
@@ -256,6 +258,8 @@ export type CalculateExchangePostOutput =
  * Calculates the refund amounts and price of the new purchases.
  *
  * Calculates price for exchanging `Reservations` if there are no policy errors.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const CalculateExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -265,7 +269,10 @@ export const CalculateExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CalculateRefundPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/calculateRefund",
@@ -419,15 +426,18 @@ export type CalculateRefundPostOutput = typeof CalculateRefundPostOutput.Type;
  * Calculate the refund amount of a reservation order.
  *
  * Calculate price for returning `Reservations` if there are no policy errors.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const CalculateRefundPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CalculateRefundPostInput,
   outputSchema: CalculateRefundPostOutput,
 }));
 // Input Schema
-export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({ method: "POST", path: "/providers/Microsoft.Capacity/exchange" }),
 );
 export type ExchangePostInput = typeof ExchangePostInput.Type;
@@ -677,6 +687,8 @@ export type ExchangePostOutput = typeof ExchangePostOutput.Type;
  * Exchange Reservation(s)
  *
  * Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const ExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExchangePostInput,
@@ -684,7 +696,10 @@ export const ExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const GetAppliedReservationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/appliedReservations",
@@ -718,6 +733,9 @@ export type GetAppliedReservationListOutput =
  * Get list of applicable `Reservation`s.
  *
  * Get applicable `Reservation`s that are applied to this subscription or a resource group under this subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const GetAppliedReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -727,6 +745,10 @@ export const GetAppliedReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  reservedResourceType: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
   publisherId: Schema.optional(Schema.String),
   offerId: Schema.optional(Schema.String),
   planId: Schema.optional(Schema.String),
@@ -743,72 +765,70 @@ export type GetCatalogInput = typeof GetCatalogInput.Type;
 
 // Output Schema
 export const GetCatalogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        billingPlans: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Array(Schema.Literals(["Upfront", "Monthly"])),
-          ),
+  value: Schema.Array(
+    Schema.Struct({
+      resourceType: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      billingPlans: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Array(Schema.Literals(["Upfront", "Monthly"])),
         ),
-        terms: Schema.optional(
-          Schema.Array(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
-        ),
-        locations: Schema.optional(Schema.Array(Schema.String)),
-        skuProperties: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        msrp: Schema.optional(
+      ),
+      terms: Schema.optional(
+        Schema.Array(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
+      ),
+      locations: Schema.optional(Schema.Array(Schema.String)),
+      skuProperties: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            p1Y: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-            p3Y: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-            p5Y: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
+            name: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
           }),
         ),
-        restrictions: Schema.optional(
-          Schema.Array(
+      ),
+      msrp: Schema.optional(
+        Schema.Struct({
+          p1Y: Schema.optional(
             Schema.Struct({
-              type: Schema.optional(Schema.String),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              reasonCode: Schema.optional(Schema.String),
+              currencyCode: Schema.optional(Schema.String),
+              amount: Schema.optional(Schema.Number),
             }),
           ),
-        ),
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        capabilities: Schema.optional(
-          Schema.Array(
+          p3Y: Schema.optional(
             Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
+              currencyCode: Schema.optional(Schema.String),
+              amount: Schema.optional(Schema.Number),
             }),
           ),
+          p5Y: Schema.optional(
+            Schema.Struct({
+              currencyCode: Schema.optional(Schema.String),
+              amount: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
+      restrictions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            values: Schema.optional(Schema.Array(Schema.String)),
+            reasonCode: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
+      ),
+      tier: Schema.optional(Schema.String),
+      size: Schema.optional(Schema.String),
+      capabilities: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
   totalItems: Schema.optional(Schema.Number),
@@ -819,6 +839,10 @@ export type GetCatalogOutput = typeof GetCatalogOutput.Type;
 /**
  * Get the regions and skus that are available for RI purchase for the specified Azure subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param reservedResourceType - The type of the resource for which the skus should be provided.
+ * @param location - Filters the skus based on the location specified in this parameter. This can be an azure region or global
  * @param publisherId - Publisher id used to get the third party products
  * @param offerId - Offer id used to get the third party products
  * @param planId - Plan id used to get the third party products
@@ -831,9 +855,9 @@ export const GetCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetCatalogOutput,
 }));
 // Input Schema
-export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Capacity/operations" }),
 );
 export type OperationListInput = typeof OperationListInput.Type;
@@ -867,6 +891,8 @@ export type OperationListOutput = typeof OperationListOutput.Type;
  * Get operations.
  *
  * List all the operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationListInput,
@@ -874,7 +900,11 @@ export const OperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",
@@ -891,6 +921,10 @@ export type ReservationArchiveOutput = typeof ReservationArchiveOutput.Type;
  * Archive a `Reservation`.
  *
  * Archiving a `Reservation` moves it to `Archived` state.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
  */
 export const ReservationArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReservationArchiveInput,
@@ -898,7 +932,11 @@ export const ReservationArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationAvailableScopesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
@@ -931,6 +969,10 @@ export type ReservationAvailableScopesOutput =
  * Get Available Scopes for `Reservation`.
  *
  * Check whether the scopes from request is valid for `Reservation`.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
  */
 export const ReservationAvailableScopes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -939,9 +981,12 @@ export const ReservationAvailableScopes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  reservationId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
@@ -960,15 +1005,21 @@ export type ReservationGetOutput = typeof ReservationGetOutput.Type;
  * Get `Reservation` details.
  *
  * Get specific `Reservation` details.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
+ * @param $expand - Supported value of this query is renewProperties
  */
 export const ReservationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReservationGetInput,
   outputSchema: ReservationGetOutput,
 }));
 // Input Schema
-export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations",
@@ -978,7 +1029,7 @@ export type ReservationListInput = typeof ReservationListInput.Type;
 
 // Output Schema
 export const ReservationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.Array(Schema.Struct({})),
   nextLink: Schema.optional(Schema.String),
 });
 export type ReservationListOutput = typeof ReservationListOutput.Type;
@@ -988,6 +1039,9 @@ export type ReservationListOutput = typeof ReservationListOutput.Type;
  * Get `Reservation`s in a given reservation Order
  *
  * List `Reservation`s within a single `ReservationOrder`.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReservationListInput,
@@ -996,6 +1050,7 @@ export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReservationListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
     refreshSummary: Schema.optional(Schema.String),
@@ -1035,6 +1090,7 @@ export type ReservationListAllOutput = typeof ReservationListAllOutput.Type;
 /**
  * List the reservations and the roll up counts of reservations group by provisioning states that the user has access to in the current tenant.
  *
+ * @param api-version - The API version to use for this operation.
  * @param $filter - May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
  * @param $orderby - May be used to sort order by reservation properties.
  * @param refreshSummary - To indicate whether to refresh the roll up counts of the reservations group by provisioning states
@@ -1048,7 +1104,11 @@ export const ReservationListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationListRevisionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/revisions",
@@ -1060,7 +1120,7 @@ export type ReservationListRevisionsInput =
 // Output Schema
 export const ReservationListRevisionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReservationListRevisionsOutput =
@@ -1071,6 +1131,10 @@ export type ReservationListRevisionsOutput =
  * Get `Reservation` revisions.
  *
  * List of all the revisions for the `Reservation`.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
  */
 export const ReservationListRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1079,9 +1143,10 @@ export const ReservationListRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/merge",
@@ -1100,6 +1165,9 @@ export type ReservationMergeOutput = typeof ReservationMergeOutput.Type;
  * Merges two `Reservation`s.
  *
  * Merge the specified `Reservation`s into a new `Reservation`. The two `Reservation`s being merged must have same properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReservationMergeInput,
@@ -1107,7 +1175,9 @@ export const ReservationMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationOrderCalculateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/calculatePrice",
@@ -1200,6 +1270,8 @@ export type ReservationOrderCalculateOutput =
  * Calculate price for a `ReservationOrder`.
  *
  * Calculate price for placing a `ReservationOrder`.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const ReservationOrderCalculate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1209,7 +1281,10 @@ export const ReservationOrderCalculate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReservationOrderChangeDirectoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory",
@@ -1248,6 +1323,9 @@ export type ReservationOrderChangeDirectoryOutput =
  * Change directory of `ReservationOrder`.
  *
  * Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationOrderChangeDirectory =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1257,6 +1335,8 @@ export const ReservationOrderChangeDirectory =
 // Input Schema
 export const ReservationOrderGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1268,118 +1348,7 @@ export type ReservationOrderGetInput = typeof ReservationOrderGetInput.Type;
 
 // Output Schema
 export const ReservationOrderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.Number),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        requestDateTime: Schema.optional(Schema.String),
-        createdDateTime: Schema.optional(Schema.String),
-        expiryDate: Schema.optional(Schema.String),
-        expiryDateTime: Schema.optional(Schema.String),
-        benefitStartTime: Schema.optional(Schema.String),
-        originalQuantity: Schema.optional(Schema.Number),
-        term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "PendingResourceHold",
-            "ConfirmedResourceHold",
-            "PendingBilling",
-            "ConfirmedBilling",
-            "Created",
-            "Succeeded",
-            "Cancelled",
-            "Expired",
-            "BillingFailed",
-            "Failed",
-            "Split",
-            "Merged",
-          ]),
-        ),
-        billingPlan: Schema.optional(Schema.Literals(["Upfront", "Monthly"])),
-        planInformation: Schema.optional(
-          Schema.Struct({
-            pricingCurrencyTotal: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-            startDate: Schema.optional(Schema.String),
-            nextPaymentDueDate: Schema.optional(Schema.String),
-            transactions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  dueDate: Schema.optional(Schema.String),
-                  paymentDate: Schema.optional(Schema.String),
-                  pricingCurrencyTotal: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  billingCurrencyTotal: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  billingAccount: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Literals([
-                      "Succeeded",
-                      "Failed",
-                      "Scheduled",
-                      "Cancelled",
-                    ]),
-                  ),
-                  extendedStatusInfo: Schema.optional(
-                    Schema.Struct({
-                      statusCode: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "Pending",
-                          "Processing",
-                          "Active",
-                          "PurchaseError",
-                          "PaymentInstrumentError",
-                          "Split",
-                          "Merged",
-                          "Expired",
-                          "Succeeded",
-                        ]),
-                      ),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        reservations: Schema.optional(Schema.Array(Schema.Struct({}))),
-        reviewDateTime: Schema.optional(Schema.String),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type ReservationOrderGetOutput = typeof ReservationOrderGetOutput.Type;
 
 // The operation
@@ -1388,6 +1357,8 @@ export type ReservationOrderGetOutput = typeof ReservationOrderGetOutput.Type;
  *
  * Get the details of the `ReservationOrder`.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  * @param $expand - May be used to expand the planInformation.
  */
 export const ReservationOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1396,7 +1367,9 @@ export const ReservationOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationOrderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Capacity/reservationOrders",
@@ -1407,134 +1380,7 @@ export type ReservationOrderListInput = typeof ReservationOrderListInput.Type;
 // Output Schema
 export const ReservationOrderListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          etag: Schema.optional(Schema.Number),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              displayName: Schema.optional(Schema.String),
-              requestDateTime: Schema.optional(Schema.String),
-              createdDateTime: Schema.optional(Schema.String),
-              expiryDate: Schema.optional(Schema.String),
-              expiryDateTime: Schema.optional(Schema.String),
-              benefitStartTime: Schema.optional(Schema.String),
-              originalQuantity: Schema.optional(Schema.Number),
-              term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Creating",
-                  "PendingResourceHold",
-                  "ConfirmedResourceHold",
-                  "PendingBilling",
-                  "ConfirmedBilling",
-                  "Created",
-                  "Succeeded",
-                  "Cancelled",
-                  "Expired",
-                  "BillingFailed",
-                  "Failed",
-                  "Split",
-                  "Merged",
-                ]),
-              ),
-              billingPlan: Schema.optional(
-                Schema.Literals(["Upfront", "Monthly"]),
-              ),
-              planInformation: Schema.optional(
-                Schema.Struct({
-                  pricingCurrencyTotal: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  startDate: Schema.optional(Schema.String),
-                  nextPaymentDueDate: Schema.optional(Schema.String),
-                  transactions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        dueDate: Schema.optional(Schema.String),
-                        paymentDate: Schema.optional(Schema.String),
-                        pricingCurrencyTotal: Schema.optional(
-                          Schema.Struct({
-                            currencyCode: Schema.optional(Schema.String),
-                            amount: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        billingCurrencyTotal: Schema.optional(
-                          Schema.Struct({
-                            currencyCode: Schema.optional(Schema.String),
-                            amount: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        billingAccount: Schema.optional(Schema.String),
-                        status: Schema.optional(
-                          Schema.Literals([
-                            "Succeeded",
-                            "Failed",
-                            "Scheduled",
-                            "Cancelled",
-                          ]),
-                        ),
-                        extendedStatusInfo: Schema.optional(
-                          Schema.Struct({
-                            statusCode: Schema.optional(
-                              Schema.Literals([
-                                "None",
-                                "Pending",
-                                "Processing",
-                                "Active",
-                                "PurchaseError",
-                                "PaymentInstrumentError",
-                                "Split",
-                                "Merged",
-                                "Expired",
-                                "Succeeded",
-                              ]),
-                            ),
-                            message: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              reservations: Schema.optional(Schema.Array(Schema.Struct({}))),
-              reviewDateTime: Schema.optional(Schema.String),
-            }),
-          ),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReservationOrderListOutput = typeof ReservationOrderListOutput.Type;
@@ -1544,6 +1390,8 @@ export type ReservationOrderListOutput = typeof ReservationOrderListOutput.Type;
  * Get all `ReservationOrder`s.
  *
  * List of all the `ReservationOrder`s that the user has access to in the current tenant.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const ReservationOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1553,7 +1401,10 @@ export const ReservationOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReservationOrderPurchaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
@@ -1564,118 +1415,7 @@ export type ReservationOrderPurchaseInput =
 
 // Output Schema
 export const ReservationOrderPurchaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.Number),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        requestDateTime: Schema.optional(Schema.String),
-        createdDateTime: Schema.optional(Schema.String),
-        expiryDate: Schema.optional(Schema.String),
-        expiryDateTime: Schema.optional(Schema.String),
-        benefitStartTime: Schema.optional(Schema.String),
-        originalQuantity: Schema.optional(Schema.Number),
-        term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "PendingResourceHold",
-            "ConfirmedResourceHold",
-            "PendingBilling",
-            "ConfirmedBilling",
-            "Created",
-            "Succeeded",
-            "Cancelled",
-            "Expired",
-            "BillingFailed",
-            "Failed",
-            "Split",
-            "Merged",
-          ]),
-        ),
-        billingPlan: Schema.optional(Schema.Literals(["Upfront", "Monthly"])),
-        planInformation: Schema.optional(
-          Schema.Struct({
-            pricingCurrencyTotal: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.String),
-                amount: Schema.optional(Schema.Number),
-              }),
-            ),
-            startDate: Schema.optional(Schema.String),
-            nextPaymentDueDate: Schema.optional(Schema.String),
-            transactions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  dueDate: Schema.optional(Schema.String),
-                  paymentDate: Schema.optional(Schema.String),
-                  pricingCurrencyTotal: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  billingCurrencyTotal: Schema.optional(
-                    Schema.Struct({
-                      currencyCode: Schema.optional(Schema.String),
-                      amount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  billingAccount: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Literals([
-                      "Succeeded",
-                      "Failed",
-                      "Scheduled",
-                      "Cancelled",
-                    ]),
-                  ),
-                  extendedStatusInfo: Schema.optional(
-                    Schema.Struct({
-                      statusCode: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "Pending",
-                          "Processing",
-                          "Active",
-                          "PurchaseError",
-                          "PaymentInstrumentError",
-                          "Split",
-                          "Merged",
-                          "Expired",
-                          "Succeeded",
-                        ]),
-                      ),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        reservations: Schema.optional(Schema.Array(Schema.Struct({}))),
-        reviewDateTime: Schema.optional(Schema.String),
-      }),
-    ),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type ReservationOrderPurchaseOutput =
   typeof ReservationOrderPurchaseOutput.Type;
 
@@ -1684,6 +1424,9 @@ export type ReservationOrderPurchaseOutput =
  * Purchase `ReservationOrder`
  *
  * Purchase `ReservationOrder` and create resource under the specified URI.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationOrderPurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1692,9 +1435,10 @@ export const ReservationOrderPurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/split",
@@ -1713,6 +1457,9 @@ export type ReservationSplitOutput = typeof ReservationSplitOutput.Type;
  * Split the `Reservation`.
  *
  * Split a `Reservation` into two `Reservation`s with specified quantity distribution.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const ReservationSplit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReservationSplitInput,
@@ -1720,7 +1467,11 @@ export const ReservationSplit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ReservationUnarchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/unarchive",
@@ -1738,6 +1489,10 @@ export type ReservationUnarchiveOutput = typeof ReservationUnarchiveOutput.Type;
  * Unarchive a `Reservation`.
  *
  * Restores a `Reservation` to the state it was before archiving.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
  */
 export const ReservationUnarchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1747,7 +1502,11 @@ export const ReservationUnarchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
 ).pipe(
   T.Http({
     method: "PATCH",
@@ -1766,15 +1525,20 @@ export type ReservationUpdateOutput = typeof ReservationUpdateOutput.Type;
  * Updates a `Reservation`.
  *
  * Updates the applied scopes of the `Reservation`.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
  */
 export const ReservationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReservationUpdateInput,
   outputSchema: ReservationUpdateOutput,
 }));
 // Input Schema
-export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservationOrderId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/return",
@@ -1783,118 +1547,7 @@ export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ReturnPostInput = typeof ReturnPostInput.Type;
 
 // Output Schema
-export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.Number),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      requestDateTime: Schema.optional(Schema.String),
-      createdDateTime: Schema.optional(Schema.String),
-      expiryDate: Schema.optional(Schema.String),
-      expiryDateTime: Schema.optional(Schema.String),
-      benefitStartTime: Schema.optional(Schema.String),
-      originalQuantity: Schema.optional(Schema.Number),
-      term: Schema.optional(Schema.Literals(["P1Y", "P3Y", "P5Y"])),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "PendingResourceHold",
-          "ConfirmedResourceHold",
-          "PendingBilling",
-          "ConfirmedBilling",
-          "Created",
-          "Succeeded",
-          "Cancelled",
-          "Expired",
-          "BillingFailed",
-          "Failed",
-          "Split",
-          "Merged",
-        ]),
-      ),
-      billingPlan: Schema.optional(Schema.Literals(["Upfront", "Monthly"])),
-      planInformation: Schema.optional(
-        Schema.Struct({
-          pricingCurrencyTotal: Schema.optional(
-            Schema.Struct({
-              currencyCode: Schema.optional(Schema.String),
-              amount: Schema.optional(Schema.Number),
-            }),
-          ),
-          startDate: Schema.optional(Schema.String),
-          nextPaymentDueDate: Schema.optional(Schema.String),
-          transactions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                dueDate: Schema.optional(Schema.String),
-                paymentDate: Schema.optional(Schema.String),
-                pricingCurrencyTotal: Schema.optional(
-                  Schema.Struct({
-                    currencyCode: Schema.optional(Schema.String),
-                    amount: Schema.optional(Schema.Number),
-                  }),
-                ),
-                billingCurrencyTotal: Schema.optional(
-                  Schema.Struct({
-                    currencyCode: Schema.optional(Schema.String),
-                    amount: Schema.optional(Schema.Number),
-                  }),
-                ),
-                billingAccount: Schema.optional(Schema.String),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Succeeded",
-                    "Failed",
-                    "Scheduled",
-                    "Cancelled",
-                  ]),
-                ),
-                extendedStatusInfo: Schema.optional(
-                  Schema.Struct({
-                    statusCode: Schema.optional(
-                      Schema.Literals([
-                        "None",
-                        "Pending",
-                        "Processing",
-                        "Active",
-                        "PurchaseError",
-                        "PaymentInstrumentError",
-                        "Split",
-                        "Merged",
-                        "Expired",
-                        "Succeeded",
-                      ]),
-                    ),
-                    message: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      reservations: Schema.optional(Schema.Array(Schema.Struct({}))),
-      reviewDateTime: Schema.optional(Schema.String),
-    }),
-  ),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
-});
+export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type ReturnPostOutput = typeof ReturnPostOutput.Type;
 
 // The operation
@@ -1902,6 +1555,9 @@ export type ReturnPostOutput = typeof ReturnPostOutput.Type;
  * Return a reservation.
  *
  * Return a reservation and get refund information.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
  */
 export const ReturnPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReturnPostInput,

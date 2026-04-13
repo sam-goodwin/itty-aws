@@ -624,7 +624,7 @@ export type PostV2CoreAccountTokensOutput =
 
 // The operation
 /**
- * Create an Account Token
+ * Create an account token
  *
  * Creates an Account Token.
  */

@@ -3998,11 +3998,7 @@ export type StorageTaskAssignmentsCreateInput =
 
 // Output Schema
 export const StorageTaskAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type StorageTaskAssignmentsCreateOutput =
   typeof StorageTaskAssignmentsCreateOutput.Type;
 
@@ -4078,11 +4074,7 @@ export type StorageTaskAssignmentsGetInput =
 
 // Output Schema
 export const StorageTaskAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type StorageTaskAssignmentsGetOutput =
   typeof StorageTaskAssignmentsGetOutput.Type;
 
@@ -4165,13 +4157,7 @@ export type StorageTaskAssignmentsListInput =
 // Output Schema
 export const StorageTaskAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageTaskAssignmentsListOutput =
@@ -4250,11 +4236,7 @@ export type StorageTaskAssignmentsUpdateInput =
 
 // Output Schema
 export const StorageTaskAssignmentsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type StorageTaskAssignmentsUpdateOutput =
   typeof StorageTaskAssignmentsUpdateOutput.Type;
 

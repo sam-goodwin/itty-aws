@@ -486,6 +486,15 @@ export const PostPaymentMethodConfigurationsConfigurationInput =
         ),
       }),
     ),
+    upi: Schema.optional(
+      Schema.Struct({
+        display_preference: Schema.optional(
+          Schema.Struct({
+            preference: Schema.optional(Schema.Literals(["none", "off", "on"])),
+          }),
+        ),
+      }),
+    ),
     us_bank_account: Schema.optional(
       Schema.Struct({
         display_preference: Schema.optional(
@@ -1035,6 +1044,16 @@ export const PostPaymentMethodConfigurationsConfigurationOutput =
       }),
     ),
     twint: Schema.optional(
+      Schema.Struct({
+        available: Schema.Boolean,
+        display_preference: Schema.Struct({
+          overridable: Schema.NullOr(Schema.Boolean),
+          preference: Schema.Literals(["none", "off", "on"]),
+          value: Schema.Literals(["off", "on"]),
+        }),
+      }),
+    ),
+    upi: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,
         display_preference: Schema.Struct({

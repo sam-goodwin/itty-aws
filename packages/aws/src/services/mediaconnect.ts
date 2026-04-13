@@ -94,6 +94,7 @@ export type GatewayArn = string;
 export type OfferingArn = string;
 export type ReservationArn = string;
 export type RouterNetworkInterfaceArn = string;
+export type MediaLiveChannelArn = string;
 export type FlowOutputArn = string;
 export type RouterInputArn = string;
 export type FlowSourceArn = string;
@@ -5524,29 +5525,6 @@ export const ListReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListReservationsResponse",
 }) as any as S.Schema<ListReservationsResponse>;
-export type ForwardErrorCorrectionState =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const ForwardErrorCorrectionState = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface RtpRouterInputConfiguration {
-  Port: number;
-  ForwardErrorCorrection?: ForwardErrorCorrectionState;
-}
-export const RtpRouterInputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Port: S.Number,
-      ForwardErrorCorrection: S.optional(ForwardErrorCorrectionState),
-    }).pipe(
-      S.encodeKeys({
-        Port: "port",
-        ForwardErrorCorrection: "forwardErrorCorrection",
-      }),
-    ),
-  ).annotate({
-    identifier: "RtpRouterInputConfiguration",
-  }) as any as S.Schema<RtpRouterInputConfiguration>;
 export interface RistRouterInputConfiguration {
   Port: number;
   RecoveryLatencyMilliseconds: number;
@@ -5621,37 +5599,60 @@ export const SrtCallerRouterInputConfiguration =
   ).annotate({
     identifier: "SrtCallerRouterInputConfiguration",
   }) as any as S.Schema<SrtCallerRouterInputConfiguration>;
+export type ForwardErrorCorrectionState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
+export const ForwardErrorCorrectionState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface RtpRouterInputConfiguration {
+  Port: number;
+  ForwardErrorCorrection?: ForwardErrorCorrectionState;
+}
+export const RtpRouterInputConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Port: S.Number,
+      ForwardErrorCorrection: S.optional(ForwardErrorCorrectionState),
+    }).pipe(
+      S.encodeKeys({
+        Port: "port",
+        ForwardErrorCorrection: "forwardErrorCorrection",
+      }),
+    ),
+  ).annotate({
+    identifier: "RtpRouterInputConfiguration",
+  }) as any as S.Schema<RtpRouterInputConfiguration>;
 export type RouterInputProtocolConfiguration =
   | {
-      Rtp: RtpRouterInputConfiguration;
-      Rist?: never;
-      SrtListener?: never;
-      SrtCaller?: never;
-    }
-  | {
-      Rtp?: never;
       Rist: RistRouterInputConfiguration;
       SrtListener?: never;
       SrtCaller?: never;
+      Rtp?: never;
     }
   | {
-      Rtp?: never;
       Rist?: never;
       SrtListener: SrtListenerRouterInputConfiguration;
       SrtCaller?: never;
+      Rtp?: never;
     }
   | {
-      Rtp?: never;
       Rist?: never;
       SrtListener?: never;
       SrtCaller: SrtCallerRouterInputConfiguration;
+      Rtp?: never;
+    }
+  | {
+      Rist?: never;
+      SrtListener?: never;
+      SrtCaller?: never;
+      Rtp: RtpRouterInputConfiguration;
     };
 export const RouterInputProtocolConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ Rtp: RtpRouterInputConfiguration }),
     S.Struct({ Rist: RistRouterInputConfiguration }),
     S.Struct({ SrtListener: SrtListenerRouterInputConfiguration }),
     S.Struct({ SrtCaller: SrtCallerRouterInputConfiguration }),
+    S.Struct({ Rtp: RtpRouterInputConfiguration }),
   ]);
 export type RouterInputProtocol =
   | "RTP"
@@ -5681,37 +5682,101 @@ export const StandardRouterInputConfiguration =
   ).annotate({
     identifier: "StandardRouterInputConfiguration",
   }) as any as S.Schema<StandardRouterInputConfiguration>;
+export type MediaLiveChannelPipelineId =
+  | "PIPELINE_0"
+  | "PIPELINE_1"
+  | (string & {});
+export const MediaLiveChannelPipelineId = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type MediaLiveTransitEncryptionKeyType =
+  | "SECRETS_MANAGER"
+  | "AUTOMATIC"
+  | (string & {});
+export const MediaLiveTransitEncryptionKeyType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type MediaLiveTransitEncryptionKeyConfiguration =
+  | {
+      SecretsManager: SecretsManagerEncryptionKeyConfiguration;
+      Automatic?: never;
+    }
+  | { SecretsManager?: never; Automatic: AutomaticEncryptionKeyConfiguration };
+export const MediaLiveTransitEncryptionKeyConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
+    S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
+  ]);
+export interface MediaLiveTransitEncryption {
+  EncryptionKeyType?: MediaLiveTransitEncryptionKeyType;
+  EncryptionKeyConfiguration: MediaLiveTransitEncryptionKeyConfiguration;
+}
+export const MediaLiveTransitEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      EncryptionKeyType: S.optional(MediaLiveTransitEncryptionKeyType),
+      EncryptionKeyConfiguration: MediaLiveTransitEncryptionKeyConfiguration,
+    }).pipe(
+      S.encodeKeys({
+        EncryptionKeyType: "encryptionKeyType",
+        EncryptionKeyConfiguration: "encryptionKeyConfiguration",
+      }),
+    ),
+).annotate({
+  identifier: "MediaLiveTransitEncryption",
+}) as any as S.Schema<MediaLiveTransitEncryption>;
+export interface MediaLiveChannelRouterInputConfiguration {
+  MediaLiveChannelArn?: string;
+  MediaLivePipelineId?: MediaLiveChannelPipelineId;
+  MediaLiveChannelOutputName?: string;
+  SourceTransitDecryption: MediaLiveTransitEncryption;
+}
+export const MediaLiveChannelRouterInputConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MediaLiveChannelArn: S.optional(S.String),
+      MediaLivePipelineId: S.optional(MediaLiveChannelPipelineId),
+      MediaLiveChannelOutputName: S.optional(S.String),
+      SourceTransitDecryption: MediaLiveTransitEncryption,
+    }).pipe(
+      S.encodeKeys({
+        MediaLiveChannelArn: "mediaLiveChannelArn",
+        MediaLivePipelineId: "mediaLivePipelineId",
+        MediaLiveChannelOutputName: "mediaLiveChannelOutputName",
+        SourceTransitDecryption: "sourceTransitDecryption",
+      }),
+    ),
+  ).annotate({
+    identifier: "MediaLiveChannelRouterInputConfiguration",
+  }) as any as S.Schema<MediaLiveChannelRouterInputConfiguration>;
 export type FailoverRouterInputProtocolConfiguration =
   | {
-      Rtp: RtpRouterInputConfiguration;
-      Rist?: never;
-      SrtListener?: never;
-      SrtCaller?: never;
-    }
-  | {
-      Rtp?: never;
       Rist: RistRouterInputConfiguration;
       SrtListener?: never;
       SrtCaller?: never;
+      Rtp?: never;
     }
   | {
-      Rtp?: never;
       Rist?: never;
       SrtListener: SrtListenerRouterInputConfiguration;
       SrtCaller?: never;
+      Rtp?: never;
     }
   | {
-      Rtp?: never;
       Rist?: never;
       SrtListener?: never;
       SrtCaller: SrtCallerRouterInputConfiguration;
+      Rtp?: never;
+    }
+  | {
+      Rist?: never;
+      SrtListener?: never;
+      SrtCaller?: never;
+      Rtp: RtpRouterInputConfiguration;
     };
 export const FailoverRouterInputProtocolConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ Rtp: RtpRouterInputConfiguration }),
     S.Struct({ Rist: RistRouterInputConfiguration }),
     S.Struct({ SrtListener: SrtListenerRouterInputConfiguration }),
     S.Struct({ SrtCaller: SrtCallerRouterInputConfiguration }),
+    S.Struct({ Rtp: RtpRouterInputConfiguration }),
   ]);
 export type FailoverRouterInputProtocolConfigurationList =
   FailoverRouterInputProtocolConfiguration[];
@@ -5747,6 +5812,27 @@ export const FailoverRouterInputConfiguration =
   ).annotate({
     identifier: "FailoverRouterInputConfiguration",
   }) as any as S.Schema<FailoverRouterInputConfiguration>;
+export interface MediaConnectFlowRouterInputConfiguration {
+  FlowArn?: string;
+  FlowOutputArn?: string;
+  SourceTransitDecryption: FlowTransitEncryption;
+}
+export const MediaConnectFlowRouterInputConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FlowArn: S.optional(S.String),
+      FlowOutputArn: S.optional(S.String),
+      SourceTransitDecryption: FlowTransitEncryption,
+    }).pipe(
+      S.encodeKeys({
+        FlowArn: "flowArn",
+        FlowOutputArn: "flowOutputArn",
+        SourceTransitDecryption: "sourceTransitDecryption",
+      }),
+    ),
+  ).annotate({
+    identifier: "MediaConnectFlowRouterInputConfiguration",
+  }) as any as S.Schema<MediaConnectFlowRouterInputConfiguration>;
 export type MergeRouterInputProtocolConfiguration =
   | { Rtp: RtpRouterInputConfiguration; Rist?: never }
   | { Rtp?: never; Rist: RistRouterInputConfiguration };
@@ -5780,57 +5866,48 @@ export const MergeRouterInputConfiguration =
   ).annotate({
     identifier: "MergeRouterInputConfiguration",
   }) as any as S.Schema<MergeRouterInputConfiguration>;
-export interface MediaConnectFlowRouterInputConfiguration {
-  FlowArn?: string;
-  FlowOutputArn?: string;
-  SourceTransitDecryption: FlowTransitEncryption;
-}
-export const MediaConnectFlowRouterInputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FlowArn: S.optional(S.String),
-      FlowOutputArn: S.optional(S.String),
-      SourceTransitDecryption: FlowTransitEncryption,
-    }).pipe(
-      S.encodeKeys({
-        FlowArn: "flowArn",
-        FlowOutputArn: "flowOutputArn",
-        SourceTransitDecryption: "sourceTransitDecryption",
-      }),
-    ),
-  ).annotate({
-    identifier: "MediaConnectFlowRouterInputConfiguration",
-  }) as any as S.Schema<MediaConnectFlowRouterInputConfiguration>;
 export type RouterInputConfiguration =
   | {
       Standard: StandardRouterInputConfiguration;
+      MediaLiveChannel?: never;
       Failover?: never;
-      Merge?: never;
       MediaConnectFlow?: never;
+      Merge?: never;
     }
   | {
       Standard?: never;
+      MediaLiveChannel: MediaLiveChannelRouterInputConfiguration;
+      Failover?: never;
+      MediaConnectFlow?: never;
+      Merge?: never;
+    }
+  | {
+      Standard?: never;
+      MediaLiveChannel?: never;
       Failover: FailoverRouterInputConfiguration;
-      Merge?: never;
       MediaConnectFlow?: never;
+      Merge?: never;
     }
   | {
       Standard?: never;
+      MediaLiveChannel?: never;
       Failover?: never;
-      Merge: MergeRouterInputConfiguration;
-      MediaConnectFlow?: never;
-    }
-  | {
-      Standard?: never;
-      Failover?: never;
-      Merge?: never;
       MediaConnectFlow: MediaConnectFlowRouterInputConfiguration;
+      Merge?: never;
+    }
+  | {
+      Standard?: never;
+      MediaLiveChannel?: never;
+      Failover?: never;
+      MediaConnectFlow?: never;
+      Merge: MergeRouterInputConfiguration;
     };
 export const RouterInputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ Standard: StandardRouterInputConfiguration }),
+  S.Struct({ MediaLiveChannel: MediaLiveChannelRouterInputConfiguration }),
   S.Struct({ Failover: FailoverRouterInputConfiguration }),
-  S.Struct({ Merge: MergeRouterInputConfiguration }),
   S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputConfiguration }),
+  S.Struct({ Merge: MergeRouterInputConfiguration }),
 ]);
 export type RoutingScope = "REGIONAL" | "GLOBAL" | (string & {});
 export const RoutingScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -5986,6 +6063,7 @@ export type RouterInputType =
   | "FAILOVER"
   | "MERGE"
   | "MEDIACONNECT_FLOW"
+  | "MEDIALIVE_CHANNEL"
   | (string & {});
 export const RouterInputType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface RouterInputMessage {
@@ -6013,6 +6091,11 @@ export const StandardRouterInputStreamDetails =
   ).annotate({
     identifier: "StandardRouterInputStreamDetails",
   }) as any as S.Schema<StandardRouterInputStreamDetails>;
+export interface MediaLiveChannelRouterInputStreamDetails {}
+export const MediaLiveChannelRouterInputStreamDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "MediaLiveChannelRouterInputStreamDetails",
+  }) as any as S.Schema<MediaLiveChannelRouterInputStreamDetails>;
 export interface FailoverRouterInputIndexedStreamDetails {
   SourceIndex: number;
   SourceIpAddress?: string;
@@ -6049,6 +6132,11 @@ export const FailoverRouterInputStreamDetails =
   ).annotate({
     identifier: "FailoverRouterInputStreamDetails",
   }) as any as S.Schema<FailoverRouterInputStreamDetails>;
+export interface MediaConnectFlowRouterInputStreamDetails {}
+export const MediaConnectFlowRouterInputStreamDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "MediaConnectFlowRouterInputStreamDetails",
+  }) as any as S.Schema<MediaConnectFlowRouterInputStreamDetails>;
 export interface MergeRouterInputIndexedStreamDetails {
   SourceIndex: number;
   SourceIpAddress?: string;
@@ -6085,41 +6173,48 @@ export const MergeRouterInputStreamDetails =
   ).annotate({
     identifier: "MergeRouterInputStreamDetails",
   }) as any as S.Schema<MergeRouterInputStreamDetails>;
-export interface MediaConnectFlowRouterInputStreamDetails {}
-export const MediaConnectFlowRouterInputStreamDetails =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "MediaConnectFlowRouterInputStreamDetails",
-  }) as any as S.Schema<MediaConnectFlowRouterInputStreamDetails>;
 export type RouterInputStreamDetails =
   | {
       Standard: StandardRouterInputStreamDetails;
+      MediaLiveChannel?: never;
       Failover?: never;
-      Merge?: never;
       MediaConnectFlow?: never;
+      Merge?: never;
     }
   | {
       Standard?: never;
+      MediaLiveChannel: MediaLiveChannelRouterInputStreamDetails;
+      Failover?: never;
+      MediaConnectFlow?: never;
+      Merge?: never;
+    }
+  | {
+      Standard?: never;
+      MediaLiveChannel?: never;
       Failover: FailoverRouterInputStreamDetails;
-      Merge?: never;
       MediaConnectFlow?: never;
+      Merge?: never;
     }
   | {
       Standard?: never;
+      MediaLiveChannel?: never;
       Failover?: never;
-      Merge: MergeRouterInputStreamDetails;
-      MediaConnectFlow?: never;
-    }
-  | {
-      Standard?: never;
-      Failover?: never;
-      Merge?: never;
       MediaConnectFlow: MediaConnectFlowRouterInputStreamDetails;
+      Merge?: never;
+    }
+  | {
+      Standard?: never;
+      MediaLiveChannel?: never;
+      Failover?: never;
+      MediaConnectFlow?: never;
+      Merge: MergeRouterInputStreamDetails;
     };
 export const RouterInputStreamDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ Standard: StandardRouterInputStreamDetails }),
+  S.Struct({ MediaLiveChannel: MediaLiveChannelRouterInputStreamDetails }),
   S.Struct({ Failover: FailoverRouterInputStreamDetails }),
-  S.Struct({ Merge: MergeRouterInputStreamDetails }),
   S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputStreamDetails }),
+  S.Struct({ Merge: MergeRouterInputStreamDetails }),
 ]);
 export type MaintenanceType = "PREFERRED_DAY_TIME" | "DEFAULT" | (string & {});
 export const MaintenanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -6360,57 +6455,57 @@ export const DeleteRouterInputResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteRouterInputResponse>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
-export type RouterInputTypeList = RouterInputType[];
-export const RouterInputTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RouterInputType);
 export type RouterNetworkInterfaceArnList = string[];
 export const RouterNetworkInterfaceArnList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type RoutingScopeList = RoutingScope[];
 export const RoutingScopeList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(RoutingScope);
+export type RouterInputTypeList = RouterInputType[];
+export const RouterInputTypeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RouterInputType);
 export type RouterInputFilter =
   | {
-      RegionNames: string[];
-      InputTypes?: never;
-      NameContains?: never;
-      NetworkInterfaceArns?: never;
-      RoutingScopes?: never;
-    }
-  | {
-      RegionNames?: never;
-      InputTypes: RouterInputType[];
-      NameContains?: never;
-      NetworkInterfaceArns?: never;
-      RoutingScopes?: never;
-    }
-  | {
-      RegionNames?: never;
-      InputTypes?: never;
       NameContains: string[];
+      RegionNames?: never;
       NetworkInterfaceArns?: never;
       RoutingScopes?: never;
+      InputTypes?: never;
     }
   | {
-      RegionNames?: never;
-      InputTypes?: never;
       NameContains?: never;
+      RegionNames: string[];
+      NetworkInterfaceArns?: never;
+      RoutingScopes?: never;
+      InputTypes?: never;
+    }
+  | {
+      NameContains?: never;
+      RegionNames?: never;
       NetworkInterfaceArns: string[];
       RoutingScopes?: never;
+      InputTypes?: never;
     }
   | {
-      RegionNames?: never;
-      InputTypes?: never;
       NameContains?: never;
+      RegionNames?: never;
       NetworkInterfaceArns?: never;
       RoutingScopes: RoutingScope[];
+      InputTypes?: never;
+    }
+  | {
+      NameContains?: never;
+      RegionNames?: never;
+      NetworkInterfaceArns?: never;
+      RoutingScopes?: never;
+      InputTypes: RouterInputType[];
     };
 export const RouterInputFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
-  S.Struct({ RegionNames: StringList }),
-  S.Struct({ InputTypes: RouterInputTypeList }),
   S.Struct({ NameContains: StringList }),
+  S.Struct({ RegionNames: StringList }),
   S.Struct({ NetworkInterfaceArns: RouterNetworkInterfaceArnList }),
   S.Struct({ RoutingScopes: RoutingScopeList }),
+  S.Struct({ InputTypes: RouterInputTypeList }),
 ]);
 export type RouterInputFilterList = RouterInputFilter[];
 export const RouterInputFilterList =
@@ -7246,27 +7341,6 @@ export const BatchGetRouterNetworkInterfaceResponse =
   ).annotate({
     identifier: "BatchGetRouterNetworkInterfaceResponse",
   }) as any as S.Schema<BatchGetRouterNetworkInterfaceResponse>;
-export interface RtpRouterOutputConfiguration {
-  DestinationAddress: string;
-  DestinationPort: number;
-  ForwardErrorCorrection?: ForwardErrorCorrectionState;
-}
-export const RtpRouterOutputConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DestinationAddress: S.String,
-      DestinationPort: S.Number,
-      ForwardErrorCorrection: S.optional(ForwardErrorCorrectionState),
-    }).pipe(
-      S.encodeKeys({
-        DestinationAddress: "destinationAddress",
-        DestinationPort: "destinationPort",
-        ForwardErrorCorrection: "forwardErrorCorrection",
-      }),
-    ),
-  ).annotate({
-    identifier: "RtpRouterOutputConfiguration",
-  }) as any as S.Schema<RtpRouterOutputConfiguration>;
 export interface RistRouterOutputConfiguration {
   DestinationAddress: string;
   DestinationPort: number;
@@ -7341,37 +7415,58 @@ export const SrtCallerRouterOutputConfiguration =
   ).annotate({
     identifier: "SrtCallerRouterOutputConfiguration",
   }) as any as S.Schema<SrtCallerRouterOutputConfiguration>;
+export interface RtpRouterOutputConfiguration {
+  DestinationAddress: string;
+  DestinationPort: number;
+  ForwardErrorCorrection?: ForwardErrorCorrectionState;
+}
+export const RtpRouterOutputConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DestinationAddress: S.String,
+      DestinationPort: S.Number,
+      ForwardErrorCorrection: S.optional(ForwardErrorCorrectionState),
+    }).pipe(
+      S.encodeKeys({
+        DestinationAddress: "destinationAddress",
+        DestinationPort: "destinationPort",
+        ForwardErrorCorrection: "forwardErrorCorrection",
+      }),
+    ),
+  ).annotate({
+    identifier: "RtpRouterOutputConfiguration",
+  }) as any as S.Schema<RtpRouterOutputConfiguration>;
 export type RouterOutputProtocolConfiguration =
   | {
-      Rtp: RtpRouterOutputConfiguration;
-      Rist?: never;
-      SrtListener?: never;
-      SrtCaller?: never;
-    }
-  | {
-      Rtp?: never;
       Rist: RistRouterOutputConfiguration;
       SrtListener?: never;
       SrtCaller?: never;
+      Rtp?: never;
     }
   | {
-      Rtp?: never;
       Rist?: never;
       SrtListener: SrtListenerRouterOutputConfiguration;
       SrtCaller?: never;
+      Rtp?: never;
     }
   | {
-      Rtp?: never;
       Rist?: never;
       SrtListener?: never;
       SrtCaller: SrtCallerRouterOutputConfiguration;
+      Rtp?: never;
+    }
+  | {
+      Rist?: never;
+      SrtListener?: never;
+      SrtCaller?: never;
+      Rtp: RtpRouterOutputConfiguration;
     };
 export const RouterOutputProtocolConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ Rtp: RtpRouterOutputConfiguration }),
     S.Struct({ Rist: RistRouterOutputConfiguration }),
     S.Struct({ SrtListener: SrtListenerRouterOutputConfiguration }),
     S.Struct({ SrtCaller: SrtCallerRouterOutputConfiguration }),
+    S.Struct({ Rtp: RtpRouterOutputConfiguration }),
   ]);
 export type RouterOutputProtocol =
   | "RTP"
@@ -7427,41 +7522,6 @@ export type MediaLiveInputPipelineId =
   | "PIPELINE_1"
   | (string & {});
 export const MediaLiveInputPipelineId = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type MediaLiveTransitEncryptionKeyType =
-  | "SECRETS_MANAGER"
-  | "AUTOMATIC"
-  | (string & {});
-export const MediaLiveTransitEncryptionKeyType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type MediaLiveTransitEncryptionKeyConfiguration =
-  | {
-      SecretsManager: SecretsManagerEncryptionKeyConfiguration;
-      Automatic?: never;
-    }
-  | { SecretsManager?: never; Automatic: AutomaticEncryptionKeyConfiguration };
-export const MediaLiveTransitEncryptionKeyConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({ SecretsManager: SecretsManagerEncryptionKeyConfiguration }),
-    S.Struct({ Automatic: AutomaticEncryptionKeyConfiguration }),
-  ]);
-export interface MediaLiveTransitEncryption {
-  EncryptionKeyType?: MediaLiveTransitEncryptionKeyType;
-  EncryptionKeyConfiguration: MediaLiveTransitEncryptionKeyConfiguration;
-}
-export const MediaLiveTransitEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EncryptionKeyType: S.optional(MediaLiveTransitEncryptionKeyType),
-      EncryptionKeyConfiguration: MediaLiveTransitEncryptionKeyConfiguration,
-    }).pipe(
-      S.encodeKeys({
-        EncryptionKeyType: "encryptionKeyType",
-        EncryptionKeyConfiguration: "encryptionKeyConfiguration",
-      }),
-    ),
-).annotate({
-  identifier: "MediaLiveTransitEncryption",
-}) as any as S.Schema<MediaLiveTransitEncryption>;
 export interface MediaLiveInputRouterOutputConfiguration {
   MediaLiveInputArn?: string;
   MediaLivePipelineId?: MediaLiveInputPipelineId;
@@ -7853,59 +7913,59 @@ export const RouterOutputTypeList =
 export type RouterOutputFilter =
   | {
       RegionNames: string[];
-      OutputTypes?: never;
-      NameContains?: never;
       NetworkInterfaceArns?: never;
-      RoutedInputArns?: never;
       RoutingScopes?: never;
+      OutputTypes?: never;
+      RoutedInputArns?: never;
+      NameContains?: never;
     }
   | {
       RegionNames?: never;
-      OutputTypes: RouterOutputType[];
-      NameContains?: never;
-      NetworkInterfaceArns?: never;
-      RoutedInputArns?: never;
-      RoutingScopes?: never;
-    }
-  | {
-      RegionNames?: never;
-      OutputTypes?: never;
-      NameContains: string[];
-      NetworkInterfaceArns?: never;
-      RoutedInputArns?: never;
-      RoutingScopes?: never;
-    }
-  | {
-      RegionNames?: never;
-      OutputTypes?: never;
-      NameContains?: never;
       NetworkInterfaceArns: string[];
-      RoutedInputArns?: never;
       RoutingScopes?: never;
+      OutputTypes?: never;
+      RoutedInputArns?: never;
+      NameContains?: never;
     }
   | {
       RegionNames?: never;
-      OutputTypes?: never;
-      NameContains?: never;
       NetworkInterfaceArns?: never;
-      RoutedInputArns: string[];
-      RoutingScopes?: never;
-    }
-  | {
-      RegionNames?: never;
-      OutputTypes?: never;
-      NameContains?: never;
-      NetworkInterfaceArns?: never;
-      RoutedInputArns?: never;
       RoutingScopes: RoutingScope[];
+      OutputTypes?: never;
+      RoutedInputArns?: never;
+      NameContains?: never;
+    }
+  | {
+      RegionNames?: never;
+      NetworkInterfaceArns?: never;
+      RoutingScopes?: never;
+      OutputTypes: RouterOutputType[];
+      RoutedInputArns?: never;
+      NameContains?: never;
+    }
+  | {
+      RegionNames?: never;
+      NetworkInterfaceArns?: never;
+      RoutingScopes?: never;
+      OutputTypes?: never;
+      RoutedInputArns: string[];
+      NameContains?: never;
+    }
+  | {
+      RegionNames?: never;
+      NetworkInterfaceArns?: never;
+      RoutingScopes?: never;
+      OutputTypes?: never;
+      RoutedInputArns?: never;
+      NameContains: string[];
     };
 export const RouterOutputFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ RegionNames: StringList }),
-  S.Struct({ OutputTypes: RouterOutputTypeList }),
-  S.Struct({ NameContains: StringList }),
   S.Struct({ NetworkInterfaceArns: RouterNetworkInterfaceArnList }),
-  S.Struct({ RoutedInputArns: RouterInputArnList }),
   S.Struct({ RoutingScopes: RoutingScopeList }),
+  S.Struct({ OutputTypes: RouterOutputTypeList }),
+  S.Struct({ RoutedInputArns: RouterInputArnList }),
+  S.Struct({ NameContains: StringList }),
 ]);
 export type RouterOutputFilterList = RouterOutputFilter[];
 export const RouterOutputFilterList =

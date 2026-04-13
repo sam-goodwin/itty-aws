@@ -1373,7 +1373,7 @@ export const CustomerEncryptionKey: Schema.Schema<CustomerEncryptionKey> =
   }) as any as Schema.Schema<CustomerEncryptionKey>;
 
 export interface GuestOsFeature {
-  /** The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE For more information, see Enabling guest operating system features. */
+  /** The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF - SNP_SVSM_CAPABLE - CCA_CAPABLE For more information, see Enabling guest operating system features. */
   type?:
     | "BARE_METAL_LINUX_COMPATIBLE"
     | "FEATURE_TYPE_UNSPECIFIED"
@@ -1892,8 +1892,14 @@ export interface Snapshot {
   sourceDiskForRecoveryCheckpoint?: string;
   /** Customer provided encryption key when creating Snapshot from Instant Snapshot. */
   sourceInstantSnapshotEncryptionKey?: CustomerEncryptionKey;
+  /** Output only. [Output Only] URL of the region where the snapshot resides. Only applicable for regional snapshots. */
+  region?: string;
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
+  /** Output only. [Output only] The snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
+  snapshotGroupName?: string;
+  /** Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. The usage of snapshot group feature is restricted. */
+  snapshotGroupId?: string;
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: SnapshotParams;
 }
@@ -1939,7 +1945,10 @@ export const Snapshot: Schema.Schema<Snapshot> =
       sourceInstantSnapshotEncryptionKey: Schema.optional(
         CustomerEncryptionKey,
       ),
+      region: Schema.optional(Schema.String),
       satisfiesPzi: Schema.optional(Schema.Boolean),
+      snapshotGroupName: Schema.optional(Schema.String),
+      snapshotGroupId: Schema.optional(Schema.String),
       params: Schema.optional(SnapshotParams),
     }),
   ).annotate({ identifier: "Snapshot" }) as any as Schema.Schema<Snapshot>;
@@ -2019,6 +2028,54 @@ export const SnapshotList: Schema.Schema<SnapshotList> =
   ).annotate({
     identifier: "SnapshotList",
   }) as any as Schema.Schema<SnapshotList>;
+
+export interface SnapshotUpdateKmsKeyRequest {
+  /** Optional. The new KMS key to replace the current one on the snapshot. If empty, the snapshot will be re-encrypted using the primary version of the snapshot's current KMS key. The KMS key can be provided in the following formats: - projects/project_id/locations/region/keyRings/key_ring/cryptoKeys/key */
+  kmsKeyName?: string;
+}
+
+export const SnapshotUpdateKmsKeyRequest: Schema.Schema<SnapshotUpdateKmsKeyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kmsKeyName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "SnapshotUpdateKmsKeyRequest",
+  }) as any as Schema.Schema<SnapshotUpdateKmsKeyRequest>;
+
+export interface RegionSetPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
+  policy?: Policy;
+  /** Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
+  bindings?: Array<Binding>;
+  /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
+  etag?: string;
+}
+
+export const RegionSetPolicyRequest: Schema.Schema<RegionSetPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      policy: Schema.optional(Policy),
+      bindings: Schema.optional(Schema.Array(Binding)),
+      etag: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "RegionSetPolicyRequest",
+  }) as any as Schema.Schema<RegionSetPolicyRequest>;
+
+export interface RegionSnapshotUpdateKmsKeyRequest {
+  /** Optional. The new KMS key to replace the current one on the snapshot. If empty, the snapshot will be re-encrypted using the primary version of the snapshot's current KMS key. The KMS key can be provided in the following formats: - projects/project_id/locations/region/keyRings/region/cryptoKeys/key */
+  kmsKeyName?: string;
+}
+
+export const RegionSnapshotUpdateKmsKeyRequest: Schema.Schema<RegionSnapshotUpdateKmsKeyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kmsKeyName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "RegionSnapshotUpdateKmsKeyRequest",
+  }) as any as Schema.Schema<RegionSnapshotUpdateKmsKeyRequest>;
 
 export interface DiskAsyncReplication {
   /** The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk */
@@ -2643,19 +2700,75 @@ export const DisksStopGroupAsyncReplicationResource: Schema.Schema<DisksStopGrou
     identifier: "DisksStopGroupAsyncReplicationResource",
   }) as any as Schema.Schema<DisksStopGroupAsyncReplicationResource>;
 
+export interface InstantSnapshotGroupParameters {
+  /** The source instant snapshot group used to create disks. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshotGroups/instantSnapshotGroup - projects/project/zones/zone/instantSnapshotGroups/instantSnapshotGroup - zones/zone/instantSnapshotGroups/instantSnapshotGroup */
+  sourceInstantSnapshotGroup?: string;
+}
+
+export const InstantSnapshotGroupParameters: Schema.Schema<InstantSnapshotGroupParameters> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sourceInstantSnapshotGroup: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "InstantSnapshotGroupParameters",
+  }) as any as Schema.Schema<InstantSnapshotGroupParameters>;
+
+export interface SnapshotGroupParameters {
+  /** The source snapshot group used to create disks. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/global/snapshotGroups/snapshotGroup - projects/project/global/snapshotGroups/snapshotGroup - global/snapshotGroups/snapshotGroup */
+  sourceSnapshotGroup?: string;
+  /** URL of the disk type resource describing which disk type to use to create disks. Provide this when creating the disk. For example:projects/project/zones/zone/diskTypes/pd-ssd. See Persistent disk types. */
+  type?: string;
+  /** URLs of the zones where disks should be replicated to. Only applicable for regional resources. */
+  replicaZones?: Array<string>;
+}
+
+export const SnapshotGroupParameters: Schema.Schema<SnapshotGroupParameters> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sourceSnapshotGroup: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      replicaZones: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "SnapshotGroupParameters",
+  }) as any as Schema.Schema<SnapshotGroupParameters>;
+
 export interface BulkInsertDiskResource {
   /** The URL of the DiskConsistencyGroupPolicy for the group of disks to clone. This may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/projects/project/regions/region/resourcePolicies/resourcePolicy - projects/project/regions/region/resourcePolicies/resourcePolicy - regions/region/resourcePolicies/resourcePolicy */
   sourceConsistencyGroupPolicy?: string;
+  /** The parameters for the instant snapshot group. */
+  instantSnapshotGroupParameters?: InstantSnapshotGroupParameters;
+  /** The parameters for the snapshot group. The usage of snapshot group feature is restricted. */
+  snapshotGroupParameters?: SnapshotGroupParameters;
 }
 
 export const BulkInsertDiskResource: Schema.Schema<BulkInsertDiskResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sourceConsistencyGroupPolicy: Schema.optional(Schema.String),
+      instantSnapshotGroupParameters: Schema.optional(
+        InstantSnapshotGroupParameters,
+      ),
+      snapshotGroupParameters: Schema.optional(SnapshotGroupParameters),
     }),
   ).annotate({
     identifier: "BulkInsertDiskResource",
   }) as any as Schema.Schema<BulkInsertDiskResource>;
+
+export interface DiskUpdateKmsKeyRequest {
+  /** Optional. The new KMS key to replace the current one on the disk. If empty, the disk will be re-encrypted using the primary version of the disk's current KMS key. The KMS key can be provided in the following formats: - projects/project_id/locations/location/keyRings/key_ring/cryptoKeys/key Where project is the project ID or project number. */
+  kmsKeyName?: string;
+}
+
+export const DiskUpdateKmsKeyRequest: Schema.Schema<DiskUpdateKmsKeyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kmsKeyName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DiskUpdateKmsKeyRequest",
+  }) as any as Schema.Schema<DiskUpdateKmsKeyRequest>;
 
 export interface RegionDisksResizeRequest {
   /** The new size of the regional persistent disk, which is specified in GB. */
@@ -2699,26 +2812,6 @@ export const RegionDisksRemoveResourcePoliciesRequest: Schema.Schema<RegionDisks
     identifier: "RegionDisksRemoveResourcePoliciesRequest",
   }) as any as Schema.Schema<RegionDisksRemoveResourcePoliciesRequest>;
 
-export interface RegionSetPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
-  policy?: Policy;
-  /** Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
-  /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
-  etag?: string;
-}
-
-export const RegionSetPolicyRequest: Schema.Schema<RegionSetPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionSetPolicyRequest",
-  }) as any as Schema.Schema<RegionSetPolicyRequest>;
-
 export interface RegionDisksStartAsyncReplicationRequest {
   /** The secondary disk to start asynchronous replication to. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk */
   asyncSecondaryDisk?: string;
@@ -2732,6 +2825,20 @@ export const RegionDisksStartAsyncReplicationRequest: Schema.Schema<RegionDisksS
   ).annotate({
     identifier: "RegionDisksStartAsyncReplicationRequest",
   }) as any as Schema.Schema<RegionDisksStartAsyncReplicationRequest>;
+
+export interface RegionDiskUpdateKmsKeyRequest {
+  /** Optional. The new KMS key to replace the current one on the disk. If empty, the disk will be re-encrypted using the primary version of the disk's current KMS key. The KMS key can be provided in the following formats: - projects/project_id/locations/location/keyRings/key_ring/cryptoKeys/key Where project is the project ID or project number. */
+  kmsKeyName?: string;
+}
+
+export const RegionDiskUpdateKmsKeyRequest: Schema.Schema<RegionDiskUpdateKmsKeyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kmsKeyName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "RegionDiskUpdateKmsKeyRequest",
+  }) as any as Schema.Schema<RegionDiskUpdateKmsKeyRequest>;
 
 export interface FirewallLogConfig {
   /** This field denotes whether to enable logging for a particular firewall rule. */
@@ -4655,6 +4762,8 @@ export interface NetworkInterface {
   vlan?: number;
   /** Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported. */
   igmpQuery?: "IGMP_QUERY_DISABLED" | "IGMP_QUERY_V2" | (string & {});
+  /** Optional. Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own however, network_attachment can be used without service_class_id. */
+  serviceClassId?: string;
   /** Optional. If true, DNS resolution will be enabled over this interface. Only valid with network_attachment. */
   enableVpcScopedDns?: boolean;
 }
@@ -4681,6 +4790,7 @@ export const NetworkInterface: Schema.Schema<NetworkInterface> =
       parentNicName: Schema.optional(Schema.String),
       vlan: Schema.optional(Schema.Number),
       igmpQuery: Schema.optional(Schema.String),
+      serviceClassId: Schema.optional(Schema.String),
       enableVpcScopedDns: Schema.optional(Schema.Boolean),
     }),
   ).annotate({
@@ -6922,6 +7032,10 @@ export interface Reservation {
     | (string & {});
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
   params?: ReservationParams;
+  confidentialComputeType?:
+    | "CONFIDENTIAL_COMPUTE_TYPE_TDX"
+    | "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
+    | (string & {});
   /** Indicates the early access maintenance for the reservation. If this field is absent or set to NO_EARLY_ACCESS, the reservation is not enrolled in early access maintenance and the standard notice applies. */
   earlyAccessMaintenance?:
     | "NO_EARLY_ACCESS"
@@ -6965,6 +7079,7 @@ export const Reservation: Schema.Schema<Reservation> =
       protectionTier: Schema.optional(Schema.String),
       schedulingType: Schema.optional(Schema.String),
       params: Schema.optional(ReservationParams),
+      confidentialComputeType: Schema.optional(Schema.String),
       earlyAccessMaintenance: Schema.optional(Schema.String),
     }),
   ).annotate({
@@ -7981,31 +8096,31 @@ export const InstanceGroupManagerAllInstancesConfig: Schema.Schema<InstanceGroup
   }) as any as Schema.Schema<InstanceGroupManagerAllInstancesConfig>;
 
 export interface InstanceGroupManagerActionsSummary {
-  /** Output only. [Output Only] The number of instances in the managed instance group that are running and have no scheduled actions. */
+  /** Output only. The number of instances in the managed instance group that are running and have no scheduled actions. */
   none?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated. */
   creating?: number;
-  /** Output only. [Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly. */
+  /** Output only. The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly. */
   creatingWithoutRetries?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation. */
+  /** Output only. The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation. */
   verifying?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template. */
   recreating?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted. */
   deleting?: number;
-  /** Output only. [Output Only] The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it. */
+  /** Output only. The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it. */
   abandoning?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted. */
   restarting?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance. */
+  /** Output only. The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance. */
   refreshing?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended. */
   suspending?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed. */
   resuming?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped. */
   stopping?: number;
-  /** Output only. [Output Only] The number of instances in the managed instance group that are scheduled to be started or are currently being started. */
+  /** Output only. The number of instances in the managed instance group that are scheduled to be started or are currently being started. */
   starting?: number;
 }
 
@@ -8031,9 +8146,9 @@ export const InstanceGroupManagerActionsSummary: Schema.Schema<InstanceGroupMana
   }) as any as Schema.Schema<InstanceGroupManagerActionsSummary>;
 
 export interface InstanceGroupManagerStatusAllInstancesConfig {
-  /** Output only. [Output Only] A bit indicating whether this configuration has been applied to all managed instances in the group. */
+  /** Output only. A bit indicating whether this configuration has been applied to all managed instances in the group. */
   effective?: boolean;
-  /** Output only. [Output Only] Current all-instances configuration revision. This value is in RFC3339 text format. */
+  /** Output only. Current all-instances configuration revision. This value is in RFC3339 text format. */
   currentRevision?: string;
 }
 
@@ -8048,7 +8163,7 @@ export const InstanceGroupManagerStatusAllInstancesConfig: Schema.Schema<Instanc
   }) as any as Schema.Schema<InstanceGroupManagerStatusAllInstancesConfig>;
 
 export interface InstanceGroupManagerStatusVersionTarget {
-  /** Output only. [Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified byversion field on Instance Group Manager. */
+  /** Output only. A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified byversion field on Instance Group Manager. */
   isReached?: boolean;
 }
 
@@ -8076,9 +8191,9 @@ export const InstanceGroupManagerStatusStatefulPerInstanceConfigs: Schema.Schema
   }) as any as Schema.Schema<InstanceGroupManagerStatusStatefulPerInstanceConfigs>;
 
 export interface InstanceGroupManagerStatusStateful {
-  /** Output only. [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. */
+  /** Output only. A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. */
   hasStatefulConfig?: boolean;
-  /** Output only. [Output Only] Status of per-instance configurations on the instances. */
+  /** Output only. Status of per-instance configurations on the instances. */
   perInstanceConfigs?: InstanceGroupManagerStatusStatefulPerInstanceConfigs;
 }
 
@@ -8095,9 +8210,9 @@ export const InstanceGroupManagerStatusStateful: Schema.Schema<InstanceGroupMana
   }) as any as Schema.Schema<InstanceGroupManagerStatusStateful>;
 
 export interface InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck {
-  /** Output only. [Output Only] Timestamp of the last progress check of bulk instance operation. Timestamp is in RFC3339 text format. */
+  /** Output only. Timestamp of the last progress check of bulk instance operation. Timestamp is in RFC3339 text format. */
   timestamp?: string;
-  /** Output only. [Output Only] Errors encountered during bulk instance operation. */
+  /** Output only. Errors encountered during bulk instance operation. */
   error?: {
     errors?: Array<{
       code?: string;
@@ -8147,9 +8262,9 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck: S
   }) as any as Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck>;
 
 export interface InstanceGroupManagerStatusBulkInstanceOperation {
-  /** Output only. [Output Only] Informs whether bulk instance operation is in progress. */
+  /** Output only. Informs whether bulk instance operation is in progress. */
   inProgress?: boolean;
-  /** Output only. [Output Only] Information from the last progress check of bulk instance operation. */
+  /** Output only. Information from the last progress check of bulk instance operation. */
   lastProgressCheck?: InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheck;
 }
 
@@ -8166,9 +8281,9 @@ export const InstanceGroupManagerStatusBulkInstanceOperation: Schema.Schema<Inst
   }) as any as Schema.Schema<InstanceGroupManagerStatusBulkInstanceOperation>;
 
 export interface InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails {
-  /** Output only. [Output Only] Timestamp is shown only if there is an error. The field has // RFC3339 // text format. */
+  /** Output only. Timestamp is shown only if there is an error. The field has // RFC3339 // text format. */
   timestamp?: string;
-  /** Output only. [Output Only] Encountered errors. */
+  /** Output only. Encountered errors. */
   error?: {
     errors?: Array<{
       code?: string;
@@ -8218,9 +8333,9 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }) as any as Schema.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails>;
 
 export interface InstanceGroupManagerStatusAcceleratorTopology {
-  /** Output only. [Output Only] Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
+  /** Output only. Topology in the format of: "16x16", "4x4x4", etc. The value is the same as configured in the WorkloadPolicy. */
   acceleratorTopology?: string;
-  /** Output only. [Output Only] The state of the accelerator topology. */
+  /** Output only. The state of the accelerator topology. */
   state?:
     | "ACTIVATING"
     | "ACTIVE"
@@ -8229,7 +8344,7 @@ export interface InstanceGroupManagerStatusAcceleratorTopology {
     | "INCOMPLETE"
     | "REACTIVATING"
     | (string & {});
-  /** Output only. [Output Only] The result of the latest accelerator topology state check. */
+  /** Output only. The result of the latest accelerator topology state check. */
   stateDetails?: InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails;
 }
 
@@ -8246,21 +8361,73 @@ export const InstanceGroupManagerStatusAcceleratorTopology: Schema.Schema<Instan
     identifier: "InstanceGroupManagerStatusAcceleratorTopology",
   }) as any as Schema.Schema<InstanceGroupManagerStatusAcceleratorTopology>;
 
+export interface InstanceGroupManagerStatusInstanceStatusSummary {
+  /** Output only. The number of instances that have not been created yet or have been deleted. Includes only instances that would be shown in the listManagedInstances method and not all instances that have been deleted in the lifetime of the MIG. Does not include FlexStart instances that are waiting for the resources availability, they are considered as 'pending'. */
+  nonExistent?: number;
+  /** Output only. The number of instances in the managed instance group that have PROVISIONING status. */
+  provisioning?: number;
+  /** Output only. The number of instances in the managed instance group that have STAGING status. */
+  staging?: number;
+  /** Output only. The number of instances in the managed instance group that have RUNNING status. */
+  running?: number;
+  /** Output only. The number of instances in the managed instance group that have STOPPING status. */
+  stopping?: number;
+  /** Output only. The number of instances in the managed instance group that have STOPPED status. */
+  stopped?: number;
+  /** Output only. The number of instances in the managed instance group that have TERMINATED status. */
+  terminated?: number;
+  /** Output only. The number of instances in the managed instance group that have SUSPENDING status. */
+  suspending?: number;
+  /** Output only. The number of instances in the managed instance group that have SUSPENDED status. */
+  suspended?: number;
+  /** Output only. The number of instances in the managed instance group that have REPAIRING status. */
+  repairing?: number;
+  /** Output only. The number of instances in the managed instance group that have DEPROVISIONING status. */
+  deprovisioning?: number;
+  /** Output only. The number of instances in the managed instance group that have PENDING_STOP status. */
+  pendingStop?: number;
+  /** Output only. The number of instances in the managed instance group that have PENDING status, that is FlexStart instances that are waiting for resources. Instances that do not exist because of the other reasons are counted as 'non_existent'. */
+  pending?: number;
+}
+
+export const InstanceGroupManagerStatusInstanceStatusSummary: Schema.Schema<InstanceGroupManagerStatusInstanceStatusSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      nonExistent: Schema.optional(Schema.Number),
+      provisioning: Schema.optional(Schema.Number),
+      staging: Schema.optional(Schema.Number),
+      running: Schema.optional(Schema.Number),
+      stopping: Schema.optional(Schema.Number),
+      stopped: Schema.optional(Schema.Number),
+      terminated: Schema.optional(Schema.Number),
+      suspending: Schema.optional(Schema.Number),
+      suspended: Schema.optional(Schema.Number),
+      repairing: Schema.optional(Schema.Number),
+      deprovisioning: Schema.optional(Schema.Number),
+      pendingStop: Schema.optional(Schema.Number),
+      pending: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "InstanceGroupManagerStatusInstanceStatusSummary",
+  }) as any as Schema.Schema<InstanceGroupManagerStatusInstanceStatusSummary>;
+
 export interface InstanceGroupManagerStatus {
-  /** Output only. [Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified. */
+  /** Output only. A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified. */
   isStable?: boolean;
-  /** Output only. [Output only] Status of all-instances configuration on the group. */
+  /** Output only. Status of all-instances configuration on the group. */
   allInstancesConfig?: InstanceGroupManagerStatusAllInstancesConfig;
-  /** Output only. [Output Only] A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager. */
+  /** Output only. A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager. */
   versionTarget?: InstanceGroupManagerStatusVersionTarget;
-  /** Output only. [Output Only] Stateful status of the given Instance Group Manager. */
+  /** Output only. Stateful status of the given Instance Group Manager. */
   stateful?: InstanceGroupManagerStatusStateful;
-  /** Output only. [Output Only] The URL of theAutoscaler that targets this instance group manager. */
+  /** Output only. The URL of theAutoscaler that targets this instance group manager. */
   autoscaler?: string;
-  /** Output only. [Output Only] The status of bulk instance operation. */
+  /** Output only. The status of bulk instance operation. */
   bulkInstanceOperation?: InstanceGroupManagerStatusBulkInstanceOperation;
-  /** Output only. [Output Only] The accelerator topology applied to this MIG. Currently only one accelerator topology is supported. */
+  /** Output only. The accelerator topology applied to this MIG. Currently only one accelerator topology is supported. */
   appliedAcceleratorTopologies?: Array<InstanceGroupManagerStatusAcceleratorTopology>;
+  /** Output only. The list of instance statuses and the number of instances in this managed instance group that have the status. Currently only shown for TPU MIGs */
+  currentInstanceStatuses?: InstanceGroupManagerStatusInstanceStatusSummary;
 }
 
 export const InstanceGroupManagerStatus: Schema.Schema<InstanceGroupManagerStatus> =
@@ -8278,6 +8445,9 @@ export const InstanceGroupManagerStatus: Schema.Schema<InstanceGroupManagerStatu
       ),
       appliedAcceleratorTopologies: Schema.optional(
         Schema.Array(InstanceGroupManagerStatusAcceleratorTopology),
+      ),
+      currentInstanceStatuses: Schema.optional(
+        InstanceGroupManagerStatusInstanceStatusSummary,
       ),
     }),
   ).annotate({
@@ -8515,17 +8685,17 @@ export const InstanceGroupManagerResourcePolicies: Schema.Schema<InstanceGroupMa
   }) as any as Schema.Schema<InstanceGroupManagerResourcePolicies>;
 
 export interface InstanceGroupManager {
-  /** Output only. [Output Only] The resource type, which is alwayscompute#instanceGroupManager for managed instance groups. */
+  /** Output only. The resource type, which is alwayscompute#instanceGroupManager for managed instance groups. */
   kind?: string;
-  /** Output only. [Output Only] A unique identifier for this resource type. The server generates this identifier. */
+  /** Output only. A unique identifier for this resource type. The server generates this identifier. */
   id?: string;
-  /** Output only. [Output Only] The creation timestamp for this managed instance group inRFC3339 text format. */
+  /** Output only. The creation timestamp for this managed instance group inRFC3339 text format. */
   creationTimestamp?: string;
   /** The name of the managed instance group. The name must be 1-63 characters long, and comply withRFC1035. */
   name?: string;
   /** An optional description of this resource. */
   description?: string;
-  /** Output only. [Output Only] The URL of azone where the managed instance group is located (for zonal resources). */
+  /** Output only. The URL of azone where the managed instance group is located (for zonal resources). */
   zone?: string;
   /** Output only. [Output Only] The URL of theregion where the managed instance group resides (for regional resources). */
   region?: string;
@@ -8537,7 +8707,7 @@ export interface InstanceGroupManager {
   versions?: Array<InstanceGroupManagerVersion>;
   /** Specifies configuration that overrides the instance template configuration for the group. */
   allInstancesConfig?: InstanceGroupManagerAllInstancesConfig;
-  /** Output only. [Output Only] The URL of the Instance Group resource. */
+  /** Output only. The URL of the Instance Group resource. */
   instanceGroup?: string;
   /** The URLs for all TargetPool resources to which instances in theinstanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group. */
   targetPools?: Array<string>;
@@ -8545,9 +8715,9 @@ export interface InstanceGroupManager {
   baseInstanceName?: string;
   /** Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager. */
   fingerprint?: string;
-  /** Output only. [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions. */
+  /** Output only. The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions. */
   currentActions?: InstanceGroupManagerActionsSummary;
-  /** Output only. [Output Only] The status of this managed instance group. */
+  /** Output only. The status of this managed instance group. */
   status?: InstanceGroupManagerStatus;
   /** The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number. */
   targetSize?: number;
@@ -8563,7 +8733,7 @@ export interface InstanceGroupManager {
   listManagedInstancesResults?: "PAGELESS" | "PAGINATED" | (string & {});
   /** Standby policy for stopped and suspended instances. */
   standbyPolicy?: InstanceGroupManagerStandbyPolicy;
-  /** Output only. [Output Only] The URL for this managed instance group. The server defines this URL. */
+  /** Output only. The URL for this managed instance group. The server defines this URL. */
   selfLink?: string;
   /** The autohealing policy for this managed instance group. You can specify only one value. */
   autoHealingPolicies?: Array<InstanceGroupManagerAutoHealingPolicy>;
@@ -8575,9 +8745,9 @@ export interface InstanceGroupManager {
   statefulPolicy?: StatefulPolicy;
   /** The repair policy for this managed instance group. */
   instanceLifecyclePolicy?: InstanceGroupManagerInstanceLifecyclePolicy;
-  /** Output only. [Output Only] Reserved for future use. */
+  /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
-  /** Output only. [Output Only] Reserved for future use. */
+  /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Resource policies for this managed instance group. */
   resourcePolicies?: InstanceGroupManagerResourcePolicies;
@@ -9589,7 +9759,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttempt: Schema.Schema<I
   }) as any as Schema.Schema<InstanceGroupManagerResizeRequestStatusLastAttempt>;
 
 export interface InstanceGroupManagerResizeRequestStatus {
-  /** Output only. [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry. */
+  /** Output only. Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry. */
   error?: {
     errors?: Array<{
       code?: string;
@@ -9603,7 +9773,7 @@ export interface InstanceGroupManagerResizeRequestStatus {
       }>;
     }>;
   };
-  /** Output only. [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only. */
+  /** Output only. Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be stored in the "error" field only. */
   lastAttempt?: InstanceGroupManagerResizeRequestStatusLastAttempt;
 }
 
@@ -9642,23 +9812,25 @@ export const InstanceGroupManagerResizeRequestStatus: Schema.Schema<InstanceGrou
   }) as any as Schema.Schema<InstanceGroupManagerResizeRequestStatus>;
 
 export interface InstanceGroupManagerResizeRequest {
-  /** Output only. [Output Only] The resource type, which is alwayscompute#instanceGroupManagerResizeRequest for resize requests. */
+  /** Output only. The resource type, which is alwayscompute#instanceGroupManagerResizeRequest for resize requests. */
   kind?: string;
-  /** Output only. [Output Only] A unique identifier for this resource type. The server generates this identifier. */
+  /** Output only. A unique identifier for this resource type. The server generates this identifier. */
   id?: string;
-  /** Output only. [Output Only] The creation timestamp for this resize request inRFC3339 text format. */
+  /** Output only. The creation timestamp for this resize request inRFC3339 text format. */
   creationTimestamp?: string;
   /** The name of this resize request. The name must be 1-63 characters long, and comply withRFC1035. */
   name?: string;
   /** An optional description of this resource. */
   description?: string;
-  /** Output only. [Output Only] The URL of azone where the resize request is located. Populated only for zonal resize requests. */
+  /** Output only. The URL of a zone where the resize request is located. Populated only for zonal resize requests. */
   zone?: string;
+  /** Output only. The URL of a region where the resize request is located. Populated only for regional resize requests. */
+  region?: string;
   /** The number of instances to be created by this resize request. The group's target size will be increased by this number. This field cannot be used together with 'instances'. */
   resizeBy?: number;
   /** Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted. */
   requestedRunDuration?: Duration;
-  /** Output only. [Output only] Current state of the request. */
+  /** Output only. Current state of the request. */
   state?:
     | "ACCEPTED"
     | "CANCELLED"
@@ -9667,11 +9839,11 @@ export interface InstanceGroupManagerResizeRequest {
     | "STATE_UNSPECIFIED"
     | "SUCCEEDED"
     | (string & {});
-  /** Output only. [Output only] Status of the request. */
+  /** Output only. Status of the request. */
   status?: InstanceGroupManagerResizeRequestStatus;
-  /** Output only. [Output Only] The URL for this resize request. The server defines this URL. */
+  /** Output only. The URL for this resize request. The server defines this URL. */
   selfLink?: string;
-  /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
+  /** Output only. Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
 }
 
@@ -9684,6 +9856,7 @@ export const InstanceGroupManagerResizeRequest: Schema.Schema<InstanceGroupManag
       name: Schema.optional(Schema.String),
       description: Schema.optional(Schema.String),
       zone: Schema.optional(Schema.String),
+      region: Schema.optional(Schema.String),
       resizeBy: Schema.optional(Schema.Number),
       requestedRunDuration: Schema.optional(Duration),
       state: Schema.optional(Schema.String),
@@ -10169,6 +10342,87 @@ export const RegionInstanceGroupManagersCreateInstancesRequest: Schema.Schema<Re
   ).annotate({
     identifier: "RegionInstanceGroupManagersCreateInstancesRequest",
   }) as any as Schema.Schema<RegionInstanceGroupManagersCreateInstancesRequest>;
+
+export interface RegionInstanceGroupManagerResizeRequestsListResponse {
+  /** Output only. [Output Only] Type of the resource. Alwayscompute#regionInstanceGroupManagerResizeRequestList for a list of Resize Requests. */
+  kind?: string;
+  /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
+  id?: string;
+  /** A list of Resize Request resources. */
+  items?: Array<InstanceGroupManagerResizeRequest>;
+  /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
+  nextPageToken?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource. */
+  selfLink?: string;
+  /** Output only. [Output Only] Informational warning message. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+  etag?: string;
+  /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
+  unreachables?: Array<string>;
+}
+
+export const RegionInstanceGroupManagerResizeRequestsListResponse: Schema.Schema<RegionInstanceGroupManagerResizeRequestsListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      items: Schema.optional(Schema.Array(InstanceGroupManagerResizeRequest)),
+      nextPageToken: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+      unreachables: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "RegionInstanceGroupManagerResizeRequestsListResponse",
+  }) as any as Schema.Schema<RegionInstanceGroupManagerResizeRequestsListResponse>;
 
 export interface AutoscalingPolicyScaleInControl {
   /** Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step. */
@@ -10888,9 +11142,11 @@ export interface BackendBucket {
   /** Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header. */
   compressionMode?: "AUTOMATIC" | "DISABLED" | (string & {});
   /** The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer. If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both. */
-  loadBalancingScheme?: "INTERNAL_MANAGED" | (string & {});
+  loadBalancingScheme?: "EXTERNAL_MANAGED" | "INTERNAL_MANAGED" | (string & {});
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: BackendBucketParams;
+  /** Output only. [Output Only] URL of the region where the regional backend bucket resides. This field is not applicable to global backend buckets. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
+  region?: string;
   /** Output only. [Output Only] List of resources referencing that backend bucket. */
   usedBy?: Array<BackendBucketUsedBy>;
 }
@@ -10912,6 +11168,7 @@ export const BackendBucket: Schema.Schema<BackendBucket> =
       compressionMode: Schema.optional(Schema.String),
       loadBalancingScheme: Schema.optional(Schema.String),
       params: Schema.optional(BackendBucketParams),
+      region: Schema.optional(Schema.String),
       usedBy: Schema.optional(Schema.Array(BackendBucketUsedBy)),
     }),
   ).annotate({
@@ -10994,6 +11251,224 @@ export const BackendBucketList: Schema.Schema<BackendBucketList> =
     identifier: "BackendBucketList",
   }) as any as Schema.Schema<BackendBucketList>;
 
+export interface BackendBucketsScopedList {
+  /** A list of BackendBuckets contained in this scope. */
+  backendBuckets?: Array<BackendBucket>;
+  /** Informational warning which replaces the list of backend services when the list is empty. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+}
+
+export const BackendBucketsScopedList: Schema.Schema<BackendBucketsScopedList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      backendBuckets: Schema.optional(Schema.Array(BackendBucket)),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ).annotate({
+    identifier: "BackendBucketsScopedList",
+  }) as any as Schema.Schema<BackendBucketsScopedList>;
+
+export interface BackendBucketAggregatedList {
+  /** Output only. Type of resource. */
+  kind?: string;
+  /** [Output Only] Unique identifier for the resource; defined by the server. */
+  id?: string;
+  /** A list of BackendBucketsScopedList resources. */
+  items?: Record<string, BackendBucketsScopedList>;
+  /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
+  nextPageToken?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource. */
+  selfLink?: string;
+  /** [Output Only] Informational warning message. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+}
+
+export const BackendBucketAggregatedList: Schema.Schema<BackendBucketAggregatedList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      items: Schema.optional(
+        Schema.Record(Schema.String, BackendBucketsScopedList),
+      ),
+      nextPageToken: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ).annotate({
+    identifier: "BackendBucketAggregatedList",
+  }) as any as Schema.Schema<BackendBucketAggregatedList>;
+
+export interface BackendBucketListUsable {
+  /** Output only. [Output Only] Type of resource. Alwayscompute#usableBackendBucketList for lists of usable backend buckets. */
+  kind?: string;
+  /** [Output Only] Unique identifier for the resource; defined by the server. */
+  id?: string;
+  /** A list of BackendBucket resources. */
+  items?: Array<BackendBucket>;
+  /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
+  nextPageToken?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource. */
+  selfLink?: string;
+  /** [Output Only] Informational warning message. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+}
+
+export const BackendBucketListUsable: Schema.Schema<BackendBucketListUsable> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      items: Schema.optional(Schema.Array(BackendBucket)),
+      nextPageToken: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ).annotate({
+    identifier: "BackendBucketListUsable",
+  }) as any as Schema.Schema<BackendBucketListUsable>;
+
 export interface SignedUrlKey {
   /** Name of the key. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   keyName?: string;
@@ -11067,6 +11542,7 @@ export interface Backend {
   balancingMode?:
     | "CONNECTION"
     | "CUSTOM_METRICS"
+    | "IN_FLIGHT"
     | "RATE"
     | "UTILIZATION"
     | (string & {});
@@ -11084,6 +11560,17 @@ export interface Backend {
   maxConnectionsPerInstance?: number;
   /** Defines a target maximum number of simultaneous connections. For usage guidelines, seeConnection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode isRATE. */
   maxConnectionsPerEndpoint?: number;
+  /** Defines a maximum number of in-flight requests for the whole NEG or instance group. Not available if backend's balancingMode isRATE or CONNECTION. */
+  maxInFlightRequests?: number;
+  /** Defines a maximum number of in-flight requests for a single VM. Not available if backend's balancingMode is RATE or CONNECTION. */
+  maxInFlightRequestsPerInstance?: number;
+  /** Defines a maximum number of in-flight requests for a single endpoint. Not available if backend's balancingMode is RATE or CONNECTION. */
+  maxInFlightRequestsPerEndpoint?: number;
+  trafficDuration?:
+    | "LONG"
+    | "SHORT"
+    | "TRAFFIC_DURATION_UNSPECIFIED"
+    | (string & {});
   /** A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending onbalancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using abalancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs. */
   capacityScaler?: number;
   /** This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService. */
@@ -11113,6 +11600,10 @@ export const Backend: Schema.Schema<Backend> =
       maxConnections: Schema.optional(Schema.Number),
       maxConnectionsPerInstance: Schema.optional(Schema.Number),
       maxConnectionsPerEndpoint: Schema.optional(Schema.Number),
+      maxInFlightRequests: Schema.optional(Schema.Number),
+      maxInFlightRequestsPerInstance: Schema.optional(Schema.Number),
+      maxInFlightRequestsPerEndpoint: Schema.optional(Schema.Number),
+      trafficDuration: Schema.optional(Schema.String),
       capacityScaler: Schema.optional(Schema.Number),
       failover: Schema.optional(Schema.Boolean),
       preference: Schema.optional(Schema.String),
@@ -11871,7 +12362,7 @@ export interface BackendService {
   logConfig?: BackendServiceLogConfig;
   /** This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. */
   securitySettings?: SecuritySettings;
-  /** The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. - WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using weights computed from Backend reported Custom Metrics. If set, the Backend Service responses are expected to contain non-standard HTTP response header field Endpoint-Load-Metrics. The reported metrics to use for computing the weights are specified via thecustomMetrics field. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not configured—that is, if session affinity remains at the default value of NONE—then the default value for localityLbPolicy is ROUND_ROBIN. If session affinity is set to a value other than NONE, then the default value for localityLbPolicy isMAGLEV. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. localityLbPolicy cannot be specified with haPolicy. */
+  /** The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see Maglev: A Fast and Reliable Software Network Load Balancer. - WEIGHTED_ROUND_ROBIN: Per-endpoint Weighted Round Robin Load Balancing using weights computed from Backend reported Custom Metrics. If set, the Backend Service responses are expected to contain non-standard HTTP response header field Endpoint-Load-Metrics. The reported metrics to use for computing the weights are specified via thecustomMetrics field. This field is applicable to either: - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not configured—that is, if session affinity remains at the default value of NONE—then the default value for localityLbPolicy is ROUND_ROBIN. If session affinity is set to a value other than NONE, then the default value for localityLbPolicy isMAGLEV. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. localityLbPolicy cannot be specified with haPolicy. */
   localityLbPolicy?:
     | "INVALID_LB_POLICY"
     | "LEAST_REQUEST"
@@ -11884,10 +12375,10 @@ export interface BackendService {
     | "WEIGHTED_MAGLEV"
     | "WEIGHTED_ROUND_ROBIN"
     | (string & {});
-  /** Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable whenlocalityLbPolicy is set to MAGLEV orRING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. */
+  /** Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable whenlocalityLbPolicy is set to MAGLEV orRING_HASH. This field is applicable to either: - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. */
   consistentHash?: ConsistentHashLoadBalancerSettings;
   circuitBreakers?: CircuitBreakers;
-  /** Settings controlling the ejection of unhealthy backend endpoints from the load balancing pool of each individual proxy instance that processes the traffic for the given backend service. If not set, this feature is considered disabled. Results of the outlier detection algorithm (ejection of endpoints from the load balancing pool and returning them back to the pool) are executed independently by each proxy instance of the load balancer. In most cases, more than one proxy instance handles the traffic received by a backend service. Thus, it is possible that an unhealthy endpoint is detected and ejected by only some of the proxies, and while this happens, other proxies may continue to send requests to the same unhealthy endpoint until they detect and eject the unhealthy endpoint. Applicable backend endpoints can be: - VM instances in an Instance Group - Endpoints in a Zonal NEG (GCE_VM_IP, GCE_VM_IP_PORT) - Endpoints in a Hybrid Connectivity NEG (NON_GCP_PRIVATE_IP_PORT) - Serverless NEGs, that resolve to Cloud Run, App Engine, or Cloud Functions Services - Private Service Connect NEGs, that resolve to Google-managed regional API endpoints or managed services published using Private Service Connect Applicable backend service types can be: - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED. - A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not supported for Serverless NEGs. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. */
+  /** Settings controlling the ejection of unhealthy backend endpoints from the load balancing pool of each individual proxy instance that processes the traffic for the given backend service. If not set, this feature is considered disabled. Results of the outlier detection algorithm (ejection of endpoints from the load balancing pool and returning them back to the pool) are executed independently by each proxy instance of the load balancer. In most cases, more than one proxy instance handles the traffic received by a backend service. Thus, it is possible that an unhealthy endpoint is detected and ejected by only some of the proxies, and while this happens, other proxies may continue to send requests to the same unhealthy endpoint until they detect and eject the unhealthy endpoint. Applicable backend endpoints can be: - VM instances in an Instance Group - Endpoints in a Zonal NEG (GCE_VM_IP, GCE_VM_IP_PORT) - Endpoints in a Hybrid Connectivity NEG (NON_GCP_PRIVATE_IP_PORT) - Serverless NEGs, that resolve to Cloud Run, App Engine, or Cloud Functions Services - Private Service Connect NEGs, that resolve to Google-managed regional API endpoints or managed services published using Private Service Connect Applicable backend service types can be: - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED. - A regional backend service with the service protocol set to HTTP, HTTPS, HTTP2 or H2C, and loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not supported for Serverless NEGs. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. */
   outlierDetection?: OutlierDetection;
   /** The URL of the network to which this backend service belongs. This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled. This field can only be specified when the load balancing scheme is set toINTERNAL, or when the load balancing scheme is set toEXTERNAL and haPolicy fastIpMove is enabled. */
   network?: string;
@@ -12650,6 +13141,45 @@ export const CompositeHealthCheckList: Schema.Schema<CompositeHealthCheckList> =
     identifier: "CompositeHealthCheckList",
   }) as any as Schema.Schema<CompositeHealthCheckList>;
 
+export interface CompositeHealthChecksGetHealthResponseHealthSourceHealth {
+  /** Fully qualified URL of the associated HealthSource resource. */
+  source?: string;
+  /** Health state of the associated HealthSource resource. */
+  healthState?: "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
+}
+
+export const CompositeHealthChecksGetHealthResponseHealthSourceHealth: Schema.Schema<CompositeHealthChecksGetHealthResponseHealthSourceHealth> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      source: Schema.optional(Schema.String),
+      healthState: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "CompositeHealthChecksGetHealthResponseHealthSourceHealth",
+  }) as any as Schema.Schema<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
+
+export interface CompositeHealthCheckHealth {
+  /** Output only. [Output Only] Type of resource. Alwayscompute#compositeHealthCheckHealth for the health of composite health checks. */
+  kind?: string;
+  /** Health state of the CompositeHealthCheck. */
+  healthState?: "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
+  /** Health sources and their corresponding health states. */
+  healthSources?: Array<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
+}
+
+export const CompositeHealthCheckHealth: Schema.Schema<CompositeHealthCheckHealth> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      healthState: Schema.optional(Schema.String),
+      healthSources: Schema.optional(
+        Schema.Array(CompositeHealthChecksGetHealthResponseHealthSourceHealth),
+      ),
+    }),
+  ).annotate({
+    identifier: "CompositeHealthCheckHealth",
+  }) as any as Schema.Schema<CompositeHealthCheckHealth>;
+
 export interface FutureResourcesSpecLocationPolicyLocation {
   /** Preference for this location. */
   preference?: "ALLOW" | "DENY" | "PREFERENCE_UNSPECIFIED" | (string & {});
@@ -12975,6 +13505,22 @@ export const CommitmentResourceStatus: Schema.Schema<CommitmentResourceStatus> =
     identifier: "CommitmentResourceStatus",
   }) as any as Schema.Schema<CommitmentResourceStatus>;
 
+export interface CommitmentParams {
+  /** Input only. Resource manager tags to be bound to the commitment. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
+  resourceManagerTags?: Record<string, string>;
+}
+
+export const CommitmentParams: Schema.Schema<CommitmentParams> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      resourceManagerTags: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ).annotate({
+    identifier: "CommitmentParams",
+  }) as any as Schema.Schema<CommitmentParams>;
+
 export interface Commitment {
   /** Output only. [Output Only] Type of the resource. Always compute#commitment for commitments. */
   kind?: string;
@@ -13067,6 +13613,8 @@ export interface Commitment {
   existingReservations?: Array<string>;
   /** [Input Only] Optional, specifies the requested commitment end time inRFC3339 text format. Use this option when the desired commitment's end date is later than the start date + term duration. */
   customEndTimestamp?: string;
+  /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
+  params?: CommitmentParams;
 }
 
 export const Commitment: Schema.Schema<Commitment> =
@@ -13095,6 +13643,7 @@ export const Commitment: Schema.Schema<Commitment> =
       resourceStatus: Schema.optional(CommitmentResourceStatus),
       existingReservations: Schema.optional(Schema.Array(Schema.String)),
       customEndTimestamp: Schema.optional(Schema.String),
+      params: Schema.optional(CommitmentParams),
     }),
   ).annotate({ identifier: "Commitment" }) as any as Schema.Schema<Commitment>;
 
@@ -13765,6 +14314,192 @@ export const RegionDiskTypeList: Schema.Schema<RegionDiskTypeList> =
   ).annotate({
     identifier: "RegionDiskTypeList",
   }) as any as Schema.Schema<RegionDiskTypeList>;
+
+export interface VmExtensionPolicyExtensionPolicy {
+  /** Optional. String-based configuration data for the extension. */
+  stringConfig?: string;
+  /** Optional. The specific version of the extension to install. If not set, the latest version is used. */
+  pinnedVersion?: string;
+}
+
+export const VmExtensionPolicyExtensionPolicy: Schema.Schema<VmExtensionPolicyExtensionPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      stringConfig: Schema.optional(Schema.String),
+      pinnedVersion: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "VmExtensionPolicyExtensionPolicy",
+  }) as any as Schema.Schema<VmExtensionPolicyExtensionPolicy>;
+
+export interface VmExtensionPolicyLabelSelector {
+  /** Optional. A map of key-value pairs representing VM labels. VMs must have all of the labels specified in this map to be selected (logical AND). e.g. If the `inclusion_labels` are {("key1", "value1"), ("key2", "value2")}, the VM labels must contain both ("key1", "value1") and ("key2", "value2") to be selected. If the VM labels are ("key1", "value1") and ("something", "else"), it will not be selected. If the map is empty, it's considered a match. */
+  inclusionLabels?: Record<string, string>;
+}
+
+export const VmExtensionPolicyLabelSelector: Schema.Schema<VmExtensionPolicyLabelSelector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      inclusionLabels: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ).annotate({
+    identifier: "VmExtensionPolicyLabelSelector",
+  }) as any as Schema.Schema<VmExtensionPolicyLabelSelector>;
+
+export interface VmExtensionPolicyInstanceSelector {
+  /** Optional. LabelSelector selects VMs based on their labels. */
+  labelSelector?: VmExtensionPolicyLabelSelector;
+}
+
+export const VmExtensionPolicyInstanceSelector: Schema.Schema<VmExtensionPolicyInstanceSelector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      labelSelector: Schema.optional(VmExtensionPolicyLabelSelector),
+    }),
+  ).annotate({
+    identifier: "VmExtensionPolicyInstanceSelector",
+  }) as any as Schema.Schema<VmExtensionPolicyInstanceSelector>;
+
+export interface VmExtensionPolicy {
+  /** Output only. [Output Only] Type of the resource. Alwayscompute#vmExtensionPolicy. */
+  kind?: string;
+  /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
+  id?: string;
+  /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
+  creationTimestamp?: string;
+  /** Output only. [Output Only] Update timestamp inRFC3339 text format. */
+  updateTimestamp?: string;
+  /** Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
+  name?: string;
+  /** An optional description of this resource. */
+  description?: string;
+  /** Output only. [Output Only] Server-defined fully-qualified URL for this resource. */
+  selfLink?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
+  selfLinkWithId?: string;
+  /** Required. A map of extension names (for example, "ops-agent") to their corresponding policy configurations. */
+  extensionPolicies?: Record<string, VmExtensionPolicyExtensionPolicy>;
+  /** Optional. Selectors to target VMs for this policy. VMs are selected if they match *any* of the provided selectors (logical OR). If this list is empty, the policy applies to all VMs. */
+  instanceSelectors?: Array<VmExtensionPolicyInstanceSelector>;
+  /** Optional. Priority of this policy. Used to resolve conflicts when multiple policies apply to the same extension. The policy priority is an integer from 0 to 65535, inclusive. Lower integers indicate higher priorities. If you do not specify a priority when creating a rule, it is assigned a priority of 1000. If priorities are equal, the policy with the most recent creation timestamp takes precedence. */
+  priority?: number;
+  /** Optional. Output only. [Output Only] Indicates if this policy is managed by a global policy. */
+  managedByGlobal?: boolean;
+  /** Optional. Output only. [Output Only] Link to the global policy that manages this zone policy, if applicable. */
+  globalResourceLink?: string;
+  /** Optional. Output only. [Output Only] Current state of the policy: ACTIVE or DELETING. */
+  state?: "ACTIVE" | "DELETING" | "STATE_UNSPECIFIED" | (string & {});
+}
+
+export const VmExtensionPolicy: Schema.Schema<VmExtensionPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      creationTimestamp: Schema.optional(Schema.String),
+      updateTimestamp: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      selfLinkWithId: Schema.optional(Schema.String),
+      extensionPolicies: Schema.optional(
+        Schema.Record(Schema.String, VmExtensionPolicyExtensionPolicy),
+      ),
+      instanceSelectors: Schema.optional(
+        Schema.Array(VmExtensionPolicyInstanceSelector),
+      ),
+      priority: Schema.optional(Schema.Number),
+      managedByGlobal: Schema.optional(Schema.Boolean),
+      globalResourceLink: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "VmExtensionPolicy",
+  }) as any as Schema.Schema<VmExtensionPolicy>;
+
+export interface VmExtensionPolicyList {
+  /** Output only. Type of resource. */
+  kind?: string;
+  /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
+  id?: string;
+  /** Output only. [Output Only] A list of VM extension policy resources. */
+  items?: Array<VmExtensionPolicy>;
+  /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
+  nextPageToken?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource. */
+  selfLink?: string;
+  /** Output only. [Output Only] Informational warning message. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+  /** Output only. [Output Only] Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a VmExtensionPolicy. An up-to-date fingerprint must be provided in order to update the VmExtensionPolicy. To see the latest value of the fingerprint, make a get() request to retrieve a VmExtensionPolicy. */
+  etag?: string;
+  /** Output only. [Output Only] Unreachable resources. */
+  unreachables?: Array<string>;
+}
+
+export const VmExtensionPolicyList: Schema.Schema<VmExtensionPolicyList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      items: Schema.optional(Schema.Array(VmExtensionPolicy)),
+      nextPageToken: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+      unreachables: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "VmExtensionPolicyList",
+  }) as any as Schema.Schema<VmExtensionPolicyList>;
 
 export interface InterconnectAttachmentPrivateInfo {
   /** [Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region. */
@@ -16680,6 +17415,22 @@ export const FutureReservationCommitmentInfo: Schema.Schema<FutureReservationCom
     identifier: "FutureReservationCommitmentInfo",
   }) as any as Schema.Schema<FutureReservationCommitmentInfo>;
 
+export interface FutureReservationParams {
+  /** Input only. Resource manager tags to be bound to the future reservation. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
+  resourceManagerTags?: Record<string, string>;
+}
+
+export const FutureReservationParams: Schema.Schema<FutureReservationParams> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      resourceManagerTags: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ).annotate({
+    identifier: "FutureReservationParams",
+  }) as any as Schema.Schema<FutureReservationParams>;
+
 export interface FutureReservation {
   /** Future Reservation configuration to indicate instance properties and total count. */
   specificSkuProperties?: FutureReservationSpecificSKUProperties;
@@ -16743,6 +17494,12 @@ export interface FutureReservation {
     | (string & {});
   /** Indicates if this group of VMs have emergent maintenance enabled. */
   enableEmergentMaintenance?: boolean;
+  /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
+  params?: FutureReservationParams;
+  confidentialComputeType?:
+    | "CONFIDENTIAL_COMPUTE_TYPE_TDX"
+    | "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
+    | (string & {});
 }
 
 export const FutureReservation: Schema.Schema<FutureReservation> =
@@ -16775,6 +17532,8 @@ export const FutureReservation: Schema.Schema<FutureReservation> =
       schedulingType: Schema.optional(Schema.String),
       reservationMode: Schema.optional(Schema.String),
       enableEmergentMaintenance: Schema.optional(Schema.Boolean),
+      params: Schema.optional(FutureReservationParams),
+      confidentialComputeType: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "FutureReservation",
@@ -18353,6 +19112,70 @@ export const HealthSourceList: Schema.Schema<HealthSourceList> =
     identifier: "HealthSourceList",
   }) as any as Schema.Schema<HealthSourceList>;
 
+export interface HealthSourcesGetHealthResponseSourceInfoBackendInfo {
+  /** Fully qualified URL of an instance group or network endpoint group behind the source backend service. */
+  group?: string;
+  /** Number of endpoints considered healthy when determining health of the regionHealthSource. */
+  healthyEndpointCount?: number;
+  /** Total number of endpoints when determining the health of the regionHealthSource. */
+  endpointCount?: number;
+}
+
+export const HealthSourcesGetHealthResponseSourceInfoBackendInfo: Schema.Schema<HealthSourcesGetHealthResponseSourceInfoBackendInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      group: Schema.optional(Schema.String),
+      healthyEndpointCount: Schema.optional(Schema.Number),
+      endpointCount: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "HealthSourcesGetHealthResponseSourceInfoBackendInfo",
+  }) as any as Schema.Schema<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
+
+export interface HealthSourcesGetHealthResponseSourceInfo {
+  /** Fully qualified URL of the associated source resource. This is always a backend service URL. */
+  source?: string;
+  /** Fully qualified URL of the forwarding rule associated with the source resource if it is a L4ILB backend service. */
+  forwardingRule?: string;
+  /** Represents an instance group or network endpoint group behind the source backend service. Only used if the sourceType of the regionHealthSource is BACKEND_SERVICE. */
+  backends?: Array<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
+}
+
+export const HealthSourcesGetHealthResponseSourceInfo: Schema.Schema<HealthSourcesGetHealthResponseSourceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      source: Schema.optional(Schema.String),
+      forwardingRule: Schema.optional(Schema.String),
+      backends: Schema.optional(
+        Schema.Array(HealthSourcesGetHealthResponseSourceInfoBackendInfo),
+      ),
+    }),
+  ).annotate({
+    identifier: "HealthSourcesGetHealthResponseSourceInfo",
+  }) as any as Schema.Schema<HealthSourcesGetHealthResponseSourceInfo>;
+
+export interface HealthSourceHealth {
+  /** Output only. [Output Only] Type of resource. Alwayscompute#healthSourceHealth for the health of health sources. */
+  kind?: string;
+  /** Health state of the HealthSource. */
+  healthState?: "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
+  /** Health state details of the sources. */
+  sources?: Array<HealthSourcesGetHealthResponseSourceInfo>;
+}
+
+export const HealthSourceHealth: Schema.Schema<HealthSourceHealth> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      healthState: Schema.optional(Schema.String),
+      sources: Schema.optional(
+        Schema.Array(HealthSourcesGetHealthResponseSourceInfo),
+      ),
+    }),
+  ).annotate({
+    identifier: "HealthSourceHealth",
+  }) as any as Schema.Schema<HealthSourceHealth>;
+
 export interface HttpHealthCheck {
   /** Output only. [Output Only] Type of the resource. Alwayscompute#httpHealthCheck for HTTP health checks. */
   kind?: string;
@@ -19028,6 +19851,10 @@ export interface InstantSnapshot {
   resourceStatus?: InstantSnapshotResourceStatus;
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
+  /** Output only. [Output Only] URL of the source instant snapshot this instant snapshot is part of. Note that the source instant snapshot group must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. */
+  sourceInstantSnapshotGroup?: string;
+  /** Output only. [Output Only] The ID value of the source instant snapshot group this InstantSnapshot is part of. This value may be used to determine whether the InstantSnapshot was created as part of an InstantSnapshotGroup creation. */
+  sourceInstantSnapshotGroupId?: string;
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
   params?: InstantSnapshotParams;
 }
@@ -19054,6 +19881,8 @@ export const InstantSnapshot: Schema.Schema<InstantSnapshot> =
       architecture: Schema.optional(Schema.String),
       resourceStatus: Schema.optional(InstantSnapshotResourceStatus),
       satisfiesPzi: Schema.optional(Schema.Boolean),
+      sourceInstantSnapshotGroup: Schema.optional(Schema.String),
+      sourceInstantSnapshotGroupId: Schema.optional(Schema.String),
       params: Schema.optional(InstantSnapshotParams),
     }),
   ).annotate({
@@ -19280,6 +20109,171 @@ export const InstantSnapshotAggregatedList: Schema.Schema<InstantSnapshotAggrega
   ).annotate({
     identifier: "InstantSnapshotAggregatedList",
   }) as any as Schema.Schema<InstantSnapshotAggregatedList>;
+
+export interface InstantSnapshotGroupSourceInfo {
+  consistencyGroup?: string;
+  consistencyGroupId?: string;
+}
+
+export const InstantSnapshotGroupSourceInfo: Schema.Schema<InstantSnapshotGroupSourceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      consistencyGroup: Schema.optional(Schema.String),
+      consistencyGroupId: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "InstantSnapshotGroupSourceInfo",
+  }) as any as Schema.Schema<InstantSnapshotGroupSourceInfo>;
+
+export interface InstantSnapshotGroupResourceStatus {
+  /** Output only. [Output Only] */
+  consistencyMembershipResolutionTime?: string;
+  /** Output only. [Output Only] */
+  sourceInfo?: InstantSnapshotGroupSourceInfo;
+}
+
+export const InstantSnapshotGroupResourceStatus: Schema.Schema<InstantSnapshotGroupResourceStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      consistencyMembershipResolutionTime: Schema.optional(Schema.String),
+      sourceInfo: Schema.optional(InstantSnapshotGroupSourceInfo),
+    }),
+  ).annotate({
+    identifier: "InstantSnapshotGroupResourceStatus",
+  }) as any as Schema.Schema<InstantSnapshotGroupResourceStatus>;
+
+export interface InstantSnapshotGroup {
+  /** Output only. [Output Only] Type of the resource. Alwayscompute#instantSnapshotGroup for InstantSnapshotGroup resources. */
+  kind?: string;
+  /** Identifier. Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
+  name?: string;
+  /** Optional. An optional description of this resource. Provide this property when you create the resource. */
+  description?: string;
+  /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
+  id?: string;
+  /** Output only. [Output Only] */
+  status?:
+    | "CREATING"
+    | "DELETING"
+    | "FAILED"
+    | "INVALID"
+    | "READY"
+    | "UNKNOWN"
+    | (string & {});
+  resourceStatus?: InstantSnapshotGroupResourceStatus;
+  /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
+  creationTimestamp?: string;
+  /** Output only. [Output Only] URL of the zone where the instant snapshot group resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
+  zone?: string;
+  /** Output only. [Output Only] URL of the region where the instant snapshot group resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
+  region?: string;
+  /** Output only. [Output Only] Server-defined URL for the resource. */
+  selfLink?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource's resource id. */
+  selfLinkWithId?: string;
+  sourceConsistencyGroup?: string;
+}
+
+export const InstantSnapshotGroup: Schema.Schema<InstantSnapshotGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      status: Schema.optional(Schema.String),
+      resourceStatus: Schema.optional(InstantSnapshotGroupResourceStatus),
+      creationTimestamp: Schema.optional(Schema.String),
+      zone: Schema.optional(Schema.String),
+      region: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      selfLinkWithId: Schema.optional(Schema.String),
+      sourceConsistencyGroup: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "InstantSnapshotGroup",
+  }) as any as Schema.Schema<InstantSnapshotGroup>;
+
+export interface ListInstantSnapshotGroups {
+  /** Output only. Type of resource. */
+  kind?: string;
+  /** [Output Only] Unique identifier for the resource; defined by the server. */
+  id?: string;
+  /** A list of InstantSnapshotGroup resources. */
+  items?: Array<InstantSnapshotGroup>;
+  /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
+  nextPageToken?: string;
+  /** Output only. [Output Only] Server-defined URL for this resource. */
+  selfLink?: string;
+  /** [Output Only] Informational warning message. */
+  warning?: {
+    code?:
+      | "CLEANUP_FAILED"
+      | "DEPRECATED_RESOURCE_USED"
+      | "DEPRECATED_TYPE_USED"
+      | "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+      | "EXPERIMENTAL_TYPE_USED"
+      | "EXTERNAL_API_WARNING"
+      | "FIELD_VALUE_OVERRIDEN"
+      | "INJECTED_KERNELS_DEPRECATED"
+      | "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB"
+      | "LARGE_DEPLOYMENT_WARNING"
+      | "LIST_OVERHEAD_QUOTA_EXCEED"
+      | "MISSING_TYPE_DEPENDENCY"
+      | "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+      | "NEXT_HOP_CANNOT_IP_FORWARD"
+      | "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE"
+      | "NEXT_HOP_INSTANCE_NOT_FOUND"
+      | "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+      | "NEXT_HOP_NOT_RUNNING"
+      | "NOT_CRITICAL_ERROR"
+      | "NO_RESULTS_ON_PAGE"
+      | "PARTIAL_SUCCESS"
+      | "QUOTA_INFO_UNAVAILABLE"
+      | "REQUIRED_TOS_AGREEMENT"
+      | "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+      | "RESOURCE_NOT_DELETED"
+      | "SCHEMA_VALIDATION_IGNORED"
+      | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+      | "UNDECLARED_PROPERTIES"
+      | "UNREACHABLE"
+      | (string & {});
+    message?: string;
+    data?: Array<{ key?: string; value?: string }>;
+  };
+  etag?: string;
+  /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
+  unreachables?: Array<string>;
+}
+
+export const ListInstantSnapshotGroups: Schema.Schema<ListInstantSnapshotGroups> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
+      items: Schema.optional(Schema.Array(InstantSnapshotGroup)),
+      nextPageToken: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      warning: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          data: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+      etag: Schema.optional(Schema.String),
+      unreachables: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListInstantSnapshotGroups",
+  }) as any as Schema.Schema<ListInstantSnapshotGroups>;
 
 export interface InterconnectLocationRegionInfo {
   /** Output only. URL for the region of this location. */
@@ -20631,6 +21625,8 @@ export interface NetworkAttachmentConnectedEndpoint {
   secondaryIpCidrRanges?: Array<string>;
   /** Output only. [Output Only] The CIDR range of the subnet from which the IPv4 internal IP was allocated from. */
   subnetworkCidrRange?: string;
+  /** The service class id of the producer service to which the IP was assigned. */
+  serviceClassId?: string;
 }
 
 export const NetworkAttachmentConnectedEndpoint: Schema.Schema<NetworkAttachmentConnectedEndpoint> =
@@ -20643,6 +21639,7 @@ export const NetworkAttachmentConnectedEndpoint: Schema.Schema<NetworkAttachment
       ipv6Address: Schema.optional(Schema.String),
       secondaryIpCidrRanges: Schema.optional(Schema.Array(Schema.String)),
       subnetworkCidrRange: Schema.optional(Schema.String),
+      serviceClassId: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "NetworkAttachmentConnectedEndpoint",
@@ -30381,15 +31378,61 @@ export const SnapshotSettingsStorageLocationSettings: Schema.Schema<SnapshotSett
     identifier: "SnapshotSettingsStorageLocationSettings",
   }) as any as Schema.Schema<SnapshotSettingsStorageLocationSettings>;
 
+export interface SnapshotSettingsAccessLocationAccessLocationPreference {
+  /** Accessible region name */
+  region?: string;
+}
+
+export const SnapshotSettingsAccessLocationAccessLocationPreference: Schema.Schema<SnapshotSettingsAccessLocationAccessLocationPreference> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      region: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "SnapshotSettingsAccessLocationAccessLocationPreference",
+  }) as any as Schema.Schema<SnapshotSettingsAccessLocationAccessLocationPreference>;
+
+export interface SnapshotSettingsAccessLocation {
+  /** List of regions that can restore a regional snapshot from the current region */
+  locations?: Record<
+    string,
+    SnapshotSettingsAccessLocationAccessLocationPreference
+  >;
+  /** Policy of which location is allowed to access snapshot. */
+  policy?:
+    | "ALL_REGIONS"
+    | "POLICY_UNSPECIFIED"
+    | "SPECIFIC_REGIONS"
+    | (string & {});
+}
+
+export const SnapshotSettingsAccessLocation: Schema.Schema<SnapshotSettingsAccessLocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      locations: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          SnapshotSettingsAccessLocationAccessLocationPreference,
+        ),
+      ),
+      policy: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "SnapshotSettingsAccessLocation",
+  }) as any as Schema.Schema<SnapshotSettingsAccessLocation>;
+
 export interface SnapshotSettings {
   /** Policy of which storage location is going to be resolved, and additional data that particularizes how the policy is going to be carried out. */
   storageLocation?: SnapshotSettingsStorageLocationSettings;
+  /** (Regional snapshots use only)Policy of which location is allowed to access snapshot. */
+  accessLocation?: SnapshotSettingsAccessLocation;
 }
 
 export const SnapshotSettings: Schema.Schema<SnapshotSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       storageLocation: Schema.optional(SnapshotSettingsStorageLocationSettings),
+      accessLocation: Schema.optional(SnapshotSettingsAccessLocation),
     }),
   ).annotate({
     identifier: "SnapshotSettings",
@@ -38489,6 +39532,462 @@ export const testIamPermissionsSnapshots: API.OperationMethod<
   errors: [],
 }));
 
+export interface UpdateKmsKeySnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name of the snapshot resource to update. Should conform to RFC1035. */
+  snapshot: string;
+  /** Request body */
+  body?: SnapshotUpdateKmsKeyRequest;
+}
+
+export const UpdateKmsKeySnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    snapshot: Schema.String.pipe(T.HttpPath("snapshot")),
+    body: Schema.optional(SnapshotUpdateKmsKeyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/global/snapshots/{snapshot}/updateKmsKey",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateKmsKeySnapshotsRequest>;
+
+export type UpdateKmsKeySnapshotsResponse = Operation;
+export const UpdateKmsKeySnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateKmsKeySnapshotsError = DefaultErrors;
+
+/** Rotates the customer-managed encryption key to the latest version for the specified snapshot. */
+export const updateKmsKeySnapshots: API.OperationMethod<
+  UpdateKmsKeySnapshotsRequest,
+  UpdateKmsKeySnapshotsResponse,
+  UpdateKmsKeySnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateKmsKeySnapshotsRequest,
+  output: UpdateKmsKeySnapshotsResponse,
+  errors: [],
+}));
+
+export interface ListRegionSnapshotsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/snapshots",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListRegionSnapshotsRequest>;
+
+export type ListRegionSnapshotsResponse = SnapshotList;
+export const ListRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SnapshotList;
+
+export type ListRegionSnapshotsError = DefaultErrors;
+
+/** Retrieves the list of Snapshot resources contained within the specified region. */
+export const listRegionSnapshots: API.PaginatedOperationMethod<
+  ListRegionSnapshotsRequest,
+  ListRegionSnapshotsResponse,
+  ListRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRegionSnapshotsRequest,
+  output: ListRegionSnapshotsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface GetRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** Name of the Snapshot resource to return. */
+  snapshot: string;
+}
+
+export const GetRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    snapshot: Schema.String.pipe(T.HttpPath("snapshot")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/snapshots/{snapshot}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetRegionSnapshotsRequest>;
+
+export type GetRegionSnapshotsResponse = Snapshot;
+export const GetRegionSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
+
+export type GetRegionSnapshotsError = DefaultErrors;
+
+/** Returns the specified Snapshot resource. */
+export const getRegionSnapshots: API.OperationMethod<
+  GetRegionSnapshotsRequest,
+  GetRegionSnapshotsResponse,
+  GetRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegionSnapshotsRequest,
+  output: GetRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface InsertRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: Snapshot;
+}
+
+export const InsertRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Snapshot).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/snapshots",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertRegionSnapshotsRequest>;
+
+export type InsertRegionSnapshotsResponse = Operation;
+export const InsertRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InsertRegionSnapshotsError = DefaultErrors;
+
+/** Creates a snapshot in the specified region using the data included in the request. */
+export const insertRegionSnapshots: API.OperationMethod<
+  InsertRegionSnapshotsRequest,
+  InsertRegionSnapshotsResponse,
+  InsertRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertRegionSnapshotsRequest,
+  output: InsertRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface SetLabelsRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: RegionSetLabelsRequest;
+}
+
+export const SetLabelsRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(RegionSetLabelsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/snapshots/{resource}/setLabels",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetLabelsRegionSnapshotsRequest>;
+
+export type SetLabelsRegionSnapshotsResponse = Operation;
+export const SetLabelsRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type SetLabelsRegionSnapshotsError = DefaultErrors;
+
+/** Sets the labels on a regional snapshot. To learn more about labels, read the Labeling Resources documentation. */
+export const setLabelsRegionSnapshots: API.OperationMethod<
+  SetLabelsRegionSnapshotsRequest,
+  SetLabelsRegionSnapshotsResponse,
+  SetLabelsRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetLabelsRegionSnapshotsRequest,
+  output: SetLabelsRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface DeleteRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name of the snapshot resource to delete. */
+  snapshot: string;
+}
+
+export const DeleteRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    snapshot: Schema.String.pipe(T.HttpPath("snapshot")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "projects/{project}/regions/{region}/snapshots/{snapshot}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteRegionSnapshotsRequest>;
+
+export type DeleteRegionSnapshotsResponse = Operation;
+export const DeleteRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteRegionSnapshotsError = DefaultErrors;
+
+/** Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is needed for subsequent snapshots, the data will be moved to the next corresponding snapshot. For more information, seeDeleting snapshots. */
+export const deleteRegionSnapshots: API.OperationMethod<
+  DeleteRegionSnapshotsRequest,
+  DeleteRegionSnapshotsResponse,
+  DeleteRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRegionSnapshotsRequest,
+  output: DeleteRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface GetIamPolicyRegionSnapshotsRequest {
+  /** Requested IAM Policy version. */
+  optionsRequestedPolicyVersion?: number;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+}
+
+export const GetIamPolicyRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("optionsRequestedPolicyVersion"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/snapshots/{resource}/getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyRegionSnapshotsRequest>;
+
+export type GetIamPolicyRegionSnapshotsResponse = Policy;
+export const GetIamPolicyRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyRegionSnapshotsError = DefaultErrors;
+
+/** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
+export const getIamPolicyRegionSnapshots: API.OperationMethod<
+  GetIamPolicyRegionSnapshotsRequest,
+  GetIamPolicyRegionSnapshotsResponse,
+  GetIamPolicyRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyRegionSnapshotsRequest,
+  output: GetIamPolicyRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface SetIamPolicyRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: RegionSetPolicyRequest;
+}
+
+export const SetIamPolicyRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(RegionSetPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/snapshots/{resource}/setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyRegionSnapshotsRequest>;
+
+export type SetIamPolicyRegionSnapshotsResponse = Policy;
+export const SetIamPolicyRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyRegionSnapshotsError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. */
+export const setIamPolicyRegionSnapshots: API.OperationMethod<
+  SetIamPolicyRegionSnapshotsRequest,
+  SetIamPolicyRegionSnapshotsResponse,
+  SetIamPolicyRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyRegionSnapshotsRequest,
+  output: SetIamPolicyRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: TestPermissionsRequest;
+}
+
+export const TestIamPermissionsRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/snapshots/{resource}/testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsRegionSnapshotsRequest>;
+
+export type TestIamPermissionsRegionSnapshotsResponse = TestPermissionsResponse;
+export const TestIamPermissionsRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
+
+export type TestIamPermissionsRegionSnapshotsError = DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. */
+export const testIamPermissionsRegionSnapshots: API.OperationMethod<
+  TestIamPermissionsRegionSnapshotsRequest,
+  TestIamPermissionsRegionSnapshotsResponse,
+  TestIamPermissionsRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsRegionSnapshotsRequest,
+  output: TestIamPermissionsRegionSnapshotsResponse,
+  errors: [],
+}));
+
+export interface UpdateKmsKeyRegionSnapshotsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name of the snapshot resource to update. Should conform to RFC1035. */
+  snapshot: string;
+  /** Request body */
+  body?: RegionSnapshotUpdateKmsKeyRequest;
+}
+
+export const UpdateKmsKeyRegionSnapshotsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    snapshot: Schema.String.pipe(T.HttpPath("snapshot")),
+    body: Schema.optional(RegionSnapshotUpdateKmsKeyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/snapshots/{snapshot}/updateKmsKey",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateKmsKeyRegionSnapshotsRequest>;
+
+export type UpdateKmsKeyRegionSnapshotsResponse = Operation;
+export const UpdateKmsKeyRegionSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateKmsKeyRegionSnapshotsError = DefaultErrors;
+
+/** Rotates the customer-managed encryption key to the latest version for the specified snapshot. */
+export const updateKmsKeyRegionSnapshots: API.OperationMethod<
+  UpdateKmsKeyRegionSnapshotsRequest,
+  UpdateKmsKeyRegionSnapshotsResponse,
+  UpdateKmsKeyRegionSnapshotsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateKmsKeyRegionSnapshotsRequest,
+  output: UpdateKmsKeyRegionSnapshotsResponse,
+  errors: [],
+}));
+
 export interface ListDisksRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
   filter?: string;
@@ -39376,6 +40875,52 @@ export const bulkInsertDisks: API.OperationMethod<
   errors: [],
 }));
 
+export interface UpdateKmsKeyDisksRequest {
+  /** Name of the Disk resource, should conform to RFC1035. */
+  disk: string;
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** The name of the zone for this request. */
+  zone: string;
+  /** Request body */
+  body?: DiskUpdateKmsKeyRequest;
+}
+
+export const UpdateKmsKeyDisksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disk: Schema.String.pipe(T.HttpPath("disk")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(DiskUpdateKmsKeyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/zones/{zone}/disks/{disk}/updateKmsKey",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateKmsKeyDisksRequest>;
+
+export type UpdateKmsKeyDisksResponse = Operation;
+export const UpdateKmsKeyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateKmsKeyDisksError = DefaultErrors;
+
+/** Rotates the customer-managed encryption key to the latest version for the specified persistent disk. */
+export const updateKmsKeyDisks: API.OperationMethod<
+  UpdateKmsKeyDisksRequest,
+  UpdateKmsKeyDisksResponse,
+  UpdateKmsKeyDisksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateKmsKeyDisksRequest,
+  output: UpdateKmsKeyDisksResponse,
+  errors: [],
+}));
+
 export interface ListRegionDisksRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
   filter?: string;
@@ -40164,6 +41709,53 @@ export const bulkInsertRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkInsertRegionDisksRequest,
   output: BulkInsertRegionDisksResponse,
+  errors: [],
+}));
+
+export interface UpdateKmsKeyRegionDisksRequest {
+  /** Name of the Disk resource, should conform to RFC1035. */
+  disk: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: RegionDiskUpdateKmsKeyRequest;
+}
+
+export const UpdateKmsKeyRegionDisksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disk: Schema.String.pipe(T.HttpPath("disk")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(RegionDiskUpdateKmsKeyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/disks/{disk}/updateKmsKey",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateKmsKeyRegionDisksRequest>;
+
+export type UpdateKmsKeyRegionDisksResponse = Operation;
+export const UpdateKmsKeyRegionDisksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateKmsKeyRegionDisksError = DefaultErrors;
+
+/** Rotates the customer-managed encryption key to the latest version for the specified persistent disk. */
+export const updateKmsKeyRegionDisks: API.OperationMethod<
+  UpdateKmsKeyRegionDisksRequest,
+  UpdateKmsKeyRegionDisksResponse,
+  UpdateKmsKeyRegionDisksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateKmsKeyRegionDisksRequest,
+  output: UpdateKmsKeyRegionDisksResponse,
   errors: [],
 }));
 
@@ -51178,6 +52770,263 @@ export const createInstancesRegionInstanceGroupManagers: API.OperationMethod<
   errors: [],
 }));
 
+export interface GetRegionInstanceGroupManagerResizeRequestsRequest {
+  /** The name of the managed instance group. Name should conform to RFC1035 or be a resource ID. */
+  instanceGroupManager: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region scoping this request. Name should conform to RFC1035. */
+  region: string;
+  /** The name of the resize request. Name should conform to RFC1035 or be a resource ID. */
+  resizeRequest: string;
+}
+
+export const GetRegionInstanceGroupManagerResizeRequestsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceGroupManager: Schema.String.pipe(
+      T.HttpPath("instanceGroupManager"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resizeRequest: Schema.String.pipe(T.HttpPath("resizeRequest")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetRegionInstanceGroupManagerResizeRequestsRequest>;
+
+export type GetRegionInstanceGroupManagerResizeRequestsResponse =
+  InstanceGroupManagerResizeRequest;
+export const GetRegionInstanceGroupManagerResizeRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagerResizeRequest;
+
+export type GetRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+
+/** Returns all of the details about the specified resize request. */
+export const getRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
+  GetRegionInstanceGroupManagerResizeRequestsRequest,
+  GetRegionInstanceGroupManagerResizeRequestsResponse,
+  GetRegionInstanceGroupManagerResizeRequestsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegionInstanceGroupManagerResizeRequestsRequest,
+  output: GetRegionInstanceGroupManagerResizeRequestsResponse,
+  errors: [],
+}));
+
+export interface InsertRegionInstanceGroupManagerResizeRequestsRequest {
+  /** Name of the managed instance group to which the resize request is scoped. Name should conform to RFC1035 or be a resource ID. */
+  instanceGroupManager: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region scoping this request. Name should conform to RFC1035. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: InstanceGroupManagerResizeRequest;
+}
+
+export const InsertRegionInstanceGroupManagerResizeRequestsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceGroupManager: Schema.String.pipe(
+      T.HttpPath("instanceGroupManager"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(InstanceGroupManagerResizeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertRegionInstanceGroupManagerResizeRequestsRequest>;
+
+export type InsertRegionInstanceGroupManagerResizeRequestsResponse = Operation;
+export const InsertRegionInstanceGroupManagerResizeRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InsertRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+
+/** Creates a new Resize Request that starts provisioning VMs immediately or queues VM creation. */
+export const insertRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
+  InsertRegionInstanceGroupManagerResizeRequestsRequest,
+  InsertRegionInstanceGroupManagerResizeRequestsResponse,
+  InsertRegionInstanceGroupManagerResizeRequestsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertRegionInstanceGroupManagerResizeRequestsRequest,
+  output: InsertRegionInstanceGroupManagerResizeRequestsResponse,
+  errors: [],
+}));
+
+export interface ListRegionInstanceGroupManagerResizeRequestsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The name of the managed instance group. The name should conform to RFC1035. */
+  instanceGroupManager: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region scoping this request. Name should conform to RFC1035. */
+  region: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListRegionInstanceGroupManagerResizeRequestsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    instanceGroupManager: Schema.String.pipe(
+      T.HttpPath("instanceGroupManager"),
+    ),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListRegionInstanceGroupManagerResizeRequestsRequest>;
+
+export type ListRegionInstanceGroupManagerResizeRequestsResponse =
+  RegionInstanceGroupManagerResizeRequestsListResponse;
+export const ListRegionInstanceGroupManagerResizeRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupManagerResizeRequestsListResponse;
+
+export type ListRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+
+/** Retrieves a list of Resize Requests that are contained in the managed instance group. */
+export const listRegionInstanceGroupManagerResizeRequests: API.PaginatedOperationMethod<
+  ListRegionInstanceGroupManagerResizeRequestsRequest,
+  ListRegionInstanceGroupManagerResizeRequestsResponse,
+  ListRegionInstanceGroupManagerResizeRequestsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRegionInstanceGroupManagerResizeRequestsRequest,
+  output: ListRegionInstanceGroupManagerResizeRequestsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface CancelRegionInstanceGroupManagerResizeRequestsRequest {
+  /** The name of the managed instance group. Name should conform to RFC1035 or be a resource ID. */
+  instanceGroupManager: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region scoping this request. Name should conform to RFC1035. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** The name of the resize request to cancel. Name should conform to RFC1035 or be a resource ID. */
+  resizeRequest: string;
+}
+
+export const CancelRegionInstanceGroupManagerResizeRequestsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceGroupManager: Schema.String.pipe(
+      T.HttpPath("instanceGroupManager"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    resizeRequest: Schema.String.pipe(T.HttpPath("resizeRequest")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}/cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelRegionInstanceGroupManagerResizeRequestsRequest>;
+
+export type CancelRegionInstanceGroupManagerResizeRequestsResponse = Operation;
+export const CancelRegionInstanceGroupManagerResizeRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CancelRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+
+/** Cancels the specified resize request. Cancelled resize request no longer waits for the resources to be provisioned. Cancel is only possible for requests that are in accepted state. */
+export const cancelRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
+  CancelRegionInstanceGroupManagerResizeRequestsRequest,
+  CancelRegionInstanceGroupManagerResizeRequestsResponse,
+  CancelRegionInstanceGroupManagerResizeRequestsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelRegionInstanceGroupManagerResizeRequestsRequest,
+  output: CancelRegionInstanceGroupManagerResizeRequestsResponse,
+  errors: [],
+}));
+
+export interface DeleteRegionInstanceGroupManagerResizeRequestsRequest {
+  /** The name of the managed instance group. Name should conform to RFC1035 or be a resource ID. */
+  instanceGroupManager: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region scoping this request. Name should conform to RFC1035. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** The name of the resize request to delete. Name should conform to RFC1035 or be a resource ID. */
+  resizeRequest: string;
+}
+
+export const DeleteRegionInstanceGroupManagerResizeRequestsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceGroupManager: Schema.String.pipe(
+      T.HttpPath("instanceGroupManager"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    resizeRequest: Schema.String.pipe(T.HttpPath("resizeRequest")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests/{resizeRequest}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteRegionInstanceGroupManagerResizeRequestsRequest>;
+
+export type DeleteRegionInstanceGroupManagerResizeRequestsResponse = Operation;
+export const DeleteRegionInstanceGroupManagerResizeRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+
+/** Deletes the specified, inactive resize request. Requests that are still active cannot be deleted. Deleting request does not delete instances that were provisioned previously. */
+export const deleteRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
+  DeleteRegionInstanceGroupManagerResizeRequestsRequest,
+  DeleteRegionInstanceGroupManagerResizeRequestsResponse,
+  DeleteRegionInstanceGroupManagerResizeRequestsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRegionInstanceGroupManagerResizeRequestsRequest,
+  output: DeleteRegionInstanceGroupManagerResizeRequestsResponse,
+  errors: [],
+}));
+
 export interface ListAutoscalersRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
   filter?: string;
@@ -51941,6 +53790,72 @@ export const listBackendBuckets: API.PaginatedOperationMethod<
   },
 }));
 
+export interface AggregatedListBackendBucketsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** Indicates whether every visible scope for each scope type (zone, region, global) should be included in the response. For new resource types added after this field, the flag has no effect as new resource types will always include every visible scope for each scope type in response. For resource types which predate this field, if this flag is omitted or false, only scopes of the scope types where the resource type is expected to be found will be included. */
+  includeAllScopes?: boolean;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Name of the project scoping this request. */
+  project: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+  /** The Shared VPC service project id or service project number for which aggregated list request is invoked for subnetworks list-usable api. */
+  serviceProjectNumber?: string;
+}
+
+export const AggregatedListBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    includeAllScopes: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("includeAllScopes"),
+    ),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    serviceProjectNumber: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("serviceProjectNumber"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/aggregated/backendBuckets",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AggregatedListBackendBucketsRequest>;
+
+export type AggregatedListBackendBucketsResponse = BackendBucketAggregatedList;
+export const AggregatedListBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BackendBucketAggregatedList;
+
+export type AggregatedListBackendBucketsError = DefaultErrors;
+
+/** Retrieves the list of all BackendBucket resources, regional and global, available to the specified project. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
+export const aggregatedListBackendBuckets: API.PaginatedOperationMethod<
+  AggregatedListBackendBucketsRequest,
+  AggregatedListBackendBucketsResponse,
+  AggregatedListBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: AggregatedListBackendBucketsRequest,
+  output: AggregatedListBackendBucketsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
 export interface GetBackendBucketsRequest {
   /** Name of the BackendBucket resource to return. */
   backendBucket: string;
@@ -51976,6 +53891,62 @@ export const getBackendBuckets: API.OperationMethod<
   input: GetBackendBucketsRequest,
   output: GetBackendBucketsResponse,
   errors: [],
+}));
+
+export interface ListUsableBackendBucketsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListUsableBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/global/backendBuckets/listUsable",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListUsableBackendBucketsRequest>;
+
+export type ListUsableBackendBucketsResponse = BackendBucketListUsable;
+export const ListUsableBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BackendBucketListUsable;
+
+export type ListUsableBackendBucketsError = DefaultErrors;
+
+/** Retrieves a list of all usable backend buckets in the specified project. */
+export const listUsableBackendBuckets: API.PaginatedOperationMethod<
+  ListUsableBackendBucketsRequest,
+  ListUsableBackendBucketsResponse,
+  ListUsableBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListUsableBackendBucketsRequest,
+  output: ListUsableBackendBucketsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
 }));
 
 export interface InsertBackendBucketsRequest {
@@ -52400,6 +54371,432 @@ export const testIamPermissionsBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBackendBucketsRequest,
   output: TestIamPermissionsBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface ListRegionBackendBucketsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region of this request. */
+  region: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/backendBuckets",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListRegionBackendBucketsRequest>;
+
+export type ListRegionBackendBucketsResponse = BackendBucketList;
+export const ListRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BackendBucketList;
+
+export type ListRegionBackendBucketsError = DefaultErrors;
+
+/** Retrieves the list of BackendBucket resources available to the specified project in the given region. */
+export const listRegionBackendBuckets: API.PaginatedOperationMethod<
+  ListRegionBackendBucketsRequest,
+  ListRegionBackendBucketsResponse,
+  ListRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRegionBackendBucketsRequest,
+  output: ListRegionBackendBucketsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface ListUsableRegionBackendBucketsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region scoping this request. It must be a string that meets the requirements in RFC1035. */
+  region: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListUsableRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/backendBuckets/listUsable",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListUsableRegionBackendBucketsRequest>;
+
+export type ListUsableRegionBackendBucketsResponse = BackendBucketListUsable;
+export const ListUsableRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BackendBucketListUsable;
+
+export type ListUsableRegionBackendBucketsError = DefaultErrors;
+
+/** Retrieves a list of all usable backend buckets in the specified project in the given region. */
+export const listUsableRegionBackendBuckets: API.PaginatedOperationMethod<
+  ListUsableRegionBackendBucketsRequest,
+  ListUsableRegionBackendBucketsResponse,
+  ListUsableRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListUsableRegionBackendBucketsRequest,
+  output: ListUsableRegionBackendBucketsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface GetRegionBackendBucketsRequest {
+  /** Name of the BackendBucket resource to return. */
+  backendBucket: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region scoping this request. */
+  region: string;
+}
+
+export const GetRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backendBucket: Schema.String.pipe(T.HttpPath("backendBucket")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/backendBuckets/{backendBucket}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetRegionBackendBucketsRequest>;
+
+export type GetRegionBackendBucketsResponse = BackendBucket;
+export const GetRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BackendBucket;
+
+export type GetRegionBackendBucketsError = DefaultErrors;
+
+/** Returns the specified regional BackendBucket resource. */
+export const getRegionBackendBuckets: API.OperationMethod<
+  GetRegionBackendBucketsRequest,
+  GetRegionBackendBucketsResponse,
+  GetRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegionBackendBucketsRequest,
+  output: GetRegionBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface InsertRegionBackendBucketsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region of this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: BackendBucket;
+}
+
+export const InsertRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(BackendBucket).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/backendBuckets",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertRegionBackendBucketsRequest>;
+
+export type InsertRegionBackendBucketsResponse = Operation;
+export const InsertRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InsertRegionBackendBucketsError = DefaultErrors;
+
+/** Creates a RegionBackendBucket in the specified project in the given scope using the parameters that are included in the request. */
+export const insertRegionBackendBuckets: API.OperationMethod<
+  InsertRegionBackendBucketsRequest,
+  InsertRegionBackendBucketsResponse,
+  InsertRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertRegionBackendBucketsRequest,
+  output: InsertRegionBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface DeleteRegionBackendBucketsRequest {
+  /** Name of the BackendBucket resource to delete. */
+  backendBucket: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region scoping this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder */
+  requestId?: string;
+}
+
+export const DeleteRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backendBucket: Schema.String.pipe(T.HttpPath("backendBucket")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "projects/{project}/regions/{region}/backendBuckets/{backendBucket}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteRegionBackendBucketsRequest>;
+
+export type DeleteRegionBackendBucketsResponse = Operation;
+export const DeleteRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteRegionBackendBucketsError = DefaultErrors;
+
+/** Deletes the specified regional BackendBucket resource. */
+export const deleteRegionBackendBuckets: API.OperationMethod<
+  DeleteRegionBackendBucketsRequest,
+  DeleteRegionBackendBucketsResponse,
+  DeleteRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRegionBackendBucketsRequest,
+  output: DeleteRegionBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface PatchRegionBackendBucketsRequest {
+  /** Name of the BackendBucket resource to patch. */
+  backendBucket: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region scoping this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder */
+  requestId?: string;
+  /** Request body */
+  body?: BackendBucket;
+}
+
+export const PatchRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backendBucket: Schema.String.pipe(T.HttpPath("backendBucket")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(BackendBucket).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "projects/{project}/regions/{region}/backendBuckets/{backendBucket}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchRegionBackendBucketsRequest>;
+
+export type PatchRegionBackendBucketsResponse = Operation;
+export const PatchRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchRegionBackendBucketsError = DefaultErrors;
+
+/** Updates the specified BackendBucket resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
+export const patchRegionBackendBuckets: API.OperationMethod<
+  PatchRegionBackendBucketsRequest,
+  PatchRegionBackendBucketsResponse,
+  PatchRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchRegionBackendBucketsRequest,
+  output: PatchRegionBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface GetIamPolicyRegionBackendBucketsRequest {
+  /** Requested IAM Policy version. */
+  optionsRequestedPolicyVersion?: number;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+}
+
+export const GetIamPolicyRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("optionsRequestedPolicyVersion"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/backendBuckets/{resource}/getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyRegionBackendBucketsRequest>;
+
+export type GetIamPolicyRegionBackendBucketsResponse = Policy;
+export const GetIamPolicyRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyRegionBackendBucketsError = DefaultErrors;
+
+/** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
+export const getIamPolicyRegionBackendBuckets: API.OperationMethod<
+  GetIamPolicyRegionBackendBucketsRequest,
+  GetIamPolicyRegionBackendBucketsResponse,
+  GetIamPolicyRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyRegionBackendBucketsRequest,
+  output: GetIamPolicyRegionBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface SetIamPolicyRegionBackendBucketsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: RegionSetPolicyRequest;
+}
+
+export const SetIamPolicyRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(RegionSetPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/backendBuckets/{resource}/setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyRegionBackendBucketsRequest>;
+
+export type SetIamPolicyRegionBackendBucketsResponse = Policy;
+export const SetIamPolicyRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyRegionBackendBucketsError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. */
+export const setIamPolicyRegionBackendBuckets: API.OperationMethod<
+  SetIamPolicyRegionBackendBucketsRequest,
+  SetIamPolicyRegionBackendBucketsResponse,
+  SetIamPolicyRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyRegionBackendBucketsRequest,
+  output: SetIamPolicyRegionBackendBucketsResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsRegionBackendBucketsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: TestPermissionsRequest;
+}
+
+export const TestIamPermissionsRegionBackendBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/backendBuckets/{resource}/testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsRegionBackendBucketsRequest>;
+
+export type TestIamPermissionsRegionBackendBucketsResponse =
+  TestPermissionsResponse;
+export const TestIamPermissionsRegionBackendBucketsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
+
+export type TestIamPermissionsRegionBackendBucketsError = DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. */
+export const testIamPermissionsRegionBackendBuckets: API.OperationMethod<
+  TestIamPermissionsRegionBackendBucketsRequest,
+  TestIamPermissionsRegionBackendBucketsResponse,
+  TestIamPermissionsRegionBackendBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsRegionBackendBucketsRequest,
+  output: TestIamPermissionsRegionBackendBucketsResponse,
   errors: [],
 }));
 
@@ -54081,6 +56478,49 @@ export const testIamPermissionsRegionCompositeHealthChecks: API.OperationMethod<
   errors: [],
 }));
 
+export interface GetHealthRegionCompositeHealthChecksRequest {
+  /** Name of the CompositeHealthCheck resource to get health for. */
+  compositeHealthCheck: string;
+  /** Name of the project scoping this request. */
+  project: string;
+  /** Name of the region scoping this request. */
+  region: string;
+}
+
+export const GetHealthRegionCompositeHealthChecksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compositeHealthCheck: Schema.String.pipe(
+      T.HttpPath("compositeHealthCheck"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/compositeHealthChecks/{compositeHealthCheck}/getHealth",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetHealthRegionCompositeHealthChecksRequest>;
+
+export type GetHealthRegionCompositeHealthChecksResponse =
+  CompositeHealthCheckHealth;
+export const GetHealthRegionCompositeHealthChecksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CompositeHealthCheckHealth;
+
+export type GetHealthRegionCompositeHealthChecksError = DefaultErrors;
+
+/** Gets the most recent health check results for this regional CompositeHealthCheck. */
+export const getHealthRegionCompositeHealthChecks: API.OperationMethod<
+  GetHealthRegionCompositeHealthChecksRequest,
+  GetHealthRegionCompositeHealthChecksResponse,
+  GetHealthRegionCompositeHealthChecksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetHealthRegionCompositeHealthChecksRequest,
+  output: GetHealthRegionCompositeHealthChecksResponse,
+  errors: [],
+}));
+
 export interface CalendarModeAdviceRequest_Op {
   /** Project ID for this request. */
   project: string;
@@ -54867,6 +57307,239 @@ export const getRegionDiskTypes: API.OperationMethod<
   input: GetRegionDiskTypesRequest,
   output: GetRegionDiskTypesResponse,
   errors: [],
+}));
+
+export interface InsertZoneVmExtensionPoliciesRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name of the zone for this request. */
+  zone: string;
+  /** Request body */
+  body?: VmExtensionPolicy;
+}
+
+export const InsertZoneVmExtensionPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(VmExtensionPolicy).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/zones/{zone}/vmExtensionPolicies",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertZoneVmExtensionPoliciesRequest>;
+
+export type InsertZoneVmExtensionPoliciesResponse = Operation;
+export const InsertZoneVmExtensionPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InsertZoneVmExtensionPoliciesError = DefaultErrors;
+
+/** Creates a new zone-level VM extension policy within a project. */
+export const insertZoneVmExtensionPolicies: API.OperationMethod<
+  InsertZoneVmExtensionPoliciesRequest,
+  InsertZoneVmExtensionPoliciesResponse,
+  InsertZoneVmExtensionPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertZoneVmExtensionPoliciesRequest,
+  output: InsertZoneVmExtensionPoliciesResponse,
+  errors: [],
+}));
+
+export interface GetZoneVmExtensionPoliciesRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the VM extension policy resource to return. */
+  vmExtensionPolicy: string;
+  /** Name of the zone for this request. */
+  zone: string;
+}
+
+export const GetZoneVmExtensionPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    vmExtensionPolicy: Schema.String.pipe(T.HttpPath("vmExtensionPolicy")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetZoneVmExtensionPoliciesRequest>;
+
+export type GetZoneVmExtensionPoliciesResponse = VmExtensionPolicy;
+export const GetZoneVmExtensionPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VmExtensionPolicy;
+
+export type GetZoneVmExtensionPoliciesError = DefaultErrors;
+
+/** Retrieves details of a specific zone VM extension policy. */
+export const getZoneVmExtensionPolicies: API.OperationMethod<
+  GetZoneVmExtensionPoliciesRequest,
+  GetZoneVmExtensionPoliciesResponse,
+  GetZoneVmExtensionPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetZoneVmExtensionPoliciesRequest,
+  output: GetZoneVmExtensionPoliciesResponse,
+  errors: [],
+}));
+
+export interface UpdateZoneVmExtensionPoliciesRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name of the zone VM extension policy to update. */
+  vmExtensionPolicy: string;
+  /** Name of the zone for this request. */
+  zone: string;
+  /** Request body */
+  body?: VmExtensionPolicy;
+}
+
+export const UpdateZoneVmExtensionPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    vmExtensionPolicy: Schema.String.pipe(T.HttpPath("vmExtensionPolicy")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(VmExtensionPolicy).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateZoneVmExtensionPoliciesRequest>;
+
+export type UpdateZoneVmExtensionPoliciesResponse = Operation;
+export const UpdateZoneVmExtensionPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateZoneVmExtensionPoliciesError = DefaultErrors;
+
+/** Modifies an existing zone VM extension policy. */
+export const updateZoneVmExtensionPolicies: API.OperationMethod<
+  UpdateZoneVmExtensionPoliciesRequest,
+  UpdateZoneVmExtensionPoliciesResponse,
+  UpdateZoneVmExtensionPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateZoneVmExtensionPoliciesRequest,
+  output: UpdateZoneVmExtensionPoliciesResponse,
+  errors: [],
+}));
+
+export interface DeleteZoneVmExtensionPoliciesRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Name of the zone VM extension policy to delete. */
+  vmExtensionPolicy: string;
+  /** Name of the zone for this request. */
+  zone: string;
+}
+
+export const DeleteZoneVmExtensionPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    vmExtensionPolicy: Schema.String.pipe(T.HttpPath("vmExtensionPolicy")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteZoneVmExtensionPoliciesRequest>;
+
+export type DeleteZoneVmExtensionPoliciesResponse = Operation;
+export const DeleteZoneVmExtensionPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteZoneVmExtensionPoliciesError = DefaultErrors;
+
+/** Deletes a specified zone VM extension policy. */
+export const deleteZoneVmExtensionPolicies: API.OperationMethod<
+  DeleteZoneVmExtensionPoliciesRequest,
+  DeleteZoneVmExtensionPoliciesResponse,
+  DeleteZoneVmExtensionPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteZoneVmExtensionPoliciesRequest,
+  output: DeleteZoneVmExtensionPoliciesResponse,
+  errors: [],
+}));
+
+export interface ListZoneVmExtensionPoliciesRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+  /** Name of the zone for this request. */
+  zone: string;
+}
+
+export const ListZoneVmExtensionPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/zones/{zone}/vmExtensionPolicies",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListZoneVmExtensionPoliciesRequest>;
+
+export type ListZoneVmExtensionPoliciesResponse = VmExtensionPolicyList;
+export const ListZoneVmExtensionPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ VmExtensionPolicyList;
+
+export type ListZoneVmExtensionPoliciesError = DefaultErrors;
+
+/** Lists all VM extension policies within a specific zone for a project. */
+export const listZoneVmExtensionPolicies: API.PaginatedOperationMethod<
+  ListZoneVmExtensionPoliciesRequest,
+  ListZoneVmExtensionPoliciesResponse,
+  ListZoneVmExtensionPoliciesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListZoneVmExtensionPoliciesRequest,
+  output: ListZoneVmExtensionPoliciesResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
 }));
 
 export interface ListInterconnectAttachmentsRequest {
@@ -59412,6 +62085,46 @@ export const testIamPermissionsRegionHealthSources: API.OperationMethod<
   errors: [],
 }));
 
+export interface GetHealthRegionHealthSourcesRequest {
+  /** Name of the HealthSource resource to get health for. */
+  healthSource: string;
+  /** Name of the project scoping this request. */
+  project: string;
+  /** Name of the region scoping this request. */
+  region: string;
+}
+
+export const GetHealthRegionHealthSourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthSource: Schema.String.pipe(T.HttpPath("healthSource")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/healthSources/{healthSource}/getHealth",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetHealthRegionHealthSourcesRequest>;
+
+export type GetHealthRegionHealthSourcesResponse = HealthSourceHealth;
+export const GetHealthRegionHealthSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ HealthSourceHealth;
+
+export type GetHealthRegionHealthSourcesError = DefaultErrors;
+
+/** Gets the most recent health check results for this regional HealthSource. */
+export const getHealthRegionHealthSources: API.OperationMethod<
+  GetHealthRegionHealthSourcesRequest,
+  GetHealthRegionHealthSourcesResponse,
+  GetHealthRegionHealthSourcesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetHealthRegionHealthSourcesRequest,
+  output: GetHealthRegionHealthSourcesResponse,
+  errors: [],
+}));
+
 export interface ListHttpHealthChecksRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
   filter?: string;
@@ -61454,6 +64167,664 @@ export const testIamPermissionsRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionInstantSnapshotsRequest,
   output: TestIamPermissionsRegionInstantSnapshotsResponse,
+  errors: [],
+}));
+
+export interface InsertInstantSnapshotGroupsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** begin_interface: MixerMutationRequestBuilder */
+  sourceConsistencyGroup?: string;
+  /** Name of the zone for this request. */
+  zone: string;
+  /** Request body */
+  body?: InstantSnapshotGroup;
+}
+
+export const InsertInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    sourceConsistencyGroup: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("sourceConsistencyGroup"),
+    ),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(InstantSnapshotGroup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertInstantSnapshotGroupsRequest>;
+
+export type InsertInstantSnapshotGroupsResponse = Operation;
+export const InsertInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InsertInstantSnapshotGroupsError = DefaultErrors;
+
+/** inserts a Zonal InstantSnapshotGroup resource */
+export const insertInstantSnapshotGroups: API.OperationMethod<
+  InsertInstantSnapshotGroupsRequest,
+  InsertInstantSnapshotGroupsResponse,
+  InsertInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertInstantSnapshotGroupsRequest,
+  output: InsertInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface GetInstantSnapshotGroupsRequest {
+  /** Name of the InstantSnapshotGroup resource to return. */
+  instantSnapshotGroup: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the zone for this request. */
+  zone: string;
+}
+
+export const GetInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instantSnapshotGroup: Schema.String.pipe(
+      T.HttpPath("instantSnapshotGroup"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{instantSnapshotGroup}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetInstantSnapshotGroupsRequest>;
+
+export type GetInstantSnapshotGroupsResponse = InstantSnapshotGroup;
+export const GetInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotGroup;
+
+export type GetInstantSnapshotGroupsError = DefaultErrors;
+
+/** returns the specified InstantSnapshotGroup resource in the specified zone. */
+export const getInstantSnapshotGroups: API.OperationMethod<
+  GetInstantSnapshotGroupsRequest,
+  GetInstantSnapshotGroupsResponse,
+  GetInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInstantSnapshotGroupsRequest,
+  output: GetInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface ListInstantSnapshotGroupsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+  /** The name of the zone for this request. */
+  zone: string;
+}
+
+export const ListInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListInstantSnapshotGroupsRequest>;
+
+export type ListInstantSnapshotGroupsResponse = ListInstantSnapshotGroups;
+export const ListInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInstantSnapshotGroups;
+
+export type ListInstantSnapshotGroupsError = DefaultErrors;
+
+/** retrieves the list of InstantSnapshotGroup resources contained within the specified zone. */
+export const listInstantSnapshotGroups: API.PaginatedOperationMethod<
+  ListInstantSnapshotGroupsRequest,
+  ListInstantSnapshotGroupsResponse,
+  ListInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInstantSnapshotGroupsRequest,
+  output: ListInstantSnapshotGroupsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface DeleteInstantSnapshotGroupsRequest {
+  /** Name of the InstantSnapshot resource to delete. */
+  instantSnapshotGroup: string;
+  /** Project ID for this request. */
+  project: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** The name of the zone for this request. */
+  zone: string;
+}
+
+export const DeleteInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instantSnapshotGroup: Schema.String.pipe(
+      T.HttpPath("instantSnapshotGroup"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{instantSnapshotGroup}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteInstantSnapshotGroupsRequest>;
+
+export type DeleteInstantSnapshotGroupsResponse = Operation;
+export const DeleteInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteInstantSnapshotGroupsError = DefaultErrors;
+
+/** deletes a Zonal InstantSnapshotGroup resource */
+export const deleteInstantSnapshotGroups: API.OperationMethod<
+  DeleteInstantSnapshotGroupsRequest,
+  DeleteInstantSnapshotGroupsResponse,
+  DeleteInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteInstantSnapshotGroupsRequest,
+  output: DeleteInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface GetIamPolicyInstantSnapshotGroupsRequest {
+  /** Requested IAM Policy version. */
+  optionsRequestedPolicyVersion?: number;
+  /** Project ID for this request. */
+  project: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** The name of the zone for this request. */
+  zone: string;
+}
+
+export const GetIamPolicyInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("optionsRequestedPolicyVersion"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyInstantSnapshotGroupsRequest>;
+
+export type GetIamPolicyInstantSnapshotGroupsResponse = Policy;
+export const GetIamPolicyInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyInstantSnapshotGroupsError = DefaultErrors;
+
+/** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
+export const getIamPolicyInstantSnapshotGroups: API.OperationMethod<
+  GetIamPolicyInstantSnapshotGroupsRequest,
+  GetIamPolicyInstantSnapshotGroupsResponse,
+  GetIamPolicyInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyInstantSnapshotGroupsRequest,
+  output: GetIamPolicyInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface SetIamPolicyInstantSnapshotGroupsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** The name of the zone for this request. */
+  zone: string;
+  /** Request body */
+  body?: ZoneSetPolicyRequest;
+}
+
+export const SetIamPolicyInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(ZoneSetPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyInstantSnapshotGroupsRequest>;
+
+export type SetIamPolicyInstantSnapshotGroupsResponse = Policy;
+export const SetIamPolicyInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyInstantSnapshotGroupsError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. */
+export const setIamPolicyInstantSnapshotGroups: API.OperationMethod<
+  SetIamPolicyInstantSnapshotGroupsRequest,
+  SetIamPolicyInstantSnapshotGroupsResponse,
+  SetIamPolicyInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyInstantSnapshotGroupsRequest,
+  output: SetIamPolicyInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsInstantSnapshotGroupsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** The name of the zone for this request. */
+  zone: string;
+  /** Request body */
+  body?: TestPermissionsRequest;
+}
+
+export const TestIamPermissionsInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    zone: Schema.String.pipe(T.HttpPath("zone")),
+    body: Schema.optional(TestPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/zones/{zone}/instantSnapshotGroups/{resource}/testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsInstantSnapshotGroupsRequest>;
+
+export type TestIamPermissionsInstantSnapshotGroupsResponse =
+  TestPermissionsResponse;
+export const TestIamPermissionsInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
+
+export type TestIamPermissionsInstantSnapshotGroupsError = DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. */
+export const testIamPermissionsInstantSnapshotGroups: API.OperationMethod<
+  TestIamPermissionsInstantSnapshotGroupsRequest,
+  TestIamPermissionsInstantSnapshotGroupsResponse,
+  TestIamPermissionsInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsInstantSnapshotGroupsRequest,
+  output: TestIamPermissionsInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface InsertRegionInstantSnapshotGroupsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** begin_interface: MixerMutationRequestBuilder */
+  sourceConsistencyGroup?: string;
+  /** Request body */
+  body?: InstantSnapshotGroup;
+}
+
+export const InsertRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    sourceConsistencyGroup: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("sourceConsistencyGroup"),
+    ),
+    body: Schema.optional(InstantSnapshotGroup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<InsertRegionInstantSnapshotGroupsRequest>;
+
+export type InsertRegionInstantSnapshotGroupsResponse = Operation;
+export const InsertRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type InsertRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** creates a Regional InstantSnapshotGroup resource */
+export const insertRegionInstantSnapshotGroups: API.OperationMethod<
+  InsertRegionInstantSnapshotGroupsRequest,
+  InsertRegionInstantSnapshotGroupsResponse,
+  InsertRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertRegionInstantSnapshotGroupsRequest,
+  output: InsertRegionInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface GetRegionInstantSnapshotGroupsRequest {
+  /** Name of the InstantSnapshotGroup resource to return. */
+  instantSnapshotGroup: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+}
+
+export const GetRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instantSnapshotGroup: Schema.String.pipe(
+      T.HttpPath("instantSnapshotGroup"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups/{instantSnapshotGroup}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetRegionInstantSnapshotGroupsRequest>;
+
+export type GetRegionInstantSnapshotGroupsResponse = InstantSnapshotGroup;
+export const GetRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotGroup;
+
+export type GetRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** returns the specified InstantSnapshotGroup resource in the specified region. */
+export const getRegionInstantSnapshotGroups: API.OperationMethod<
+  GetRegionInstantSnapshotGroupsRequest,
+  GetRegionInstantSnapshotGroupsResponse,
+  GetRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegionInstantSnapshotGroupsRequest,
+  output: GetRegionInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface ListRegionInstantSnapshotGroupsRequest {
+  /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
+  filter?: string;
+  /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
+  maxResults?: number;
+  /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
+  orderBy?: string;
+  /** Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. */
+  pageToken?: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListRegionInstantSnapshotGroupsRequest>;
+
+export type ListRegionInstantSnapshotGroupsResponse = ListInstantSnapshotGroups;
+export const ListRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInstantSnapshotGroups;
+
+export type ListRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** retrieves the list of InstantSnapshotGroup resources contained within the specified region. */
+export const listRegionInstantSnapshotGroups: API.PaginatedOperationMethod<
+  ListRegionInstantSnapshotGroupsRequest,
+  ListRegionInstantSnapshotGroupsResponse,
+  ListRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRegionInstantSnapshotGroupsRequest,
+  output: ListRegionInstantSnapshotGroupsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  },
+}));
+
+export interface DeleteRegionInstantSnapshotGroupsRequest {
+  /** Name of the InstantSnapshotGroup resource to delete. */
+  instantSnapshotGroup: string;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instantSnapshotGroup: Schema.String.pipe(
+      T.HttpPath("instantSnapshotGroup"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups/{instantSnapshotGroup}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteRegionInstantSnapshotGroupsRequest>;
+
+export type DeleteRegionInstantSnapshotGroupsResponse = Operation;
+export const DeleteRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** deletes a Regional InstantSnapshotGroup resource */
+export const deleteRegionInstantSnapshotGroups: API.OperationMethod<
+  DeleteRegionInstantSnapshotGroupsRequest,
+  DeleteRegionInstantSnapshotGroupsResponse,
+  DeleteRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRegionInstantSnapshotGroupsRequest,
+  output: DeleteRegionInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface GetIamPolicyRegionInstantSnapshotGroupsRequest {
+  /** Requested IAM Policy version. */
+  optionsRequestedPolicyVersion?: number;
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+}
+
+export const GetIamPolicyRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optionsRequestedPolicyVersion: Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("optionsRequestedPolicyVersion"),
+    ),
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyRegionInstantSnapshotGroupsRequest>;
+
+export type GetIamPolicyRegionInstantSnapshotGroupsResponse = Policy;
+export const GetIamPolicyRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
+export const getIamPolicyRegionInstantSnapshotGroups: API.OperationMethod<
+  GetIamPolicyRegionInstantSnapshotGroupsRequest,
+  GetIamPolicyRegionInstantSnapshotGroupsResponse,
+  GetIamPolicyRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyRegionInstantSnapshotGroupsRequest,
+  output: GetIamPolicyRegionInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface SetIamPolicyRegionInstantSnapshotGroupsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: RegionSetPolicyRequest;
+}
+
+export const SetIamPolicyRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(RegionSetPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyRegionInstantSnapshotGroupsRequest>;
+
+export type SetIamPolicyRegionInstantSnapshotGroupsResponse = Policy;
+export const SetIamPolicyRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. */
+export const setIamPolicyRegionInstantSnapshotGroups: API.OperationMethod<
+  SetIamPolicyRegionInstantSnapshotGroupsRequest,
+  SetIamPolicyRegionInstantSnapshotGroupsResponse,
+  SetIamPolicyRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyRegionInstantSnapshotGroupsRequest,
+  output: SetIamPolicyRegionInstantSnapshotGroupsResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsRegionInstantSnapshotGroupsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** The name of the region for this request. */
+  region: string;
+  /** Name or id of the resource for this request. */
+  resource: string;
+  /** Request body */
+  body?: TestPermissionsRequest;
+}
+
+export const TestIamPermissionsRegionInstantSnapshotGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "projects/{project}/regions/{region}/instantSnapshotGroups/{resource}/testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsRegionInstantSnapshotGroupsRequest>;
+
+export type TestIamPermissionsRegionInstantSnapshotGroupsResponse =
+  TestPermissionsResponse;
+export const TestIamPermissionsRegionInstantSnapshotGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
+
+export type TestIamPermissionsRegionInstantSnapshotGroupsError = DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. */
+export const testIamPermissionsRegionInstantSnapshotGroups: API.OperationMethod<
+  TestIamPermissionsRegionInstantSnapshotGroupsRequest,
+  TestIamPermissionsRegionInstantSnapshotGroupsResponse,
+  TestIamPermissionsRegionInstantSnapshotGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsRegionInstantSnapshotGroupsRequest,
+  output: TestIamPermissionsRegionInstantSnapshotGroupsResponse,
   errors: [],
 }));
 
@@ -72223,6 +75594,90 @@ export const patchSnapshotSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSnapshotSettingsRequest,
   output: PatchSnapshotSettingsResponse,
+  errors: [],
+}));
+
+export interface GetRegionSnapshotSettingsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+}
+
+export const GetRegionSnapshotSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "projects/{project}/regions/{region}/snapshotSettings",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetRegionSnapshotSettingsRequest>;
+
+export type GetRegionSnapshotSettingsResponse = SnapshotSettings;
+export const GetRegionSnapshotSettingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SnapshotSettings;
+
+export type GetRegionSnapshotSettingsError = DefaultErrors;
+
+/** Get region snapshot settings. */
+export const getRegionSnapshotSettings: API.OperationMethod<
+  GetRegionSnapshotSettingsRequest,
+  GetRegionSnapshotSettingsResponse,
+  GetRegionSnapshotSettingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegionSnapshotSettingsRequest,
+  output: GetRegionSnapshotSettingsResponse,
+  errors: [],
+}));
+
+export interface PatchRegionSnapshotSettingsRequest {
+  /** Project ID for this request. */
+  project: string;
+  /** Name of the region for this request. */
+  region: string;
+  /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** update_mask indicates fields to be updated as part of this request. */
+  updateMask?: string;
+  /** Request body */
+  body?: SnapshotSettings;
+}
+
+export const PatchRegionSnapshotSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.String.pipe(T.HttpPath("project")),
+    region: Schema.String.pipe(T.HttpPath("region")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(SnapshotSettings).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "projects/{project}/regions/{region}/snapshotSettings",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchRegionSnapshotSettingsRequest>;
+
+export type PatchRegionSnapshotSettingsResponse = Operation;
+export const PatchRegionSnapshotSettingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchRegionSnapshotSettingsError = DefaultErrors;
+
+/** Patch region snapshot settings. */
+export const patchRegionSnapshotSettings: API.OperationMethod<
+  PatchRegionSnapshotSettingsRequest,
+  PatchRegionSnapshotSettingsResponse,
+  PatchRegionSnapshotSettingsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchRegionSnapshotSettingsRequest,
+  output: PatchRegionSnapshotSettingsResponse,
   errors: [],
 }));
 

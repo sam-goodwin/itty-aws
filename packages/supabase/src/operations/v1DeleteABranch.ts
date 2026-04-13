@@ -21,7 +21,7 @@ export type V1DeleteABranchOutput = typeof V1DeleteABranchOutput.Type;
  *
  * Deletes the specified database branch. By default, deletes immediately. Use force=false to schedule deletion with 1-hour grace period (only when soft deletion is enabled).
  *
- * @param branch_id_or_ref - Branch ID
+ * @param branch_id_or_ref - Branch ref or deprecated branch ID
  * @param force - If set to false, schedule deletion with 1-hour grace period (only when soft deletion is enabled).
  */
 export const v1DeleteABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

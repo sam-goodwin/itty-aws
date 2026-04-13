@@ -97,9 +97,9 @@ const rules = T.EndpointResolver((p, _) => {
             {
               authSchemes: [
                 {
-                  signingRegion: "us-east-1",
-                  signingName: "dynamodb",
                   name: "sigv4",
+                  signingName: "dynamodb",
+                  signingRegion: "us-east-1",
                 },
               ],
             },
@@ -1216,6 +1216,7 @@ export const GlobalTableSettingsReplicationMode =
 export interface ReplicaDescription {
   RegionName?: string;
   ReplicaStatus?: ReplicaStatus;
+  ReplicaArn?: string;
   ReplicaStatusDescription?: string;
   ReplicaStatusPercentProgress?: string;
   KMSMasterKeyId?: string;
@@ -1231,6 +1232,7 @@ export const ReplicaDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     RegionName: S.optional(S.String),
     ReplicaStatus: S.optional(ReplicaStatus),
+    ReplicaArn: S.optional(S.String),
     ReplicaStatusDescription: S.optional(S.String),
     ReplicaStatusPercentProgress: S.optional(S.String),
     KMSMasterKeyId: S.optional(S.String),

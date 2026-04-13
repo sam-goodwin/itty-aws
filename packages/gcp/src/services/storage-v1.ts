@@ -499,6 +499,8 @@ export interface AnywhereCache {
   admissionPolicy?: string;
   /** True if the cache instance has an active Update long-running operation. */
   pendingUpdate?: boolean;
+  /** Specifies whether objects are ingested into the cache upon write. */
+  ingestOnWrite?: boolean;
 }
 
 export const AnywhereCache: Schema.Schema<AnywhereCache> =
@@ -516,6 +518,7 @@ export const AnywhereCache: Schema.Schema<AnywhereCache> =
       ttl: Schema.optional(Schema.String),
       admissionPolicy: Schema.optional(Schema.String),
       pendingUpdate: Schema.optional(Schema.Boolean),
+      ingestOnWrite: Schema.optional(Schema.Boolean),
     }),
   ).annotate({
     identifier: "AnywhereCache",
@@ -1467,7 +1470,7 @@ export const UpdateAnywhereCachesResponse =
 
 export type UpdateAnywhereCachesError = DefaultErrors;
 
-/** Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance. */
+/** Updates the config of an Anywhere Cache instance. */
 export const updateAnywhereCaches: API.OperationMethod<
   UpdateAnywhereCachesRequest,
   UpdateAnywhereCachesResponse,

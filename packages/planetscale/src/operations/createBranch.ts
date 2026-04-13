@@ -14,6 +14,12 @@ export const CreateBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   restore_point: Schema.optional(Schema.String),
   seed_data: Schema.optional(Schema.Literals(["last_successful_backup"])),
   cluster_size: Schema.optional(Schema.String),
+  storage: Schema.optional(
+    Schema.Struct({
+      minimum_storage_bytes: Schema.optional(Schema.Number),
+      maximum_storage_bytes: Schema.optional(Schema.Number),
+    }),
+  ),
   major_version: Schema.optional(Schema.String),
 }).pipe(
   T.Http({

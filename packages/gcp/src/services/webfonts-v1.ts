@@ -23,35 +23,35 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Axis {
-  /** tag name. */
-  tag?: string;
   /** minimum value */
   start?: number;
   /** maximum value */
   end?: number;
+  /** tag name. */
+  tag?: string;
 }
 
 export const Axis: Schema.Schema<Axis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      tag: Schema.optional(Schema.String),
       start: Schema.optional(Schema.Number),
       end: Schema.optional(Schema.Number),
+      tag: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Axis" }) as any as Schema.Schema<Axis>;
 
 export interface Tag {
-  /** The name of the tag. */
-  name?: string;
   /** The weight of the tag. */
   weight?: number;
+  /** The name of the tag. */
+  name?: string;
 }
 
 export const Tag: Schema.Schema<Tag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      name: Schema.optional(Schema.String),
       weight: Schema.optional(Schema.Number),
+      name: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Tag" }) as any as Schema.Schema<Tag>;
 
@@ -60,26 +60,26 @@ export interface Webfont {
   family?: string;
   /** The available variants for the font. */
   variants?: Array<string>;
-  /** The scripts supported by the font. */
-  subsets?: Array<string>;
   /** The font version. */
   version?: string;
-  /** The date (format "yyyy-MM-dd") the font was modified for the last time. */
-  lastModified?: string;
-  /** The font files (with all supported scripts) for each one of the available variants, as a key : value map. */
-  files?: Record<string, string>;
   /** The category of the font. */
   category?: string;
-  /** This kind represents a webfont object in the webfonts service. */
-  kind?: string;
-  /** Font URL for menu subset, a subset of the font that is enough to display the font name */
-  menu?: string;
+  /** The date (format "yyyy-MM-dd") the font was modified for the last time. */
+  lastModified?: string;
   /** Axis for variable fonts. */
   axes?: Array<Axis>;
   /** The color format(s) available for this family. */
   colorCapabilities?: Array<string>;
   /** The tags that apply to this family. */
   tags?: Array<Tag>;
+  /** The scripts supported by the font. */
+  subsets?: Array<string>;
+  /** The font files (with all supported scripts) for each one of the available variants, as a key : value map. */
+  files?: Record<string, string>;
+  /** Font URL for menu subset, a subset of the font that is enough to display the font name */
+  menu?: string;
+  /** This kind represents a webfont object in the webfonts service. */
+  kind?: string;
 }
 
 export const Webfont: Schema.Schema<Webfont> =
@@ -87,16 +87,16 @@ export const Webfont: Schema.Schema<Webfont> =
     Schema.Struct({
       family: Schema.optional(Schema.String),
       variants: Schema.optional(Schema.Array(Schema.String)),
-      subsets: Schema.optional(Schema.Array(Schema.String)),
       version: Schema.optional(Schema.String),
-      lastModified: Schema.optional(Schema.String),
-      files: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       category: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      menu: Schema.optional(Schema.String),
+      lastModified: Schema.optional(Schema.String),
       axes: Schema.optional(Schema.Array(Axis)),
       colorCapabilities: Schema.optional(Schema.Array(Schema.String)),
       tags: Schema.optional(Schema.Array(Tag)),
+      subsets: Schema.optional(Schema.Array(Schema.String)),
+      files: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      menu: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Webfont" }) as any as Schema.Schema<Webfont>;
 
@@ -122,6 +122,10 @@ export const WebfontList: Schema.Schema<WebfontList> =
 // ==========================================================================
 
 export interface ListWebfontsRequest {
+  /** Filters by Webfont.family, using literal match. If not set, returns all families */
+  family?: string[];
+  /** Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families. */
+  subset?: string;
   /** Enables sorting of the list. */
   sort?:
     | "SORT_UNDEFINED"
@@ -138,23 +142,19 @@ export interface ListWebfontsRequest {
     | "VF"
     | "FAMILY_TAGS"
     | (string & {})[];
-  /** Filters by Webfont.family, using literal match. If not set, returns all families */
-  family?: string[];
-  /** Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families. */
-  subset?: string;
   /** Filters by Webfont.category, if category is found in Webfont.categories. If not set, returns all families. */
   category?: string;
 }
 
 export const ListWebfontsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sort: Schema.optional(Schema.String).pipe(T.HttpQuery("sort")),
-  capability: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("capability"),
-  ),
   family: Schema.optional(Schema.Array(Schema.String)).pipe(
     T.HttpQuery("family"),
   ),
   subset: Schema.optional(Schema.String).pipe(T.HttpQuery("subset")),
+  sort: Schema.optional(Schema.String).pipe(T.HttpQuery("sort")),
+  capability: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("capability"),
+  ),
   category: Schema.optional(Schema.String).pipe(T.HttpQuery("category")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/webfonts" }),

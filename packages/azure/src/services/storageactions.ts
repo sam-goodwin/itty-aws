@@ -417,6 +417,42 @@ export const StorageTasksReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const StorageTasksStopAllAssignmentsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageTaskName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/stopAllAssignments",
+    }),
+  );
+export type StorageTasksStopAllAssignmentsInput =
+  typeof StorageTasksStopAllAssignmentsInput.Type;
+
+// Output Schema
+export const StorageTasksStopAllAssignmentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type StorageTasksStopAllAssignmentsOutput =
+  typeof StorageTasksStopAllAssignmentsOutput.Type;
+
+// The operation
+/**
+ * Stops all active running assignments for the storage task
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageTaskName - The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
+ */
+export const StorageTasksStopAllAssignments =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: StorageTasksStopAllAssignmentsInput,
+    outputSchema: StorageTasksStopAllAssignmentsOutput,
+  }));
+// Input Schema
 export const StorageTasksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),

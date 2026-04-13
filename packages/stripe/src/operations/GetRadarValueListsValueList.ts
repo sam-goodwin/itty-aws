@@ -29,6 +29,7 @@ export const GetRadarValueListsValueListOutput =
       "card_fingerprint",
       "case_sensitive_string",
       "country",
+      "crypto_fingerprint",
       "customer_id",
       "email",
       "ip_address",

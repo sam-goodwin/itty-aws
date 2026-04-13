@@ -103,9 +103,16 @@ export type RequestCharacters = number;
 export type SnsTopicArn = string;
 export type SampleRate = string;
 export type MaxResults = number;
+export type Text = string;
+export type Force = boolean;
+export type AudioChunk = Uint8Array;
+export type ValidationExceptionFieldName = string;
+export type ValidationExceptionFieldMessage = string;
+export type AvailabilityErrorMessage = string;
+export type CoralAvailabilityThrottlingReason = string;
+export type CoralAvailabilityThrottledResource = string;
 export type OutputS3BucketName = string;
 export type OutputS3KeyPrefix = string;
-export type Text = string;
 export type ContentType = string;
 
 //# Schemas
@@ -316,6 +323,12 @@ export type VoiceId =
   | "Sabrina"
   | "Jasmine"
   | "Jihye"
+  | "Ambre"
+  | "Beatrice"
+  | "Florian"
+  | "Lennart"
+  | "Lorenzo"
+  | "Tiffany"
   | (string & {});
 export const VoiceId = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type LanguageCodeList = LanguageCode[];
@@ -451,6 +464,8 @@ export type OutputFormat =
   | "ogg_opus"
   | "ogg_vorbis"
   | "pcm"
+  | "mulaw"
+  | "alaw"
   | (string & {});
 export const OutputFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type SpeechMarkType =
@@ -626,6 +641,235 @@ export const PutLexiconOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutLexiconOutput",
 }) as any as S.Schema<PutLexiconOutput>;
+export interface FlushStreamConfiguration {
+  Force?: boolean;
+}
+export const FlushStreamConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Force: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "FlushStreamConfiguration",
+}) as any as S.Schema<FlushStreamConfiguration>;
+export interface TextEvent {
+  Text: string;
+  TextType?: TextType;
+  FlushStreamConfiguration?: FlushStreamConfiguration;
+}
+export const TextEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Text: S.String,
+    TextType: S.optional(TextType),
+    FlushStreamConfiguration: S.optional(FlushStreamConfiguration),
+  }),
+).annotate({ identifier: "TextEvent" }) as any as S.Schema<TextEvent>;
+export interface CloseStreamEvent {}
+export const CloseStreamEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CloseStreamEvent",
+}) as any as S.Schema<CloseStreamEvent>;
+export type StartSpeechSynthesisStreamActionStream =
+  | { TextEvent: TextEvent; CloseStreamEvent?: never }
+  | { TextEvent?: never; CloseStreamEvent: CloseStreamEvent };
+export const StartSpeechSynthesisStreamActionStream =
+  /*@__PURE__*/ /*#__PURE__*/ T.InputEventStream(
+    S.Union([
+      S.Struct({ TextEvent: TextEvent }),
+      S.Struct({ CloseStreamEvent: CloseStreamEvent }),
+    ]),
+  ) as any as S.Schema<
+    stream.Stream<StartSpeechSynthesisStreamActionStream, Error, never>
+  >;
+export interface StartSpeechSynthesisStreamInput {
+  Engine: Engine;
+  LanguageCode?: LanguageCode;
+  LexiconNames?: string[];
+  OutputFormat: OutputFormat;
+  SampleRate?: string;
+  VoiceId: VoiceId;
+  ActionStream?: stream.Stream<
+    StartSpeechSynthesisStreamActionStream,
+    Error,
+    never
+  >;
+}
+export const StartSpeechSynthesisStreamInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Engine: Engine.pipe(T.HttpHeader("x-amzn-Engine")),
+      LanguageCode: S.optional(LanguageCode).pipe(
+        T.HttpHeader("x-amzn-LanguageCode"),
+      ),
+      LexiconNames: S.optional(LexiconNameList).pipe(
+        T.HttpHeader("x-amzn-LexiconNames"),
+      ),
+      OutputFormat: OutputFormat.pipe(T.HttpHeader("x-amzn-OutputFormat")),
+      SampleRate: S.optional(S.String).pipe(T.HttpHeader("x-amzn-SampleRate")),
+      VoiceId: VoiceId.pipe(T.HttpHeader("x-amzn-VoiceId")),
+      ActionStream: S.optional(StartSpeechSynthesisStreamActionStream).pipe(
+        T.HttpPayload(),
+      ),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/synthesisStream" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartSpeechSynthesisStreamInput",
+  }) as any as S.Schema<StartSpeechSynthesisStreamInput>;
+export interface AudioEvent {
+  AudioChunk?: Uint8Array;
+}
+export const AudioEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ AudioChunk: S.optional(T.Blob).pipe(T.EventPayload()) }),
+).annotate({ identifier: "AudioEvent" }) as any as S.Schema<AudioEvent>;
+export interface StreamClosedEvent {
+  RequestCharacters?: number;
+}
+export const StreamClosedEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestCharacters: S.optional(S.Number) }),
+).annotate({
+  identifier: "StreamClosedEvent",
+}) as any as S.Schema<StreamClosedEvent>;
+export type ValidationExceptionReason =
+  | "unsupportedOperation"
+  | "fieldValidationFailed"
+  | "other"
+  | "invalidInboundEvent"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type QuotaCode =
+  | "input-stream-inbound-event-timeout"
+  | "input-stream-timeout"
+  | (string & {});
+export const QuotaCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ServiceCode = "polly" | (string & {});
+export const ServiceCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ThrottlingReason {
+  reason?: string;
+  resource?: string;
+}
+export const ThrottlingReason = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+).annotate({
+  identifier: "ThrottlingReason",
+}) as any as S.Schema<ThrottlingReason>;
+export type ThrottlingReasonList = ThrottlingReason[];
+export const ThrottlingReasonList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ThrottlingReason);
+export type StartSpeechSynthesisStreamEventStream =
+  | {
+      AudioEvent: AudioEvent;
+      StreamClosedEvent?: never;
+      ValidationException?: never;
+      ServiceQuotaExceededException?: never;
+      ServiceFailureException?: never;
+      ThrottlingException?: never;
+    }
+  | {
+      AudioEvent?: never;
+      StreamClosedEvent: StreamClosedEvent;
+      ValidationException?: never;
+      ServiceQuotaExceededException?: never;
+      ServiceFailureException?: never;
+      ThrottlingException?: never;
+    }
+  | {
+      AudioEvent?: never;
+      StreamClosedEvent?: never;
+      ValidationException: ValidationException;
+      ServiceQuotaExceededException?: never;
+      ServiceFailureException?: never;
+      ThrottlingException?: never;
+    }
+  | {
+      AudioEvent?: never;
+      StreamClosedEvent?: never;
+      ValidationException?: never;
+      ServiceQuotaExceededException: ServiceQuotaExceededException;
+      ServiceFailureException?: never;
+      ThrottlingException?: never;
+    }
+  | {
+      AudioEvent?: never;
+      StreamClosedEvent?: never;
+      ValidationException?: never;
+      ServiceQuotaExceededException?: never;
+      ServiceFailureException: ServiceFailureException;
+      ThrottlingException?: never;
+    }
+  | {
+      AudioEvent?: never;
+      StreamClosedEvent?: never;
+      ValidationException?: never;
+      ServiceQuotaExceededException?: never;
+      ServiceFailureException?: never;
+      ThrottlingException: ThrottlingException;
+    };
+export const StartSpeechSynthesisStreamEventStream =
+  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+    S.Union([
+      S.Struct({ AudioEvent: AudioEvent }),
+      S.Struct({ StreamClosedEvent: StreamClosedEvent }),
+      S.Struct({
+        ValidationException: S.suspend(() => ValidationException).annotate({
+          identifier: "ValidationException",
+        }),
+      }),
+      S.Struct({
+        ServiceQuotaExceededException: S.suspend(
+          () => ServiceQuotaExceededException,
+        ).annotate({ identifier: "ServiceQuotaExceededException" }),
+      }),
+      S.Struct({
+        ServiceFailureException: S.suspend(
+          () => ServiceFailureException,
+        ).annotate({ identifier: "ServiceFailureException" }),
+      }),
+      S.Struct({
+        ThrottlingException: S.suspend(() => ThrottlingException).annotate({
+          identifier: "ThrottlingException",
+        }),
+      }),
+    ]),
+  ) as any as S.Schema<
+    stream.Stream<StartSpeechSynthesisStreamEventStream, Error, never>
+  >;
+export interface StartSpeechSynthesisStreamOutput {
+  EventStream?: stream.Stream<
+    StartSpeechSynthesisStreamEventStream,
+    Error,
+    never
+  >;
+}
+export const StartSpeechSynthesisStreamOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EventStream: S.optional(StartSpeechSynthesisStreamEventStream).pipe(
+        T.HttpPayload(),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "StartSpeechSynthesisStreamOutput",
+  }) as any as S.Schema<StartSpeechSynthesisStreamOutput>;
 export interface StartSpeechSynthesisTaskInput {
   Engine?: Engine;
   LanguageCode?: LanguageCode;
@@ -776,6 +1020,26 @@ export class UnsupportedPlsAlphabetException extends S.TaggedErrorClass<Unsuppor
 export class UnsupportedPlsLanguageException extends S.TaggedErrorClass<UnsupportedPlsLanguageException>()(
   "UnsupportedPlsLanguageException",
   { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String, quotaCode: QuotaCode, serviceCode: ServiceCode },
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.optional(S.String),
+    throttlingReasons: S.optional(ThrottlingReasonList),
+  },
+  T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: ValidationExceptionReason,
+    fields: S.optional(ValidationExceptionFieldList),
+  },
 ).pipe(C.withBadRequestError) {}
 export class EngineNotSupportedException extends S.TaggedErrorClass<EngineNotSupportedException>()(
   "EngineNotSupportedException",
@@ -1009,6 +1273,36 @@ export const putLexicon: API.OperationMethod<
     ServiceFailureException,
     UnsupportedPlsAlphabetException,
     UnsupportedPlsLanguageException,
+  ],
+}));
+export type StartSpeechSynthesisStreamError =
+  | ServiceFailureException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Synthesizes UTF-8 input, plain text, or SSML over a bidirectional streaming connection.
+ * Specify synthesis parameters in HTTP/2 headers, send text incrementally as events on the input stream,
+ * and receive synthesized audio as it becomes available.
+ *
+ * This operation serves as a bidirectional counterpart to `SynthesizeSpeech`:
+ *
+ * - SynthesizeSpeech
+ */
+export const startSpeechSynthesisStream: API.OperationMethod<
+  StartSpeechSynthesisStreamInput,
+  StartSpeechSynthesisStreamOutput,
+  StartSpeechSynthesisStreamError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartSpeechSynthesisStreamInput,
+  output: StartSpeechSynthesisStreamOutput,
+  errors: [
+    ServiceFailureException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
   ],
 }));
 export type StartSpeechSynthesisTaskError =

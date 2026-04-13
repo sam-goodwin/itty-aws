@@ -1186,6 +1186,7 @@ export const CreateCollectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface UpdateCollectionRequest {
   id: string;
   description?: string;
+  vectorOptions?: VectorOptions;
   clientToken?: string;
 }
 export const UpdateCollectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1193,6 +1194,7 @@ export const UpdateCollectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       id: S.String,
       description: S.optional(S.String),
+      vectorOptions: S.optional(VectorOptions),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1206,6 +1208,7 @@ export interface UpdateCollectionDetail {
   status?: string;
   type?: string;
   description?: string;
+  vectorOptions?: VectorOptions;
   arn?: string;
   createdDate?: number;
   lastModifiedDate?: number;
@@ -1218,6 +1221,7 @@ export const UpdateCollectionDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       status: S.optional(S.String),
       type: S.optional(S.String),
       description: S.optional(S.String),
+      vectorOptions: S.optional(VectorOptions),
       arn: S.optional(S.String),
       createdDate: S.optional(S.Number),
       lastModifiedDate: S.optional(S.Number),

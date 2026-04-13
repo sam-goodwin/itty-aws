@@ -154,7 +154,7 @@ export interface FileShareConfig {
   capacityGb?: string;
   /** The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from. */
   sourceBackup?: string;
-  /** The resource name of the BackupDR backup, in the format `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`, TODO (b/443690479) - Remove visibility restrictions once the feature is ready */
+  /** The resource name of the BackupDR backup, in the format `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`, */
   sourceBackupdrBackup?: string;
   /** Nfs Export Options. There is a limit of 10 export options per file share. */
   nfsExportOptions?: Array<NfsExportOptions>;

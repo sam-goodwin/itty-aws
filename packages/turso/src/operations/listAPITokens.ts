@@ -15,6 +15,7 @@ export const ListAPITokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         name: Schema.optional(Schema.String),
         id: Schema.optional(Schema.String),
+        organization: Schema.optional(Schema.String),
       }),
     ),
   ),

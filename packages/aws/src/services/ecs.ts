@@ -101,6 +101,7 @@ export type AllowedInstanceType = string;
 export type CapacityProviderStrategyItemWeight = number;
 export type CapacityProviderStrategyItemBase = number;
 export type SensitiveString = string | redacted.Redacted<string>;
+export type DaemonDrainPercent = number;
 export type IAMRoleArn = string;
 export type HookDetails = unknown;
 export type PortNumber = number;
@@ -683,6 +684,23 @@ export const EFSVolumeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "EFSVolumeConfiguration",
 }) as any as S.Schema<EFSVolumeConfiguration>;
+export interface S3FilesVolumeConfiguration {
+  fileSystemArn: string;
+  rootDirectory?: string;
+  transitEncryptionPort?: number;
+  accessPointArn?: string;
+}
+export const S3FilesVolumeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      fileSystemArn: S.String,
+      rootDirectory: S.optional(S.String),
+      transitEncryptionPort: S.optional(S.Number),
+      accessPointArn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "S3FilesVolumeConfiguration",
+}) as any as S.Schema<S3FilesVolumeConfiguration>;
 export interface FSxWindowsFileServerAuthorizationConfig {
   credentialsParameter: string;
   domain: string;
@@ -713,6 +731,7 @@ export interface Volume {
   host?: HostVolumeProperties;
   dockerVolumeConfiguration?: DockerVolumeConfiguration;
   efsVolumeConfiguration?: EFSVolumeConfiguration;
+  s3filesVolumeConfiguration?: S3FilesVolumeConfiguration;
   fsxWindowsFileServerVolumeConfiguration?: FSxWindowsFileServerVolumeConfiguration;
   configuredAtLaunch?: boolean;
 }
@@ -722,6 +741,7 @@ export const Volume = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     host: S.optional(HostVolumeProperties),
     dockerVolumeConfiguration: S.optional(DockerVolumeConfiguration),
     efsVolumeConfiguration: S.optional(EFSVolumeConfiguration),
+    s3filesVolumeConfiguration: S.optional(S3FilesVolumeConfiguration),
     fsxWindowsFileServerVolumeConfiguration: S.optional(
       FSxWindowsFileServerVolumeConfiguration,
     ),
@@ -878,6 +898,7 @@ export interface TaskDefinition {
   proxyConfiguration?: ProxyConfiguration;
   registeredAt?: Date;
   deregisteredAt?: Date;
+  deleteRequestedAt?: Date;
   registeredBy?: string;
   ephemeralStorage?: EphemeralStorage;
   enableFaultInjection?: boolean;
@@ -906,6 +927,9 @@ export const TaskDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     proxyConfiguration: S.optional(ProxyConfiguration),
     registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     deregisteredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    deleteRequestedAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
     registeredBy: S.optional(S.String),
     ephemeralStorage: S.optional(EphemeralStorage),
     enableFaultInjection: S.optional(S.Boolean),
@@ -1345,6 +1369,15 @@ export const ManagedInstancesStorageConfiguration =
   ).annotate({
     identifier: "ManagedInstancesStorageConfiguration",
   }) as any as S.Schema<ManagedInstancesStorageConfiguration>;
+export interface ManagedInstancesLocalStorageConfiguration {
+  useLocalStorage?: boolean;
+}
+export const ManagedInstancesLocalStorageConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ useLocalStorage: S.optional(S.Boolean) }),
+  ).annotate({
+    identifier: "ManagedInstancesLocalStorageConfiguration",
+  }) as any as S.Schema<ManagedInstancesLocalStorageConfiguration>;
 export type ManagedInstancesMonitoringOptions =
   | "BASIC"
   | "DETAILED"
@@ -1616,8 +1649,10 @@ export interface InstanceLaunchTemplate {
   ec2InstanceProfileArn: string;
   networkConfiguration: ManagedInstancesNetworkConfiguration;
   storageConfiguration?: ManagedInstancesStorageConfiguration;
+  localStorageConfiguration?: ManagedInstancesLocalStorageConfiguration;
   monitoring?: ManagedInstancesMonitoringOptions;
   capacityOptionType?: CapacityOptionType;
+  instanceMetadataTagsPropagation?: boolean;
   instanceRequirements?: InstanceRequirementsRequest;
   fipsEnabled?: boolean;
   capacityReservations?: CapacityReservationRequest;
@@ -1628,8 +1663,12 @@ export const InstanceLaunchTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ec2InstanceProfileArn: S.String,
       networkConfiguration: ManagedInstancesNetworkConfiguration,
       storageConfiguration: S.optional(ManagedInstancesStorageConfiguration),
+      localStorageConfiguration: S.optional(
+        ManagedInstancesLocalStorageConfiguration,
+      ),
       monitoring: S.optional(ManagedInstancesMonitoringOptions),
       capacityOptionType: S.optional(CapacityOptionType),
+      instanceMetadataTagsPropagation: S.optional(S.Boolean),
       instanceRequirements: S.optional(InstanceRequirementsRequest),
       fipsEnabled: S.optional(S.Boolean),
       capacityReservations: S.optional(CapacityReservationRequest),
@@ -1795,6 +1834,8 @@ export interface InstanceLaunchTemplateUpdate {
   ec2InstanceProfileArn?: string;
   networkConfiguration?: ManagedInstancesNetworkConfiguration;
   storageConfiguration?: ManagedInstancesStorageConfiguration;
+  instanceMetadataTagsPropagation?: boolean;
+  localStorageConfiguration?: ManagedInstancesLocalStorageConfiguration;
   monitoring?: ManagedInstancesMonitoringOptions;
   instanceRequirements?: InstanceRequirementsRequest;
   capacityReservations?: CapacityReservationRequest;
@@ -1805,6 +1846,10 @@ export const InstanceLaunchTemplateUpdate =
       ec2InstanceProfileArn: S.optional(S.String),
       networkConfiguration: S.optional(ManagedInstancesNetworkConfiguration),
       storageConfiguration: S.optional(ManagedInstancesStorageConfiguration),
+      instanceMetadataTagsPropagation: S.optional(S.Boolean),
+      localStorageConfiguration: S.optional(
+        ManagedInstancesLocalStorageConfiguration,
+      ),
       monitoring: S.optional(ManagedInstancesMonitoringOptions),
       instanceRequirements: S.optional(InstanceRequirementsRequest),
       capacityReservations: S.optional(CapacityReservationRequest),
@@ -2380,7 +2425,11 @@ export type InstanceHealthCheckState =
   | "INITIALIZING"
   | (string & {});
 export const InstanceHealthCheckState = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type InstanceHealthCheckType = "CONTAINER_RUNTIME" | (string & {});
+export type InstanceHealthCheckType =
+  | "CONTAINER_RUNTIME"
+  | "ACCELERATED_COMPUTE"
+  | "DAEMON"
+  | (string & {});
 export const InstanceHealthCheckType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface InstanceHealthCheckResult {
   type?: InstanceHealthCheckType;
@@ -3016,6 +3065,7 @@ export interface ListTasksRequest {
   serviceName?: string;
   desiredStatus?: DesiredStatus;
   launchType?: LaunchType;
+  daemonName?: string;
 }
 export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3028,6 +3078,7 @@ export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     serviceName: S.optional(S.String),
     desiredStatus: S.optional(DesiredStatus),
     launchType: S.optional(LaunchType),
+    daemonName: S.optional(S.String),
   }).pipe(
     T.all(
       ns,
@@ -3209,6 +3260,975 @@ export const UpdateContainerInstancesStateResponse =
   ).annotate({
     identifier: "UpdateContainerInstancesStateResponse",
   }) as any as S.Schema<UpdateContainerInstancesStateResponse>;
+export interface DescribeDaemonDeploymentsRequest {
+  daemonDeploymentArns: string[];
+}
+export const DescribeDaemonDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonDeploymentArns: StringList }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeDaemonDeploymentsRequest",
+  }) as any as S.Schema<DescribeDaemonDeploymentsRequest>;
+export type DaemonDeploymentStatus =
+  | "PENDING"
+  | "SUCCESSFUL"
+  | "STOPPED"
+  | "STOP_REQUESTED"
+  | "IN_PROGRESS"
+  | "ROLLBACK_IN_PROGRESS"
+  | "ROLLBACK_SUCCESSFUL"
+  | "ROLLBACK_FAILED"
+  | (string & {});
+export const DaemonDeploymentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DaemonDeploymentCapacityProvider {
+  arn?: string;
+  runningInstanceCount?: number;
+  drainingInstanceCount?: number;
+}
+export const DaemonDeploymentCapacityProvider =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.optional(S.String),
+      runningInstanceCount: S.optional(S.Number),
+      drainingInstanceCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "DaemonDeploymentCapacityProvider",
+  }) as any as S.Schema<DaemonDeploymentCapacityProvider>;
+export type DaemonDeploymentCapacityProviderList =
+  DaemonDeploymentCapacityProvider[];
+export const DaemonDeploymentCapacityProviderList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonDeploymentCapacityProvider);
+export interface DaemonDeploymentRevisionDetail {
+  arn?: string;
+  capacityProviders?: DaemonDeploymentCapacityProvider[];
+  totalRunningInstanceCount?: number;
+  totalDrainingInstanceCount?: number;
+}
+export const DaemonDeploymentRevisionDetail =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.optional(S.String),
+      capacityProviders: S.optional(DaemonDeploymentCapacityProviderList),
+      totalRunningInstanceCount: S.optional(S.Number),
+      totalDrainingInstanceCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "DaemonDeploymentRevisionDetail",
+  }) as any as S.Schema<DaemonDeploymentRevisionDetail>;
+export type DaemonDeploymentRevisionDetailList =
+  DaemonDeploymentRevisionDetail[];
+export const DaemonDeploymentRevisionDetailList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonDeploymentRevisionDetail);
+export type DaemonDeploymentRollbackMonitorsStatus =
+  | "TRIGGERED"
+  | "MONITORING"
+  | "MONITORING_COMPLETE"
+  | "DISABLED"
+  | (string & {});
+export const DaemonDeploymentRollbackMonitorsStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DaemonCircuitBreaker {
+  failureCount?: number;
+  status?: DaemonDeploymentRollbackMonitorsStatus;
+  threshold?: number;
+}
+export const DaemonCircuitBreaker = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failureCount: S.optional(S.Number),
+    status: S.optional(DaemonDeploymentRollbackMonitorsStatus),
+    threshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DaemonCircuitBreaker",
+}) as any as S.Schema<DaemonCircuitBreaker>;
+export interface DaemonDeploymentAlarms {
+  status?: DaemonDeploymentRollbackMonitorsStatus;
+  alarmNames?: string[];
+  triggeredAlarmNames?: string[];
+}
+export const DaemonDeploymentAlarms = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      status: S.optional(DaemonDeploymentRollbackMonitorsStatus),
+      alarmNames: S.optional(StringList),
+      triggeredAlarmNames: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "DaemonDeploymentAlarms",
+}) as any as S.Schema<DaemonDeploymentAlarms>;
+export interface DaemonRollback {
+  reason?: string;
+  startedAt?: Date;
+  rollbackTargetDaemonRevisionArn?: string;
+  rollbackCapacityProviders?: string[];
+}
+export const DaemonRollback = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reason: S.optional(S.String),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    rollbackTargetDaemonRevisionArn: S.optional(S.String),
+    rollbackCapacityProviders: S.optional(StringList),
+  }),
+).annotate({ identifier: "DaemonRollback" }) as any as S.Schema<DaemonRollback>;
+export interface DaemonAlarmConfiguration {
+  alarmNames?: string[];
+  enable?: boolean;
+}
+export const DaemonAlarmConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      alarmNames: S.optional(StringList),
+      enable: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "DaemonAlarmConfiguration",
+}) as any as S.Schema<DaemonAlarmConfiguration>;
+export interface DaemonDeploymentConfiguration {
+  drainPercent?: number;
+  alarms?: DaemonAlarmConfiguration;
+  bakeTimeInMinutes?: number;
+}
+export const DaemonDeploymentConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      drainPercent: S.optional(S.Number),
+      alarms: S.optional(DaemonAlarmConfiguration),
+      bakeTimeInMinutes: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "DaemonDeploymentConfiguration",
+  }) as any as S.Schema<DaemonDeploymentConfiguration>;
+export interface DaemonDeployment {
+  daemonDeploymentArn?: string;
+  clusterArn?: string;
+  status?: DaemonDeploymentStatus;
+  statusReason?: string;
+  targetDaemonRevision?: DaemonDeploymentRevisionDetail;
+  sourceDaemonRevisions?: DaemonDeploymentRevisionDetail[];
+  circuitBreaker?: DaemonCircuitBreaker;
+  alarms?: DaemonDeploymentAlarms;
+  rollback?: DaemonRollback;
+  deploymentConfiguration?: DaemonDeploymentConfiguration;
+  createdAt?: Date;
+  startedAt?: Date;
+  stoppedAt?: Date;
+  finishedAt?: Date;
+}
+export const DaemonDeployment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonDeploymentArn: S.optional(S.String),
+    clusterArn: S.optional(S.String),
+    status: S.optional(DaemonDeploymentStatus),
+    statusReason: S.optional(S.String),
+    targetDaemonRevision: S.optional(DaemonDeploymentRevisionDetail),
+    sourceDaemonRevisions: S.optional(DaemonDeploymentRevisionDetailList),
+    circuitBreaker: S.optional(DaemonCircuitBreaker),
+    alarms: S.optional(DaemonDeploymentAlarms),
+    rollback: S.optional(DaemonRollback),
+    deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DaemonDeployment",
+}) as any as S.Schema<DaemonDeployment>;
+export type DaemonDeploymentList = DaemonDeployment[];
+export const DaemonDeploymentList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonDeployment);
+export interface DescribeDaemonDeploymentsResponse {
+  failures?: Failure[];
+  daemonDeployments?: DaemonDeployment[];
+}
+export const DescribeDaemonDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      failures: S.optional(Failures),
+      daemonDeployments: S.optional(DaemonDeploymentList),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeDaemonDeploymentsResponse",
+  }) as any as S.Schema<DescribeDaemonDeploymentsResponse>;
+export type DaemonPropagateTags = "DAEMON" | "NONE" | (string & {});
+export const DaemonPropagateTags = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateDaemonRequest {
+  daemonName: string;
+  clusterArn?: string;
+  daemonTaskDefinitionArn: string;
+  capacityProviderArns: string[];
+  deploymentConfiguration?: DaemonDeploymentConfiguration;
+  tags?: Tag[];
+  propagateTags?: DaemonPropagateTags;
+  enableECSManagedTags?: boolean;
+  enableExecuteCommand?: boolean;
+  clientToken?: string;
+}
+export const CreateDaemonRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonName: S.String,
+    clusterArn: S.optional(S.String),
+    daemonTaskDefinitionArn: S.String,
+    capacityProviderArns: StringList,
+    deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
+    tags: S.optional(Tags),
+    propagateTags: S.optional(DaemonPropagateTags),
+    enableECSManagedTags: S.optional(S.Boolean),
+    enableExecuteCommand: S.optional(S.Boolean),
+    clientToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateDaemonRequest",
+}) as any as S.Schema<CreateDaemonRequest>;
+export type DaemonStatus = "ACTIVE" | "DELETE_IN_PROGRESS" | (string & {});
+export const DaemonStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateDaemonResponse {
+  daemonArn?: string;
+  status?: DaemonStatus;
+  createdAt?: Date;
+  deploymentArn?: string;
+}
+export const CreateDaemonResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonArn: S.optional(S.String),
+    status: S.optional(DaemonStatus),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    deploymentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateDaemonResponse",
+}) as any as S.Schema<CreateDaemonResponse>;
+export interface DeleteDaemonRequest {
+  daemonArn: string;
+}
+export const DeleteDaemonRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ daemonArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDaemonRequest",
+}) as any as S.Schema<DeleteDaemonRequest>;
+export interface DeleteDaemonResponse {
+  daemonArn?: string;
+  status?: DaemonStatus;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deploymentArn?: string;
+}
+export const DeleteDaemonResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonArn: S.optional(S.String),
+    status: S.optional(DaemonStatus),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    deploymentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DeleteDaemonResponse",
+}) as any as S.Schema<DeleteDaemonResponse>;
+export interface DescribeDaemonRequest {
+  daemonArn: string;
+}
+export const DescribeDaemonRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ daemonArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeDaemonRequest",
+}) as any as S.Schema<DescribeDaemonRequest>;
+export interface DaemonCapacityProvider {
+  arn?: string;
+  runningCount?: number;
+}
+export const DaemonCapacityProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ arn: S.optional(S.String), runningCount: S.optional(S.Number) }),
+).annotate({
+  identifier: "DaemonCapacityProvider",
+}) as any as S.Schema<DaemonCapacityProvider>;
+export type DaemonCapacityProviderList = DaemonCapacityProvider[];
+export const DaemonCapacityProviderList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DaemonCapacityProvider,
+);
+export interface DaemonRevisionDetail {
+  arn?: string;
+  capacityProviders?: DaemonCapacityProvider[];
+  totalRunningCount?: number;
+}
+export const DaemonRevisionDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    capacityProviders: S.optional(DaemonCapacityProviderList),
+    totalRunningCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DaemonRevisionDetail",
+}) as any as S.Schema<DaemonRevisionDetail>;
+export type DaemonRevisionDetailList = DaemonRevisionDetail[];
+export const DaemonRevisionDetailList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonRevisionDetail);
+export interface DaemonDetail {
+  daemonArn?: string;
+  clusterArn?: string;
+  status?: DaemonStatus;
+  currentRevisions?: DaemonRevisionDetail[];
+  deploymentArn?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export const DaemonDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonArn: S.optional(S.String),
+    clusterArn: S.optional(S.String),
+    status: S.optional(DaemonStatus),
+    currentRevisions: S.optional(DaemonRevisionDetailList),
+    deploymentArn: S.optional(S.String),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "DaemonDetail" }) as any as S.Schema<DaemonDetail>;
+export interface DescribeDaemonResponse {
+  daemon?: DaemonDetail;
+}
+export const DescribeDaemonResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ daemon: S.optional(DaemonDetail) }).pipe(ns),
+).annotate({
+  identifier: "DescribeDaemonResponse",
+}) as any as S.Schema<DescribeDaemonResponse>;
+export type DaemonDeploymentStatusList = DaemonDeploymentStatus[];
+export const DaemonDeploymentStatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DaemonDeploymentStatus,
+);
+export interface CreatedAt {
+  before?: Date;
+  after?: Date;
+}
+export const CreatedAt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    before: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    after: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "CreatedAt" }) as any as S.Schema<CreatedAt>;
+export interface ListDaemonDeploymentsRequest {
+  daemonArn: string;
+  status?: DaemonDeploymentStatus[];
+  createdAt?: CreatedAt;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDaemonDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      daemonArn: S.String,
+      status: S.optional(DaemonDeploymentStatusList),
+      createdAt: S.optional(CreatedAt),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListDaemonDeploymentsRequest",
+  }) as any as S.Schema<ListDaemonDeploymentsRequest>;
+export interface DaemonDeploymentSummary {
+  daemonDeploymentArn?: string;
+  daemonArn?: string;
+  clusterArn?: string;
+  status?: DaemonDeploymentStatus;
+  statusReason?: string;
+  targetDaemonRevisionArn?: string;
+  createdAt?: Date;
+  startedAt?: Date;
+  stoppedAt?: Date;
+  finishedAt?: Date;
+}
+export const DaemonDeploymentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      daemonDeploymentArn: S.optional(S.String),
+      daemonArn: S.optional(S.String),
+      clusterArn: S.optional(S.String),
+      status: S.optional(DaemonDeploymentStatus),
+      statusReason: S.optional(S.String),
+      targetDaemonRevisionArn: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+).annotate({
+  identifier: "DaemonDeploymentSummary",
+}) as any as S.Schema<DaemonDeploymentSummary>;
+export type DaemonDeploymentSummaryList = DaemonDeploymentSummary[];
+export const DaemonDeploymentSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DaemonDeploymentSummary,
+);
+export interface ListDaemonDeploymentsResponse {
+  nextToken?: string;
+  daemonDeployments?: DaemonDeploymentSummary[];
+}
+export const ListDaemonDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      daemonDeployments: S.optional(DaemonDeploymentSummaryList),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListDaemonDeploymentsResponse",
+  }) as any as S.Schema<ListDaemonDeploymentsResponse>;
+export interface ListDaemonsRequest {
+  clusterArn?: string;
+  capacityProviderArns?: string[];
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDaemonsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterArn: S.optional(S.String),
+    capacityProviderArns: S.optional(StringList),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDaemonsRequest",
+}) as any as S.Schema<ListDaemonsRequest>;
+export interface DaemonSummary {
+  daemonArn?: string;
+  status?: DaemonStatus;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export const DaemonSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonArn: S.optional(S.String),
+    status: S.optional(DaemonStatus),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "DaemonSummary" }) as any as S.Schema<DaemonSummary>;
+export type DaemonSummariesList = DaemonSummary[];
+export const DaemonSummariesList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonSummary);
+export interface ListDaemonsResponse {
+  daemonSummariesList?: DaemonSummary[];
+  nextToken?: string;
+}
+export const ListDaemonsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonSummariesList: S.optional(DaemonSummariesList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListDaemonsResponse",
+}) as any as S.Schema<ListDaemonsResponse>;
+export interface UpdateDaemonRequest {
+  daemonArn: string;
+  daemonTaskDefinitionArn: string;
+  capacityProviderArns: string[];
+  deploymentConfiguration?: DaemonDeploymentConfiguration;
+  propagateTags?: DaemonPropagateTags;
+  enableECSManagedTags?: boolean;
+  enableExecuteCommand?: boolean;
+}
+export const UpdateDaemonRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonArn: S.String,
+    daemonTaskDefinitionArn: S.String,
+    capacityProviderArns: StringList,
+    deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
+    propagateTags: S.optional(DaemonPropagateTags),
+    enableECSManagedTags: S.optional(S.Boolean),
+    enableExecuteCommand: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateDaemonRequest",
+}) as any as S.Schema<UpdateDaemonRequest>;
+export interface UpdateDaemonResponse {
+  daemonArn?: string;
+  status?: DaemonStatus;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deploymentArn?: string;
+}
+export const UpdateDaemonResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonArn: S.optional(S.String),
+    status: S.optional(DaemonStatus),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    deploymentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateDaemonResponse",
+}) as any as S.Schema<UpdateDaemonResponse>;
+export interface DescribeDaemonRevisionsRequest {
+  daemonRevisionArns: string[];
+}
+export const DescribeDaemonRevisionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonRevisionArns: StringList }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeDaemonRevisionsRequest",
+  }) as any as S.Schema<DescribeDaemonRevisionsRequest>;
+export interface DaemonContainerImage {
+  containerName?: string;
+  imageDigest?: string;
+  image?: string;
+}
+export const DaemonContainerImage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    containerName: S.optional(S.String),
+    imageDigest: S.optional(S.String),
+    image: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DaemonContainerImage",
+}) as any as S.Schema<DaemonContainerImage>;
+export type DaemonContainerImages = DaemonContainerImage[];
+export const DaemonContainerImages =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonContainerImage);
+export interface DaemonRevision {
+  daemonRevisionArn?: string;
+  clusterArn?: string;
+  daemonArn?: string;
+  daemonTaskDefinitionArn?: string;
+  createdAt?: Date;
+  containerImages?: DaemonContainerImage[];
+  propagateTags?: DaemonPropagateTags;
+  enableECSManagedTags?: boolean;
+  enableExecuteCommand?: boolean;
+}
+export const DaemonRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonRevisionArn: S.optional(S.String),
+    clusterArn: S.optional(S.String),
+    daemonArn: S.optional(S.String),
+    daemonTaskDefinitionArn: S.optional(S.String),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    containerImages: S.optional(DaemonContainerImages),
+    propagateTags: S.optional(DaemonPropagateTags),
+    enableECSManagedTags: S.optional(S.Boolean),
+    enableExecuteCommand: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "DaemonRevision" }) as any as S.Schema<DaemonRevision>;
+export type DaemonRevisions = DaemonRevision[];
+export const DaemonRevisions =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonRevision);
+export interface DescribeDaemonRevisionsResponse {
+  daemonRevisions?: DaemonRevision[];
+  failures?: Failure[];
+}
+export const DescribeDaemonRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      daemonRevisions: S.optional(DaemonRevisions),
+      failures: S.optional(Failures),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeDaemonRevisionsResponse",
+  }) as any as S.Schema<DescribeDaemonRevisionsResponse>;
+export interface DeleteDaemonTaskDefinitionRequest {
+  daemonTaskDefinition: string;
+}
+export const DeleteDaemonTaskDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonTaskDefinition: S.String }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteDaemonTaskDefinitionRequest",
+  }) as any as S.Schema<DeleteDaemonTaskDefinitionRequest>;
+export interface DeleteDaemonTaskDefinitionResponse {
+  daemonTaskDefinitionArn?: string;
+}
+export const DeleteDaemonTaskDefinitionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonTaskDefinitionArn: S.optional(S.String) }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteDaemonTaskDefinitionResponse",
+  }) as any as S.Schema<DeleteDaemonTaskDefinitionResponse>;
+export interface DescribeDaemonTaskDefinitionRequest {
+  daemonTaskDefinition: string;
+}
+export const DescribeDaemonTaskDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonTaskDefinition: S.String }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeDaemonTaskDefinitionRequest",
+  }) as any as S.Schema<DescribeDaemonTaskDefinitionRequest>;
+export interface DaemonLinuxParameters {
+  capabilities?: KernelCapabilities;
+  devices?: Device[];
+  initProcessEnabled?: boolean;
+  tmpfs?: Tmpfs[];
+}
+export const DaemonLinuxParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capabilities: S.optional(KernelCapabilities),
+    devices: S.optional(DevicesList),
+    initProcessEnabled: S.optional(S.Boolean),
+    tmpfs: S.optional(TmpfsList),
+  }),
+).annotate({
+  identifier: "DaemonLinuxParameters",
+}) as any as S.Schema<DaemonLinuxParameters>;
+export interface DaemonContainerDefinition {
+  name?: string;
+  image: string;
+  memory?: number;
+  memoryReservation?: number;
+  repositoryCredentials?: RepositoryCredentials;
+  healthCheck?: HealthCheck;
+  cpu?: number;
+  essential?: boolean;
+  entryPoint?: string[];
+  command?: string[];
+  workingDirectory?: string;
+  environmentFiles?: EnvironmentFile[];
+  environment?: KeyValuePair[];
+  secrets?: Secret[];
+  readonlyRootFilesystem?: boolean;
+  mountPoints?: MountPoint[];
+  logConfiguration?: LogConfiguration;
+  firelensConfiguration?: FirelensConfiguration;
+  privileged?: boolean;
+  user?: string;
+  ulimits?: Ulimit[];
+  linuxParameters?: DaemonLinuxParameters;
+  dependsOn?: ContainerDependency[];
+  startTimeout?: number;
+  stopTimeout?: number;
+  systemControls?: SystemControl[];
+  interactive?: boolean;
+  pseudoTerminal?: boolean;
+  restartPolicy?: ContainerRestartPolicy;
+}
+export const DaemonContainerDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      image: S.String,
+      memory: S.optional(S.Number),
+      memoryReservation: S.optional(S.Number),
+      repositoryCredentials: S.optional(RepositoryCredentials),
+      healthCheck: S.optional(HealthCheck),
+      cpu: S.optional(S.Number),
+      essential: S.optional(S.Boolean),
+      entryPoint: S.optional(StringList),
+      command: S.optional(StringList),
+      workingDirectory: S.optional(S.String),
+      environmentFiles: S.optional(EnvironmentFiles),
+      environment: S.optional(EnvironmentVariables),
+      secrets: S.optional(SecretList),
+      readonlyRootFilesystem: S.optional(S.Boolean),
+      mountPoints: S.optional(MountPointList),
+      logConfiguration: S.optional(LogConfiguration),
+      firelensConfiguration: S.optional(FirelensConfiguration),
+      privileged: S.optional(S.Boolean),
+      user: S.optional(S.String),
+      ulimits: S.optional(UlimitList),
+      linuxParameters: S.optional(DaemonLinuxParameters),
+      dependsOn: S.optional(ContainerDependencies),
+      startTimeout: S.optional(S.Number),
+      stopTimeout: S.optional(S.Number),
+      systemControls: S.optional(SystemControls),
+      interactive: S.optional(S.Boolean),
+      pseudoTerminal: S.optional(S.Boolean),
+      restartPolicy: S.optional(ContainerRestartPolicy),
+    }),
+).annotate({
+  identifier: "DaemonContainerDefinition",
+}) as any as S.Schema<DaemonContainerDefinition>;
+export type DaemonContainerDefinitionList = DaemonContainerDefinition[];
+export const DaemonContainerDefinitionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonContainerDefinition);
+export interface DaemonVolume {
+  name?: string;
+  host?: HostVolumeProperties;
+}
+export const DaemonVolume = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    host: S.optional(HostVolumeProperties),
+  }),
+).annotate({ identifier: "DaemonVolume" }) as any as S.Schema<DaemonVolume>;
+export type DaemonVolumeList = DaemonVolume[];
+export const DaemonVolumeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonVolume);
+export type DaemonTaskDefinitionStatus =
+  | "ACTIVE"
+  | "DELETE_IN_PROGRESS"
+  | "DELETED"
+  | (string & {});
+export const DaemonTaskDefinitionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DaemonTaskDefinition {
+  daemonTaskDefinitionArn?: string;
+  family?: string;
+  revision?: number;
+  taskRoleArn?: string;
+  executionRoleArn?: string;
+  containerDefinitions?: DaemonContainerDefinition[];
+  volumes?: DaemonVolume[];
+  cpu?: string;
+  memory?: string;
+  status?: DaemonTaskDefinitionStatus;
+  registeredAt?: Date;
+  deleteRequestedAt?: Date;
+  registeredBy?: string;
+}
+export const DaemonTaskDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    daemonTaskDefinitionArn: S.optional(S.String),
+    family: S.optional(S.String),
+    revision: S.optional(S.Number),
+    taskRoleArn: S.optional(S.String),
+    executionRoleArn: S.optional(S.String),
+    containerDefinitions: S.optional(DaemonContainerDefinitionList),
+    volumes: S.optional(DaemonVolumeList),
+    cpu: S.optional(S.String),
+    memory: S.optional(S.String),
+    status: S.optional(DaemonTaskDefinitionStatus),
+    registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    deleteRequestedAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    registeredBy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DaemonTaskDefinition",
+}) as any as S.Schema<DaemonTaskDefinition>;
+export interface DescribeDaemonTaskDefinitionResponse {
+  daemonTaskDefinition?: DaemonTaskDefinition;
+}
+export const DescribeDaemonTaskDefinitionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonTaskDefinition: S.optional(DaemonTaskDefinition) }).pipe(
+      ns,
+    ),
+  ).annotate({
+    identifier: "DescribeDaemonTaskDefinitionResponse",
+  }) as any as S.Schema<DescribeDaemonTaskDefinitionResponse>;
+export type DaemonTaskDefinitionRevisionFilter =
+  | "LAST_REGISTERED"
+  | (string & {});
+export const DaemonTaskDefinitionRevisionFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DaemonTaskDefinitionStatusFilter =
+  | "ACTIVE"
+  | "DELETE_IN_PROGRESS"
+  | "ALL"
+  | (string & {});
+export const DaemonTaskDefinitionStatusFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SortOrder = "ASC" | "DESC" | (string & {});
+export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListDaemonTaskDefinitionsRequest {
+  familyPrefix?: string;
+  family?: string;
+  revision?: DaemonTaskDefinitionRevisionFilter;
+  status?: DaemonTaskDefinitionStatusFilter;
+  sort?: SortOrder;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDaemonTaskDefinitionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      familyPrefix: S.optional(S.String),
+      family: S.optional(S.String),
+      revision: S.optional(DaemonTaskDefinitionRevisionFilter),
+      status: S.optional(DaemonTaskDefinitionStatusFilter),
+      sort: S.optional(SortOrder),
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListDaemonTaskDefinitionsRequest",
+  }) as any as S.Schema<ListDaemonTaskDefinitionsRequest>;
+export interface DaemonTaskDefinitionSummary {
+  arn?: string;
+  registeredAt?: Date;
+  registeredBy?: string;
+  deleteRequestedAt?: Date;
+  status?: DaemonTaskDefinitionStatus;
+}
+export const DaemonTaskDefinitionSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.optional(S.String),
+      registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      registeredBy: S.optional(S.String),
+      deleteRequestedAt: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      status: S.optional(DaemonTaskDefinitionStatus),
+    }),
+  ).annotate({
+    identifier: "DaemonTaskDefinitionSummary",
+  }) as any as S.Schema<DaemonTaskDefinitionSummary>;
+export type DaemonTaskDefinitionSummaries = DaemonTaskDefinitionSummary[];
+export const DaemonTaskDefinitionSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DaemonTaskDefinitionSummary);
+export interface ListDaemonTaskDefinitionsResponse {
+  daemonTaskDefinitions?: DaemonTaskDefinitionSummary[];
+  nextToken?: string;
+}
+export const ListDaemonTaskDefinitionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      daemonTaskDefinitions: S.optional(DaemonTaskDefinitionSummaries),
+      nextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListDaemonTaskDefinitionsResponse",
+  }) as any as S.Schema<ListDaemonTaskDefinitionsResponse>;
+export interface RegisterDaemonTaskDefinitionRequest {
+  family: string;
+  taskRoleArn?: string;
+  executionRoleArn?: string;
+  containerDefinitions: DaemonContainerDefinition[];
+  cpu?: string;
+  memory?: string;
+  volumes?: DaemonVolume[];
+  tags?: Tag[];
+}
+export const RegisterDaemonTaskDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      family: S.String,
+      taskRoleArn: S.optional(S.String),
+      executionRoleArn: S.optional(S.String),
+      containerDefinitions: DaemonContainerDefinitionList,
+      cpu: S.optional(S.String),
+      memory: S.optional(S.String),
+      volumes: S.optional(DaemonVolumeList),
+      tags: S.optional(Tags),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "RegisterDaemonTaskDefinitionRequest",
+  }) as any as S.Schema<RegisterDaemonTaskDefinitionRequest>;
+export interface RegisterDaemonTaskDefinitionResponse {
+  daemonTaskDefinitionArn?: string;
+}
+export const RegisterDaemonTaskDefinitionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ daemonTaskDefinitionArn: S.optional(S.String) }).pipe(ns),
+  ).annotate({
+    identifier: "RegisterDaemonTaskDefinitionResponse",
+  }) as any as S.Schema<RegisterDaemonTaskDefinitionResponse>;
 export interface DescribeServiceDeploymentsRequest {
   serviceDeploymentArns: string[];
 }
@@ -4644,16 +5664,6 @@ export type ServiceDeploymentStatusList = ServiceDeploymentStatus[];
 export const ServiceDeploymentStatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   ServiceDeploymentStatus,
 );
-export interface CreatedAt {
-  before?: Date;
-  after?: Date;
-}
-export const CreatedAt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    after: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "CreatedAt" }) as any as S.Schema<CreatedAt>;
 export interface ListServiceDeploymentsRequest {
   service: string;
   cluster?: string;
@@ -5380,8 +6390,6 @@ export const DeleteTaskDefinitionsResponse =
   ).annotate({
     identifier: "DeleteTaskDefinitionsResponse",
   }) as any as S.Schema<DeleteTaskDefinitionsResponse>;
-export type SortOrder = "ASC" | "DESC" | (string & {});
-export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ListTaskDefinitionsRequest {
   familyPrefix?: string;
   status?: TaskDefinitionStatus;
@@ -6243,6 +7251,10 @@ export const DescribeTaskSetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeTaskSetsResponse>;
 
 //# Errors
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
 export class ClientException extends S.TaggedErrorClass<ClientException>()(
   "ClientException",
   { message: S.optional(S.String) },
@@ -6263,12 +7275,12 @@ export class ClusterNotFoundException extends S.TaggedErrorClass<ClusterNotFound
   "ClusterNotFoundException",
   { message: S.optional(S.String) },
 ) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
   { message: S.optional(S.String) },
 ) {}
 export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
@@ -6299,10 +7311,6 @@ export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseExce
   "ResourceInUseException",
   { message: S.optional(S.String) },
 ) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
 export class TargetNotConnectedException extends S.TaggedErrorClass<TargetNotConnectedException>()(
   "TargetNotConnectedException",
   { message: S.optional(S.String) },
@@ -6327,6 +7335,18 @@ export class NoUpdateAvailableException extends S.TaggedErrorClass<NoUpdateAvail
   "NoUpdateAvailableException",
   { message: S.optional(S.String) },
 ) {}
+export class PlatformUnknownException extends S.TaggedErrorClass<PlatformUnknownException>()(
+  "PlatformUnknownException",
+  { message: S.optional(S.String) },
+) {}
+export class DaemonNotActiveException extends S.TaggedErrorClass<DaemonNotActiveException>()(
+  "DaemonNotActiveException",
+  { message: S.optional(S.String) },
+) {}
+export class DaemonNotFoundException extends S.TaggedErrorClass<DaemonNotFoundException>()(
+  "DaemonNotFoundException",
+  { message: S.optional(S.String) },
+) {}
 export class ServiceNotActiveException extends S.TaggedErrorClass<ServiceNotActiveException>()(
   "ServiceNotActiveException",
   { message: S.optional(S.String) },
@@ -6337,10 +7357,6 @@ export class TaskSetNotFoundException extends S.TaggedErrorClass<TaskSetNotFound
 ) {}
 export class PlatformTaskDefinitionIncompatibilityException extends S.TaggedErrorClass<PlatformTaskDefinitionIncompatibilityException>()(
   "PlatformTaskDefinitionIncompatibilityException",
-  { message: S.optional(S.String) },
-) {}
-export class PlatformUnknownException extends S.TaggedErrorClass<PlatformUnknownException>()(
-  "PlatformUnknownException",
   { message: S.optional(S.String) },
 ) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
@@ -6358,6 +7374,7 @@ export class BlockedException extends S.TaggedErrorClass<BlockedException>()(
 
 //# Operations
 export type DeleteAccountSettingError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6373,9 +7390,15 @@ export const deleteAccountSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountSettingRequest,
   output: DeleteAccountSettingResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type DeregisterTaskDefinitionError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6397,9 +7420,15 @@ export const deregisterTaskDefinition: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeregisterTaskDefinitionRequest,
   output: DeregisterTaskDefinitionResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type DescribeTaskDefinitionError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6417,10 +7446,17 @@ export const describeTaskDefinition: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTaskDefinitionRequest,
   output: DescribeTaskDefinitionResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type DiscoverPollEndpointError =
+  | AccessDeniedException
   | ClientException
+  | InvalidParameterException
   | ServerException
   | CommonErrors;
 /**
@@ -6436,9 +7472,15 @@ export const discoverPollEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiscoverPollEndpointRequest,
   output: DiscoverPollEndpointResponse,
-  errors: [ClientException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type ListAccountSettingsError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6469,7 +7511,12 @@ export const listAccountSettings: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSettingsRequest,
   output: ListAccountSettingsResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6478,6 +7525,7 @@ export const listAccountSettings: API.OperationMethod<
   } as const,
 }));
 export type ListServicesByNamespaceError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | NamespaceNotFoundException
@@ -6510,6 +7558,7 @@ export const listServicesByNamespace: API.OperationMethod<
   input: ListServicesByNamespaceRequest,
   output: ListServicesByNamespaceResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     InvalidParameterException,
     NamespaceNotFoundException,
@@ -6523,6 +7572,7 @@ export const listServicesByNamespace: API.OperationMethod<
   } as const,
 }));
 export type ListTagsForResourceError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6540,6 +7590,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6547,6 +7598,7 @@ export const listTagsForResource: API.OperationMethod<
   ],
 }));
 export type ListTaskDefinitionFamiliesError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6579,7 +7631,12 @@ export const listTaskDefinitionFamilies: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTaskDefinitionFamiliesRequest,
   output: ListTaskDefinitionFamiliesResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6588,6 +7645,7 @@ export const listTaskDefinitionFamilies: API.OperationMethod<
   } as const,
 }));
 export type PutAccountSettingError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6605,9 +7663,15 @@ export const putAccountSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccountSettingRequest,
   output: PutAccountSettingResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type PutAccountSettingDefaultError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6623,12 +7687,19 @@ export const putAccountSettingDefault: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutAccountSettingDefaultRequest,
   output: PutAccountSettingDefaultResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type TagResourceError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | LimitExceededException
   | ResourceNotFoundException
   | ServerException
   | CommonErrors;
@@ -6644,14 +7715,17 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    LimitExceededException,
     ResourceNotFoundException,
     ServerException,
   ],
 }));
 export type UntagResourceError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6670,6 +7744,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6678,6 +7753,7 @@ export const untagResource: API.OperationMethod<
   ],
 }));
 export type CreateCapacityProviderError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6698,6 +7774,7 @@ export const createCapacityProvider: API.OperationMethod<
   input: CreateCapacityProviderRequest,
   output: CreateCapacityProviderResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6708,6 +7785,7 @@ export const createCapacityProvider: API.OperationMethod<
   ],
 }));
 export type UpdateCapacityProviderError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6728,6 +7806,7 @@ export const updateCapacityProvider: API.OperationMethod<
   input: UpdateCapacityProviderRequest,
   output: UpdateCapacityProviderResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6736,11 +7815,13 @@ export const updateCapacityProvider: API.OperationMethod<
   ],
 }));
 export type DeleteCapacityProviderError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
   | ServerException
   | UnsupportedFeatureException
+  | UpdateInProgressException
   | CommonErrors;
 /**
  * Deletes the specified capacity provider.
@@ -6758,14 +7839,17 @@ export const deleteCapacityProvider: API.OperationMethod<
   input: DeleteCapacityProviderRequest,
   output: DeleteCapacityProviderResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
     ServerException,
     UnsupportedFeatureException,
+    UpdateInProgressException,
   ],
 }));
 export type DescribeCapacityProvidersError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6784,6 +7868,7 @@ export const describeCapacityProviders: API.OperationMethod<
   input: DescribeCapacityProvidersRequest,
   output: DescribeCapacityProvidersResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6792,6 +7877,7 @@ export const describeCapacityProviders: API.OperationMethod<
   ],
 }));
 export type UpdateClusterError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6810,6 +7896,7 @@ export const updateCluster: API.OperationMethod<
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6818,6 +7905,7 @@ export const updateCluster: API.OperationMethod<
   ],
 }));
 export type DeleteClusterError =
+  | AccessDeniedException
   | ClientException
   | ClusterContainsCapacityProviderException
   | ClusterContainsContainerInstancesException
@@ -6842,6 +7930,7 @@ export const deleteCluster: API.OperationMethod<
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterContainsCapacityProviderException,
     ClusterContainsContainerInstancesException,
@@ -6854,6 +7943,7 @@ export const deleteCluster: API.OperationMethod<
   ],
 }));
 export type PutClusterCapacityProvidersError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6879,6 +7969,7 @@ export const putClusterCapacityProviders: API.OperationMethod<
   input: PutClusterCapacityProvidersRequest,
   output: PutClusterCapacityProvidersResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6888,10 +7979,12 @@ export const putClusterCapacityProviders: API.OperationMethod<
   ],
 }));
 export type UpdateClusterSettingsError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
   | ServerException
+  | UpdateInProgressException
   | CommonErrors;
 /**
  * Modifies the settings to use for a cluster.
@@ -6905,13 +7998,16 @@ export const updateClusterSettings: API.OperationMethod<
   input: UpdateClusterSettingsRequest,
   output: UpdateClusterSettingsResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
     ServerException,
+    UpdateInProgressException,
   ],
 }));
 export type CreateClusterError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | NamespaceNotFoundException
@@ -6931,6 +8027,7 @@ export const createCluster: API.OperationMethod<
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     InvalidParameterException,
     NamespaceNotFoundException,
@@ -6938,6 +8035,7 @@ export const createCluster: API.OperationMethod<
   ],
 }));
 export type DeregisterContainerInstanceError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -6961,6 +8059,7 @@ export const deregisterContainerInstance: API.OperationMethod<
   input: DeregisterContainerInstanceRequest,
   output: DeregisterContainerInstanceResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -6968,6 +8067,7 @@ export const deregisterContainerInstance: API.OperationMethod<
   ],
 }));
 export type DescribeClustersError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -6985,7 +8085,12 @@ export const describeClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeClustersRequest,
   output: DescribeClustersResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type ExecuteCommandError =
   | AccessDeniedException
@@ -7020,8 +8125,11 @@ export const executeCommand: API.OperationMethod<
   ],
 }));
 export type ListAttributesError =
+  | AccessDeniedException
+  | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | ServerException
   | CommonErrors;
 /**
  * Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, `ListAttributes` returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value. You can do this, for example, to see which container instances in a cluster are running a Linux AMI (`ecs.os-type=linux`).
@@ -7049,7 +8157,13 @@ export const listAttributes: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAttributesRequest,
   output: ListAttributesResponse,
-  errors: [ClusterNotFoundException, InvalidParameterException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+  ],
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7058,6 +8172,7 @@ export const listAttributes: API.OperationMethod<
   } as const,
 }));
 export type ListClustersError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -7088,7 +8203,12 @@ export const listClusters: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7097,6 +8217,7 @@ export const listClusters: API.OperationMethod<
   } as const,
 }));
 export type ListContainerInstancesError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7129,6 +8250,7 @@ export const listContainerInstances: API.OperationMethod<
   input: ListContainerInstancesRequest,
   output: ListContainerInstancesResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -7144,6 +8266,7 @@ export const listContainerInstances: API.OperationMethod<
 export type SubmitAttachmentStateChangesError =
   | AccessDeniedException
   | ClientException
+  | ClusterNotFoundException
   | InvalidParameterException
   | ServerException
   | CommonErrors;
@@ -7163,6 +8286,7 @@ export const submitAttachmentStateChanges: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ClientException,
+    ClusterNotFoundException,
     InvalidParameterException,
     ServerException,
   ],
@@ -7170,6 +8294,8 @@ export const submitAttachmentStateChanges: API.OperationMethod<
 export type SubmitContainerStateChangeError =
   | AccessDeniedException
   | ClientException
+  | ClusterNotFoundException
+  | InvalidParameterException
   | ServerException
   | CommonErrors;
 /**
@@ -7185,11 +8311,18 @@ export const submitContainerStateChange: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitContainerStateChangeRequest,
   output: SubmitContainerStateChangeResponse,
-  errors: [AccessDeniedException, ClientException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type SubmitTaskStateChangeError =
   | AccessDeniedException
   | ClientException
+  | ClusterNotFoundException
   | InvalidParameterException
   | ServerException
   | CommonErrors;
@@ -7209,13 +8342,17 @@ export const submitTaskStateChange: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ClientException,
+    ClusterNotFoundException,
     InvalidParameterException,
     ServerException,
   ],
 }));
 export type DeleteAttributesError =
+  | AccessDeniedException
+  | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | ServerException
   | TargetNotFoundException
   | CommonErrors;
 /**
@@ -7230,12 +8367,16 @@ export const deleteAttributes: API.OperationMethod<
   input: DeleteAttributesRequest,
   output: DeleteAttributesResponse,
   errors: [
+    AccessDeniedException,
+    ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    ServerException,
     TargetNotFoundException,
   ],
 }));
 export type DescribeContainerInstancesError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7253,6 +8394,7 @@ export const describeContainerInstances: API.OperationMethod<
   input: DescribeContainerInstancesRequest,
   output: DescribeContainerInstancesResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -7260,6 +8402,7 @@ export const describeContainerInstances: API.OperationMethod<
   ],
 }));
 export type ListTasksError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7295,6 +8438,7 @@ export const listTasks: API.OperationMethod<
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -7309,9 +8453,12 @@ export const listTasks: API.OperationMethod<
   } as const,
 }));
 export type PutAttributesError =
+  | AccessDeniedException
   | AttributeLimitExceededException
+  | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | ServerException
   | TargetNotFoundException
   | CommonErrors;
 /**
@@ -7326,14 +8473,19 @@ export const putAttributes: API.OperationMethod<
   input: PutAttributesRequest,
   output: PutAttributesResponse,
   errors: [
+    AccessDeniedException,
     AttributeLimitExceededException,
+    ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    ServerException,
     TargetNotFoundException,
   ],
 }));
 export type RegisterContainerInstanceError =
+  | AccessDeniedException
   | ClientException
+  | ClusterNotFoundException
   | InvalidParameterException
   | ServerException
   | CommonErrors;
@@ -7350,9 +8502,16 @@ export const registerContainerInstance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterContainerInstanceRequest,
   output: RegisterContainerInstanceResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+  ],
 }));
 export type UpdateContainerAgentError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7379,6 +8538,7 @@ export const updateContainerAgent: API.OperationMethod<
   input: UpdateContainerAgentRequest,
   output: UpdateContainerAgentResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -7389,6 +8549,7 @@ export const updateContainerAgent: API.OperationMethod<
   ],
 }));
 export type UpdateContainerInstancesStateError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7424,9 +8585,370 @@ export const updateContainerInstancesState: API.OperationMethod<
   input: UpdateContainerInstancesStateRequest,
   output: UpdateContainerInstancesStateResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    ServerException,
+  ],
+}));
+export type DescribeDaemonDeploymentsError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | InvalidParameterException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Describes one or more of your daemon deployments.
+ *
+ * A daemon deployment orchestrates the progressive rollout of daemon task updates across container instances managed by the daemon's capacity providers. Each deployment includes circuit breaker and alarm-based rollback capabilities.
+ */
+export const describeDaemonDeployments: API.OperationMethod<
+  DescribeDaemonDeploymentsRequest,
+  DescribeDaemonDeploymentsResponse,
+  DescribeDaemonDeploymentsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeDaemonDeploymentsRequest,
+  output: DescribeDaemonDeploymentsResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type CreateDaemonError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | InvalidParameterException
+  | PlatformUnknownException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Creates a new daemon in the specified cluster and capacity providers. A daemon deploys cross-cutting software agents such as security monitoring, telemetry, and logging independently across your Amazon ECS infrastructure.
+ *
+ * Amazon ECS deploys exactly one daemon task on each container instance of the specified capacity providers. When a container instance registers with the cluster, Amazon ECS automatically starts daemon tasks. Amazon ECS starts a daemon task before scheduling other tasks.
+ *
+ * Daemons are essential for instance health - if a daemon task stops, Amazon ECS automatically drains and replaces that container instance.
+ *
+ * ECS Managed Daemons is only supported for Amazon ECS Managed Instances Capacity Providers.
+ */
+export const createDaemon: API.OperationMethod<
+  CreateDaemonRequest,
+  CreateDaemonResponse,
+  CreateDaemonError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateDaemonRequest,
+  output: CreateDaemonResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    PlatformUnknownException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type DeleteDaemonError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | DaemonNotActiveException
+  | DaemonNotFoundException
+  | InvalidParameterException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Deletes the specified daemon. The daemon must be in an `ACTIVE` state to be deleted. Deleting a daemon stops all running daemon tasks on the associated container instances. Amazon ECS drains existing container instances and provisions new instances without the deleted daemon. Amazon ECS automatically launches replacement tasks for your Amazon ECS services.
+ *
+ * ECS Managed Daemons is only supported for Amazon ECS Managed Instances Capacity Providers.
+ */
+export const deleteDaemon: API.OperationMethod<
+  DeleteDaemonRequest,
+  DeleteDaemonResponse,
+  DeleteDaemonError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteDaemonRequest,
+  output: DeleteDaemonResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    DaemonNotActiveException,
+    DaemonNotFoundException,
+    InvalidParameterException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type DescribeDaemonError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | DaemonNotFoundException
+  | InvalidParameterException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Describes the specified daemon.
+ */
+export const describeDaemon: API.OperationMethod<
+  DescribeDaemonRequest,
+  DescribeDaemonResponse,
+  DescribeDaemonError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeDaemonRequest,
+  output: DescribeDaemonResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    DaemonNotFoundException,
+    InvalidParameterException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type ListDaemonDeploymentsError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | InvalidParameterException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Returns a list of daemon deployments for a specified daemon. You can filter the results by status or creation time.
+ */
+export const listDaemonDeployments: API.OperationMethod<
+  ListDaemonDeploymentsRequest,
+  ListDaemonDeploymentsResponse,
+  ListDaemonDeploymentsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListDaemonDeploymentsRequest,
+  output: ListDaemonDeploymentsResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type ListDaemonsError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | InvalidParameterException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Returns a list of daemons. You can filter the results by cluster or capacity provider.
+ */
+export const listDaemons: API.OperationMethod<
+  ListDaemonsRequest,
+  ListDaemonsResponse,
+  ListDaemonsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListDaemonsRequest,
+  output: ListDaemonsResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type UpdateDaemonError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | DaemonNotActiveException
+  | DaemonNotFoundException
+  | InvalidParameterException
+  | PlatformUnknownException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Updates the specified daemon. When you update a daemon, a new deployment is triggered that progressively rolls out the changes to the container instances associated with the daemon's capacity providers. For more information, see Daemon deployments in the *Amazon Elastic Container Service Developer Guide*.
+ *
+ * Amazon ECS drains existing container instances and provisions new instances with the updated daemon. Amazon ECS automatically launches replacement tasks for your services.
+ *
+ * Updating a daemon triggers a rolling deployment that drains and replaces container instances. Plan updates during maintenance windows to minimize impact on running services.
+ *
+ * ECS Managed Daemons is only supported for Amazon ECS Managed Instances Capacity Providers.
+ */
+export const updateDaemon: API.OperationMethod<
+  UpdateDaemonRequest,
+  UpdateDaemonResponse,
+  UpdateDaemonError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateDaemonRequest,
+  output: UpdateDaemonResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    DaemonNotActiveException,
+    DaemonNotFoundException,
+    InvalidParameterException,
+    PlatformUnknownException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type DescribeDaemonRevisionsError =
+  | AccessDeniedException
+  | ClientException
+  | ClusterNotFoundException
+  | InvalidParameterException
+  | ServerException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Describes one or more of your daemon revisions.
+ *
+ * A daemon revision is a snapshot of a daemon's configuration at the time a deployment was initiated. It captures the daemon task definition, container images, tag propagation, and execute command settings. Daemon revisions are immutable.
+ */
+export const describeDaemonRevisions: API.OperationMethod<
+  DescribeDaemonRevisionsRequest,
+  DescribeDaemonRevisionsResponse,
+  DescribeDaemonRevisionsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeDaemonRevisionsRequest,
+  output: DescribeDaemonRevisionsResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ClusterNotFoundException,
+    InvalidParameterException,
+    ServerException,
+    UnsupportedFeatureException,
+  ],
+}));
+export type DeleteDaemonTaskDefinitionError =
+  | AccessDeniedException
+  | ClientException
+  | InvalidParameterException
+  | ServerException
+  | CommonErrors;
+/**
+ * Deletes the specified daemon task definition. After a daemon task definition is deleted, no new daemons can be created using this definition. Existing daemons that reference the deleted daemon task definition continue to run.
+ *
+ * A daemon task definition must be in an `ACTIVE` state to be deleted.
+ */
+export const deleteDaemonTaskDefinition: API.OperationMethod<
+  DeleteDaemonTaskDefinitionRequest,
+  DeleteDaemonTaskDefinitionResponse,
+  DeleteDaemonTaskDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteDaemonTaskDefinitionRequest,
+  output: DeleteDaemonTaskDefinitionResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
+}));
+export type DescribeDaemonTaskDefinitionError =
+  | AccessDeniedException
+  | ClientException
+  | InvalidParameterException
+  | ServerException
+  | CommonErrors;
+/**
+ * Describes a daemon task definition. You can specify a `family` and `revision` to find information about a specific daemon task definition, or you can simply specify the family to find the latest `ACTIVE` revision in that family.
+ */
+export const describeDaemonTaskDefinition: API.OperationMethod<
+  DescribeDaemonTaskDefinitionRequest,
+  DescribeDaemonTaskDefinitionResponse,
+  DescribeDaemonTaskDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeDaemonTaskDefinitionRequest,
+  output: DescribeDaemonTaskDefinitionResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
+}));
+export type ListDaemonTaskDefinitionsError =
+  | AccessDeniedException
+  | ClientException
+  | InvalidParameterException
+  | ServerException
+  | CommonErrors;
+/**
+ * Returns a list of daemon task definitions that are registered to your account. You can filter the results by family name, status, or both to find daemon task definitions that match your criteria.
+ */
+export const listDaemonTaskDefinitions: API.OperationMethod<
+  ListDaemonTaskDefinitionsRequest,
+  ListDaemonTaskDefinitionsResponse,
+  ListDaemonTaskDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListDaemonTaskDefinitionsRequest,
+  output: ListDaemonTaskDefinitionsResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
+}));
+export type RegisterDaemonTaskDefinitionError =
+  | AccessDeniedException
+  | ClientException
+  | InvalidParameterException
+  | LimitExceededException
+  | ServerException
+  | CommonErrors;
+/**
+ * Registers a new daemon task definition from the supplied `family` and `containerDefinitions`. Optionally, you can add data volumes to your containers with the `volumes` parameter. For more information, see Daemon task definitions in the *Amazon Elastic Container Service Developer Guide*.
+ *
+ * A daemon task definition is a template that describes the containers that form a daemon. Daemons deploy cross-cutting software agents such as security monitoring, telemetry, and logging across your Amazon ECS infrastructure.
+ *
+ * Each time you call `RegisterDaemonTaskDefinition`, a new revision of the daemon task definition is created. You can't modify a revision after you register it.
+ */
+export const registerDaemonTaskDefinition: API.OperationMethod<
+  RegisterDaemonTaskDefinitionRequest,
+  RegisterDaemonTaskDefinitionResponse,
+  RegisterDaemonTaskDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RegisterDaemonTaskDefinitionRequest,
+  output: RegisterDaemonTaskDefinitionResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    LimitExceededException,
     ServerException,
   ],
 }));
@@ -7695,6 +9217,7 @@ export const deleteExpressGatewayService: API.OperationMethod<
   ],
 }));
 export type DeleteServiceError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7717,6 +9240,7 @@ export const deleteService: API.OperationMethod<
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -7759,6 +9283,7 @@ export const describeExpressGatewayService: API.OperationMethod<
   ],
 }));
 export type DescribeServicesError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7776,6 +9301,7 @@ export const describeServices: API.OperationMethod<
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -7785,6 +9311,7 @@ export const describeServices: API.OperationMethod<
 export type ListServiceDeploymentsError =
   | AccessDeniedException
   | ClientException
+  | ClusterNotFoundException
   | InvalidParameterException
   | ServerException
   | ServiceNotFoundException
@@ -7808,6 +9335,7 @@ export const listServiceDeployments: API.OperationMethod<
   errors: [
     AccessDeniedException,
     ClientException,
+    ClusterNotFoundException,
     InvalidParameterException,
     ServerException,
     ServiceNotFoundException,
@@ -7815,6 +9343,7 @@ export const listServiceDeployments: API.OperationMethod<
   ],
 }));
 export type ListServicesError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -7847,6 +9376,7 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -8082,6 +9612,7 @@ export const deleteTaskDefinitions: API.OperationMethod<
   ],
 }));
 export type ListTaskDefinitionsError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
   | ServerException
@@ -8112,7 +9643,12 @@ export const listTaskDefinitions: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTaskDefinitionsRequest,
   output: ListTaskDefinitionsResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+  ],
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8121,8 +9657,10 @@ export const listTaskDefinitions: API.OperationMethod<
   } as const,
 }));
 export type RegisterTaskDefinitionError =
+  | AccessDeniedException
   | ClientException
   | InvalidParameterException
+  | LimitExceededException
   | ServerException
   | CommonErrors;
 /**
@@ -8140,9 +9678,16 @@ export const registerTaskDefinition: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterTaskDefinitionRequest,
   output: RegisterTaskDefinitionResponse,
-  errors: [ClientException, InvalidParameterException, ServerException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    LimitExceededException,
+    ServerException,
+  ],
 }));
 export type DescribeTasksError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -8164,6 +9709,7 @@ export const describeTasks: API.OperationMethod<
   input: DescribeTasksRequest,
   output: DescribeTasksResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -8265,9 +9811,11 @@ export const runTask: API.OperationMethod<
   ],
 }));
 export type StartTaskError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | NamespaceNotFoundException
   | ServerException
   | UnsupportedFeatureException
   | CommonErrors;
@@ -8291,14 +9839,17 @@ export const startTask: API.OperationMethod<
   input: StartTaskRequest,
   output: StartTaskResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    NamespaceNotFoundException,
     ServerException,
     UnsupportedFeatureException,
   ],
 }));
 export type StopTaskError =
+  | AccessDeniedException
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
@@ -8322,6 +9873,7 @@ export const stopTask: API.OperationMethod<
   input: StopTaskRequest,
   output: StopTaskResponse,
   errors: [
+    AccessDeniedException,
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
@@ -8373,6 +9925,7 @@ export type UpdateTaskSetError =
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | LimitExceededException
   | ServerException
   | ServiceNotActiveException
   | ServiceNotFoundException
@@ -8395,6 +9948,7 @@ export const updateTaskSet: API.OperationMethod<
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    LimitExceededException,
     ServerException,
     ServiceNotActiveException,
     ServiceNotFoundException,
@@ -8407,6 +9961,7 @@ export type DeleteTaskSetError =
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | LimitExceededException
   | ServerException
   | ServiceNotActiveException
   | ServiceNotFoundException
@@ -8429,6 +9984,7 @@ export const deleteTaskSet: API.OperationMethod<
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    LimitExceededException,
     ServerException,
     ServiceNotActiveException,
     ServiceNotFoundException,
@@ -8441,6 +9997,7 @@ export type CreateTaskSetError =
   | ClientException
   | ClusterNotFoundException
   | InvalidParameterException
+  | LimitExceededException
   | NamespaceNotFoundException
   | PlatformTaskDefinitionIncompatibilityException
   | PlatformUnknownException
@@ -8469,6 +10026,7 @@ export const createTaskSet: API.OperationMethod<
     ClientException,
     ClusterNotFoundException,
     InvalidParameterException,
+    LimitExceededException,
     NamespaceNotFoundException,
     PlatformTaskDefinitionIncompatibilityException,
     PlatformUnknownException,

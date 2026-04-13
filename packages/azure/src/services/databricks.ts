@@ -11,8 +11,9 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AccessConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -36,9 +37,10 @@ export type AccessConnectorsCreateOrUpdateOutput =
 /**
  * Creates or updates Azure Databricks Access Connector.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectorName - The name of the Azure Databricks Access Connector.
  */
 export const AccessConnectorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -48,8 +50,9 @@ export const AccessConnectorsCreateOrUpdate =
 // Input Schema
 export const AccessConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -70,9 +73,10 @@ export type AccessConnectorsDeleteOutput =
 /**
  * Deletes the Azure Databricks Access Connector.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectorName - The name of the Azure Databricks Access Connector.
  */
 export const AccessConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -83,8 +87,9 @@ export const AccessConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AccessConnectorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -106,9 +111,10 @@ export type AccessConnectorsGetOutput = typeof AccessConnectorsGetOutput.Type;
 /**
  * Gets an Azure Databricks Access Connector.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectorName - The name of the Azure Databricks Access Connector.
  */
 export const AccessConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccessConnectorsGetInput,
@@ -117,8 +123,8 @@ export const AccessConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccessConnectorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -132,13 +138,11 @@ export type AccessConnectorsListByResourceGroupInput =
 // Output Schema
 export const AccessConnectorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -149,9 +153,9 @@ export type AccessConnectorsListByResourceGroupOutput =
 /**
  * Gets all the Azure Databricks Access Connectors within a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AccessConnectorsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -175,13 +179,11 @@ export type AccessConnectorsListBySubscriptionInput =
 // Output Schema
 export const AccessConnectorsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -203,8 +205,9 @@ export const AccessConnectorsListBySubscription =
 // Input Schema
 export const AccessConnectorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -228,9 +231,10 @@ export type AccessConnectorsUpdateOutput =
 /**
  * Updates an Azure Databricks Access Connector.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param connectorName - The name of the Azure Databricks Access Connector.
  */
 export const AccessConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -269,7 +273,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Lists all of the available RP operations.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -280,8 +284,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OutboundNetworkDependenciesEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -325,9 +330,10 @@ export type OutboundNetworkDependenciesEndpointsListOutput =
  *
  * Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound access with these endpoints. For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const OutboundNetworkDependenciesEndpointsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -337,8 +343,10 @@ export const OutboundNetworkDependenciesEndpointsList =
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -351,38 +359,7 @@ export type PrivateEndpointConnectionsCreateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals([
-          "Pending",
-          "Approved",
-          "Rejected",
-          "Disconnected",
-        ]),
-        description: Schema.optional(Schema.String),
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Failed",
-        ]),
-      ),
-    }),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsCreateOutput =
   typeof PrivateEndpointConnectionsCreateOutput.Type;
 
@@ -392,9 +369,11 @@ export type PrivateEndpointConnectionsCreateOutput =
  *
  * Update the status of a private endpoint connection with the specified name
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -404,8 +383,10 @@ export const PrivateEndpointConnectionsCreate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -428,9 +409,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
  *
  * Remove private endpoint connection with the specified name
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -440,8 +423,10 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -454,38 +439,7 @@ export type PrivateEndpointConnectionsGetInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals([
-          "Pending",
-          "Approved",
-          "Rejected",
-          "Disconnected",
-        ]),
-        description: Schema.optional(Schema.String),
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Failed",
-        ]),
-      ),
-    }),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -495,9 +449,11 @@ export type PrivateEndpointConnectionsGetOutput =
  *
  * Get a private endpoint connection properties for a workspace
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -507,8 +463,9 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -522,42 +479,7 @@ export type PrivateEndpointConnectionsListInput =
 // Output Schema
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.Struct({
-            privateEndpoint: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            groupIds: Schema.optional(Schema.Array(Schema.String)),
-            privateLinkServiceConnectionState: Schema.Struct({
-              status: Schema.Literals([
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected",
-              ]),
-              description: Schema.optional(Schema.String),
-              actionsRequired: Schema.optional(Schema.String),
-            }),
-            provisioningState: Schema.optional(
-              Schema.Literals([
-                "Succeeded",
-                "Creating",
-                "Updating",
-                "Deleting",
-                "Failed",
-              ]),
-            ),
-          }),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListOutput =
@@ -569,9 +491,10 @@ export type PrivateEndpointConnectionsListOutput =
  *
  * List private endpoint connections of the workspace
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -581,8 +504,10 @@ export const PrivateEndpointConnectionsList =
 // Input Schema
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -595,11 +520,7 @@ export type PrivateLinkResourcesGetInput =
 
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -609,9 +530,11 @@ export type PrivateLinkResourcesGetOutput =
  *
  * Get the specified private link resource for the given group id (sub-resource)
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param groupId - The name of the private link resource
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -622,8 +545,9 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -637,15 +561,7 @@ export type PrivateLinkResourcesListInput =
 // Output Schema
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListOutput =
@@ -657,9 +573,10 @@ export type PrivateLinkResourcesListOutput =
  *
  * List private link resources for a given workspace
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -670,8 +587,10 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VNetPeeringCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    peeringName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -684,41 +603,7 @@ export type VNetPeeringCreateOrUpdateInput =
 
 // Output Schema
 export const VNetPeeringCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      allowVirtualNetworkAccess: Schema.optional(Schema.Boolean),
-      allowForwardedTraffic: Schema.optional(Schema.Boolean),
-      allowGatewayTransit: Schema.optional(Schema.Boolean),
-      useRemoteGateways: Schema.optional(Schema.Boolean),
-      databricksVirtualNetwork: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      databricksAddressSpace: Schema.optional(
-        Schema.Struct({
-          addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      remoteVirtualNetwork: Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-      remoteAddressSpace: Schema.optional(
-        Schema.Struct({
-          addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      peeringState: Schema.optional(
-        Schema.Literals(["Initiated", "Connected", "Disconnected"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
-      ),
-    }),
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type VNetPeeringCreateOrUpdateOutput =
   typeof VNetPeeringCreateOrUpdateOutput.Type;
 
@@ -726,9 +611,11 @@ export type VNetPeeringCreateOrUpdateOutput =
 /**
  * Creates vNet Peering for workspace.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param peeringName - The name of the workspace vNet peering.
  */
 export const vNetPeeringCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -739,8 +626,10 @@ export const vNetPeeringCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VNetPeeringDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    peeringName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -759,9 +648,11 @@ export type VNetPeeringDeleteOutput = typeof VNetPeeringDeleteOutput.Type;
 /**
  * Deletes the workspace vNetPeering.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param peeringName - The name of the workspace vNet peering.
  */
 export const vNetPeeringDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VNetPeeringDeleteInput,
@@ -769,8 +660,10 @@ export const vNetPeeringDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VNetPeeringGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  peeringName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -781,50 +674,20 @@ export const VNetPeeringGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type VNetPeeringGetInput = typeof VNetPeeringGetInput.Type;
 
 // Output Schema
-export const VNetPeeringGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.Struct({
-    allowVirtualNetworkAccess: Schema.optional(Schema.Boolean),
-    allowForwardedTraffic: Schema.optional(Schema.Boolean),
-    allowGatewayTransit: Schema.optional(Schema.Boolean),
-    useRemoteGateways: Schema.optional(Schema.Boolean),
-    databricksVirtualNetwork: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    ),
-    databricksAddressSpace: Schema.optional(
-      Schema.Struct({
-        addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    remoteVirtualNetwork: Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-    remoteAddressSpace: Schema.optional(
-      Schema.Struct({
-        addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    peeringState: Schema.optional(
-      Schema.Literals(["Initiated", "Connected", "Disconnected"]),
-    ),
-    provisioningState: Schema.optional(
-      Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
-    ),
-  }),
-  name: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-});
+export const VNetPeeringGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+);
 export type VNetPeeringGetOutput = typeof VNetPeeringGetOutput.Type;
 
 // The operation
 /**
  * Gets the workspace vNet Peering.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param peeringName - The name of the workspace vNet peering.
  */
 export const vNetPeeringGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VNetPeeringGetInput,
@@ -833,8 +696,9 @@ export const vNetPeeringGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VNetPeeringListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -848,45 +712,7 @@ export type VNetPeeringListByWorkspaceInput =
 // Output Schema
 export const VNetPeeringListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.Struct({
-            allowVirtualNetworkAccess: Schema.optional(Schema.Boolean),
-            allowForwardedTraffic: Schema.optional(Schema.Boolean),
-            allowGatewayTransit: Schema.optional(Schema.Boolean),
-            useRemoteGateways: Schema.optional(Schema.Boolean),
-            databricksVirtualNetwork: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            databricksAddressSpace: Schema.optional(
-              Schema.Struct({
-                addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            remoteVirtualNetwork: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-            remoteAddressSpace: Schema.optional(
-              Schema.Struct({
-                addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            peeringState: Schema.optional(
-              Schema.Literals(["Initiated", "Connected", "Disconnected"]),
-            ),
-            provisioningState: Schema.optional(
-              Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
-            ),
-          }),
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type VNetPeeringListByWorkspaceOutput =
@@ -896,9 +722,10 @@ export type VNetPeeringListByWorkspaceOutput =
 /**
  * Lists the workspace vNet Peerings.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const vNetPeeringListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -909,8 +736,9 @@ export const vNetPeeringListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -934,9 +762,10 @@ export type WorkspacesCreateOrUpdateOutput =
 /**
  * Creates a new workspace.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -946,8 +775,9 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
   forceDeletion: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -966,9 +796,10 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
 /**
  * Deletes the workspace.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  * @param forceDeletion - Optional parameter to retain default unity catalog data. By default the data will retained if Uc is enabled on the workspace.
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -977,8 +808,9 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -999,9 +831,10 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 /**
  * Gets the workspace.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
@@ -1010,8 +843,8 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1025,13 +858,11 @@ export type WorkspacesListByResourceGroupInput =
 // Output Schema
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1042,9 +873,9 @@ export type WorkspacesListByResourceGroupOutput =
 /**
  * Gets all the workspaces within a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const WorkspacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1068,13 +899,11 @@ export type WorkspacesListBySubscriptionInput =
 // Output Schema
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1095,8 +924,9 @@ export const WorkspacesListBySubscription =
   }));
 // Input Schema
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1119,9 +949,10 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
 /**
  * Updates a workspace.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

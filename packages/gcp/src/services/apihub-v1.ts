@@ -2329,11 +2329,11 @@ export const GoogleCloudApihubV1ListExternalApisResponse: Schema.Schema<GoogleCl
   }) as any as Schema.Schema<GoogleCloudApihubV1ListExternalApisResponse>;
 
 export interface GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
-  /** The API. */
+  /** Optional. The API. */
   api?: GoogleCloudApihubV1Api;
-  /** The version. */
+  /** Optional. The version. */
   version?: GoogleCloudApihubV1Version;
-  /** The deployment. */
+  /** Optional. The deployment. */
   deployment?: GoogleCloudApihubV1Deployment;
 }
 
@@ -2349,13 +2349,13 @@ export const GoogleCloudApihubV1FlattenedApiVersionDeploymentView: Schema.Schema
   }) as any as Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionDeploymentView>;
 
 export interface GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
-  /** The API. */
+  /** Optional. The API. */
   api?: GoogleCloudApihubV1Api;
-  /** The version. */
+  /** Optional. The version. */
   version?: GoogleCloudApihubV1Version;
-  /** The API operation. */
+  /** Optional. The API operation. */
   apiOperation?: GoogleCloudApihubV1ApiOperation;
-  /** The deployment. */
+  /** Optional. The deployment. */
   deployment?: GoogleCloudApihubV1Deployment;
 }
 
@@ -2372,9 +2372,9 @@ export const GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView: Sche
   }) as any as Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView>;
 
 export interface GoogleCloudApihubV1ApiView {
-  /** Output only. MCP server view. */
+  /** MCP server view. */
   mcpServerView?: GoogleCloudApihubV1FlattenedApiVersionDeploymentView;
-  /** Output only. MCP tools view. */
+  /** MCP tools view. */
   mcpToolView?: GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView;
 }
 
@@ -2393,7 +2393,7 @@ export const GoogleCloudApihubV1ApiView: Schema.Schema<GoogleCloudApihubV1ApiVie
   }) as any as Schema.Schema<GoogleCloudApihubV1ApiView>;
 
 export interface GoogleCloudApihubV1RetrieveApiViewsResponse {
-  /** The list of API views. */
+  /** Output only. The list of API views. */
   apiViews?: Array<GoogleCloudApihubV1ApiView>;
   /** Next page token. */
   nextPageToken?: string;
@@ -3172,6 +3172,20 @@ export const GoogleCloudApihubV1LintSpecRequest: Schema.Schema<GoogleCloudApihub
     identifier: "GoogleCloudApihubV1LintSpecRequest",
   }) as any as Schema.Schema<GoogleCloudApihubV1LintSpecRequest>;
 
+export interface GoogleCloudApihubV1AgentRegistrySyncConfig {
+  /** Optional. If true, the MCP data sync to the Agent Registry will be disabled. The default value is false. */
+  disabled?: boolean;
+}
+
+export const GoogleCloudApihubV1AgentRegistrySyncConfig: Schema.Schema<GoogleCloudApihubV1AgentRegistrySyncConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      disabled: Schema.optional(Schema.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudApihubV1AgentRegistrySyncConfig",
+  }) as any as Schema.Schema<GoogleCloudApihubV1AgentRegistrySyncConfig>;
+
 export interface GoogleCloudApihubV1Config {
   /** Optional. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the location must match the instance location. If the CMEK is not provided, a GMEK will be created for the instance. */
   cmekKeyName?: string;
@@ -3185,6 +3199,8 @@ export interface GoogleCloudApihubV1Config {
     | "GMEK"
     | "CMEK"
     | (string & {});
+  /** Optional. The configuration for syncing MCP data in the API Hub instance to the Agent Registry. */
+  agentRegistrySyncConfig?: GoogleCloudApihubV1AgentRegistrySyncConfig;
 }
 
 export const GoogleCloudApihubV1Config: Schema.Schema<GoogleCloudApihubV1Config> =
@@ -3194,6 +3210,9 @@ export const GoogleCloudApihubV1Config: Schema.Schema<GoogleCloudApihubV1Config>
       disableSearch: Schema.optional(Schema.Boolean),
       vertexLocation: Schema.optional(Schema.String),
       encryptionType: Schema.optional(Schema.String),
+      agentRegistrySyncConfig: Schema.optional(
+        GoogleCloudApihubV1AgentRegistrySyncConfig,
+      ),
     }),
   ).annotate({
     identifier: "GoogleCloudApihubV1Config",
@@ -3629,7 +3648,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -7064,6 +7083,48 @@ export const getProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApiHubInstancesRequest,
   output: GetProjectsLocationsApiHubInstancesResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsApiHubInstancesRequest {
+  /** Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
+  name: string;
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Request body */
+  body?: GoogleCloudApihubV1ApiHubInstance;
+}
+
+export const PatchProjectsLocationsApiHubInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(GoogleCloudApihubV1ApiHubInstance).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances/{apiHubInstancesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApiHubInstancesRequest>;
+
+export type PatchProjectsLocationsApiHubInstancesResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsApiHubInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsApiHubInstancesError = DefaultErrors;
+
+/** Update an Api Hub instance. The following fields in the ApiHubInstance can be updated: * disable_search * vertex_location * agent_registry_sync_config The update_mask should be used to specify the fields being updated. */
+export const patchProjectsLocationsApiHubInstances: API.OperationMethod<
+  PatchProjectsLocationsApiHubInstancesRequest,
+  PatchProjectsLocationsApiHubInstancesResponse,
+  PatchProjectsLocationsApiHubInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApiHubInstancesRequest,
+  output: PatchProjectsLocationsApiHubInstancesResponse,
   errors: [],
 }));
 

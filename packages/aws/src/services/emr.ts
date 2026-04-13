@@ -1352,13 +1352,40 @@ export const CloudWatchLogConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CloudWatchLogConfiguration",
 }) as any as S.Schema<CloudWatchLogConfiguration>;
+export type LogType =
+  | "system-logs"
+  | "application-logs"
+  | "persistent-ui-logs"
+  | (string & {});
+export const LogType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type LogUploadPolicyValue =
+  | "emr-managed"
+  | "on-customer-s3only"
+  | "disabled"
+  | (string & {});
+export const LogUploadPolicyValue = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type LogTypeMap = { [key in LogType]?: LogUploadPolicyValue };
+export const LogTypeMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  LogType,
+  LogUploadPolicyValue.pipe(S.optional),
+);
+export interface S3LoggingConfiguration {
+  LogTypeUploadPolicy?: { [key: string]: LogUploadPolicyValue | undefined };
+}
+export const S3LoggingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ LogTypeUploadPolicy: S.optional(LogTypeMap) }),
+).annotate({
+  identifier: "S3LoggingConfiguration",
+}) as any as S.Schema<S3LoggingConfiguration>;
 export interface MonitoringConfiguration {
   CloudWatchLogConfiguration?: CloudWatchLogConfiguration;
+  S3LoggingConfiguration?: S3LoggingConfiguration;
 }
 export const MonitoringConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       CloudWatchLogConfiguration: S.optional(CloudWatchLogConfiguration),
+      S3LoggingConfiguration: S.optional(S3LoggingConfiguration),
     }),
 ).annotate({
   identifier: "MonitoringConfiguration",
@@ -4279,6 +4306,7 @@ export interface RunJobFlowInput {
   ReleaseLabel?: string;
   Instances?: JobFlowInstancesConfig;
   Steps?: StepConfig[];
+  StepExecutionRoleArn?: string;
   BootstrapActions?: BootstrapActionConfig[];
   SupportedProducts?: string[];
   NewSupportedProducts?: SupportedProductConfig[];
@@ -4315,6 +4343,7 @@ export const RunJobFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ReleaseLabel: S.optional(S.String),
     Instances: S.optional(JobFlowInstancesConfig),
     Steps: S.optional(StepConfigList),
+    StepExecutionRoleArn: S.optional(S.String),
     BootstrapActions: S.optional(BootstrapActionConfigList),
     SupportedProducts: S.optional(SupportedProductsList),
     NewSupportedProducts: S.optional(NewSupportedProductsList),

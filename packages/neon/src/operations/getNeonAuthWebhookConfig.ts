@@ -28,6 +28,8 @@ export const GetNeonAuthWebhookConfigOutput =
           "user.created",
           "send.otp",
           "send.magic_link",
+          "organization.invitation.created",
+          "organization.invitation.accepted",
         ]),
       ),
     ),

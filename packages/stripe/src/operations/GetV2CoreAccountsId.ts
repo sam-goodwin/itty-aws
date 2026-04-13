@@ -2762,7 +2762,7 @@ export type GetV2CoreAccountsIdOutput = typeof GetV2CoreAccountsIdOutput.Type;
 
 // The operation
 /**
- * Retrieve an Account
+ * Retrieve an account
  *
  * Retrieves the details of an Account.
  *

@@ -88,14 +88,14 @@ export type StatementString = string;
 export type ClusterIdentifierString = string;
 export type SecretArn = string;
 export type StatementNameString = string;
+export type ParameterName = string;
+export type ParameterValue = string;
 export type WorkgroupNameString = string;
 export type ClientToken = string;
 export type ResultFormatString = string;
 export type SessionAliveSeconds = number;
 export type UUID = string;
 export type StatusString = string;
-export type ParameterName = string;
-export type ParameterValue = string;
 export type StatementStatusString = string;
 export type PageSize = number;
 export type BoxedBoolean = boolean;
@@ -106,6 +106,16 @@ export type ListStatementsLimit = number;
 //# Schemas
 export type SqlList = string[];
 export const SqlList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface SqlParameter {
+  name: string;
+  value: string;
+}
+export const SqlParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, value: S.String }),
+).annotate({ identifier: "SqlParameter" }) as any as S.Schema<SqlParameter>;
+export type SqlParametersList = SqlParameter[];
+export const SqlParametersList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SqlParameter);
 export interface BatchExecuteStatementInput {
   Sqls: string[];
   ClusterIdentifier?: string;
@@ -114,6 +124,7 @@ export interface BatchExecuteStatementInput {
   Database?: string;
   WithEvent?: boolean;
   StatementName?: string;
+  Parameters?: SqlParameter[];
   WorkgroupName?: string;
   ClientToken?: string;
   ResultFormat?: string;
@@ -130,6 +141,7 @@ export const BatchExecuteStatementInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Database: S.optional(S.String),
       WithEvent: S.optional(S.Boolean),
       StatementName: S.optional(S.String),
+      Parameters: S.optional(SqlParametersList),
       WorkgroupName: S.optional(S.String),
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       ResultFormat: S.optional(S.String),
@@ -200,16 +212,6 @@ export const DescribeStatementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeStatementRequest",
 }) as any as S.Schema<DescribeStatementRequest>;
-export interface SqlParameter {
-  name: string;
-  value: string;
-}
-export const SqlParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, value: S.String }),
-).annotate({ identifier: "SqlParameter" }) as any as S.Schema<SqlParameter>;
-export type SqlParametersList = SqlParameter[];
-export const SqlParametersList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SqlParameter);
 export interface SubStatementData {
   Id: string;
   Duration?: number;

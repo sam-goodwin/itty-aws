@@ -107,7 +107,7 @@ export type PostV2CoreAccountLinksOutput =
 
 // The operation
 /**
- * Create an Account Link
+ * Create an account link
  *
  * Creates an AccountLink object that includes a single-use URL that an account can use to access a Stripe-hosted flow for collecting or updating required information.
  */

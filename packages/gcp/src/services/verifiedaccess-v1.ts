@@ -60,31 +60,31 @@ export const Challenge: Schema.Schema<Challenge> =
   ).annotate({ identifier: "Challenge" }) as any as Schema.Schema<Challenge>;
 
 export interface VerifyChallengeResponseRequest {
-  /** The generated response to the challenge */
-  challengeResponse?: SignedData;
   /** Service can optionally provide identity information about the device or user associated with the key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this value will be checked against contents of the response, and verification will fail if there is no match. */
   expectedIdentity?: string;
+  /** The generated response to the challenge */
+  challengeResponse?: SignedData;
 }
 
 export const VerifyChallengeResponseRequest: Schema.Schema<VerifyChallengeResponseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      challengeResponse: Schema.optional(SignedData),
       expectedIdentity: Schema.optional(Schema.String),
+      challengeResponse: Schema.optional(SignedData),
     }),
   ).annotate({
     identifier: "VerifyChallengeResponseRequest",
   }) as any as Schema.Schema<VerifyChallengeResponseRequest>;
 
 export interface VerifyChallengeResponseResult {
-  /** For EMCert check, device permanent id is returned here. For EUCert check, signed_public_key_and_challenge [base64 encoded] is returned if present, otherwise empty string is returned. This field is deprecated, please use device_permanent_id or signed_public_key_and_challenge fields. */
-  verificationOutput?: string;
-  /** Device permanent id is returned in this field (for the machine response only). */
-  devicePermanentId?: string;
   /** Certificate Signing Request (in the SPKAC format, base64 encoded) is returned in this field. This field will be set only if device has included CSR in its challenge response. (the option to include CSR is now available for both user and machine responses) */
   signedPublicKeyAndChallenge?: string;
+  /** For EMCert check, device permanent id is returned here. For EUCert check, signed_public_key_and_challenge [base64 encoded] is returned if present, otherwise empty string is returned. This field is deprecated, please use device_permanent_id or signed_public_key_and_challenge fields. */
+  verificationOutput?: string;
   /** Device enrollment id is returned in this field (for the machine response only). */
   deviceEnrollmentId?: string;
+  /** Device permanent id is returned in this field (for the machine response only). */
+  devicePermanentId?: string;
   /** Attested device id (ADID) of the device, read from the verified data. */
   attestedDeviceId?: string;
 }
@@ -92,10 +92,10 @@ export interface VerifyChallengeResponseResult {
 export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeResponseResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      verificationOutput: Schema.optional(Schema.String),
-      devicePermanentId: Schema.optional(Schema.String),
       signedPublicKeyAndChallenge: Schema.optional(Schema.String),
+      verificationOutput: Schema.optional(Schema.String),
       deviceEnrollmentId: Schema.optional(Schema.String),
+      devicePermanentId: Schema.optional(Schema.String),
       attestedDeviceId: Schema.optional(Schema.String),
     }),
   ).annotate({
@@ -105,37 +105,6 @@ export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeRespons
 // ==========================================================================
 // Operations
 // ==========================================================================
-
-export interface CreateChallengeRequest {
-  /** Request body */
-  body?: Empty;
-}
-
-export const CreateChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(Empty).pipe(T.HttpBody()),
-  },
-).pipe(
-  T.Http({ method: "POST", path: "v1/challenge", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<CreateChallengeRequest>;
-
-export type CreateChallengeResponse = Challenge;
-export const CreateChallengeResponse = /*@__PURE__*/ /*#__PURE__*/ Challenge;
-
-export type CreateChallengeError = DefaultErrors;
-
-/** CreateChallenge API */
-export const createChallenge: API.OperationMethod<
-  CreateChallengeRequest,
-  CreateChallengeResponse,
-  CreateChallengeError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateChallengeRequest,
-  output: CreateChallengeResponse,
-  errors: [],
-}));
 
 export interface VerifyChallengeRequest {
   /** Request body */
@@ -166,5 +135,36 @@ export const verifyChallenge: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyChallengeRequest,
   output: VerifyChallengeResponse,
+  errors: [],
+}));
+
+export interface CreateChallengeRequest {
+  /** Request body */
+  body?: Empty;
+}
+
+export const CreateChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    body: Schema.optional(Empty).pipe(T.HttpBody()),
+  },
+).pipe(
+  T.Http({ method: "POST", path: "v1/challenge", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateChallengeRequest>;
+
+export type CreateChallengeResponse = Challenge;
+export const CreateChallengeResponse = /*@__PURE__*/ /*#__PURE__*/ Challenge;
+
+export type CreateChallengeError = DefaultErrors;
+
+/** CreateChallenge API */
+export const createChallenge: API.OperationMethod<
+  CreateChallengeRequest,
+  CreateChallengeResponse,
+  CreateChallengeError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateChallengeRequest,
+  output: CreateChallengeResponse,
   errors: [],
 }));

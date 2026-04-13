@@ -41,6 +41,7 @@ export const VolumesExtendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       size_gb: Schema.optional(Schema.Number),
       snapshot_retention: Schema.optional(Schema.Number),
       state: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["local", "cache"])),
       zone: Schema.optional(Schema.String),
     }),
   ),

@@ -42,10 +42,10 @@ export const Organization: Schema.Schema<Organization> =
 export interface CustomApp {
   /** Title for the Android app. */
   title?: string;
-  /** Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account. */
-  organizations?: Array<Organization>;
   /** Output only. Package name of the created Android app. Only present in the API response. */
   packageName?: string;
+  /** Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account. */
+  organizations?: Array<Organization>;
   /** Default listing language in BCP 47 format. */
   languageCode?: string;
 }
@@ -54,8 +54,8 @@ export const CustomApp: Schema.Schema<CustomApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       title: Schema.optional(Schema.String),
-      organizations: Schema.optional(Schema.Array(Organization)),
       packageName: Schema.optional(Schema.String),
+      organizations: Schema.optional(Schema.Array(Organization)),
       languageCode: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "CustomApp" }) as any as Schema.Schema<CustomApp>;

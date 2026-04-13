@@ -351,6 +351,11 @@ export const PostAccountsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           requested: Schema.optional(Schema.Boolean),
         }),
       ),
+      upi_payments: Schema.optional(
+        Schema.Struct({
+          requested: Schema.optional(Schema.Boolean),
+        }),
+      ),
       us_bank_account_ach_payments: Schema.optional(
         Schema.Struct({
           requested: Schema.optional(Schema.Boolean),
@@ -975,6 +980,9 @@ export const PostAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Literals(["active", "inactive", "pending"]),
       ),
       twint_payments: Schema.optional(
+        Schema.Literals(["active", "inactive", "pending"]),
+      ),
+      upi_payments: Schema.optional(
         Schema.Literals(["active", "inactive", "pending"]),
       ),
       us_bank_account_ach_payments: Schema.optional(

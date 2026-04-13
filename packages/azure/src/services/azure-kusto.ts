@@ -11,8 +11,9 @@ import * as T from "../traits.ts";
 // Input Schema
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -38,9 +39,10 @@ export type AttachedDatabaseConfigurationsCheckNameAvailabilityOutput =
 /**
  * Checks that the attached database configuration resource name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const AttachedDatabaseConfigurationsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -50,8 +52,10 @@ export const AttachedDatabaseConfigurationsCheckNameAvailability =
 // Input Schema
 export const AttachedDatabaseConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    attachedDatabaseConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -72,9 +76,11 @@ export type AttachedDatabaseConfigurationsCreateOrUpdateOutput =
 /**
  * Creates or updates an attached database configuration.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param attachedDatabaseConfigurationName - The name of the attached database configuration.
  */
 export const AttachedDatabaseConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -84,8 +90,10 @@ export const AttachedDatabaseConfigurationsCreateOrUpdate =
 // Input Schema
 export const AttachedDatabaseConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    attachedDatabaseConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -106,9 +114,11 @@ export type AttachedDatabaseConfigurationsDeleteOutput =
 /**
  * Deletes the attached database configuration with the given name.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param attachedDatabaseConfigurationName - The name of the attached database configuration.
  */
 export const AttachedDatabaseConfigurationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -118,8 +128,10 @@ export const AttachedDatabaseConfigurationsDelete =
 // Input Schema
 export const AttachedDatabaseConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    attachedDatabaseConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -140,9 +152,11 @@ export type AttachedDatabaseConfigurationsGetOutput =
 /**
  * Returns an attached database configuration.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param attachedDatabaseConfigurationName - The name of the attached database configuration.
  */
 export const AttachedDatabaseConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -152,8 +166,9 @@ export const AttachedDatabaseConfigurationsGet =
 // Input Schema
 export const AttachedDatabaseConfigurationsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -168,6 +183,7 @@ export type AttachedDatabaseConfigurationsListByClusterInput =
 export const AttachedDatabaseConfigurationsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type AttachedDatabaseConfigurationsListByClusterOutput =
   typeof AttachedDatabaseConfigurationsListByClusterOutput.Type;
@@ -176,9 +192,10 @@ export type AttachedDatabaseConfigurationsListByClusterOutput =
 /**
  * Returns the list of attached database configurations of the given Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const AttachedDatabaseConfigurationsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -188,8 +205,9 @@ export const AttachedDatabaseConfigurationsListByCluster =
 // Input Schema
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -215,9 +233,10 @@ export type ClusterPrincipalAssignmentsCheckNameAvailabilityOutput =
 /**
  * Checks that the principal assignment name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClusterPrincipalAssignmentsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -229,6 +248,8 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    principalAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -249,9 +270,11 @@ export type ClusterPrincipalAssignmentsCreateOrUpdateOutput =
 /**
  * Create a Kusto cluster principalAssignment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const ClusterPrincipalAssignmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -263,6 +286,8 @@ export const ClusterPrincipalAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    principalAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -283,9 +308,11 @@ export type ClusterPrincipalAssignmentsDeleteOutput =
 /**
  * Deletes a Kusto cluster principalAssignment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const ClusterPrincipalAssignmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -297,6 +324,8 @@ export const ClusterPrincipalAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    principalAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -317,9 +346,11 @@ export type ClusterPrincipalAssignmentsGetOutput =
 /**
  * Gets a Kusto cluster principalAssignment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const ClusterPrincipalAssignmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -331,6 +362,7 @@ export const ClusterPrincipalAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -345,6 +377,7 @@ export type ClusterPrincipalAssignmentsListInput =
 export const ClusterPrincipalAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ClusterPrincipalAssignmentsListOutput =
   typeof ClusterPrincipalAssignmentsListOutput.Type;
@@ -353,9 +386,10 @@ export type ClusterPrincipalAssignmentsListOutput =
 /**
  * Lists all Kusto cluster principalAssignments.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClusterPrincipalAssignmentsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -367,6 +401,7 @@ export const ClustersAddCalloutPoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -387,9 +422,10 @@ export type ClustersAddCalloutPoliciesOutput =
 /**
  * Adds a list of callout policies for engine services.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersAddCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -402,6 +438,7 @@ export const ClustersAddLanguageExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -422,9 +459,10 @@ export type ClustersAddLanguageExtensionsOutput =
 /**
  * Add a list of language extensions that can run within KQL queries.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersAddLanguageExtensions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -473,8 +511,9 @@ export const ClustersCheckNameAvailability =
 // Input Schema
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -498,11 +537,12 @@ export type ClustersCreateOrUpdateOutput =
 /**
  * Create or update a Kusto cluster.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  * @param If-Match - The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  * @param If-None-Match - Set to '*' to allow a new cluster to be created, but to prevent updating an existing cluster. Other values will result in a 412 Pre-condition Failed response.
- * @param subscriptionId - The ID of the target subscription.
- * @param api-version - The API version to use for this operation.
  */
 export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -512,8 +552,9 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -531,9 +572,10 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
 /**
  * Deletes a Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
@@ -542,8 +584,9 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersDetachFollowerDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -564,9 +607,10 @@ export type ClustersDetachFollowerDatabasesOutput =
 /**
  * Detaches all followers of a database owned by this cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersDetachFollowerDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -576,8 +620,9 @@ export const ClustersDetachFollowerDatabases =
 // Input Schema
 export const ClustersDiagnoseVirtualNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -600,9 +645,10 @@ export type ClustersDiagnoseVirtualNetworkOutput =
 /**
  * Diagnoses network connectivity status for external resources on which the service is dependent on.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersDiagnoseVirtualNetwork =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -611,8 +657,9 @@ export const ClustersDiagnoseVirtualNetwork =
   }));
 // Input Schema
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -633,9 +680,10 @@ export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 /**
  * Gets a Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
@@ -663,6 +711,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type ClustersListOutput = typeof ClustersListOutput.Type;
 
@@ -670,8 +719,8 @@ export type ClustersListOutput = typeof ClustersListOutput.Type;
 /**
  * Lists all Kusto clusters within a subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
@@ -680,8 +729,8 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -703,6 +752,7 @@ export const ClustersListByResourceGroupOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListByResourceGroupOutput =
   typeof ClustersListByResourceGroupOutput.Type;
@@ -711,9 +761,9 @@ export type ClustersListByResourceGroupOutput =
 /**
  * Lists all Kusto clusters within a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -724,8 +774,9 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ClustersListCalloutPoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -739,29 +790,27 @@ export type ClustersListCalloutPoliciesInput =
 // Output Schema
 export const ClustersListCalloutPoliciesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          calloutUriRegex: Schema.optional(Schema.String),
-          calloutType: Schema.optional(
-            Schema.Literals([
-              "kusto",
-              "sql",
-              "cosmosdb",
-              "external_data",
-              "azure_digital_twins",
-              "sandbox_artifacts",
-              "webapi",
-              "mysql",
-              "postgresql",
-              "genevametrics",
-              "azure_openai",
-            ]),
-          ),
-          outboundAccess: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-          calloutId: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        calloutUriRegex: Schema.optional(Schema.String),
+        calloutType: Schema.optional(
+          Schema.Literals([
+            "kusto",
+            "sql",
+            "cosmosdb",
+            "external_data",
+            "azure_digital_twins",
+            "sandbox_artifacts",
+            "webapi",
+            "mysql",
+            "postgresql",
+            "genevametrics",
+            "azure_openai",
+          ]),
+        ),
+        outboundAccess: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+        calloutId: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -772,9 +821,10 @@ export type ClustersListCalloutPoliciesOutput =
 /**
  * Returns the allowed callout policies for the specified service.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -785,8 +835,9 @@ export const ClustersListCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ClustersListFollowerDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -832,6 +883,7 @@ export const ClustersListFollowerDatabasesOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListFollowerDatabasesOutput =
   typeof ClustersListFollowerDatabasesOutput.Type;
@@ -840,9 +892,10 @@ export type ClustersListFollowerDatabasesOutput =
 /**
  * Returns a list of databases that are owned by this cluster and were followed by another cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListFollowerDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -852,8 +905,9 @@ export const ClustersListFollowerDatabases =
 // Input Schema
 export const ClustersListFollowerDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -867,45 +921,43 @@ export type ClustersListFollowerDatabasesGetInput =
 // Output Schema
 export const ClustersListFollowerDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              clusterResourceId: Schema.String,
-              attachedDatabaseConfigurationName: Schema.String,
-              databaseName: Schema.optional(Schema.String),
-              tableLevelSharingProperties: Schema.optional(
-                Schema.Struct({
-                  tablesToInclude: Schema.optional(Schema.Array(Schema.String)),
-                  tablesToExclude: Schema.optional(Schema.Array(Schema.String)),
-                  externalTablesToInclude: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  externalTablesToExclude: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  materializedViewsToInclude: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  materializedViewsToExclude: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  functionsToInclude: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  functionsToExclude: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                }),
-              ),
-              databaseShareOrigin: Schema.optional(
-                Schema.Literals(["Direct", "DataShare", "Other"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            clusterResourceId: Schema.String,
+            attachedDatabaseConfigurationName: Schema.String,
+            databaseName: Schema.optional(Schema.String),
+            tableLevelSharingProperties: Schema.optional(
+              Schema.Struct({
+                tablesToInclude: Schema.optional(Schema.Array(Schema.String)),
+                tablesToExclude: Schema.optional(Schema.Array(Schema.String)),
+                externalTablesToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                externalTablesToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                materializedViewsToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                materializedViewsToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                functionsToInclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                functionsToExclude: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }),
+            ),
+            databaseShareOrigin: Schema.optional(
+              Schema.Literals(["Direct", "DataShare", "Other"]),
+            ),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -916,9 +968,10 @@ export type ClustersListFollowerDatabasesGetOutput =
 /**
  * Returns a list of databases that are owned by this cluster and were followed by another cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListFollowerDatabasesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -930,6 +983,7 @@ export const ClustersListLanguageExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -964,6 +1018,7 @@ export const ClustersListLanguageExtensionsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListLanguageExtensionsOutput =
   typeof ClustersListLanguageExtensionsOutput.Type;
@@ -972,9 +1027,10 @@ export type ClustersListLanguageExtensionsOutput =
 /**
  * Returns a list of language extensions that can run within KQL queries.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListLanguageExtensions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -986,6 +1042,7 @@ export const ClustersListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1009,9 +1066,10 @@ export type ClustersListOutboundNetworkDependenciesEndpointsOutput =
 /**
  * Gets the network endpoints of all outbound dependencies of a Kusto cluster
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListOutboundNetworkDependenciesEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1067,6 +1125,7 @@ export const ClustersListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   },
 );
 export type ClustersListSkusOutput = typeof ClustersListSkusOutput.Type;
@@ -1085,8 +1144,9 @@ export const ClustersListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ClustersListSkusByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1187,6 +1247,7 @@ export const ClustersListSkusByResourceOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListSkusByResourceOutput =
   typeof ClustersListSkusByResourceOutput.Type;
@@ -1195,9 +1256,10 @@ export type ClustersListSkusByResourceOutput =
 /**
  * Returns the SKUs available for the provided resource.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersListSkusByResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1207,8 +1269,9 @@ export const ClustersListSkusByResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1226,9 +1289,10 @@ export type ClustersMigrateOutput = typeof ClustersMigrateOutput.Type;
 /**
  * Migrate data from a Kusto cluster to another cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersMigrateInput,
@@ -1239,6 +1303,7 @@ export const ClustersRemoveCalloutPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1259,9 +1324,10 @@ export type ClustersRemoveCalloutPolicyOutput =
 /**
  * Removes callout policy for engine services.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersRemoveCalloutPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1274,6 +1340,7 @@ export const ClustersRemoveLanguageExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1294,9 +1361,10 @@ export type ClustersRemoveLanguageExtensionsOutput =
 /**
  * Remove a list of language extensions that can run within KQL queries.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersRemoveLanguageExtensions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1305,8 +1373,9 @@ export const ClustersRemoveLanguageExtensions =
   }));
 // Input Schema
 export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1324,9 +1393,10 @@ export type ClustersStartOutput = typeof ClustersStartOutput.Type;
 /**
  * Starts a Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersStartInput,
@@ -1334,8 +1404,9 @@ export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1353,9 +1424,10 @@ export type ClustersStopOutput = typeof ClustersStopOutput.Type;
 /**
  * Stops a Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersStopInput,
@@ -1363,8 +1435,9 @@ export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1385,10 +1458,11 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 /**
  * Update a Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param If-Match - The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param If-Match - The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
@@ -1399,6 +1473,8 @@ export const DatabaseInviteFollowerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1421,9 +1497,11 @@ export type DatabaseInviteFollowerOutput =
 /**
  * Generates an invitation token that allows attaching a follower database to this database.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabaseInviteFollower = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1434,8 +1512,10 @@ export const DatabaseInviteFollower = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1461,9 +1541,11 @@ export type DatabasePrincipalAssignmentsCheckNameAvailabilityOutput =
 /**
  * Checks that the database principal assignment is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasePrincipalAssignmentsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1475,6 +1557,9 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    principalAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1495,9 +1580,12 @@ export type DatabasePrincipalAssignmentsCreateOrUpdateOutput =
 /**
  * Creates a Kusto cluster database principalAssignment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const DatabasePrincipalAssignmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1509,6 +1597,9 @@ export const DatabasePrincipalAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    principalAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1529,9 +1620,12 @@ export type DatabasePrincipalAssignmentsDeleteOutput =
 /**
  * Deletes a Kusto principalAssignment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const DatabasePrincipalAssignmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1543,6 +1637,9 @@ export const DatabasePrincipalAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    principalAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1563,9 +1660,12 @@ export type DatabasePrincipalAssignmentsGetOutput =
 /**
  * Gets a Kusto cluster database principalAssignment.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param principalAssignmentName - The name of the Kusto principalAssignment.
  */
 export const DatabasePrincipalAssignmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1577,6 +1677,8 @@ export const DatabasePrincipalAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1591,6 +1693,7 @@ export type DatabasePrincipalAssignmentsListInput =
 export const DatabasePrincipalAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabasePrincipalAssignmentsListOutput =
   typeof DatabasePrincipalAssignmentsListOutput.Type;
@@ -1599,9 +1702,11 @@ export type DatabasePrincipalAssignmentsListOutput =
 /**
  * Lists all Kusto cluster database principalAssignments.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasePrincipalAssignmentsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1611,8 +1716,10 @@ export const DatabasePrincipalAssignmentsList =
 // Input Schema
 export const DatabasesAddPrincipalsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1646,6 +1753,7 @@ export const DatabasesAddPrincipalsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesAddPrincipalsOutput =
   typeof DatabasesAddPrincipalsOutput.Type;
@@ -1654,9 +1762,11 @@ export type DatabasesAddPrincipalsOutput =
 /**
  * Add Database principals permissions.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasesAddPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1667,8 +1777,9 @@ export const DatabasesAddPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1694,9 +1805,10 @@ export type DatabasesCheckNameAvailabilityOutput =
 /**
  * Checks that the databases resource name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const DatabasesCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1706,9 +1818,12 @@ export const DatabasesCheckNameAvailability =
 // Input Schema
 export const DatabasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    callerRole: Schema.optional(Schema.Literals(["Admin", "None"])),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1728,9 +1843,12 @@ export type DatabasesCreateOrUpdateOutput =
 /**
  * Creates or updates a database.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param callerRole - By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
  */
 export const DatabasesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1740,8 +1858,10 @@ export const DatabasesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1759,9 +1879,11 @@ export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 /**
  * Deletes the database with the given name.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesDeleteInput,
@@ -1769,8 +1891,10 @@ export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1788,9 +1912,11 @@ export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
 /**
  * Returns a database.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesGetInput,
@@ -1799,8 +1925,9 @@ export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $top: Schema.optional(Schema.Number),
     $skiptoken: Schema.optional(Schema.String),
@@ -1816,8 +1943,8 @@ export type DatabasesListByClusterInput =
 // Output Schema
 export const DatabasesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
   });
 export type DatabasesListByClusterOutput =
   typeof DatabasesListByClusterOutput.Type;
@@ -1826,9 +1953,10 @@ export type DatabasesListByClusterOutput =
 /**
  * Returns the list of databases of the given Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  * @param $top - limit the number of results
  * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
@@ -1841,8 +1969,10 @@ export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesListPrincipalsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1876,6 +2006,7 @@ export const DatabasesListPrincipalsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesListPrincipalsOutput =
   typeof DatabasesListPrincipalsOutput.Type;
@@ -1884,9 +2015,11 @@ export type DatabasesListPrincipalsOutput =
 /**
  * Returns a list of database principals of the given Kusto cluster and database.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasesListPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1897,8 +2030,10 @@ export const DatabasesListPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesRemovePrincipalsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1932,6 +2067,7 @@ export const DatabasesRemovePrincipalsOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesRemovePrincipalsOutput =
   typeof DatabasesRemovePrincipalsOutput.Type;
@@ -1940,9 +2076,11 @@ export type DatabasesRemovePrincipalsOutput =
 /**
  * Remove Database principals permissions.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DatabasesRemovePrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1952,9 +2090,12 @@ export const DatabasesRemovePrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
+  callerRole: Schema.optional(Schema.Literals(["Admin", "None"])),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1973,9 +2114,12 @@ export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
 /**
  * Updates a database.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param callerRole - By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
  */
 export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesUpdateInput,
@@ -1984,8 +2128,10 @@ export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DataConnectionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2011,9 +2157,11 @@ export type DataConnectionsCheckNameAvailabilityOutput =
 /**
  * Checks that the data connection name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DataConnectionsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2023,8 +2171,11 @@ export const DataConnectionsCheckNameAvailability =
 // Input Schema
 export const DataConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2045,9 +2196,12 @@ export type DataConnectionsCreateOrUpdateOutput =
 /**
  * Creates or updates a data connection.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param dataConnectionName - The name of the data connection.
  */
 export const DataConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2057,8 +2211,10 @@ export const DataConnectionsCreateOrUpdate =
 // Input Schema
 export const DataConnectionsDataConnectionValidationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2087,9 +2243,11 @@ export type DataConnectionsDataConnectionValidationOutput =
 /**
  * Checks that the data connection parameters are valid.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DataConnectionsDataConnectionValidation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2099,8 +2257,11 @@ export const DataConnectionsDataConnectionValidation =
 // Input Schema
 export const DataConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2120,9 +2281,12 @@ export type DataConnectionsDeleteOutput =
 /**
  * Deletes the data connection with the given name.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param dataConnectionName - The name of the data connection.
  */
 export const DataConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2133,8 +2297,11 @@ export const DataConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2153,9 +2320,12 @@ export type DataConnectionsGetOutput = typeof DataConnectionsGetOutput.Type;
 /**
  * Returns a data connection.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param dataConnectionName - The name of the data connection.
  */
 export const DataConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataConnectionsGetInput,
@@ -2164,8 +2334,10 @@ export const DataConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DataConnectionsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2180,6 +2352,7 @@ export type DataConnectionsListByDatabaseInput =
 export const DataConnectionsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type DataConnectionsListByDatabaseOutput =
   typeof DataConnectionsListByDatabaseOutput.Type;
@@ -2188,9 +2361,11 @@ export type DataConnectionsListByDatabaseOutput =
 /**
  * Returns the list of data connections of the given Kusto database.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const DataConnectionsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2200,8 +2375,11 @@ export const DataConnectionsListByDatabase =
 // Input Schema
 export const DataConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2221,9 +2399,12 @@ export type DataConnectionsUpdateOutput =
 /**
  * Updates a data connection.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param dataConnectionName - The name of the data connection.
  */
 export const DataConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2234,8 +2415,9 @@ export const DataConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedPrivateEndpointsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2261,9 +2443,10 @@ export type ManagedPrivateEndpointsCheckNameAvailabilityOutput =
 /**
  * Checks that the managed private endpoints resource name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ManagedPrivateEndpointsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2275,6 +2458,8 @@ export const ManagedPrivateEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2295,9 +2480,11 @@ export type ManagedPrivateEndpointsCreateOrUpdateOutput =
 /**
  * Creates a managed private endpoint.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2309,6 +2496,8 @@ export const ManagedPrivateEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2329,9 +2518,11 @@ export type ManagedPrivateEndpointsDeleteOutput =
 /**
  * Deletes a managed private endpoint.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2343,6 +2534,8 @@ export const ManagedPrivateEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2363,9 +2556,11 @@ export type ManagedPrivateEndpointsGetOutput =
 /**
  * Gets a managed private endpoint.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2378,6 +2573,7 @@ export const ManagedPrivateEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2392,6 +2588,7 @@ export type ManagedPrivateEndpointsListInput =
 export const ManagedPrivateEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ManagedPrivateEndpointsListOutput =
   typeof ManagedPrivateEndpointsListOutput.Type;
@@ -2400,9 +2597,10 @@ export type ManagedPrivateEndpointsListOutput =
 /**
  * Returns the list of managed private endpoints.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const ManagedPrivateEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2415,6 +2613,8 @@ export const ManagedPrivateEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    managedPrivateEndpointName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2435,9 +2635,11 @@ export type ManagedPrivateEndpointsUpdateOutput =
 /**
  * Updates a managed private endpoint.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param managedPrivateEndpointName - The name of the managed private endpoint.
  */
 export const ManagedPrivateEndpointsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2477,7 +2679,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Lists available operations for the Microsoft.Kusto provider.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -2541,10 +2743,10 @@ export type OperationsResultsGetOutput = typeof OperationsResultsGetOutput.Type;
 /**
  * Returns operation results.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
- * @param api-version - The API version to use for this operation.
  */
 export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2557,6 +2759,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2577,9 +2781,11 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Approve or reject a private endpoint connection with a given name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2591,6 +2797,8 @@ export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2611,9 +2819,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes a private endpoint connection with a given name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2625,6 +2835,8 @@ export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2645,9 +2857,11 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets a private endpoint connection.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2659,6 +2873,7 @@ export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2673,6 +2888,7 @@ export type PrivateEndpointConnectionsListInput =
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
@@ -2681,9 +2897,10 @@ export type PrivateEndpointConnectionsListOutput =
 /**
  * Returns the list of private endpoint connections.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2695,6 +2912,8 @@ export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    privateLinkResourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2707,11 +2926,7 @@ export type PrivateLinkResourcesGetInput =
 
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -2719,9 +2934,11 @@ export type PrivateLinkResourcesGetOutput =
 /**
  * Gets a private link resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param privateLinkResourceName - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2734,6 +2951,7 @@ export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2747,15 +2965,8 @@ export type PrivateLinkResourcesListInput =
 // Output Schema
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListOutput =
   typeof PrivateLinkResourcesListOutput.Type;
@@ -2764,9 +2975,10 @@ export type PrivateLinkResourcesListOutput =
 /**
  * Returns the list of private link resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2777,8 +2989,9 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SandboxCustomImagesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2804,9 +3017,10 @@ export type SandboxCustomImagesCheckNameAvailabilityOutput =
 /**
  * Checks that the sandbox custom image resource name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const SandboxCustomImagesCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2818,6 +3032,8 @@ export const SandboxCustomImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2838,9 +3054,11 @@ export type SandboxCustomImagesCreateOrUpdateOutput =
 /**
  * Creates or updates a sandbox custom image.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
 export const SandboxCustomImagesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2852,6 +3070,8 @@ export const SandboxCustomImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2872,9 +3092,11 @@ export type SandboxCustomImagesDeleteOutput =
 /**
  * Deletes a sandbox custom image.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
 export const SandboxCustomImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2887,6 +3109,8 @@ export const SandboxCustomImagesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2907,9 +3131,11 @@ export type SandboxCustomImagesGetOutput =
 /**
  * Returns a sandbox custom image
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
 export const SandboxCustomImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2920,8 +3146,9 @@ export const SandboxCustomImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SandboxCustomImagesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2935,8 +3162,8 @@ export type SandboxCustomImagesListByClusterInput =
 // Output Schema
 export const SandboxCustomImagesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
   });
 export type SandboxCustomImagesListByClusterOutput =
   typeof SandboxCustomImagesListByClusterOutput.Type;
@@ -2945,9 +3172,10 @@ export type SandboxCustomImagesListByClusterOutput =
 /**
  * Returns the list of the existing sandbox custom images of the given Kusto cluster.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
  */
 export const SandboxCustomImagesListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2959,6 +3187,8 @@ export const SandboxCustomImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    sandboxCustomImageName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2979,9 +3209,11 @@ export type SandboxCustomImagesUpdateOutput =
 /**
  * Updates a sandbox custom image.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param sandboxCustomImageName - The name of the sandbox custom image.
  */
 export const SandboxCustomImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2992,8 +3224,10 @@ export const SandboxCustomImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ScriptsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3019,9 +3253,11 @@ export type ScriptsCheckNameAvailabilityOutput =
 /**
  * Checks that the script name is valid and is not already in use.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const ScriptsCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3033,6 +3269,9 @@ export const ScriptsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    scriptName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3052,9 +3291,12 @@ export type ScriptsCreateOrUpdateOutput =
 /**
  * Creates a Kusto database script.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param scriptName - The name of the Kusto database script.
  */
 export const ScriptsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3066,6 +3308,9 @@ export const ScriptsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  scriptName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3083,9 +3328,12 @@ export type ScriptsDeleteOutput = typeof ScriptsDeleteOutput.Type;
 /**
  * Deletes a Kusto database script.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param scriptName - The name of the Kusto database script.
  */
 export const ScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScriptsDeleteInput,
@@ -3095,6 +3343,9 @@ export const ScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ScriptsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  scriptName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3112,9 +3363,12 @@ export type ScriptsGetOutput = typeof ScriptsGetOutput.Type;
 /**
  * Gets a Kusto cluster database script.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param scriptName - The name of the Kusto database script.
  */
 export const ScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScriptsGetInput,
@@ -3125,6 +3379,8 @@ export const ScriptsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3138,6 +3394,7 @@ export type ScriptsListByDatabaseInput = typeof ScriptsListByDatabaseInput.Type;
 export const ScriptsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ScriptsListByDatabaseOutput =
   typeof ScriptsListByDatabaseOutput.Type;
@@ -3146,9 +3403,11 @@ export type ScriptsListByDatabaseOutput =
 /**
  * Returns the list of database scripts for given database.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
  */
 export const ScriptsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3160,6 +3419,9 @@ export const ScriptsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ScriptsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  scriptName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3179,9 +3441,12 @@ export type ScriptsUpdateOutput = typeof ScriptsUpdateOutput.Type;
 /**
  * Updates a database script.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param clusterName - The name of the Kusto cluster.
+ * @param databaseName - The name of the database in the Kusto cluster.
+ * @param scriptName - The name of the Kusto database script.
  */
 export const ScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScriptsUpdateInput,
@@ -3236,6 +3501,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type SkusListOutput = typeof SkusListOutput.Type;
 

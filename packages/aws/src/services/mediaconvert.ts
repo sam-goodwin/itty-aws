@@ -196,6 +196,9 @@ export type __integerMin6Max16 = number;
 export type __integerMin64000Max640000 = number;
 export type __integerMin1Max31 = number;
 export type __integerMin48000Max48000 = number;
+export type __integerMin48000Max768000 = number;
+export type __doubleMinNegative1000Max3 = number;
+export type __doubleMinNegative1000MaxNegative1 = number;
 export type __integerMin16Max24 = number;
 export type __integerMin0Max64 = number;
 export type __integerMin8000Max192000 = number;
@@ -1313,6 +1316,27 @@ export const __listOfInputClipping =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(InputClipping);
 export type InputScanType = "AUTO" | "PSF" | (string & {});
 export const InputScanType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MultiViewInput {
+  FileInput?: string;
+}
+export const MultiViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ FileInput: S.optional(S.String) }).pipe(
+    S.encodeKeys({ FileInput: "fileInput" }),
+  ),
+).annotate({ identifier: "MultiViewInput" }) as any as S.Schema<MultiViewInput>;
+export interface MultiViewSettings {
+  Input?: MultiViewInput;
+}
+export const MultiViewSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Input: S.optional(MultiViewInput) }).pipe(
+    S.encodeKeys({ Input: "input" }),
+  ),
+).annotate({
+  identifier: "MultiViewSettings",
+}) as any as S.Schema<MultiViewSettings>;
+export type __listOfMultiViewSettings = MultiViewSettings[];
+export const __listOfMultiViewSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MultiViewSettings);
 export type InputPsiControl = "IGNORE_PSI" | "USE_PSI" | (string & {});
 export const InputPsiControl = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type __listOf__stringPatternS3ASSETMAPXml = string[];
@@ -1686,6 +1710,7 @@ export interface Input {
   ImageInserter?: ImageInserter;
   InputClippings?: InputClipping[];
   InputScanType?: InputScanType;
+  MultiViewSettings?: MultiViewSettings[];
   Position?: Rectangle;
   ProgramNumber?: number;
   PsiControl?: InputPsiControl;
@@ -1716,6 +1741,7 @@ export const Input = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ImageInserter: S.optional(ImageInserter),
     InputClippings: S.optional(__listOfInputClipping),
     InputScanType: S.optional(InputScanType),
+    MultiViewSettings: S.optional(__listOfMultiViewSettings),
     Position: S.optional(Rectangle),
     ProgramNumber: S.optional(S.Number),
     PsiControl: S.optional(InputPsiControl),
@@ -1745,6 +1771,7 @@ export const Input = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ImageInserter: "imageInserter",
       InputClippings: "inputClippings",
       InputScanType: "inputScanType",
+      MultiViewSettings: "multiViewSettings",
       Position: "position",
       ProgramNumber: "programNumber",
       PsiControl: "psiControl",
@@ -2205,6 +2232,8 @@ export const DestinationSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DestinationSettings",
 }) as any as S.Schema<DestinationSettings>;
+export type HlsClearLead = "ENABLED" | "DISABLED" | (string & {});
+export const HlsClearLead = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafEncryptionType = "SAMPLE_AES" | "AES_CTR" | (string & {});
 export const CmafEncryptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafInitializationVectorInManifest =
@@ -2317,6 +2346,7 @@ export const StaticKeyProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type CmafKeyProviderType = "SPEKE" | "STATIC_KEY" | (string & {});
 export const CmafKeyProviderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CmafEncryptionSettings {
+  ClearLead?: HlsClearLead;
   ConstantInitializationVector?: string;
   EncryptionMethod?: CmafEncryptionType;
   InitializationVectorInManifest?: CmafInitializationVectorInManifest;
@@ -2327,6 +2357,7 @@ export interface CmafEncryptionSettings {
 export const CmafEncryptionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      ClearLead: S.optional(HlsClearLead),
       ConstantInitializationVector: S.optional(S.String),
       EncryptionMethod: S.optional(CmafEncryptionType),
       InitializationVectorInManifest: S.optional(
@@ -2337,6 +2368,7 @@ export const CmafEncryptionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Type: S.optional(CmafKeyProviderType),
     }).pipe(
       S.encodeKeys({
+        ClearLead: "clearLead",
         ConstantInitializationVector: "constantInitializationVector",
         EncryptionMethod: "encryptionMethod",
         InitializationVectorInManifest: "initializationVectorInManifest",
@@ -2358,6 +2390,7 @@ export const CmafImageBasedTrickPlay = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafIntervalCadence =
   | "FOLLOW_IFRAME"
   | "FOLLOW_CUSTOM"
+  | "FOLLOW_SEGMENTATION"
   | (string & {});
 export const CmafIntervalCadence = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CmafImageBasedTrickPlaySettings {
@@ -2641,6 +2674,7 @@ export const DashIsoImageBasedTrickPlay = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type DashIsoIntervalCadence =
   | "FOLLOW_IFRAME"
   | "FOLLOW_CUSTOM"
+  | "FOLLOW_SEGMENTATION"
   | (string & {});
 export const DashIsoIntervalCadence = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DashIsoImageBasedTrickPlaySettings {
@@ -2940,6 +2974,7 @@ export const HlsImageBasedTrickPlay = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type HlsIntervalCadence =
   | "FOLLOW_IFRAME"
   | "FOLLOW_CUSTOM"
+  | "FOLLOW_SEGMENTATION"
   | (string & {});
 export const HlsIntervalCadence = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface HlsImageBasedTrickPlaySettings {
@@ -3552,6 +3587,89 @@ export const Ac3Settings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "Ac3Settings" }) as any as S.Schema<Ac3Settings>;
+export type Ac4BitstreamMode = "COMPLETE_MAIN" | "EMERGENCY" | (string & {});
+export const Ac4BitstreamMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type Ac4CodingMode =
+  | "CODING_MODE_2_0"
+  | "CODING_MODE_3_2_LFE"
+  | "CODING_MODE_5_1_4"
+  | (string & {});
+export const Ac4CodingMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type Ac4DynamicRangeCompressionDrcProfile =
+  | "NONE"
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH"
+  | (string & {});
+export const Ac4DynamicRangeCompressionDrcProfile =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type Ac4StereoDownmix =
+  | "NOT_INDICATED"
+  | "LO_RO"
+  | "LT_RT"
+  | "DPL2"
+  | (string & {});
+export const Ac4StereoDownmix = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Ac4Settings {
+  Bitrate?: number;
+  BitstreamMode?: Ac4BitstreamMode;
+  CodingMode?: Ac4CodingMode;
+  DynamicRangeCompressionFlatPanelTv?: Ac4DynamicRangeCompressionDrcProfile;
+  DynamicRangeCompressionHomeTheater?: Ac4DynamicRangeCompressionDrcProfile;
+  DynamicRangeCompressionPortableHeadphones?: Ac4DynamicRangeCompressionDrcProfile;
+  DynamicRangeCompressionPortableSpeakers?: Ac4DynamicRangeCompressionDrcProfile;
+  LoRoCenterMixLevel?: number;
+  LoRoSurroundMixLevel?: number;
+  LtRtCenterMixLevel?: number;
+  LtRtSurroundMixLevel?: number;
+  SampleRate?: number;
+  StereoDownmix?: Ac4StereoDownmix;
+}
+export const Ac4Settings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Bitrate: S.optional(S.Number),
+    BitstreamMode: S.optional(Ac4BitstreamMode),
+    CodingMode: S.optional(Ac4CodingMode),
+    DynamicRangeCompressionFlatPanelTv: S.optional(
+      Ac4DynamicRangeCompressionDrcProfile,
+    ),
+    DynamicRangeCompressionHomeTheater: S.optional(
+      Ac4DynamicRangeCompressionDrcProfile,
+    ),
+    DynamicRangeCompressionPortableHeadphones: S.optional(
+      Ac4DynamicRangeCompressionDrcProfile,
+    ),
+    DynamicRangeCompressionPortableSpeakers: S.optional(
+      Ac4DynamicRangeCompressionDrcProfile,
+    ),
+    LoRoCenterMixLevel: S.optional(S.Number),
+    LoRoSurroundMixLevel: S.optional(S.Number),
+    LtRtCenterMixLevel: S.optional(S.Number),
+    LtRtSurroundMixLevel: S.optional(S.Number),
+    SampleRate: S.optional(S.Number),
+    StereoDownmix: S.optional(Ac4StereoDownmix),
+  }).pipe(
+    S.encodeKeys({
+      Bitrate: "bitrate",
+      BitstreamMode: "bitstreamMode",
+      CodingMode: "codingMode",
+      DynamicRangeCompressionFlatPanelTv: "dynamicRangeCompressionFlatPanelTv",
+      DynamicRangeCompressionHomeTheater: "dynamicRangeCompressionHomeTheater",
+      DynamicRangeCompressionPortableHeadphones:
+        "dynamicRangeCompressionPortableHeadphones",
+      DynamicRangeCompressionPortableSpeakers:
+        "dynamicRangeCompressionPortableSpeakers",
+      LoRoCenterMixLevel: "loRoCenterMixLevel",
+      LoRoSurroundMixLevel: "loRoSurroundMixLevel",
+      LtRtCenterMixLevel: "ltRtCenterMixLevel",
+      LtRtSurroundMixLevel: "ltRtSurroundMixLevel",
+      SampleRate: "sampleRate",
+      StereoDownmix: "stereoDownmix",
+    }),
+  ),
+).annotate({ identifier: "Ac4Settings" }) as any as S.Schema<Ac4Settings>;
 export interface AiffSettings {
   BitDepth?: number;
   Channels?: number;
@@ -3577,6 +3695,7 @@ export type AudioCodec =
   | "WAV"
   | "AIFF"
   | "AC3"
+  | "AC4"
   | "EAC3"
   | "EAC3_ATMOS"
   | "VORBIS"
@@ -3994,6 +4113,7 @@ export const WavSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AudioCodecSettings {
   AacSettings?: AacSettings;
   Ac3Settings?: Ac3Settings;
+  Ac4Settings?: Ac4Settings;
   AiffSettings?: AiffSettings;
   Codec?: AudioCodec;
   Eac3AtmosSettings?: Eac3AtmosSettings;
@@ -4009,6 +4129,7 @@ export const AudioCodecSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     AacSettings: S.optional(AacSettings),
     Ac3Settings: S.optional(Ac3Settings),
+    Ac4Settings: S.optional(Ac4Settings),
     AiffSettings: S.optional(AiffSettings),
     Codec: S.optional(AudioCodec),
     Eac3AtmosSettings: S.optional(Eac3AtmosSettings),
@@ -4023,6 +4144,7 @@ export const AudioCodecSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.encodeKeys({
       AacSettings: "aacSettings",
       Ac3Settings: "ac3Settings",
+      Ac4Settings: "ac4Settings",
       AiffSettings: "aiffSettings",
       Codec: "codec",
       Eac3AtmosSettings: "eac3AtmosSettings",
@@ -8348,6 +8470,7 @@ export interface InputTemplate {
   ImageInserter?: ImageInserter;
   InputClippings?: InputClipping[];
   InputScanType?: InputScanType;
+  MultiViewSettings?: MultiViewSettings[];
   Position?: Rectangle;
   ProgramNumber?: number;
   PsiControl?: InputPsiControl;
@@ -8373,6 +8496,7 @@ export const InputTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ImageInserter: S.optional(ImageInserter),
     InputClippings: S.optional(__listOfInputClipping),
     InputScanType: S.optional(InputScanType),
+    MultiViewSettings: S.optional(__listOfMultiViewSettings),
     Position: S.optional(Rectangle),
     ProgramNumber: S.optional(S.Number),
     PsiControl: S.optional(InputPsiControl),
@@ -8397,6 +8521,7 @@ export const InputTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ImageInserter: "imageInserter",
       InputClippings: "inputClippings",
       InputScanType: "inputScanType",
+      MultiViewSettings: "multiViewSettings",
       Position: "position",
       ProgramNumber: "programNumber",
       PsiControl: "psiControl",
@@ -9619,6 +9744,8 @@ export type Format =
   | "webm"
   | "mxf"
   | "wave"
+  | "avi"
+  | "mpegts"
   | (string & {});
 export const Format = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FrameRate {
@@ -9679,11 +9806,12 @@ export type Codec =
   | "MP4V"
   | "MPEG2"
   | "PRORES"
+  | "QTRLE"
   | "THEORA"
+  | "UNCOMPRESSED"
   | "VFW"
   | "VP8"
   | "VP9"
-  | "QTRLE"
   | "C608"
   | "C708"
   | "WEBVTT"
@@ -9876,15 +10004,22 @@ export const __listOfTrack = /*@__PURE__*/ /*#__PURE__*/ S.Array(Track);
 export interface Container {
   Duration?: number;
   Format?: Format;
+  StartTimecode?: string;
   Tracks?: Track[];
 }
 export const Container = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Duration: S.optional(S.Number),
     Format: S.optional(Format),
+    StartTimecode: S.optional(S.String),
     Tracks: S.optional(__listOfTrack),
   }).pipe(
-    S.encodeKeys({ Duration: "duration", Format: "format", Tracks: "tracks" }),
+    S.encodeKeys({
+      Duration: "duration",
+      Format: "format",
+      StartTimecode: "startTimecode",
+      Tracks: "tracks",
+    }),
   ),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 export interface Metadata {

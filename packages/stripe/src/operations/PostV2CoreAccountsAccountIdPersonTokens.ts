@@ -271,7 +271,7 @@ export type PostV2CoreAccountsAccountIdPersonTokensOutput =
 
 // The operation
 /**
- * Create a Person Token
+ * Create a person token
  *
  * Creates a Person Token associated with an Account.
  *

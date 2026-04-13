@@ -300,6 +300,7 @@ export type ModelInvocationJobTimeoutDurationInHours = number;
 export type ModelInvocationJobArn = string;
 export type ModelInvocationJobIdentifier = string;
 export type Message = string | redacted.Redacted<string>;
+export type NonNegativeLong = number;
 export type GetFoundationModelIdentifier = string;
 export type BedrockModelId = string;
 export type BrandedName = string;
@@ -312,6 +313,8 @@ export type PositiveInteger = number;
 export type ProvisionedModelName = string;
 export type ProvisionedModelArn = string;
 export type ProvisionedModelId = string;
+export type ResourcePolicyResourceArn = string;
+export type ResourcePolicyDocument = string;
 export type OfferToken = string;
 export type OfferId = string;
 export type BaseModelIdentifier = string;
@@ -1484,6 +1487,7 @@ export type AutomatedReasoningPolicyBuildWorkflowType =
   | "REFINE_POLICY"
   | "IMPORT_POLICY"
   | "GENERATE_FIDELITY_REPORT"
+  | "GENERATE_POLICY_SCENARIOS"
   | (string & {});
 export const AutomatedReasoningPolicyBuildWorkflowType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -4355,6 +4359,24 @@ export const ListEnforcedGuardrailsConfigurationRequest =
   }) as any as S.Schema<ListEnforcedGuardrailsConfigurationRequest>;
 export type InputTags = "HONOR" | "IGNORE" | (string & {});
 export const InputTags = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SelectiveGuardingMode =
+  | "SELECTIVE"
+  | "COMPREHENSIVE"
+  | (string & {});
+export const SelectiveGuardingMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SelectiveContentGuarding {
+  system?: SelectiveGuardingMode;
+  messages?: SelectiveGuardingMode;
+}
+export const SelectiveContentGuarding = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      system: S.optional(SelectiveGuardingMode),
+      messages: S.optional(SelectiveGuardingMode),
+    }),
+).annotate({
+  identifier: "SelectiveContentGuarding",
+}) as any as S.Schema<SelectiveContentGuarding>;
 export type IncludedModelsList = string[];
 export const IncludedModelsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type ExcludedModelsList = string[];
@@ -4376,6 +4398,7 @@ export interface AccountEnforcedGuardrailOutputConfiguration {
   guardrailArn?: string;
   guardrailId?: string;
   inputTags?: InputTags;
+  selectiveContentGuarding?: SelectiveContentGuarding;
   guardrailVersion?: string;
   createdAt?: Date;
   createdBy?: string;
@@ -4391,6 +4414,7 @@ export const AccountEnforcedGuardrailOutputConfiguration =
       guardrailArn: S.optional(S.String),
       guardrailId: S.optional(S.String),
       inputTags: S.optional(InputTags),
+      selectiveContentGuarding: S.optional(SelectiveContentGuarding),
       guardrailVersion: S.optional(S.String),
       createdAt: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4428,7 +4452,7 @@ export const ListEnforcedGuardrailsConfigurationResponse =
 export interface AccountEnforcedGuardrailInferenceInputConfiguration {
   guardrailIdentifier: string;
   guardrailVersion: string;
-  inputTags: InputTags;
+  selectiveContentGuarding?: SelectiveContentGuarding;
   modelEnforcement?: ModelEnforcement;
 }
 export const AccountEnforcedGuardrailInferenceInputConfiguration =
@@ -4436,7 +4460,7 @@ export const AccountEnforcedGuardrailInferenceInputConfiguration =
     S.Struct({
       guardrailIdentifier: S.String,
       guardrailVersion: S.String,
-      inputTags: InputTags,
+      selectiveContentGuarding: S.optional(SelectiveContentGuarding),
       modelEnforcement: S.optional(ModelEnforcement),
     }),
   ).annotate({
@@ -7797,6 +7821,10 @@ export interface GetModelInvocationJobResponse {
   timeoutDurationInHours?: number;
   jobExpirationTime?: Date;
   modelInvocationType?: ModelInvocationType;
+  totalRecordCount?: number;
+  processedRecordCount?: number;
+  successRecordCount?: number;
+  errorRecordCount?: number;
 }
 export const GetModelInvocationJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -7823,6 +7851,10 @@ export const GetModelInvocationJobResponse =
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
       modelInvocationType: S.optional(ModelInvocationType),
+      totalRecordCount: S.optional(S.Number),
+      processedRecordCount: S.optional(S.Number),
+      successRecordCount: S.optional(S.Number),
+      errorRecordCount: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GetModelInvocationJobResponse",
@@ -7884,6 +7916,10 @@ export interface ModelInvocationJobSummary {
   timeoutDurationInHours?: number;
   jobExpirationTime?: Date;
   modelInvocationType?: ModelInvocationType;
+  totalRecordCount?: number;
+  processedRecordCount?: number;
+  successRecordCount?: number;
+  errorRecordCount?: number;
 }
 export const ModelInvocationJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -7910,6 +7946,10 @@ export const ModelInvocationJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
       modelInvocationType: S.optional(ModelInvocationType),
+      totalRecordCount: S.optional(S.Number),
+      processedRecordCount: S.optional(S.Number),
+      successRecordCount: S.optional(S.Number),
+      errorRecordCount: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "ModelInvocationJobSummary",
@@ -8632,6 +8672,82 @@ export const UpdateProvisionedModelThroughputResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateProvisionedModelThroughputResponse",
   }) as any as S.Schema<UpdateProvisionedModelThroughputResponse>;
+export interface DeleteResourcePolicyRequest {
+  resourceArn: string;
+}
+export const DeleteResourcePolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/resource-policy/{resourceArn}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteResourcePolicyRequest",
+  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+export interface DeleteResourcePolicyResponse {}
+export const DeleteResourcePolicyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteResourcePolicyResponse",
+  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export interface GetResourcePolicyRequest {
+  resourceArn: string;
+}
+export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/resource-policy/{resourceArn}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetResourcePolicyRequest",
+}) as any as S.Schema<GetResourcePolicyRequest>;
+export interface GetResourcePolicyResponse {
+  resourcePolicy?: string;
+}
+export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ resourcePolicy: S.optional(S.String) }),
+).annotate({
+  identifier: "GetResourcePolicyResponse",
+}) as any as S.Schema<GetResourcePolicyResponse>;
+export interface PutResourcePolicyRequest {
+  resourceArn: string;
+  resourcePolicy: string;
+}
+export const PutResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ resourceArn: S.String, resourcePolicy: S.String }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/resource-policy" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PutResourcePolicyRequest",
+}) as any as S.Schema<PutResourcePolicyRequest>;
+export interface PutResourcePolicyResponse {
+  resourceArn?: string;
+}
+export const PutResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ resourceArn: S.optional(S.String) }),
+).annotate({
+  identifier: "PutResourcePolicyResponse",
+}) as any as S.Schema<PutResourcePolicyResponse>;
 export interface CreateFoundationModelAgreementRequest {
   offerToken: string;
   modelId: string;
@@ -12137,6 +12253,84 @@ export const updateProvisionedModelThroughput: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a previously created Bedrock resource policy.
+ */
+export const deleteResourcePolicy: API.OperationMethod<
+  DeleteResourcePolicyRequest,
+  DeleteResourcePolicyResponse,
+  DeleteResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets the resource policy document for a Bedrock resource
+ */
+export const getResourcePolicy: API.OperationMethod<
+  GetResourcePolicyRequest,
+  GetResourcePolicyResponse,
+  GetResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type PutResourcePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Adds a resource policy for a Bedrock resource.
+ */
+export const putResourcePolicy: API.OperationMethod<
+  PutResourcePolicyRequest,
+  PutResourcePolicyResponse,
+  PutResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
     ThrottlingException,
     ValidationException,
   ],

@@ -66,6 +66,7 @@ export const PostSetupIntentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sofort",
         "swish",
         "twint",
+        "upi",
         "us_bank_account",
         "wechat_pay",
         "zip",
@@ -377,10 +378,25 @@ export const PostSetupIntentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sofort",
         "swish",
         "twint",
+        "upi",
         "us_bank_account",
         "wechat_pay",
         "zip",
       ]),
+      upi: Schema.optional(
+        Schema.Struct({
+          mandate_options: Schema.optional(
+            Schema.Struct({
+              amount: Schema.optional(Schema.Number),
+              amount_type: Schema.optional(
+                Schema.Literals(["fixed", "maximum"]),
+              ),
+              description: Schema.optional(Schema.String),
+              end_date: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
       us_bank_account: Schema.optional(
         Schema.Struct({
           account_holder_type: Schema.optional(
@@ -645,6 +661,23 @@ export const PostSetupIntentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }),
       ),
+      upi: Schema.optional(
+        Schema.Struct({
+          mandate_options: Schema.optional(
+            Schema.Struct({
+              amount: Schema.optional(Schema.Number),
+              amount_type: Schema.optional(
+                Schema.Literals(["fixed", "maximum"]),
+              ),
+              description: Schema.optional(Schema.String),
+              end_date: Schema.optional(Schema.Number),
+            }),
+          ),
+          setup_future_usage: Schema.optional(
+            Schema.Literals(["", "none", "off_session", "on_session"]),
+          ),
+        }),
+      ),
       us_bank_account: Schema.optional(
         Schema.Struct({
           financial_connections: Schema.optional(
@@ -777,6 +810,7 @@ export const PostSetupIntentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",

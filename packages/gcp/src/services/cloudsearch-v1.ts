@@ -1125,10 +1125,26 @@ export const SuggestRequest: Schema.Schema<SuggestRequest> =
     identifier: "SuggestRequest",
   }) as any as Schema.Schema<SuggestRequest>;
 
-export interface QuerySuggestion {}
+export interface QuerySuggestion {
+  /** Source corpus of the suggestion. */
+  sourceCorpus?:
+    | "SOURCE_CORPUS_UNSPECIFIED"
+    | "GMAIL"
+    | "DRIVE"
+    | "CHAT"
+    | "CALENDAR"
+    | (string & {});
+  /** Last query time of the suggestion for query history suggestions. */
+  lastQueryTime?: string;
+}
 
 export const QuerySuggestion: Schema.Schema<QuerySuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sourceCorpus: Schema.optional(Schema.String),
+      lastQueryTime: Schema.optional(Schema.String),
+    }),
+  ).annotate({
     identifier: "QuerySuggestion",
   }) as any as Schema.Schema<QuerySuggestion>;
 

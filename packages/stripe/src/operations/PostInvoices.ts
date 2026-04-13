@@ -476,6 +476,7 @@ export const PostInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         pricing: Schema.Unknown,
         quantity: Schema.NullOr(Schema.Number),
+        quantity_decimal: Schema.NullOr(Schema.String),
         subscription: Schema.Unknown,
         subtotal: Schema.Number,
         taxes: Schema.NullOr(
@@ -698,7 +699,7 @@ export type PostInvoicesOutput = typeof PostInvoicesOutput.Type;
 /**
  * Create an invoice
  *
- * <p>This endpoint creates a draft invoice for a given customer. The invoice remains a draft until you <a href="#finalize_invoice">finalize</a> the invoice, which allows you to <a href="/api/invoices/pay">pay</a> or <a href="/api/invoices/send">send</a> the invoice to your customers.</p>
+ * <p>This endpoint creates a draft invoice for a given customer. The invoice remains a draft until you <a href="/api/invoices/finalize">finalize</a> the invoice, which allows you to <a href="/api/invoices/pay">pay</a> or <a href="/api/invoices/send">send</a> the invoice to your customers.</p>
  */
 export const PostInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PostInvoicesInput,

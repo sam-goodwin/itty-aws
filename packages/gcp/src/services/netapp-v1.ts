@@ -182,12 +182,15 @@ export interface StoragePool {
   coldTierSizeUsedGib?: string;
   /** Output only. Total hot tier data rounded down to the nearest GiB used by the storage pool. */
   hotTierSizeUsedGib?: string;
-  /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with large capacity. If not specified during creation, it defaults to `FILE`. */
-  type?:
-    | "STORAGE_POOL_TYPE_UNSPECIFIED"
-    | "FILE"
-    | "UNIFIED"
-    | "UNIFIED_LARGE_CAPACITY"
+  /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not specified during creation, it defaults to `FILE`. */
+  type?: "STORAGE_POOL_TYPE_UNSPECIFIED" | "FILE" | "UNIFIED" | (string & {});
+  /** Optional. Mode of the storage pool. This field is used to control whether the user can perform the ONTAP operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults to `DEFAULT`. */
+  mode?: "MODE_UNSPECIFIED" | "DEFAULT" | "ONTAP" | (string & {});
+  /** Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified. */
+  scaleType?:
+    | "SCALE_TYPE_UNSPECIFIED"
+    | "SCALE_TYPE_DEFAULT"
+    | "SCALE_TYPE_SCALEOUT"
     | (string & {});
 }
 
@@ -226,6 +229,8 @@ export const StoragePool: Schema.Schema<StoragePool> =
       coldTierSizeUsedGib: Schema.optional(Schema.String),
       hotTierSizeUsedGib: Schema.optional(Schema.String),
       type: Schema.optional(Schema.String),
+      mode: Schema.optional(Schema.String),
+      scaleType: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "StoragePool",
@@ -493,7 +498,7 @@ export const SnapshotPolicy: Schema.Schema<SnapshotPolicy> =
 export interface RestoreParameters {
   /** Full name of the snapshot resource. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
   sourceSnapshot?: string;
-  /** Full name of the backup resource. Format: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} */
+  /** Full name of the backup resource. Format for standard backup: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} Format for BackupDR backup: projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup} */
   sourceBackup?: string;
 }
 
@@ -730,6 +735,20 @@ export const BlockDevice: Schema.Schema<BlockDevice> =
     identifier: "BlockDevice",
   }) as any as Schema.Schema<BlockDevice>;
 
+export interface LargeCapacityConfig {
+  /** Optional. The number of internal constituents (e.g., FlexVols) for this large volume. The minimum number of constituents is 2. */
+  constituentCount?: number;
+}
+
+export const LargeCapacityConfig: Schema.Schema<LargeCapacityConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      constituentCount: Schema.optional(Schema.Number),
+    }),
+  ).annotate({
+    identifier: "LargeCapacityConfig",
+  }) as any as Schema.Schema<LargeCapacityConfig>;
+
 export interface CloneDetails {
   /** Output only. Specifies the full resource name of the source snapshot from which this volume was cloned. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
   sourceSnapshot?: string;
@@ -859,7 +878,7 @@ export interface Volume {
   restrictedActions?: Array<
     "RESTRICTED_ACTION_UNSPECIFIED" | "DELETE" | (string & {})
   >;
-  /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. */
+  /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and `large_capacity_config` are mutually exclusive. */
   largeCapacity?: boolean;
   /** Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints. Only the volume with large_capacity will be allowed to have multiple endpoints. */
   multipleEndpoints?: boolean;
@@ -881,6 +900,8 @@ export interface Volume {
   hotTierSizeUsedGib?: string;
   /** Optional. Block devices for the volume. Currently, only one block device is permitted per Volume. */
   blockDevices?: Array<BlockDevice>;
+  /** Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy `large_capacity` boolean field are mutually exclusive. */
+  largeCapacityConfig?: LargeCapacityConfig;
   /** Output only. If this volume is a clone, this field contains details about the clone. */
   cloneDetails?: CloneDetails;
 }
@@ -930,6 +951,7 @@ export const Volume: Schema.Schema<Volume> =
       cacheParameters: Schema.optional(CacheParameters),
       hotTierSizeUsedGib: Schema.optional(Schema.String),
       blockDevices: Schema.optional(Schema.Array(BlockDevice)),
+      largeCapacityConfig: Schema.optional(LargeCapacityConfig),
       cloneDetails: Schema.optional(CloneDetails),
     }),
   ).annotate({ identifier: "Volume" }) as any as Schema.Schema<Volume>;
@@ -1679,7 +1701,7 @@ export interface Backup {
   volumeUsageBytes?: string;
   /** Output only. Type of backup, manually created or created by a backup policy. */
   backupType?: "TYPE_UNSPECIFIED" | "MANUAL" | "SCHEDULED" | (string & {});
-  /** Volume full name of this backup belongs to. Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}` */
+  /** Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}` */
   sourceVolume?: string;
   /** If specified, backup will be created from the given snapshot. If not specified, there will be a new snapshot taken to initiate the backup creation. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}` */
   sourceSnapshot?: string;
@@ -1959,6 +1981,90 @@ export const ListHostGroupsResponse: Schema.Schema<ListHostGroupsResponse> =
     identifier: "ListHostGroupsResponse",
   }) as any as Schema.Schema<ListHostGroupsResponse>;
 
+export interface ExecuteOntapPostRequest {
+  /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPostRequest: Schema.Schema<ExecuteOntapPostRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({
+    identifier: "ExecuteOntapPostRequest",
+  }) as any as Schema.Schema<ExecuteOntapPostRequest>;
+
+export interface ExecuteOntapPostResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPostResponse: Schema.Schema<ExecuteOntapPostResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({
+    identifier: "ExecuteOntapPostResponse",
+  }) as any as Schema.Schema<ExecuteOntapPostResponse>;
+
+export interface ExecuteOntapGetResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapGetResponse: Schema.Schema<ExecuteOntapGetResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({
+    identifier: "ExecuteOntapGetResponse",
+  }) as any as Schema.Schema<ExecuteOntapGetResponse>;
+
+export interface ExecuteOntapDeleteResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapDeleteResponse: Schema.Schema<ExecuteOntapDeleteResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({
+    identifier: "ExecuteOntapDeleteResponse",
+  }) as any as Schema.Schema<ExecuteOntapDeleteResponse>;
+
+export interface ExecuteOntapPatchRequest {
+  /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPatchRequest: Schema.Schema<ExecuteOntapPatchRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({
+    identifier: "ExecuteOntapPatchRequest",
+  }) as any as Schema.Schema<ExecuteOntapPatchRequest>;
+
+export interface ExecuteOntapPatchResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPatchResponse: Schema.Schema<ExecuteOntapPatchResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({
+    identifier: "ExecuteOntapPatchResponse",
+  }) as any as Schema.Schema<ExecuteOntapPatchResponse>;
+
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
@@ -2104,7 +2210,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2590,6 +2696,158 @@ export const switchProjectsLocationsStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchProjectsLocationsStoragePoolsRequest,
   output: SwitchProjectsLocationsStoragePoolsResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+  /** Request body */
+  body?: ExecuteOntapPostRequest;
+}
+
+export const ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+    body: Schema.optional(ExecuteOntapPostRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapPostResponse;
+export const ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapPostResponse;
+
+export type ExecuteOntapPostProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster. */
+export const executeOntapPostProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapPostProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+}
+
+export const ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapGetResponse;
+export const ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapGetResponse;
+
+export type ExecuteOntapGetProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster. */
+export const executeOntapGetProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapGetProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+}
+
+export const ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapDeleteResponse;
+export const ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapDeleteResponse;
+
+export type ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster. */
+export const executeOntapDeleteProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+  /** Request body */
+  body?: ExecuteOntapPatchRequest;
+}
+
+export const ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+    body: Schema.optional(ExecuteOntapPatchRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapPatchResponse;
+export const ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapPatchResponse;
+
+export type ExecuteOntapPatchProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster. */
+export const executeOntapPatchProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapPatchProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse,
   errors: [],
 }));
 

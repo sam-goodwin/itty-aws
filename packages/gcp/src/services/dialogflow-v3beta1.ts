@@ -1970,6 +1970,7 @@ export interface GoogleCloudDialogflowCxV3beta1Intent {
   isFallback?: boolean;
   labels?: Record<string, string>;
   description?: string;
+  dtmfPattern?: string;
 }
 
 export const GoogleCloudDialogflowCxV3beta1Intent: Schema.Schema<GoogleCloudDialogflowCxV3beta1Intent> =
@@ -1987,6 +1988,7 @@ export const GoogleCloudDialogflowCxV3beta1Intent: Schema.Schema<GoogleCloudDial
       isFallback: Schema.optional(Schema.Boolean),
       labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       description: Schema.optional(Schema.String),
+      dtmfPattern: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1Intent",
@@ -3580,6 +3582,97 @@ export const GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult: Schema.Schem
     identifier: "GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult",
   }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult>;
 
+export interface GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata {
+  playbook?: string;
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      playbook: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata",
+  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata>;
+
+export interface GoogleCloudDialogflowCxV3beta1FlowTraceMetadata {
+  flow?: string;
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3beta1FlowTraceMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1FlowTraceMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      flow: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowCxV3beta1FlowTraceMetadata",
+  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1FlowTraceMetadata>;
+
+export interface GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata {
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata",
+  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata>;
+
+export interface GoogleCloudDialogflowCxV3beta1TraceBlock {
+  playbookTraceMetadata?: GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata;
+  flowTraceMetadata?: GoogleCloudDialogflowCxV3beta1FlowTraceMetadata;
+  speechProcessingMetadata?: GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata;
+  actions?: Array<GoogleCloudDialogflowCxV3beta1Action>;
+  startTime?: string;
+  completeTime?: string;
+  inputParameters?: Record<string, unknown>;
+  outputParameters?: Record<string, unknown>;
+  endState?:
+    | "OUTPUT_STATE_UNSPECIFIED"
+    | "OUTPUT_STATE_OK"
+    | "OUTPUT_STATE_CANCELLED"
+    | "OUTPUT_STATE_FAILED"
+    | "OUTPUT_STATE_ESCALATED"
+    | "OUTPUT_STATE_PENDING"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowCxV3beta1TraceBlock: Schema.Schema<GoogleCloudDialogflowCxV3beta1TraceBlock> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      playbookTraceMetadata: Schema.optional(
+        GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata,
+      ),
+      flowTraceMetadata: Schema.optional(
+        GoogleCloudDialogflowCxV3beta1FlowTraceMetadata,
+      ),
+      speechProcessingMetadata: Schema.optional(
+        GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata,
+      ),
+      actions: Schema.optional(
+        Schema.Array(GoogleCloudDialogflowCxV3beta1Action),
+      ),
+      startTime: Schema.optional(Schema.String),
+      completeTime: Schema.optional(Schema.String),
+      inputParameters: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      outputParameters: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      endState: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDialogflowCxV3beta1TraceBlock",
+  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TraceBlock>;
+
 export interface GoogleCloudDialogflowCxV3beta1QueryResult {
   text?: string;
   triggerIntent?: string;
@@ -3606,6 +3699,7 @@ export interface GoogleCloudDialogflowCxV3beta1QueryResult {
   advancedSettings?: GoogleCloudDialogflowCxV3beta1AdvancedSettings;
   allowAnswerFeedback?: boolean;
   dataStoreConnectionSignals?: GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals;
+  traceBlocks?: Array<GoogleCloudDialogflowCxV3beta1TraceBlock>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1QueryResult: Schema.Schema<GoogleCloudDialogflowCxV3beta1QueryResult> =
@@ -3649,6 +3743,9 @@ export const GoogleCloudDialogflowCxV3beta1QueryResult: Schema.Schema<GoogleClou
       allowAnswerFeedback: Schema.optional(Schema.Boolean),
       dataStoreConnectionSignals: Schema.optional(
         GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals,
+      ),
+      traceBlocks: Schema.optional(
+        Schema.Array(GoogleCloudDialogflowCxV3beta1TraceBlock),
       ),
     }),
   ).annotate({
@@ -7265,6 +7362,7 @@ export interface GoogleCloudDialogflowCxV3Intent {
   isFallback?: boolean;
   labels?: Record<string, string>;
   description?: string;
+  dtmfPattern?: string;
 }
 
 export const GoogleCloudDialogflowCxV3Intent: Schema.Schema<GoogleCloudDialogflowCxV3Intent> =
@@ -7282,6 +7380,7 @@ export const GoogleCloudDialogflowCxV3Intent: Schema.Schema<GoogleCloudDialogflo
       isFallback: Schema.optional(Schema.Boolean),
       labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       description: Schema.optional(Schema.String),
+      dtmfPattern: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "GoogleCloudDialogflowCxV3Intent",
@@ -10706,6 +10805,9 @@ export const GoogleCloudDialogflowV2AgentCoachingSuggestion: Schema.Schema<Googl
 
 export interface GoogleCloudDialogflowV2ToolCall {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   toolDisplayName?: string;
   toolDisplayDetails?: string;
   action?: string;
@@ -10723,6 +10825,9 @@ export const GoogleCloudDialogflowV2ToolCall: Schema.Schema<GoogleCloudDialogflo
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       toolDisplayName: Schema.optional(Schema.String),
       toolDisplayDetails: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
@@ -10752,6 +10857,9 @@ export const GoogleCloudDialogflowV2ToolCallResultError: Schema.Schema<GoogleClo
 
 export interface GoogleCloudDialogflowV2ToolCallResult {
   tool?: string;
+  cesToolset?: string;
+  cesTool?: string;
+  cesApp?: string;
   action?: string;
   error?: GoogleCloudDialogflowV2ToolCallResultError;
   rawContent?: string;
@@ -10764,6 +10872,9 @@ export const GoogleCloudDialogflowV2ToolCallResult: Schema.Schema<GoogleCloudDia
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
       error: Schema.optional(GoogleCloudDialogflowV2ToolCallResultError),
       rawContent: Schema.optional(Schema.String),
@@ -13774,6 +13885,9 @@ export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestion: Schema.Schema<
 
 export interface GoogleCloudDialogflowV2beta1ToolCall {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   toolDisplayName?: string;
   toolDisplayDetails?: string;
   action?: string;
@@ -13791,6 +13905,9 @@ export const GoogleCloudDialogflowV2beta1ToolCall: Schema.Schema<GoogleCloudDial
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       toolDisplayName: Schema.optional(Schema.String),
       toolDisplayDetails: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
@@ -13820,6 +13937,9 @@ export const GoogleCloudDialogflowV2beta1ToolCallResultError: Schema.Schema<Goog
 
 export interface GoogleCloudDialogflowV2beta1ToolCallResult {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   action?: string;
   error?: GoogleCloudDialogflowV2beta1ToolCallResultError;
   rawContent?: string;
@@ -13832,6 +13952,9 @@ export const GoogleCloudDialogflowV2beta1ToolCallResult: Schema.Schema<GoogleClo
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tool: Schema.optional(Schema.String),
+      cesTool: Schema.optional(Schema.String),
+      cesToolset: Schema.optional(Schema.String),
+      cesApp: Schema.optional(Schema.String),
       action: Schema.optional(Schema.String),
       error: Schema.optional(GoogleCloudDialogflowV2beta1ToolCallResultError),
       rawContent: Schema.optional(Schema.String),

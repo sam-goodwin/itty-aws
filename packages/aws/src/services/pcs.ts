@@ -221,6 +221,31 @@ export const SlurmCustomSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type SlurmCustomSettings = SlurmCustomSetting[];
 export const SlurmCustomSettings =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SlurmCustomSetting);
+export interface SlurmdbdCustomSetting {
+  parameterName: string;
+  parameterValue: string;
+}
+export const SlurmdbdCustomSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ parameterName: S.String, parameterValue: S.String }),
+).annotate({
+  identifier: "SlurmdbdCustomSetting",
+}) as any as S.Schema<SlurmdbdCustomSetting>;
+export type SlurmdbdCustomSettings = SlurmdbdCustomSetting[];
+export const SlurmdbdCustomSettings = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  SlurmdbdCustomSetting,
+);
+export interface CgroupCustomSetting {
+  parameterName: string;
+  parameterValue: string;
+}
+export const CgroupCustomSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ parameterName: S.String, parameterValue: S.String }),
+).annotate({
+  identifier: "CgroupCustomSetting",
+}) as any as S.Schema<CgroupCustomSetting>;
+export type CgroupCustomSettings = CgroupCustomSetting[];
+export const CgroupCustomSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CgroupCustomSetting);
 export type AccountingMode = "STANDARD" | "NONE" | (string & {});
 export const AccountingMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface AccountingRequest {
@@ -248,6 +273,8 @@ export const SlurmRestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ClusterSlurmConfigurationRequest {
   scaleDownIdleTimeInSeconds?: number;
   slurmCustomSettings?: SlurmCustomSetting[];
+  slurmdbdCustomSettings?: SlurmdbdCustomSetting[];
+  cgroupCustomSettings?: CgroupCustomSetting[];
   accounting?: AccountingRequest;
   slurmRest?: SlurmRestRequest;
 }
@@ -256,6 +283,8 @@ export const ClusterSlurmConfigurationRequest =
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
+      slurmdbdCustomSettings: S.optional(SlurmdbdCustomSettings),
+      cgroupCustomSettings: S.optional(CgroupCustomSettings),
       accounting: S.optional(AccountingRequest),
       slurmRest: S.optional(SlurmRestRequest),
     }),
@@ -345,6 +374,8 @@ export const SlurmRest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ClusterSlurmConfiguration {
   scaleDownIdleTimeInSeconds?: number;
   slurmCustomSettings?: SlurmCustomSetting[];
+  slurmdbdCustomSettings?: SlurmdbdCustomSetting[];
+  cgroupCustomSettings?: CgroupCustomSetting[];
   authKey?: SlurmAuthKey;
   jwtAuth?: JwtAuth;
   accounting?: Accounting;
@@ -355,6 +386,8 @@ export const ClusterSlurmConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
+      slurmdbdCustomSettings: S.optional(SlurmdbdCustomSettings),
+      cgroupCustomSettings: S.optional(CgroupCustomSettings),
       authKey: S.optional(SlurmAuthKey),
       jwtAuth: S.optional(JwtAuth),
       accounting: S.optional(Accounting),
@@ -490,6 +523,8 @@ export const UpdateSlurmRestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface UpdateClusterSlurmConfigurationRequest {
   scaleDownIdleTimeInSeconds?: number;
   slurmCustomSettings?: SlurmCustomSetting[];
+  slurmdbdCustomSettings?: SlurmdbdCustomSetting[];
+  cgroupCustomSettings?: CgroupCustomSetting[];
   accounting?: UpdateAccountingRequest;
   slurmRest?: UpdateSlurmRestRequest;
 }
@@ -498,6 +533,8 @@ export const UpdateClusterSlurmConfigurationRequest =
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
+      slurmdbdCustomSettings: S.optional(SlurmdbdCustomSettings),
+      cgroupCustomSettings: S.optional(CgroupCustomSettings),
       accounting: S.optional(UpdateAccountingRequest),
       slurmRest: S.optional(UpdateSlurmRestRequest),
     }),

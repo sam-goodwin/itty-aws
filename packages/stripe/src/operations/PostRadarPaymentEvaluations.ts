@@ -184,13 +184,6 @@ export const PostRadarPaymentEvaluationsOutput =
       ),
     ),
     id: Schema.String,
-    insights: Schema.Struct({
-      evaluated_at: Schema.Number,
-      fraudulent_dispute: Schema.Struct({
-        recommended_action: Schema.Literals(["block", "continue"]),
-        risk_score: Schema.Number,
-      }),
-    }),
     livemode: Schema.Boolean,
     metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     object: Schema.Literals(["radar.payment_evaluation"]),
@@ -206,6 +199,14 @@ export const PostRadarPaymentEvaluationsOutput =
         statement_descriptor: Schema.NullOr(Schema.String),
       }),
     ),
+    recommended_action: Schema.Literals(["block", "continue"]),
+    signals: Schema.Struct({
+      fraudulent_payment: Schema.Struct({
+        evaluated_at: Schema.Number,
+        risk_level: Schema.Literals(["elevated", "highest", "normal"]),
+        score: Schema.Number,
+      }),
+    }),
   });
 export type PostRadarPaymentEvaluationsOutput =
   typeof PostRadarPaymentEvaluationsOutput.Type;

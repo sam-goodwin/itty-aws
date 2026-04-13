@@ -13,6 +13,7 @@ export const PlatformPlacementsPostInput =
         gpus: Schema.optional(Schema.Number),
         host_dedication_id: Schema.optional(Schema.String),
         kernel_args: Schema.optional(Schema.Array(Schema.String)),
+        max_memory_mb: Schema.optional(Schema.Number),
         memory_mb: Schema.optional(Schema.Number),
         persist_rootfs: Schema.optional(
           Schema.Literals(["never", "always", "restart"]),

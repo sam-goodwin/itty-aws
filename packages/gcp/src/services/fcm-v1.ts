@@ -116,7 +116,7 @@ export interface AndroidNotification {
   eventTime?: string;
   /** Set whether or not this notification is relevant only to the current device. Some notifications can be bridged to other devices for remote display, such as a Wear OS watch. This hint can be set to recommend this notification not be bridged. See [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging) */
   localOnly?: boolean;
-  /** Set the relative priority for this notification. Priority is an indication of how much of the user's attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. The effect of setting the same priorities may differ slightly on different platforms. Note this priority differs from `AndroidMessagePriority`. This priority is processed by the client after the message has been delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that controls when the message is delivered. */
+  /** Set the relative priority for this notification. Priority is an indication of how much of the user's attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. This parameter affects notification priority only on devices running Android 7.1 (API level 25) and lower. On Android 8.0 (API level 26) and higher, priority is ignored in favor of channel [importance](https://developer.android.com/develop/ui/views/notifications/channels#importance). Note this priority differs from `AndroidMessagePriority`. This priority is processed by the client after the message has been delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that controls when the message is delivered. */
   notificationPriority?:
     | "PRIORITY_UNSPECIFIED"
     | "PRIORITY_MIN"
@@ -146,8 +146,6 @@ export interface AndroidNotification {
   lightSettings?: LightSettings;
   /** Contains the URL of an image that is going to be displayed in a notification. If present, it will override google.firebase.fcm.v1.Notification.image. */
   image?: string;
-  /** If set, display notifications delivered to the device will be handled by the app instead of the proxy. */
-  bypassProxyNotification?: boolean;
   /** Setting to control when a notification may be proxied. */
   proxy?:
     | "PROXY_UNSPECIFIED"
@@ -185,7 +183,6 @@ export const AndroidNotification: Schema.Schema<AndroidNotification> =
       notificationCount: Schema.optional(Schema.Number),
       lightSettings: Schema.optional(LightSettings),
       image: Schema.optional(Schema.String),
-      bypassProxyNotification: Schema.optional(Schema.Boolean),
       proxy: Schema.optional(Schema.String),
     }),
   ).annotate({
@@ -209,7 +206,7 @@ export const AndroidFcmOptions: Schema.Schema<AndroidFcmOptions> =
 export interface AndroidConfig {
   /** An identifier of a group of messages that can be collapsed, so that only the last message gets sent when delivery can be resumed. A maximum of 4 different collapse keys is allowed at any given time. */
   collapseKey?: string;
-  /** Message priority. Can take "normal" and "high" values. For more information, see [Setting the priority of a message](https://goo.gl/GjONJv). */
+  /** Message priority. Can take "normal" and "high" values. For more information, see [Setting the priority of a message](https://firebase.google.com/docs/cloud-messaging/customize-messages/setting-message-priority). */
   priority?: "NORMAL" | "HIGH" | (string & {});
   /** How long (in seconds) the message should be kept in FCM storage if the device is offline. The maximum time to live supported is 4 weeks, and the default value is 4 weeks if not set. Set it to 0 if want to send the message immediately. In JSON format, the Duration type is encoded as a string rather than an object, where the string ends in the suffix "s" (indicating seconds) and is preceded by the number of seconds, with nanoseconds expressed as fractional seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.000000001s". The ttl will be rounded down to the nearest second. */
   ttl?: string;

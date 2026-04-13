@@ -487,7 +487,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource: Schema.Schema<Go
 export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /** Sources that this IngressPolicy authorizes access from. */
   sources?: Array<GoogleIdentityAccesscontextmanagerV1IngressSource>;
-  /** A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For third-party identity, only single identities are supported and other identity types are not supported. The `v1` identities that have the prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported. */
+  /** A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
   identities?: Array<string>;
   /** Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
@@ -609,7 +609,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSource: Schema.Schema<Goo
   }) as any as Schema.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource>;
 
 export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
-  /** A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For third-party identity, only single identities are supported and other identity types are not supported. The `v1` identities that have the prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported. */
+  /** A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
   identities?: Array<string>;
   /** Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:

@@ -20,6 +20,7 @@ export const V1CreateRestorePointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
     status: Schema.Literals(["AVAILABLE", "PENDING", "REMOVED", "FAILED"]),
+    completed_on: Schema.NullOr(Schema.String),
   });
 export type V1CreateRestorePointOutput = typeof V1CreateRestorePointOutput.Type;
 

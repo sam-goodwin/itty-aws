@@ -108,6 +108,7 @@ export type VolumeDeviceName = string;
 export type ClusterNameOrArn = string;
 export type ClusterInstanceGroupName = string;
 export type BatchAddIncrementCount = number;
+export type ClusterAvailabilityZone = string;
 export type ClusterNodeLogicalId = string;
 export type InstanceGroupName = string;
 export type BatchAddFailureCount = number;
@@ -328,6 +329,8 @@ export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds =
 export type ProductionVariantSSMAccess = boolean;
 export type ManagedInstanceScalingMinInstanceCount = number;
 export type ManagedInstanceScalingMaxInstanceCount = number;
+export type ManagedInstanceScalingMaximumStepSize = number;
+export type ManagedInstanceScalingCooldownInMinutes = number;
 export type MlReservationArn = string;
 export type EnableCapture = boolean;
 export type SamplingPercentage = number;
@@ -423,6 +426,7 @@ export type NumberOfCpuCores = number;
 export type NumberOfAcceleratorDevices = number;
 export type MemoryInMb = number;
 export type EnableCaching = boolean;
+export type AvailabilityZoneBalanceMaxImbalance = number;
 export type InferenceComponentCopyCount = number;
 export type InferenceComponentArn = string;
 export type InferenceExperimentName = string;
@@ -622,7 +626,6 @@ export type TargetCount = number;
 export type ClusterPrivatePrimaryIp = string;
 export type ClusterPrivatePrimaryIpv6 = string;
 export type ClusterPrivateDnsHostname = string;
-export type ClusterAvailabilityZone = string;
 export type ClusterAvailabilityZoneId = string;
 export type LastModifiedTime = Date;
 export type InferenceImage = string;
@@ -716,6 +719,9 @@ export type TrainingPlanStatusMessage = string;
 export type TrainingPlanDurationHours = number;
 export type TrainingPlanDurationMinutes = number;
 export type CurrencyCode = string;
+export type TrainingPlanExtensionOfferingId = string;
+export type AvailabilityZoneId = string;
+export type TrainingPlanExtensionDurationHours = number;
 export type TrialSourceArn = string;
 export type TrialComponentSourceArn = string;
 export type OptionalDouble = number;
@@ -956,13 +962,153 @@ export const AttachClusterNodeVolumeResponse =
   ).annotate({
     identifier: "AttachClusterNodeVolumeResponse",
   }) as any as S.Schema<AttachClusterNodeVolumeResponse>;
+export type ClusterAvailabilityZones = string[];
+export const ClusterAvailabilityZones = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export type ClusterInstanceType =
+  | "ml.p4d.24xlarge"
+  | "ml.p4de.24xlarge"
+  | "ml.p5.48xlarge"
+  | "ml.p5.4xlarge"
+  | "ml.p6e-gb200.36xlarge"
+  | "ml.trn1.32xlarge"
+  | "ml.trn1n.32xlarge"
+  | "ml.g5.xlarge"
+  | "ml.g5.2xlarge"
+  | "ml.g5.4xlarge"
+  | "ml.g5.8xlarge"
+  | "ml.g5.12xlarge"
+  | "ml.g5.16xlarge"
+  | "ml.g5.24xlarge"
+  | "ml.g5.48xlarge"
+  | "ml.c5.large"
+  | "ml.c5.xlarge"
+  | "ml.c5.2xlarge"
+  | "ml.c5.4xlarge"
+  | "ml.c5.9xlarge"
+  | "ml.c5.12xlarge"
+  | "ml.c5.18xlarge"
+  | "ml.c5.24xlarge"
+  | "ml.c5n.large"
+  | "ml.c5n.2xlarge"
+  | "ml.c5n.4xlarge"
+  | "ml.c5n.9xlarge"
+  | "ml.c5n.18xlarge"
+  | "ml.m5.large"
+  | "ml.m5.xlarge"
+  | "ml.m5.2xlarge"
+  | "ml.m5.4xlarge"
+  | "ml.m5.8xlarge"
+  | "ml.m5.12xlarge"
+  | "ml.m5.16xlarge"
+  | "ml.m5.24xlarge"
+  | "ml.t3.medium"
+  | "ml.t3.large"
+  | "ml.t3.xlarge"
+  | "ml.t3.2xlarge"
+  | "ml.g6.xlarge"
+  | "ml.g6.2xlarge"
+  | "ml.g6.4xlarge"
+  | "ml.g6.8xlarge"
+  | "ml.g6.16xlarge"
+  | "ml.g6.12xlarge"
+  | "ml.g6.24xlarge"
+  | "ml.g6.48xlarge"
+  | "ml.gr6.4xlarge"
+  | "ml.gr6.8xlarge"
+  | "ml.g6e.xlarge"
+  | "ml.g6e.2xlarge"
+  | "ml.g6e.4xlarge"
+  | "ml.g6e.8xlarge"
+  | "ml.g6e.16xlarge"
+  | "ml.g6e.12xlarge"
+  | "ml.g6e.24xlarge"
+  | "ml.g6e.48xlarge"
+  | "ml.p5e.48xlarge"
+  | "ml.p5en.48xlarge"
+  | "ml.p6-b200.48xlarge"
+  | "ml.trn2.3xlarge"
+  | "ml.trn2.48xlarge"
+  | "ml.c6i.large"
+  | "ml.c6i.xlarge"
+  | "ml.c6i.2xlarge"
+  | "ml.c6i.4xlarge"
+  | "ml.c6i.8xlarge"
+  | "ml.c6i.12xlarge"
+  | "ml.c6i.16xlarge"
+  | "ml.c6i.24xlarge"
+  | "ml.c6i.32xlarge"
+  | "ml.m6i.large"
+  | "ml.m6i.xlarge"
+  | "ml.m6i.2xlarge"
+  | "ml.m6i.4xlarge"
+  | "ml.m6i.8xlarge"
+  | "ml.m6i.12xlarge"
+  | "ml.m6i.16xlarge"
+  | "ml.m6i.24xlarge"
+  | "ml.m6i.32xlarge"
+  | "ml.r6i.large"
+  | "ml.r6i.xlarge"
+  | "ml.r6i.2xlarge"
+  | "ml.r6i.4xlarge"
+  | "ml.r6i.8xlarge"
+  | "ml.r6i.12xlarge"
+  | "ml.r6i.16xlarge"
+  | "ml.r6i.24xlarge"
+  | "ml.r6i.32xlarge"
+  | "ml.i3en.large"
+  | "ml.i3en.xlarge"
+  | "ml.i3en.2xlarge"
+  | "ml.i3en.3xlarge"
+  | "ml.i3en.6xlarge"
+  | "ml.i3en.12xlarge"
+  | "ml.i3en.24xlarge"
+  | "ml.m7i.large"
+  | "ml.m7i.xlarge"
+  | "ml.m7i.2xlarge"
+  | "ml.m7i.4xlarge"
+  | "ml.m7i.8xlarge"
+  | "ml.m7i.12xlarge"
+  | "ml.m7i.16xlarge"
+  | "ml.m7i.24xlarge"
+  | "ml.m7i.48xlarge"
+  | "ml.r7i.large"
+  | "ml.r7i.xlarge"
+  | "ml.r7i.2xlarge"
+  | "ml.r7i.4xlarge"
+  | "ml.r7i.8xlarge"
+  | "ml.r7i.12xlarge"
+  | "ml.r7i.16xlarge"
+  | "ml.r7i.24xlarge"
+  | "ml.r7i.48xlarge"
+  | "ml.r5d.16xlarge"
+  | "ml.g7e.2xlarge"
+  | "ml.g7e.4xlarge"
+  | "ml.g7e.8xlarge"
+  | "ml.g7e.12xlarge"
+  | "ml.g7e.24xlarge"
+  | "ml.g7e.48xlarge"
+  | "ml.p6-b300.48xlarge"
+  | (string & {});
+export const ClusterInstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ClusterInstanceTypes = ClusterInstanceType[];
+export const ClusterInstanceTypes =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ClusterInstanceType);
 export interface AddClusterNodeSpecification {
   InstanceGroupName: string;
   IncrementTargetCountBy: number;
+  AvailabilityZones?: string[];
+  InstanceTypes?: ClusterInstanceType[];
 }
 export const AddClusterNodeSpecification =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceGroupName: S.String, IncrementTargetCountBy: S.Number }),
+    S.Struct({
+      InstanceGroupName: S.String,
+      IncrementTargetCountBy: S.Number,
+      AvailabilityZones: S.optional(ClusterAvailabilityZones),
+      InstanceTypes: S.optional(ClusterInstanceTypes),
+    }),
   ).annotate({
     identifier: "AddClusterNodeSpecification",
   }) as any as S.Schema<AddClusterNodeSpecification>;
@@ -1008,12 +1154,16 @@ export interface NodeAdditionResult {
   NodeLogicalId: string;
   InstanceGroupName: string;
   Status: ClusterInstanceStatus;
+  AvailabilityZones?: string[];
+  InstanceTypes?: ClusterInstanceType[];
 }
 export const NodeAdditionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     NodeLogicalId: S.String,
     InstanceGroupName: S.String,
     Status: ClusterInstanceStatus,
+    AvailabilityZones: S.optional(ClusterAvailabilityZones),
+    InstanceTypes: S.optional(ClusterInstanceTypes),
   }),
 ).annotate({
   identifier: "NodeAdditionResult",
@@ -1024,6 +1174,8 @@ export const NodeAdditionResultList =
 export type BatchAddClusterNodesErrorCode =
   | "InstanceGroupNotFound"
   | "InvalidInstanceGroupStatus"
+  | "IncompatibleAvailabilityZones"
+  | "IncompatibleInstanceTypes"
   | (string & {});
 export const BatchAddClusterNodesErrorCode =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -1031,6 +1183,8 @@ export interface BatchAddClusterNodesError_ {
   InstanceGroupName: string;
   ErrorCode: BatchAddClusterNodesErrorCode;
   FailedCount: number;
+  AvailabilityZones?: string[];
+  InstanceTypes?: ClusterInstanceType[];
   Message?: string;
 }
 export const BatchAddClusterNodesError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1039,6 +1193,8 @@ export const BatchAddClusterNodesError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       InstanceGroupName: S.String,
       ErrorCode: BatchAddClusterNodesErrorCode,
       FailedCount: S.Number,
+      AvailabilityZones: S.optional(ClusterAvailabilityZones),
+      InstanceTypes: S.optional(ClusterInstanceTypes),
       Message: S.optional(S.String),
     }),
 ).annotate({
@@ -3928,125 +4084,15 @@ export const CreateAutoMLJobV2Response = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAutoMLJobV2Response",
 }) as any as S.Schema<CreateAutoMLJobV2Response>;
-export type ClusterInstanceType =
-  | "ml.p4d.24xlarge"
-  | "ml.p4de.24xlarge"
-  | "ml.p5.48xlarge"
-  | "ml.p5.4xlarge"
-  | "ml.p6e-gb200.36xlarge"
-  | "ml.trn1.32xlarge"
-  | "ml.trn1n.32xlarge"
-  | "ml.g5.xlarge"
-  | "ml.g5.2xlarge"
-  | "ml.g5.4xlarge"
-  | "ml.g5.8xlarge"
-  | "ml.g5.12xlarge"
-  | "ml.g5.16xlarge"
-  | "ml.g5.24xlarge"
-  | "ml.g5.48xlarge"
-  | "ml.c5.large"
-  | "ml.c5.xlarge"
-  | "ml.c5.2xlarge"
-  | "ml.c5.4xlarge"
-  | "ml.c5.9xlarge"
-  | "ml.c5.12xlarge"
-  | "ml.c5.18xlarge"
-  | "ml.c5.24xlarge"
-  | "ml.c5n.large"
-  | "ml.c5n.2xlarge"
-  | "ml.c5n.4xlarge"
-  | "ml.c5n.9xlarge"
-  | "ml.c5n.18xlarge"
-  | "ml.m5.large"
-  | "ml.m5.xlarge"
-  | "ml.m5.2xlarge"
-  | "ml.m5.4xlarge"
-  | "ml.m5.8xlarge"
-  | "ml.m5.12xlarge"
-  | "ml.m5.16xlarge"
-  | "ml.m5.24xlarge"
-  | "ml.t3.medium"
-  | "ml.t3.large"
-  | "ml.t3.xlarge"
-  | "ml.t3.2xlarge"
-  | "ml.g6.xlarge"
-  | "ml.g6.2xlarge"
-  | "ml.g6.4xlarge"
-  | "ml.g6.8xlarge"
-  | "ml.g6.16xlarge"
-  | "ml.g6.12xlarge"
-  | "ml.g6.24xlarge"
-  | "ml.g6.48xlarge"
-  | "ml.gr6.4xlarge"
-  | "ml.gr6.8xlarge"
-  | "ml.g6e.xlarge"
-  | "ml.g6e.2xlarge"
-  | "ml.g6e.4xlarge"
-  | "ml.g6e.8xlarge"
-  | "ml.g6e.16xlarge"
-  | "ml.g6e.12xlarge"
-  | "ml.g6e.24xlarge"
-  | "ml.g6e.48xlarge"
-  | "ml.p5e.48xlarge"
-  | "ml.p5en.48xlarge"
-  | "ml.p6-b200.48xlarge"
-  | "ml.trn2.3xlarge"
-  | "ml.trn2.48xlarge"
-  | "ml.c6i.large"
-  | "ml.c6i.xlarge"
-  | "ml.c6i.2xlarge"
-  | "ml.c6i.4xlarge"
-  | "ml.c6i.8xlarge"
-  | "ml.c6i.12xlarge"
-  | "ml.c6i.16xlarge"
-  | "ml.c6i.24xlarge"
-  | "ml.c6i.32xlarge"
-  | "ml.m6i.large"
-  | "ml.m6i.xlarge"
-  | "ml.m6i.2xlarge"
-  | "ml.m6i.4xlarge"
-  | "ml.m6i.8xlarge"
-  | "ml.m6i.12xlarge"
-  | "ml.m6i.16xlarge"
-  | "ml.m6i.24xlarge"
-  | "ml.m6i.32xlarge"
-  | "ml.r6i.large"
-  | "ml.r6i.xlarge"
-  | "ml.r6i.2xlarge"
-  | "ml.r6i.4xlarge"
-  | "ml.r6i.8xlarge"
-  | "ml.r6i.12xlarge"
-  | "ml.r6i.16xlarge"
-  | "ml.r6i.24xlarge"
-  | "ml.r6i.32xlarge"
-  | "ml.i3en.large"
-  | "ml.i3en.xlarge"
-  | "ml.i3en.2xlarge"
-  | "ml.i3en.3xlarge"
-  | "ml.i3en.6xlarge"
-  | "ml.i3en.12xlarge"
-  | "ml.i3en.24xlarge"
-  | "ml.m7i.large"
-  | "ml.m7i.xlarge"
-  | "ml.m7i.2xlarge"
-  | "ml.m7i.4xlarge"
-  | "ml.m7i.8xlarge"
-  | "ml.m7i.12xlarge"
-  | "ml.m7i.16xlarge"
-  | "ml.m7i.24xlarge"
-  | "ml.m7i.48xlarge"
-  | "ml.r7i.large"
-  | "ml.r7i.xlarge"
-  | "ml.r7i.2xlarge"
-  | "ml.r7i.4xlarge"
-  | "ml.r7i.8xlarge"
-  | "ml.r7i.12xlarge"
-  | "ml.r7i.16xlarge"
-  | "ml.r7i.24xlarge"
-  | "ml.r7i.48xlarge"
-  | "ml.p6-b300.48xlarge"
-  | (string & {});
-export const ClusterInstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ClusterInstanceRequirements {
+  InstanceTypes?: ClusterInstanceType[];
+}
+export const ClusterInstanceRequirements =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ InstanceTypes: S.optional(ClusterInstanceTypes) }),
+  ).annotate({
+    identifier: "ClusterInstanceRequirements",
+  }) as any as S.Schema<ClusterInstanceRequirements>;
 export interface ClusterLifeCycleConfig {
   SourceS3Uri?: string;
   OnCreate?: string;
@@ -4295,6 +4341,7 @@ export interface ClusterInstanceGroupSpecification {
   MinInstanceCount?: number;
   InstanceGroupName?: string;
   InstanceType?: ClusterInstanceType;
+  InstanceRequirements?: ClusterInstanceRequirements;
   LifeCycleConfig?: ClusterLifeCycleConfig;
   ExecutionRole?: string;
   ThreadsPerCore?: number;
@@ -4315,6 +4362,7 @@ export const ClusterInstanceGroupSpecification =
       MinInstanceCount: S.optional(S.Number),
       InstanceGroupName: S.optional(S.String),
       InstanceType: S.optional(ClusterInstanceType),
+      InstanceRequirements: S.optional(ClusterInstanceRequirements),
       LifeCycleConfig: S.optional(ClusterLifeCycleConfig),
       ExecutionRole: S.optional(S.String),
       ThreadsPerCore: S.optional(S.Number),
@@ -6602,10 +6650,32 @@ export type ManagedInstanceScalingStatus =
   | (string & {});
 export const ManagedInstanceScalingStatus =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ManagedInstanceScalingScaleInStrategy =
+  | "IDLE_RELEASE"
+  | "CONSOLIDATION"
+  | (string & {});
+export const ManagedInstanceScalingScaleInStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ProductionVariantManagedInstanceScalingScaleInPolicy {
+  Strategy?: ManagedInstanceScalingScaleInStrategy;
+  MaximumStepSize?: number;
+  CooldownInMinutes?: number;
+}
+export const ProductionVariantManagedInstanceScalingScaleInPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Strategy: S.optional(ManagedInstanceScalingScaleInStrategy),
+      MaximumStepSize: S.optional(S.Number),
+      CooldownInMinutes: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "ProductionVariantManagedInstanceScalingScaleInPolicy",
+  }) as any as S.Schema<ProductionVariantManagedInstanceScalingScaleInPolicy>;
 export interface ProductionVariantManagedInstanceScaling {
   Status?: ManagedInstanceScalingStatus;
   MinInstanceCount?: number;
   MaxInstanceCount?: number;
+  ScaleInPolicy?: ProductionVariantManagedInstanceScalingScaleInPolicy;
 }
 export const ProductionVariantManagedInstanceScaling =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -6613,6 +6683,9 @@ export const ProductionVariantManagedInstanceScaling =
       Status: S.optional(ManagedInstanceScalingStatus),
       MinInstanceCount: S.optional(S.Number),
       MaxInstanceCount: S.optional(S.Number),
+      ScaleInPolicy: S.optional(
+        ProductionVariantManagedInstanceScalingScaleInPolicy,
+      ),
     }),
   ).annotate({
     identifier: "ProductionVariantManagedInstanceScaling",
@@ -8211,6 +8284,45 @@ export const InferenceComponentDataCacheConfig =
   ).annotate({
     identifier: "InferenceComponentDataCacheConfig",
   }) as any as S.Schema<InferenceComponentDataCacheConfig>;
+export type InferenceComponentPlacementStrategy =
+  | "SPREAD"
+  | "BINPACK"
+  | (string & {});
+export const InferenceComponentPlacementStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AvailabilityZoneBalanceEnforcementMode =
+  | "PERMISSIVE"
+  | (string & {});
+export const AvailabilityZoneBalanceEnforcementMode =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface InferenceComponentAvailabilityZoneBalance {
+  EnforcementMode?: AvailabilityZoneBalanceEnforcementMode;
+  MaxImbalance?: number;
+}
+export const InferenceComponentAvailabilityZoneBalance =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EnforcementMode: S.optional(AvailabilityZoneBalanceEnforcementMode),
+      MaxImbalance: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "InferenceComponentAvailabilityZoneBalance",
+  }) as any as S.Schema<InferenceComponentAvailabilityZoneBalance>;
+export interface InferenceComponentSchedulingConfig {
+  PlacementStrategy?: InferenceComponentPlacementStrategy;
+  AvailabilityZoneBalance?: InferenceComponentAvailabilityZoneBalance;
+}
+export const InferenceComponentSchedulingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      PlacementStrategy: S.optional(InferenceComponentPlacementStrategy),
+      AvailabilityZoneBalance: S.optional(
+        InferenceComponentAvailabilityZoneBalance,
+      ),
+    }),
+  ).annotate({
+    identifier: "InferenceComponentSchedulingConfig",
+  }) as any as S.Schema<InferenceComponentSchedulingConfig>;
 export interface InferenceComponentSpecification {
   ModelName?: string;
   Container?: InferenceComponentContainerSpecification;
@@ -8218,6 +8330,7 @@ export interface InferenceComponentSpecification {
   ComputeResourceRequirements?: InferenceComponentComputeResourceRequirements;
   BaseInferenceComponentName?: string;
   DataCacheConfig?: InferenceComponentDataCacheConfig;
+  SchedulingConfig?: InferenceComponentSchedulingConfig;
 }
 export const InferenceComponentSpecification =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -8230,6 +8343,7 @@ export const InferenceComponentSpecification =
       ),
       BaseInferenceComponentName: S.optional(S.String),
       DataCacheConfig: S.optional(InferenceComponentDataCacheConfig),
+      SchedulingConfig: S.optional(InferenceComponentSchedulingConfig),
     }),
   ).annotate({
     identifier: "InferenceComponentSpecification",
@@ -15313,6 +15427,38 @@ export type ClusterStatus =
   | "Updating"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ClusterInstanceRequirementDetails {
+  CurrentInstanceTypes?: ClusterInstanceType[];
+  DesiredInstanceTypes?: ClusterInstanceType[];
+}
+export const ClusterInstanceRequirementDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CurrentInstanceTypes: S.optional(ClusterInstanceTypes),
+      DesiredInstanceTypes: S.optional(ClusterInstanceTypes),
+    }),
+  ).annotate({
+    identifier: "ClusterInstanceRequirementDetails",
+  }) as any as S.Schema<ClusterInstanceRequirementDetails>;
+export interface ClusterInstanceTypeDetail {
+  InstanceType?: ClusterInstanceType;
+  CurrentCount?: number;
+  ThreadsPerCore?: number;
+}
+export const ClusterInstanceTypeDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InstanceType: S.optional(ClusterInstanceType),
+      CurrentCount: S.optional(S.Number),
+      ThreadsPerCore: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "ClusterInstanceTypeDetail",
+}) as any as S.Schema<ClusterInstanceTypeDetail>;
+export type ClusterInstanceTypeDetails = ClusterInstanceTypeDetail[];
+export const ClusterInstanceTypeDetails = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ClusterInstanceTypeDetail,
+);
 export type InstanceGroupStatus =
   | "InService"
   | "Creating"
@@ -15375,6 +15521,8 @@ export interface ClusterInstanceGroupDetails {
   MinCount?: number;
   InstanceGroupName?: string;
   InstanceType?: ClusterInstanceType;
+  InstanceRequirements?: ClusterInstanceRequirementDetails;
+  InstanceTypeDetails?: ClusterInstanceTypeDetail[];
   LifeCycleConfig?: ClusterLifeCycleConfig;
   ExecutionRole?: string;
   ThreadsPerCore?: number;
@@ -15403,6 +15551,8 @@ export const ClusterInstanceGroupDetails =
       MinCount: S.optional(S.Number),
       InstanceGroupName: S.optional(S.String),
       InstanceType: S.optional(ClusterInstanceType),
+      InstanceRequirements: S.optional(ClusterInstanceRequirementDetails),
+      InstanceTypeDetails: S.optional(ClusterInstanceTypeDetails),
       LifeCycleConfig: S.optional(ClusterLifeCycleConfig),
       ExecutionRole: S.optional(S.String),
       ThreadsPerCore: S.optional(S.Number),
@@ -15514,10 +15664,6 @@ export interface DescribeClusterResponse {
   CreationTime?: Date;
   FailureMessage?: string;
   InstanceGroups: (ClusterInstanceGroupDetails & {
-    LifeCycleConfig: ClusterLifeCycleConfig & {
-      SourceS3Uri: S3Uri;
-      OnCreate: ClusterLifeCycleConfigFileName;
-    };
     OverrideVpcConfig: VpcConfig & {
       SecurityGroupIds: VpcSecurityGroupIds;
       Subnets: Subnets;
@@ -15955,10 +16101,6 @@ export interface DescribeClusterNodeResponse {
   NodeDetails: ClusterNodeDetails & {
     InstanceStatus: ClusterInstanceStatusDetails & {
       Status: ClusterInstanceStatus;
-    };
-    LifeCycleConfig: ClusterLifeCycleConfig & {
-      SourceS3Uri: S3Uri;
-      OnCreate: ClusterLifeCycleConfigFileName;
     };
     OverrideVpcConfig: VpcConfig & {
       SecurityGroupIds: VpcSecurityGroupIds;
@@ -17177,6 +17319,11 @@ export interface DescribeEndpointOutput {
       MemorySizeInMB: ServerlessMemorySizeInMB;
       MaxConcurrency: ServerlessMaxConcurrency;
     };
+    ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+      ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+        Strategy: ManagedInstanceScalingScaleInStrategy;
+      };
+    };
     RoutingConfig: ProductionVariantRoutingConfig & {
       RoutingStrategy: RoutingStrategy;
     };
@@ -17235,6 +17382,11 @@ export interface DescribeEndpointOutput {
         MemorySizeInMB: ServerlessMemorySizeInMB;
         MaxConcurrency: ServerlessMaxConcurrency;
       };
+      ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+        ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+          Strategy: ManagedInstanceScalingScaleInStrategy;
+        };
+      };
       RoutingConfig: ProductionVariantRoutingConfig & {
         RoutingStrategy: RoutingStrategy;
       };
@@ -17249,6 +17401,11 @@ export interface DescribeEndpointOutput {
       DesiredServerlessConfig: ProductionVariantServerlessConfig & {
         MemorySizeInMB: ServerlessMemorySizeInMB;
         MaxConcurrency: ServerlessMaxConcurrency;
+      };
+      ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+        ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+          Strategy: ManagedInstanceScalingScaleInStrategy;
+        };
       };
       RoutingConfig: ProductionVariantRoutingConfig & {
         RoutingStrategy: RoutingStrategy;
@@ -17276,6 +17433,11 @@ export interface DescribeEndpointOutput {
     DesiredServerlessConfig: ProductionVariantServerlessConfig & {
       MemorySizeInMB: ServerlessMemorySizeInMB;
       MaxConcurrency: ServerlessMaxConcurrency;
+    };
+    ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+      ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+        Strategy: ManagedInstanceScalingScaleInStrategy;
+      };
     };
     RoutingConfig: ProductionVariantRoutingConfig & {
       RoutingStrategy: RoutingStrategy;
@@ -17338,6 +17500,11 @@ export interface DescribeEndpointConfigOutput {
       MemorySizeInMB: ServerlessMemorySizeInMB;
       MaxConcurrency: ServerlessMaxConcurrency;
     };
+    ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+      ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+        Strategy: ManagedInstanceScalingScaleInStrategy;
+      };
+    };
     RoutingConfig: ProductionVariantRoutingConfig & {
       RoutingStrategy: RoutingStrategy;
     };
@@ -17371,6 +17538,11 @@ export interface DescribeEndpointConfigOutput {
     ServerlessConfig: ProductionVariantServerlessConfig & {
       MemorySizeInMB: ServerlessMemorySizeInMB;
       MaxConcurrency: ServerlessMaxConcurrency;
+    };
+    ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+      ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+        Strategy: ManagedInstanceScalingScaleInStrategy;
+      };
     };
     RoutingConfig: ProductionVariantRoutingConfig & {
       RoutingStrategy: RoutingStrategy;
@@ -18548,6 +18720,7 @@ export interface InferenceComponentSpecificationSummary {
   ComputeResourceRequirements?: InferenceComponentComputeResourceRequirements;
   BaseInferenceComponentName?: string;
   DataCacheConfig?: InferenceComponentDataCacheConfigSummary;
+  SchedulingConfig?: InferenceComponentSchedulingConfig;
 }
 export const InferenceComponentSpecificationSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -18560,6 +18733,7 @@ export const InferenceComponentSpecificationSummary =
       ),
       BaseInferenceComponentName: S.optional(S.String),
       DataCacheConfig: S.optional(InferenceComponentDataCacheConfigSummary),
+      SchedulingConfig: S.optional(InferenceComponentSchedulingConfig),
     }),
   ).annotate({
     identifier: "InferenceComponentSpecificationSummary",
@@ -18647,6 +18821,12 @@ export interface DescribeInferenceComponentOutput {
     };
     DataCacheConfig: InferenceComponentDataCacheConfigSummary & {
       EnableCaching: EnableCaching;
+    };
+    SchedulingConfig: InferenceComponentSchedulingConfig & {
+      PlacementStrategy: InferenceComponentPlacementStrategy;
+      AvailabilityZoneBalance: InferenceComponentAvailabilityZoneBalance & {
+        EnforcementMode: AvailabilityZoneBalanceEnforcementMode;
+      };
     };
   };
   RuntimeConfig?: InferenceComponentRuntimeConfigSummary;
@@ -22004,6 +22184,80 @@ export const DescribeTrainingPlanResponse =
   ).annotate({
     identifier: "DescribeTrainingPlanResponse",
   }) as any as S.Schema<DescribeTrainingPlanResponse>;
+export interface DescribeTrainingPlanExtensionHistoryRequest {
+  TrainingPlanArn?: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const DescribeTrainingPlanExtensionHistoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TrainingPlanArn: S.optional(S.String),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeTrainingPlanExtensionHistoryRequest",
+  }) as any as S.Schema<DescribeTrainingPlanExtensionHistoryRequest>;
+export interface TrainingPlanExtension {
+  TrainingPlanExtensionOfferingId?: string;
+  ExtendedAt?: Date;
+  StartDate?: Date;
+  EndDate?: Date;
+  Status?: string;
+  PaymentStatus?: string;
+  AvailabilityZone?: string;
+  AvailabilityZoneId?: string;
+  DurationHours?: number;
+  UpfrontFee?: string;
+  CurrencyCode?: string;
+}
+export const TrainingPlanExtension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrainingPlanExtensionOfferingId: S.optional(S.String),
+    ExtendedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Status: S.optional(S.String),
+    PaymentStatus: S.optional(S.String),
+    AvailabilityZone: S.optional(S.String),
+    AvailabilityZoneId: S.optional(S.String),
+    DurationHours: S.optional(S.Number),
+    UpfrontFee: S.optional(S.String),
+    CurrencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TrainingPlanExtension",
+}) as any as S.Schema<TrainingPlanExtension>;
+export type TrainingPlanExtensions = TrainingPlanExtension[];
+export const TrainingPlanExtensions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  TrainingPlanExtension,
+);
+export interface DescribeTrainingPlanExtensionHistoryResponse {
+  TrainingPlanExtensions: (TrainingPlanExtension & {
+    TrainingPlanExtensionOfferingId: TrainingPlanExtensionOfferingId;
+  })[];
+  NextToken?: string;
+}
+export const DescribeTrainingPlanExtensionHistoryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TrainingPlanExtensions: S.optional(TrainingPlanExtensions),
+      NextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeTrainingPlanExtensionHistoryResponse",
+  }) as any as S.Schema<DescribeTrainingPlanExtensionHistoryResponse>;
 export interface DescribeTransformJobRequest {
   TransformJobName?: string;
 }
@@ -22696,6 +22950,38 @@ export const EnableSagemakerServicecatalogPortfolioOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "EnableSagemakerServicecatalogPortfolioOutput",
   }) as any as S.Schema<EnableSagemakerServicecatalogPortfolioOutput>;
+export interface ExtendTrainingPlanRequest {
+  TrainingPlanExtensionOfferingId?: string;
+}
+export const ExtendTrainingPlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ TrainingPlanExtensionOfferingId: S.optional(S.String) }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ExtendTrainingPlanRequest",
+}) as any as S.Schema<ExtendTrainingPlanRequest>;
+export interface ExtendTrainingPlanResponse {
+  TrainingPlanExtensions: (TrainingPlanExtension & {
+    TrainingPlanExtensionOfferingId: TrainingPlanExtensionOfferingId;
+  })[];
+}
+export const ExtendTrainingPlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      TrainingPlanExtensions: S.optional(TrainingPlanExtensions),
+    }).pipe(ns),
+).annotate({
+  identifier: "ExtendTrainingPlanResponse",
+}) as any as S.Schema<ExtendTrainingPlanResponse>;
 export interface GetDeviceFleetReportRequest {
   DeviceFleetName?: string;
 }
@@ -32589,6 +32875,11 @@ export interface SearchResponse {
           MemorySizeInMB: ServerlessMemorySizeInMB;
           MaxConcurrency: ServerlessMaxConcurrency;
         };
+        ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+          ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+            Strategy: ManagedInstanceScalingScaleInStrategy;
+          };
+        };
         RoutingConfig: ProductionVariantRoutingConfig & {
           RoutingStrategy: RoutingStrategy;
         };
@@ -32667,6 +32958,11 @@ export interface SearchResponse {
         DesiredServerlessConfig: ProductionVariantServerlessConfig & {
           MemorySizeInMB: ServerlessMemorySizeInMB;
           MaxConcurrency: ServerlessMaxConcurrency;
+        };
+        ManagedInstanceScaling: ProductionVariantManagedInstanceScaling & {
+          ScaleInPolicy: ProductionVariantManagedInstanceScalingScaleInPolicy & {
+            Strategy: ManagedInstanceScalingScaleInStrategy;
+          };
         };
         RoutingConfig: ProductionVariantRoutingConfig & {
           RoutingStrategy: RoutingStrategy;
@@ -33324,6 +33620,7 @@ export interface SearchTrainingPlanOfferingsRequest {
   EndTimeBefore?: Date;
   DurationHours?: number;
   TargetResources?: SageMakerResourceName[];
+  TrainingPlanArn?: string;
 }
 export const SearchTrainingPlanOfferingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -33340,6 +33637,7 @@ export const SearchTrainingPlanOfferingsRequest =
       ),
       DurationHours: S.optional(S.Number),
       TargetResources: S.optional(SageMakerResourceNames),
+      TrainingPlanArn: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -33365,6 +33663,8 @@ export interface ReservedCapacityOffering {
   DurationMinutes?: number;
   StartTime?: Date;
   EndTime?: Date;
+  ExtensionStartTime?: Date;
+  ExtensionEndTime?: Date;
 }
 export const ReservedCapacityOffering = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -33379,6 +33679,12 @@ export const ReservedCapacityOffering = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DurationMinutes: S.optional(S.Number),
       StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      ExtensionStartTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      ExtensionEndTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
     }),
 ).annotate({
   identifier: "ReservedCapacityOffering",
@@ -33420,6 +33726,32 @@ export const TrainingPlanOffering = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type TrainingPlanOfferings = TrainingPlanOffering[];
 export const TrainingPlanOfferings =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(TrainingPlanOffering);
+export interface TrainingPlanExtensionOffering {
+  TrainingPlanExtensionOfferingId?: string;
+  AvailabilityZone?: string;
+  StartDate?: Date;
+  EndDate?: Date;
+  DurationHours?: number;
+  UpfrontFee?: string;
+  CurrencyCode?: string;
+}
+export const TrainingPlanExtensionOffering =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TrainingPlanExtensionOfferingId: S.optional(S.String),
+      AvailabilityZone: S.optional(S.String),
+      StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      DurationHours: S.optional(S.Number),
+      UpfrontFee: S.optional(S.String),
+      CurrencyCode: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "TrainingPlanExtensionOffering",
+  }) as any as S.Schema<TrainingPlanExtensionOffering>;
+export type TrainingPlanExtensionOfferings = TrainingPlanExtensionOffering[];
+export const TrainingPlanExtensionOfferings =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(TrainingPlanExtensionOffering);
 export interface SearchTrainingPlanOfferingsResponse {
   TrainingPlanOfferings: (TrainingPlanOffering & {
     TrainingPlanOfferingId: TrainingPlanOfferingId;
@@ -33429,12 +33761,18 @@ export interface SearchTrainingPlanOfferingsResponse {
       InstanceCount: ReservedCapacityInstanceCount;
     })[];
   })[];
+  TrainingPlanExtensionOfferings?: (TrainingPlanExtensionOffering & {
+    TrainingPlanExtensionOfferingId: TrainingPlanExtensionOfferingId;
+  })[];
 }
 export const SearchTrainingPlanOfferingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TrainingPlanOfferings: S.optional(TrainingPlanOfferings) }).pipe(
-      ns,
-    ),
+    S.Struct({
+      TrainingPlanOfferings: S.optional(TrainingPlanOfferings),
+      TrainingPlanExtensionOfferings: S.optional(
+        TrainingPlanExtensionOfferings,
+      ),
+    }).pipe(ns),
   ).annotate({
     identifier: "SearchTrainingPlanOfferingsResponse",
   }) as any as S.Schema<SearchTrainingPlanOfferingsResponse>;
@@ -33506,6 +33844,62 @@ export const SendPipelineExecutionStepSuccessResponse =
   ).annotate({
     identifier: "SendPipelineExecutionStepSuccessResponse",
   }) as any as S.Schema<SendPipelineExecutionStepSuccessResponse>;
+export type InstanceIds = string[];
+export const InstanceIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type DeepHealthChecks = DeepHealthCheckType[];
+export const DeepHealthChecks =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeepHealthCheckType);
+export interface InstanceGroupHealthCheckConfiguration {
+  InstanceGroupName: string;
+  InstanceIds?: string[];
+  DeepHealthChecks: DeepHealthCheckType[];
+}
+export const InstanceGroupHealthCheckConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceGroupName: S.String,
+      InstanceIds: S.optional(InstanceIds),
+      DeepHealthChecks: DeepHealthChecks,
+    }),
+  ).annotate({
+    identifier: "InstanceGroupHealthCheckConfiguration",
+  }) as any as S.Schema<InstanceGroupHealthCheckConfiguration>;
+export type DeepHealthCheckConfigurations =
+  InstanceGroupHealthCheckConfiguration[];
+export const DeepHealthCheckConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(InstanceGroupHealthCheckConfiguration);
+export interface StartClusterHealthCheckRequest {
+  ClusterName: string;
+  DeepHealthCheckConfigurations: InstanceGroupHealthCheckConfiguration[];
+}
+export const StartClusterHealthCheckRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ClusterName: S.String,
+      DeepHealthCheckConfigurations: DeepHealthCheckConfigurations,
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartClusterHealthCheckRequest",
+  }) as any as S.Schema<StartClusterHealthCheckRequest>;
+export interface StartClusterHealthCheckResponse {
+  ClusterArn: string;
+}
+export const StartClusterHealthCheckResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ ClusterArn: S.String }).pipe(ns),
+  ).annotate({
+    identifier: "StartClusterHealthCheckResponse",
+  }) as any as S.Schema<StartClusterHealthCheckResponse>;
 export interface StartEdgeDeploymentStageRequest {
   EdgeDeploymentPlanName?: string;
   StageName?: string;
@@ -39598,6 +39992,43 @@ export const describeTrainingPlan: API.OperationMethod<
   output: DescribeTrainingPlanResponse,
   errors: [ResourceNotFound],
 }));
+export type DescribeTrainingPlanExtensionHistoryError =
+  | ResourceNotFound
+  | CommonErrors;
+/**
+ * Retrieves the extension history for a specified training plan. The response includes details about each extension, such as the offering ID, start and end dates, status, payment status, and cost information.
+ */
+export const describeTrainingPlanExtensionHistory: API.OperationMethod<
+  DescribeTrainingPlanExtensionHistoryRequest,
+  DescribeTrainingPlanExtensionHistoryResponse,
+  DescribeTrainingPlanExtensionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrainingPlanExtensionHistoryRequest,
+  ) => stream.Stream<
+    DescribeTrainingPlanExtensionHistoryResponse,
+    DescribeTrainingPlanExtensionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrainingPlanExtensionHistoryRequest,
+  ) => stream.Stream<
+    TrainingPlanExtension,
+    DescribeTrainingPlanExtensionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeTrainingPlanExtensionHistoryRequest,
+  output: DescribeTrainingPlanExtensionHistoryResponse,
+  errors: [ResourceNotFound],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "TrainingPlanExtensions",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type DescribeTransformJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about a transform job.
@@ -39746,6 +40177,24 @@ export const enableSagemakerServicecatalogPortfolio: API.OperationMethod<
   input: EnableSagemakerServicecatalogPortfolioInput,
   output: EnableSagemakerServicecatalogPortfolioOutput,
   errors: [],
+}));
+export type ExtendTrainingPlanError = ResourceNotFound | CommonErrors;
+/**
+ * Extends an existing training plan by purchasing an extension offering. This allows you to add additional compute capacity time to your training plan without creating a new plan or reconfiguring your workloads.
+ *
+ * To find available extension offerings, use the ` SearchTrainingPlanOfferings ` API with the `TrainingPlanArn` parameter.
+ *
+ * To view the history of extensions for a training plan, use the ` DescribeTrainingPlanExtensionHistory ` API.
+ */
+export const extendTrainingPlan: API.OperationMethod<
+  ExtendTrainingPlanRequest,
+  ExtendTrainingPlanResponse,
+  ExtendTrainingPlanError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExtendTrainingPlanRequest,
+  output: ExtendTrainingPlanResponse,
+  errors: [ResourceNotFound],
 }));
 export type GetDeviceFleetReportError = CommonErrors;
 /**
@@ -42982,6 +43431,20 @@ export const sendPipelineExecutionStepSuccess: API.OperationMethod<
   input: SendPipelineExecutionStepSuccessRequest,
   output: SendPipelineExecutionStepSuccessResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+}));
+export type StartClusterHealthCheckError = ResourceNotFound | CommonErrors;
+/**
+ * Start deep health checks for a SageMaker HyperPod cluster. You can use DescribeClusterNode API to track progress of the deep health checks. The unhealthy nodes will be automatically rebooted or replaced. Please see Resilience-related Kubernetes labels by SageMaker HyperPod for details.
+ */
+export const startClusterHealthCheck: API.OperationMethod<
+  StartClusterHealthCheckRequest,
+  StartClusterHealthCheckResponse,
+  StartClusterHealthCheckError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartClusterHealthCheckRequest,
+  output: StartClusterHealthCheckResponse,
+  errors: [ResourceNotFound],
 }));
 export type StartEdgeDeploymentStageError = CommonErrors;
 /**

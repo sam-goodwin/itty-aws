@@ -755,6 +755,55 @@ export const FetchGitRefsResponse: Schema.Schema<FetchGitRefsResponse> =
     identifier: "FetchGitRefsResponse",
   }) as any as Schema.Schema<FetchGitRefsResponse>;
 
+export interface CustomOAuthConfig {
+  /** Required. The scopes to be requested during OAuth. */
+  scopes?: Array<string>;
+  /** Required. The client ID of the OAuth application. */
+  clientId?: string;
+  /** Required. Input only. The client secret of the OAuth application. It will be provided as plain text, but encrypted and stored in developer connect. As INPUT_ONLY field, it will not be included in the output. */
+  clientSecret?: string;
+  /** Required. Immutable. The OAuth2 authorization server URL. */
+  authUri?: string;
+  /** Required. Immutable. The OAuth2 token request URL. */
+  tokenUri?: string;
+  /** Optional. Configuration for using Service Directory to connect to a private service. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Optional. SSL certificate to use for requests to a private service. */
+  sslCaCertificate?: string;
+  /** Optional. Disable PKCE for this OAuth config. PKCE is enabled by default. */
+  pkceDisabled?: boolean;
+  /** Required. The host URI of the OAuth application. */
+  hostUri?: string;
+  /** Required. The type of the SCM provider. */
+  scmProvider?:
+    | "SCM_PROVIDER_UNKNOWN"
+    | "GITHUB_ENTERPRISE"
+    | "GITLAB_ENTERPRISE"
+    | "BITBUCKET_DATA_CENTER"
+    | (string & {});
+  /** Output only. SCM server version installed at the host URI. */
+  serverVersion?: string;
+}
+
+export const CustomOAuthConfig: Schema.Schema<CustomOAuthConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      scopes: Schema.optional(Schema.Array(Schema.String)),
+      clientId: Schema.optional(Schema.String),
+      clientSecret: Schema.optional(Schema.String),
+      authUri: Schema.optional(Schema.String),
+      tokenUri: Schema.optional(Schema.String),
+      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+      sslCaCertificate: Schema.optional(Schema.String),
+      pkceDisabled: Schema.optional(Schema.Boolean),
+      hostUri: Schema.optional(Schema.String),
+      scmProvider: Schema.optional(Schema.String),
+      serverVersion: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "CustomOAuthConfig",
+  }) as any as Schema.Schema<CustomOAuthConfig>;
+
 export interface ProviderOAuthConfig {
   /** Optional. Immutable. Developer Connect provided OAuth. */
   systemProviderId?:
@@ -782,7 +831,26 @@ export const ProviderOAuthConfig: Schema.Schema<ProviderOAuthConfig> =
     identifier: "ProviderOAuthConfig",
   }) as any as Schema.Schema<ProviderOAuthConfig>;
 
+export interface ProxyConfig {
+  /** Optional. Setting this to true allows the git and http proxies to perform actions on behalf of the user configured under the account connector. */
+  enabled?: boolean;
+  /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-a-h-{shortRegion}.developerconnect.dev` Populated only when `enabled` is set to `true`. This endpoint is used by other Google services that integrate with Developer Connect. */
+  httpProxyBaseUri?: string;
+}
+
+export const ProxyConfig: Schema.Schema<ProxyConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Boolean),
+      httpProxyBaseUri: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "ProxyConfig",
+  }) as any as Schema.Schema<ProxyConfig>;
+
 export interface AccountConnector {
+  /** Custom OAuth config. */
+  customOauthConfig?: CustomOAuthConfig;
   /** Optional. Provider OAuth config. */
   providerOauthConfig?: ProviderOAuthConfig;
   /** Identifier. The resource name of the accountConnector, in the format `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`. */
@@ -799,11 +867,16 @@ export interface AccountConnector {
   labels?: Record<string, string>;
   /** Output only. Start OAuth flow by clicking on this URL. */
   oauthStartUri?: string;
+  /** Optional. Configuration for the http and git proxy features. */
+  proxyConfig?: ProxyConfig;
+  /** Output only. A system-assigned unique identifier for the Account Connector. */
+  uid?: string;
 }
 
 export const AccountConnector: Schema.Schema<AccountConnector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
+      customOauthConfig: Schema.optional(CustomOAuthConfig),
       providerOauthConfig: Schema.optional(ProviderOAuthConfig),
       name: Schema.optional(Schema.String),
       createTime: Schema.optional(Schema.String),
@@ -812,6 +885,8 @@ export const AccountConnector: Schema.Schema<AccountConnector> =
       etag: Schema.optional(Schema.String),
       labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       oauthStartUri: Schema.optional(Schema.String),
+      proxyConfig: Schema.optional(ProxyConfig),
+      uid: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "AccountConnector",
@@ -836,6 +911,43 @@ export const ListAccountConnectorsResponse: Schema.Schema<ListAccountConnectorsR
   ).annotate({
     identifier: "ListAccountConnectorsResponse",
   }) as any as Schema.Schema<ListAccountConnectorsResponse>;
+
+export interface UserRepository {
+  /** Output only. The user friendly repo name (e.g., myuser/myrepo) */
+  displayName?: string;
+  /** Output only. The Git proxy URL for this repo. For example: https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only when `proxy_config.enabled` is set to `true` in the Account Connector. This URL is used by other Google services that integrate with Developer Connect. */
+  gitProxyUri?: string;
+  /** Output only. The git clone URL of the repo. For example: https://github.com/myuser/myrepo.git */
+  cloneUri?: string;
+}
+
+export const UserRepository: Schema.Schema<UserRepository> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      gitProxyUri: Schema.optional(Schema.String),
+      cloneUri: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "UserRepository",
+  }) as any as Schema.Schema<UserRepository>;
+
+export interface FetchUserRepositoriesResponse {
+  /** The repositories that the user can access with this account connector. */
+  userRepos?: Array<UserRepository>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const FetchUserRepositoriesResponse: Schema.Schema<FetchUserRepositoriesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      userRepos: Schema.optional(Schema.Array(UserRepository)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "FetchUserRepositoriesResponse",
+  }) as any as Schema.Schema<FetchUserRepositoriesResponse>;
 
 export interface FetchAccessTokenRequest {}
 
@@ -1507,7 +1619,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2802,6 +2914,55 @@ export const deleteProjectsLocationsAccountConnectors: API.OperationMethod<
   input: DeleteProjectsLocationsAccountConnectorsRequest,
   output: DeleteProjectsLocationsAccountConnectorsResponse,
   errors: [],
+}));
+
+export interface FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest {
+  /** Required. The name of the Account Connector resource in the format: `projects/* /locations/* /accountConnectors/*`. */
+  accountConnector: string;
+  /** Optional. Number of results to return in the list. Defaults to 20. */
+  pageSize?: number;
+  /** Optional. Page start. */
+  pageToken?: string;
+  /** Optional. The name of the repository. When specified, only the UserRepository with this name will be returned if the repository is accessible under this Account Connector for the calling user. */
+  repository?: string;
+}
+
+export const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    repository: Schema.optional(Schema.String).pipe(T.HttpQuery("repository")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/accountConnectors/{accountConnectorsId}:fetchUserRepositories",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
+
+export type FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
+  FetchUserRepositoriesResponse;
+export const FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchUserRepositoriesResponse;
+
+export type FetchUserRepositoriesProjectsLocationsAccountConnectorsError =
+  DefaultErrors;
+
+/** FetchUserRepositories returns a list of UserRepos that are available for an account connector resource. */
+export const fetchUserRepositoriesProjectsLocationsAccountConnectors: API.PaginatedOperationMethod<
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
+  output: FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest {

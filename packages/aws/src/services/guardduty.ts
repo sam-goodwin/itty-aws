@@ -143,7 +143,6 @@ export const AcceptAdministratorInvitationRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           AdministratorId: "administratorId",
           InvitationId: "invitationId",
         }),
@@ -182,11 +181,7 @@ export const AcceptInvitationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       InvitationId: S.optional(S.String),
     })
       .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          MasterId: "masterId",
-          InvitationId: "invitationId",
-        }),
+        S.encodeKeys({ MasterId: "masterId", InvitationId: "invitationId" }),
       )
       .pipe(
         T.all(
@@ -219,9 +214,7 @@ export const ArchiveFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       FindingIds: S.optional(FindingIds),
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", FindingIds: "findingIds" }),
-      )
+      .pipe(S.encodeKeys({ FindingIds: "findingIds" }))
       .pipe(
         T.all(
           T.Http({
@@ -339,8 +332,8 @@ export type DetectorFeature =
   | "EKS_AUDIT_LOGS"
   | "EBS_MALWARE_PROTECTION"
   | "RDS_LOGIN_EVENTS"
-  | "EKS_RUNTIME_MONITORING"
   | "LAMBDA_NETWORK_LOGS"
+  | "EKS_RUNTIME_MONITORING"
   | "RUNTIME_MONITORING"
   | (string & {});
 export const DetectorFeature = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -611,7 +604,6 @@ export const CreateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
         Name: "name",
         Description: "description",
         Action: "action",
@@ -674,7 +666,6 @@ export const CreateIPSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
         Name: "name",
         Format: "format",
         Location: "location",
@@ -838,12 +829,7 @@ export const CreateMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     AccountDetails: S.optional(AccountDetails),
   })
-    .pipe(
-      S.encodeKeys({
-        DetectorId: "detectorId",
-        AccountDetails: "accountDetails",
-      }),
-    )
+    .pipe(S.encodeKeys({ AccountDetails: "accountDetails" }))
     .pipe(
       T.all(
         T.Http({ method: "POST", uri: "/detector/{DetectorId}/member" }),
@@ -919,7 +905,6 @@ export const CreatePublishingDestinationRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           DestinationType: "destinationType",
           DestinationProperties: "destinationProperties",
           ClientToken: "clientToken",
@@ -965,12 +950,7 @@ export const CreateSampleFindingsRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       FindingTypes: S.optional(FindingTypes),
     })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          FindingTypes: "findingTypes",
-        }),
-      )
+      .pipe(S.encodeKeys({ FindingTypes: "findingTypes" }))
       .pipe(
         T.all(
           T.Http({
@@ -1025,7 +1005,6 @@ export const CreateThreatEntitySetRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           Name: "name",
           Format: "format",
           Location: "location",
@@ -1095,7 +1074,6 @@ export const CreateThreatIntelSetRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           Name: "name",
           Format: "format",
           Location: "location",
@@ -1165,7 +1143,6 @@ export const CreateTrustedEntitySetRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           Name: "name",
           Format: "format",
           Location: "location",
@@ -1242,18 +1219,16 @@ export interface DeleteDetectorRequest {
   DetectorId: string;
 }
 export const DeleteDetectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/detector/{DetectorId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/detector/{DetectorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteDetectorRequest",
 }) as any as S.Schema<DeleteDetectorRequest>;
@@ -1271,21 +1246,19 @@ export const DeleteFilterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     FilterName: S.String.pipe(T.HttpLabel("FilterName")),
-  })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId", FilterName: "filterName" }))
-    .pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/detector/{DetectorId}/filter/{FilterName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/detector/{DetectorId}/filter/{FilterName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteFilterRequest",
 }) as any as S.Schema<DeleteFilterRequest>;
@@ -1331,27 +1304,25 @@ export const DeleteInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteInvitationsResponse>;
 export interface DeleteIPSetRequest {
   DetectorId: string;
-  IpSetId: string;
+  IpSetId?: string;
 }
 export const DeleteIPSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-    IpSetId: S.String.pipe(T.HttpLabel("IpSetId")),
-  })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId", IpSetId: "ipSetId" }))
-    .pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/detector/{DetectorId}/ipset/{IpSetId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+    IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/detector/{DetectorId}/ipset/{IpSetId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteIPSetRequest",
 }) as any as S.Schema<DeleteIPSetRequest>;
@@ -1362,31 +1333,27 @@ export const DeleteIPSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteIPSetResponse",
 }) as any as S.Schema<DeleteIPSetResponse>;
 export interface DeleteMalwareProtectionPlanRequest {
-  MalwareProtectionPlanId: string;
+  MalwareProtectionPlanId?: string;
 }
 export const DeleteMalwareProtectionPlanRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      MalwareProtectionPlanId: S.String.pipe(
+      MalwareProtectionPlanId: S.optional(S.String).pipe(
         T.HttpLabel("MalwareProtectionPlanId"),
       ),
-    })
-      .pipe(
-        S.encodeKeys({ MalwareProtectionPlanId: "malwareProtectionPlanId" }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "DELETE",
-            uri: "/malware-protection-plan/{MalwareProtectionPlanId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/malware-protection-plan/{MalwareProtectionPlanId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DeleteMalwareProtectionPlanRequest",
   }) as any as S.Schema<DeleteMalwareProtectionPlanRequest>;
@@ -1404,7 +1371,7 @@ export const DeleteMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     AccountIds: S.optional(AccountIds),
   })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }))
+    .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
     .pipe(
       T.all(
         T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/delete" }),
@@ -1440,26 +1407,19 @@ export const DeletePublishingDestinationRequest =
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          DestinationId: "destinationId",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "DELETE",
-            uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DeletePublishingDestinationRequest",
   }) as any as S.Schema<DeletePublishingDestinationRequest>;
@@ -1470,33 +1430,28 @@ export const DeletePublishingDestinationResponse =
   }) as any as S.Schema<DeletePublishingDestinationResponse>;
 export interface DeleteThreatEntitySetRequest {
   DetectorId: string;
-  ThreatEntitySetId: string;
+  ThreatEntitySetId?: string;
 }
 export const DeleteThreatEntitySetRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-      ThreatEntitySetId: S.String.pipe(T.HttpLabel("ThreatEntitySetId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          ThreatEntitySetId: "threatEntitySetId",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "DELETE",
-            uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+      ThreatEntitySetId: S.optional(S.String).pipe(
+        T.HttpLabel("ThreatEntitySetId"),
       ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
   ).annotate({
     identifier: "DeleteThreatEntitySetRequest",
   }) as any as S.Schema<DeleteThreatEntitySetRequest>;
@@ -1514,26 +1469,19 @@ export const DeleteThreatIntelSetRequest =
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       ThreatIntelSetId: S.String.pipe(T.HttpLabel("ThreatIntelSetId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          ThreatIntelSetId: "threatIntelSetId",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "DELETE",
-            uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DeleteThreatIntelSetRequest",
   }) as any as S.Schema<DeleteThreatIntelSetRequest>;
@@ -1551,26 +1499,19 @@ export const DeleteTrustedEntitySetRequest =
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       TrustedEntitySetId: S.String.pipe(T.HttpLabel("TrustedEntitySetId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          TrustedEntitySetId: "trustedEntitySetId",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "DELETE",
-            uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DeleteTrustedEntitySetRequest",
   }) as any as S.Schema<DeleteTrustedEntitySetRequest>;
@@ -1667,7 +1608,6 @@ export const DescribeMalwareScansRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           NextToken: "nextToken",
           MaxResults: "maxResults",
           FilterCriteria: "filterCriteria",
@@ -1853,24 +1793,16 @@ export const DescribeOrganizationConfigurationRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          MaxResults: "maxResults",
-          NextToken: "nextToken",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({ method: "GET", uri: "/detector/{DetectorId}/admin" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/detector/{DetectorId}/admin" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DescribeOrganizationConfigurationRequest",
   }) as any as S.Schema<DescribeOrganizationConfigurationRequest>;
@@ -1974,8 +1906,8 @@ export type OrgFeature =
   | "EKS_AUDIT_LOGS"
   | "EBS_MALWARE_PROTECTION"
   | "RDS_LOGIN_EVENTS"
-  | "EKS_RUNTIME_MONITORING"
   | "LAMBDA_NETWORK_LOGS"
+  | "EKS_RUNTIME_MONITORING"
   | "RUNTIME_MONITORING"
   | (string & {});
 export const OrgFeature = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2082,26 +2014,19 @@ export const DescribePublishingDestinationRequest =
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          DestinationId: "destinationId",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DescribePublishingDestinationRequest",
   }) as any as S.Schema<DescribePublishingDestinationRequest>;
@@ -2172,21 +2097,19 @@ export interface DisassociateFromAdministratorAccountRequest {
 }
 export const DisassociateFromAdministratorAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-      .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "POST",
-            uri: "/detector/{DetectorId}/administrator/disassociate",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/detector/{DetectorId}/administrator/disassociate",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DisassociateFromAdministratorAccountRequest",
   }) as any as S.Schema<DisassociateFromAdministratorAccountRequest>;
@@ -2200,21 +2123,19 @@ export interface DisassociateFromMasterAccountRequest {
 }
 export const DisassociateFromMasterAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-      .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "POST",
-            uri: "/detector/{DetectorId}/master/disassociate",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/detector/{DetectorId}/master/disassociate",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "DisassociateFromMasterAccountRequest",
   }) as any as S.Schema<DisassociateFromMasterAccountRequest>;
@@ -2233,9 +2154,7 @@ export const DisassociateMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       AccountIds: S.optional(AccountIds),
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }),
-      )
+      .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
       .pipe(
         T.all(
           T.Http({
@@ -2296,21 +2215,16 @@ export interface GetAdministratorAccountRequest {
 }
 export const GetAdministratorAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-      .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/administrator",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/detector/{DetectorId}/administrator" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "GetAdministratorAccountRequest",
   }) as any as S.Schema<GetAdministratorAccountRequest>;
@@ -2348,13 +2262,13 @@ export const GetAdministratorAccountResponse =
   }) as any as S.Schema<GetAdministratorAccountResponse>;
 export type CoverageFilterCriterionKey =
   | "ACCOUNT_ID"
-  | "CLUSTER_NAME"
   | "RESOURCE_TYPE"
   | "COVERAGE_STATUS"
   | "ADDON_VERSION"
+  | "CLUSTER_NAME"
+  | "ECS_CLUSTER_NAME"
   | "MANAGEMENT_TYPE"
   | "EKS_CLUSTER_NAME"
-  | "ECS_CLUSTER_NAME"
   | "AGENT_VERSION"
   | "INSTANCE_ID"
   | "CLUSTER_ARN"
@@ -2429,7 +2343,6 @@ export const GetCoverageStatisticsRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           FilterCriteria: "filterCriteria",
           StatisticsType: "statisticsType",
         }),
@@ -2496,18 +2409,16 @@ export interface GetDetectorRequest {
   DetectorId: string;
 }
 export const GetDetectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/detector/{DetectorId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector/{DetectorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetDetectorRequest",
 }) as any as S.Schema<GetDetectorRequest>;
@@ -2617,8 +2528,8 @@ export type DetectorFeatureResult =
   | "EKS_AUDIT_LOGS"
   | "EBS_MALWARE_PROTECTION"
   | "RDS_LOGIN_EVENTS"
-  | "EKS_RUNTIME_MONITORING"
   | "LAMBDA_NETWORK_LOGS"
+  | "EKS_RUNTIME_MONITORING"
   | "RUNTIME_MONITORING"
   | (string & {});
 export const DetectorFeatureResult = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2726,21 +2637,19 @@ export const GetFilterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     FilterName: S.String.pipe(T.HttpLabel("FilterName")),
-  })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId", FilterName: "filterName" }))
-    .pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/detector/{DetectorId}/filter/{FilterName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/detector/{DetectorId}/filter/{FilterName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetFilterRequest",
 }) as any as S.Schema<GetFilterRequest>;
@@ -2785,11 +2694,7 @@ export const GetFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SortCriteria: S.optional(SortCriteria),
   })
     .pipe(
-      S.encodeKeys({
-        DetectorId: "detectorId",
-        FindingIds: "findingIds",
-        SortCriteria: "sortCriteria",
-      }),
+      S.encodeKeys({ FindingIds: "findingIds", SortCriteria: "sortCriteria" }),
     )
     .pipe(
       T.all(
@@ -3358,9 +3263,9 @@ export interface KubernetesWorkloadDetails {
   Uid?: string;
   Namespace?: string;
   HostNetwork?: boolean;
+  ServiceAccountName?: string;
   Containers?: Container[];
   Volumes?: Volume[];
-  ServiceAccountName?: string;
   HostIPC?: boolean;
   HostPID?: boolean;
 }
@@ -3372,9 +3277,9 @@ export const KubernetesWorkloadDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Uid: S.optional(S.String),
       Namespace: S.optional(S.String),
       HostNetwork: S.optional(S.Boolean),
+      ServiceAccountName: S.optional(S.String),
       Containers: S.optional(Containers),
       Volumes: S.optional(Volumes),
-      ServiceAccountName: S.optional(S.String),
       HostIPC: S.optional(S.Boolean),
       HostPID: S.optional(S.Boolean),
     }).pipe(
@@ -3384,9 +3289,9 @@ export const KubernetesWorkloadDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         Uid: "uid",
         Namespace: "namespace",
         HostNetwork: "hostNetwork",
+        ServiceAccountName: "serviceAccountName",
         Containers: "containers",
         Volumes: "volumes",
-        ServiceAccountName: "serviceAccountName",
         HostIPC: "hostIPC",
         HostPID: "hostPID",
       }),
@@ -3505,6 +3410,62 @@ export const EcsClusterDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EcsClusterDetails",
 }) as any as S.Schema<EcsClusterDetails>;
+export type SubnetIds = string[];
+export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface VpcConfig {
+  SubnetIds?: string[];
+  VpcId?: string;
+  SecurityGroups?: SecurityGroup[];
+}
+export const VpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetIds: S.optional(SubnetIds),
+    VpcId: S.optional(S.String),
+    SecurityGroups: S.optional(SecurityGroups),
+  }).pipe(
+    S.encodeKeys({
+      SubnetIds: "subnetIds",
+      VpcId: "vpcId",
+      SecurityGroups: "securityGroups",
+    }),
+  ),
+).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
+export interface LambdaDetails {
+  FunctionArn?: string;
+  FunctionName?: string;
+  Description?: string;
+  LastModifiedAt?: Date;
+  RevisionId?: string;
+  FunctionVersion?: string;
+  Role?: string;
+  VpcConfig?: VpcConfig;
+  Tags?: Tag[];
+}
+export const LambdaDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionArn: S.optional(S.String),
+    FunctionName: S.optional(S.String),
+    Description: S.optional(S.String),
+    LastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    RevisionId: S.optional(S.String),
+    FunctionVersion: S.optional(S.String),
+    Role: S.optional(S.String),
+    VpcConfig: S.optional(VpcConfig),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      FunctionArn: "functionArn",
+      FunctionName: "functionName",
+      Description: "description",
+      LastModifiedAt: "lastModifiedAt",
+      RevisionId: "revisionId",
+      FunctionVersion: "functionVersion",
+      Role: "role",
+      VpcConfig: "vpcConfig",
+      Tags: "tags",
+    }),
+  ),
+).annotate({ identifier: "LambdaDetails" }) as any as S.Schema<LambdaDetails>;
 export interface RdsDbInstanceDetails {
   DbInstanceIdentifier?: string;
   Engine?: string;
@@ -3595,62 +3556,6 @@ export const RdsDbUserDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RdsDbUserDetails",
 }) as any as S.Schema<RdsDbUserDetails>;
-export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
-export interface VpcConfig {
-  SubnetIds?: string[];
-  VpcId?: string;
-  SecurityGroups?: SecurityGroup[];
-}
-export const VpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubnetIds: S.optional(SubnetIds),
-    VpcId: S.optional(S.String),
-    SecurityGroups: S.optional(SecurityGroups),
-  }).pipe(
-    S.encodeKeys({
-      SubnetIds: "subnetIds",
-      VpcId: "vpcId",
-      SecurityGroups: "securityGroups",
-    }),
-  ),
-).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export interface LambdaDetails {
-  FunctionArn?: string;
-  FunctionName?: string;
-  Description?: string;
-  LastModifiedAt?: Date;
-  RevisionId?: string;
-  FunctionVersion?: string;
-  Role?: string;
-  VpcConfig?: VpcConfig;
-  Tags?: Tag[];
-}
-export const LambdaDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionArn: S.optional(S.String),
-    FunctionName: S.optional(S.String),
-    Description: S.optional(S.String),
-    LastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RevisionId: S.optional(S.String),
-    FunctionVersion: S.optional(S.String),
-    Role: S.optional(S.String),
-    VpcConfig: S.optional(VpcConfig),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      FunctionArn: "functionArn",
-      FunctionName: "functionName",
-      Description: "description",
-      LastModifiedAt: "lastModifiedAt",
-      RevisionId: "revisionId",
-      FunctionVersion: "functionVersion",
-      Role: "role",
-      VpcConfig: "vpcConfig",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "LambdaDetails" }) as any as S.Schema<LambdaDetails>;
 export interface EbsSnapshotDetails {
   SnapshotArn?: string;
 }
@@ -3698,10 +3603,10 @@ export interface Resource {
   EbsVolumeDetails?: EbsVolumeDetails;
   EcsClusterDetails?: EcsClusterDetails;
   ContainerDetails?: Container;
+  LambdaDetails?: LambdaDetails;
   RdsDbInstanceDetails?: RdsDbInstanceDetails;
   RdsLimitlessDbDetails?: RdsLimitlessDbDetails;
   RdsDbUserDetails?: RdsDbUserDetails;
-  LambdaDetails?: LambdaDetails;
   EbsSnapshotDetails?: EbsSnapshotDetails;
   Ec2ImageDetails?: Ec2ImageDetails;
   RecoveryPointDetails?: RecoveryPointDetails;
@@ -3717,10 +3622,10 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     EbsVolumeDetails: S.optional(EbsVolumeDetails),
     EcsClusterDetails: S.optional(EcsClusterDetails),
     ContainerDetails: S.optional(Container),
+    LambdaDetails: S.optional(LambdaDetails),
     RdsDbInstanceDetails: S.optional(RdsDbInstanceDetails),
     RdsLimitlessDbDetails: S.optional(RdsLimitlessDbDetails),
     RdsDbUserDetails: S.optional(RdsDbUserDetails),
-    LambdaDetails: S.optional(LambdaDetails),
     EbsSnapshotDetails: S.optional(EbsSnapshotDetails),
     Ec2ImageDetails: S.optional(Ec2ImageDetails),
     RecoveryPointDetails: S.optional(RecoveryPointDetails),
@@ -3735,10 +3640,10 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       EbsVolumeDetails: "ebsVolumeDetails",
       EcsClusterDetails: "ecsClusterDetails",
       ContainerDetails: "containerDetails",
+      LambdaDetails: "lambdaDetails",
       RdsDbInstanceDetails: "rdsDbInstanceDetails",
       RdsLimitlessDbDetails: "rdsLimitlessDbDetails",
       RdsDbUserDetails: "rdsDbUserDetails",
-      LambdaDetails: "lambdaDetails",
       EbsSnapshotDetails: "ebsSnapshotDetails",
       Ec2ImageDetails: "ec2ImageDetails",
       RecoveryPointDetails: "recoveryPointDetails",
@@ -4020,84 +3925,48 @@ export const SourceIps = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface KubernetesApiCallAction {
   RequestUri?: string;
   Verb?: string;
+  Resource?: string;
+  Subresource?: string;
+  Namespace?: string;
+  ResourceName?: string;
   SourceIps?: string[];
   UserAgent?: string;
   RemoteIpDetails?: RemoteIpDetails;
   StatusCode?: number;
   Parameters?: string;
-  Resource?: string;
-  Subresource?: string;
-  Namespace?: string;
-  ResourceName?: string;
 }
 export const KubernetesApiCallAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       RequestUri: S.optional(S.String),
       Verb: S.optional(S.String),
+      Resource: S.optional(S.String),
+      Subresource: S.optional(S.String),
+      Namespace: S.optional(S.String),
+      ResourceName: S.optional(S.String),
       SourceIps: S.optional(SourceIps),
       UserAgent: S.optional(S.String),
       RemoteIpDetails: S.optional(RemoteIpDetails),
       StatusCode: S.optional(S.Number),
       Parameters: S.optional(S.String),
-      Resource: S.optional(S.String),
-      Subresource: S.optional(S.String),
-      Namespace: S.optional(S.String),
-      ResourceName: S.optional(S.String),
     }).pipe(
       S.encodeKeys({
         RequestUri: "requestUri",
         Verb: "verb",
+        Resource: "resource",
+        Subresource: "subresource",
+        Namespace: "namespace",
+        ResourceName: "resourceName",
         SourceIps: "sourceIPs",
         UserAgent: "userAgent",
         RemoteIpDetails: "remoteIpDetails",
         StatusCode: "statusCode",
         Parameters: "parameters",
-        Resource: "resource",
-        Subresource: "subresource",
-        Namespace: "namespace",
-        ResourceName: "resourceName",
       }),
     ),
 ).annotate({
   identifier: "KubernetesApiCallAction",
 }) as any as S.Schema<KubernetesApiCallAction>;
-export interface LoginAttribute {
-  User?: string;
-  Application?: string;
-  FailedLoginAttempts?: number;
-  SuccessfulLoginAttempts?: number;
-}
-export const LoginAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    User: S.optional(S.String),
-    Application: S.optional(S.String),
-    FailedLoginAttempts: S.optional(S.Number),
-    SuccessfulLoginAttempts: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      User: "user",
-      Application: "application",
-      FailedLoginAttempts: "failedLoginAttempts",
-      SuccessfulLoginAttempts: "successfulLoginAttempts",
-    }),
-  ),
-).annotate({ identifier: "LoginAttribute" }) as any as S.Schema<LoginAttribute>;
-export type LoginAttributes = LoginAttribute[];
-export const LoginAttributes =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LoginAttribute);
-export interface RdsLoginAttemptAction {
-  RemoteIpDetails?: RemoteIpDetails;
-  LoginAttributes?: LoginAttribute[];
-}
-export const RdsLoginAttemptAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RemoteIpDetails: S.optional(RemoteIpDetails),
-    LoginAttributes: S.optional(LoginAttributes),
-  }).pipe(S.encodeKeys({ RemoteIpDetails: "remoteIpDetails" })),
-).annotate({
-  identifier: "RdsLoginAttemptAction",
-}) as any as S.Schema<RdsLoginAttemptAction>;
 export interface KubernetesPermissionCheckedDetails {
   Verb?: string;
   Resource?: string;
@@ -4163,6 +4032,42 @@ export const KubernetesRoleDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KubernetesRoleDetails",
 }) as any as S.Schema<KubernetesRoleDetails>;
+export interface LoginAttribute {
+  User?: string;
+  Application?: string;
+  FailedLoginAttempts?: number;
+  SuccessfulLoginAttempts?: number;
+}
+export const LoginAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    User: S.optional(S.String),
+    Application: S.optional(S.String),
+    FailedLoginAttempts: S.optional(S.Number),
+    SuccessfulLoginAttempts: S.optional(S.Number),
+  }).pipe(
+    S.encodeKeys({
+      User: "user",
+      Application: "application",
+      FailedLoginAttempts: "failedLoginAttempts",
+      SuccessfulLoginAttempts: "successfulLoginAttempts",
+    }),
+  ),
+).annotate({ identifier: "LoginAttribute" }) as any as S.Schema<LoginAttribute>;
+export type LoginAttributes = LoginAttribute[];
+export const LoginAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(LoginAttribute);
+export interface RdsLoginAttemptAction {
+  RemoteIpDetails?: RemoteIpDetails;
+  LoginAttributes?: LoginAttribute[];
+}
+export const RdsLoginAttemptAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RemoteIpDetails: S.optional(RemoteIpDetails),
+    LoginAttributes: S.optional(LoginAttributes),
+  }).pipe(S.encodeKeys({ RemoteIpDetails: "remoteIpDetails" })),
+).annotate({
+  identifier: "RdsLoginAttemptAction",
+}) as any as S.Schema<RdsLoginAttemptAction>;
 export interface Action {
   ActionType?: string;
   AwsApiCallAction?: AwsApiCallAction;
@@ -4170,10 +4075,10 @@ export interface Action {
   NetworkConnectionAction?: NetworkConnectionAction;
   PortProbeAction?: PortProbeAction;
   KubernetesApiCallAction?: KubernetesApiCallAction;
-  RdsLoginAttemptAction?: RdsLoginAttemptAction;
   KubernetesPermissionCheckedDetails?: KubernetesPermissionCheckedDetails;
   KubernetesRoleBindingDetails?: KubernetesRoleBindingDetails;
   KubernetesRoleDetails?: KubernetesRoleDetails;
+  RdsLoginAttemptAction?: RdsLoginAttemptAction;
 }
 export const Action = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4183,12 +4088,12 @@ export const Action = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     NetworkConnectionAction: S.optional(NetworkConnectionAction),
     PortProbeAction: S.optional(PortProbeAction),
     KubernetesApiCallAction: S.optional(KubernetesApiCallAction),
-    RdsLoginAttemptAction: S.optional(RdsLoginAttemptAction),
     KubernetesPermissionCheckedDetails: S.optional(
       KubernetesPermissionCheckedDetails,
     ),
     KubernetesRoleBindingDetails: S.optional(KubernetesRoleBindingDetails),
     KubernetesRoleDetails: S.optional(KubernetesRoleDetails),
+    RdsLoginAttemptAction: S.optional(RdsLoginAttemptAction),
   }).pipe(
     S.encodeKeys({
       ActionType: "actionType",
@@ -4197,10 +4102,10 @@ export const Action = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       NetworkConnectionAction: "networkConnectionAction",
       PortProbeAction: "portProbeAction",
       KubernetesApiCallAction: "kubernetesApiCallAction",
-      RdsLoginAttemptAction: "rdsLoginAttemptAction",
       KubernetesPermissionCheckedDetails: "kubernetesPermissionCheckedDetails",
       KubernetesRoleBindingDetails: "kubernetesRoleBindingDetails",
       KubernetesRoleDetails: "kubernetesRoleDetails",
+      RdsLoginAttemptAction: "rdsLoginAttemptAction",
     }),
   ),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
@@ -5866,7 +5771,6 @@ export const GetFindingsStatisticsRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           FindingStatisticTypes: "findingStatisticTypes",
           FindingCriteria: "findingCriteria",
           GroupBy: "groupBy",
@@ -6104,27 +6008,22 @@ export const GetInvitationsCountResponse =
   }) as any as S.Schema<GetInvitationsCountResponse>;
 export interface GetIPSetRequest {
   DetectorId: string;
-  IpSetId: string;
+  IpSetId?: string;
 }
 export const GetIPSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-    IpSetId: S.String.pipe(T.HttpLabel("IpSetId")),
-  })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId", IpSetId: "ipSetId" }))
-    .pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/detector/{DetectorId}/ipset/{IpSetId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+    IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetIPSetRequest",
 }) as any as S.Schema<GetIPSetRequest>;
@@ -6168,31 +6067,27 @@ export const GetIPSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetIPSetResponse",
 }) as any as S.Schema<GetIPSetResponse>;
 export interface GetMalwareProtectionPlanRequest {
-  MalwareProtectionPlanId: string;
+  MalwareProtectionPlanId?: string;
 }
 export const GetMalwareProtectionPlanRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      MalwareProtectionPlanId: S.String.pipe(
+      MalwareProtectionPlanId: S.optional(S.String).pipe(
         T.HttpLabel("MalwareProtectionPlanId"),
       ),
-    })
-      .pipe(
-        S.encodeKeys({ MalwareProtectionPlanId: "malwareProtectionPlanId" }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/malware-protection-plan/{MalwareProtectionPlanId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/malware-protection-plan/{MalwareProtectionPlanId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "GetMalwareProtectionPlanRequest",
   }) as any as S.Schema<GetMalwareProtectionPlanRequest>;
@@ -6256,21 +6151,19 @@ export const GetMalwareProtectionPlanResponse =
     identifier: "GetMalwareProtectionPlanResponse",
   }) as any as S.Schema<GetMalwareProtectionPlanResponse>;
 export interface GetMalwareScanRequest {
-  ScanId: string;
+  ScanId?: string;
 }
 export const GetMalwareScanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ ScanId: S.String.pipe(T.HttpLabel("ScanId")) })
-    .pipe(S.encodeKeys({ ScanId: "scanId" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/malware-scan/{ScanId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  S.Struct({ ScanId: S.optional(S.String).pipe(T.HttpLabel("ScanId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/malware-scan/{ScanId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetMalwareScanRequest",
 }) as any as S.Schema<GetMalwareScanRequest>;
@@ -6548,21 +6441,19 @@ export interface GetMalwareScanSettingsRequest {
 }
 export const GetMalwareScanSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-      .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/malware-scan-settings",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/malware-scan-settings",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "GetMalwareScanSettingsRequest",
   }) as any as S.Schema<GetMalwareScanSettingsRequest>;
@@ -6649,18 +6540,16 @@ export interface GetMasterAccountRequest {
 }
 export const GetMasterAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
-    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) })
-      .pipe(S.encodeKeys({ DetectorId: "detectorId" }))
-      .pipe(
-        T.all(
-          T.Http({ method: "GET", uri: "/detector/{DetectorId}/master" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/detector/{DetectorId}/master" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
 ).annotate({
   identifier: "GetMasterAccountRequest",
 }) as any as S.Schema<GetMasterAccountRequest>;
@@ -6706,9 +6595,7 @@ export const GetMemberDetectorsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       AccountIds: S.optional(AccountIds),
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }),
-      )
+      .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
       .pipe(
         T.all(
           T.Http({
@@ -6843,7 +6730,7 @@ export const GetMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     AccountIds: S.optional(AccountIds),
   })
-    .pipe(S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }))
+    .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
     .pipe(
       T.all(
         T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/get" }),
@@ -7035,17 +6922,15 @@ export const GetOrganizationStatisticsResponse =
   }) as any as S.Schema<GetOrganizationStatisticsResponse>;
 export interface GetRemainingFreeTrialDaysRequest {
   DetectorId: string;
-  AccountIds?: string[];
+  AccountIds: string[];
 }
 export const GetRemainingFreeTrialDaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-      AccountIds: S.optional(AccountIds),
+      AccountIds: AccountIds,
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }),
-      )
+      .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
       .pipe(
         T.all(
           T.Http({
@@ -7135,10 +7020,10 @@ export type FreeTrialFeatureResult =
   | "EKS_AUDIT_LOGS"
   | "EBS_MALWARE_PROTECTION"
   | "RDS_LOGIN_EVENTS"
-  | "EKS_RUNTIME_MONITORING"
   | "LAMBDA_NETWORK_LOGS"
-  | "FARGATE_RUNTIME_MONITORING"
+  | "EKS_RUNTIME_MONITORING"
   | "EC2_RUNTIME_MONITORING"
+  | "FARGATE_RUNTIME_MONITORING"
   | (string & {});
 export const FreeTrialFeatureResult = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FreeTrialFeatureConfigurationResult {
@@ -7209,33 +7094,28 @@ export const GetRemainingFreeTrialDaysResponse =
   }) as any as S.Schema<GetRemainingFreeTrialDaysResponse>;
 export interface GetThreatEntitySetRequest {
   DetectorId: string;
-  ThreatEntitySetId: string;
+  ThreatEntitySetId?: string;
 }
 export const GetThreatEntitySetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-      ThreatEntitySetId: S.String.pipe(T.HttpLabel("ThreatEntitySetId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          ThreatEntitySetId: "threatEntitySetId",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+      ThreatEntitySetId: S.optional(S.String).pipe(
+        T.HttpLabel("ThreatEntitySetId"),
       ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
 ).annotate({
   identifier: "GetThreatEntitySetRequest",
 }) as any as S.Schema<GetThreatEntitySetRequest>;
@@ -7297,26 +7177,19 @@ export const GetThreatIntelSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       ThreatIntelSetId: S.String.pipe(T.HttpLabel("ThreatIntelSetId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          ThreatIntelSetId: "threatIntelSetId",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
 ).annotate({
   identifier: "GetThreatIntelSetRequest",
 }) as any as S.Schema<GetThreatIntelSetRequest>;
@@ -7369,26 +7242,19 @@ export const GetTrustedEntitySetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       TrustedEntitySetId: S.String.pipe(T.HttpLabel("TrustedEntitySetId")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          TrustedEntitySetId: "trustedEntitySetId",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
 ).annotate({
   identifier: "GetTrustedEntitySetRequest",
 }) as any as S.Schema<GetTrustedEntitySetRequest>;
@@ -7473,8 +7339,8 @@ export type UsageFeature =
   | "RDS_LOGIN_EVENTS"
   | "LAMBDA_NETWORK_LOGS"
   | "EKS_RUNTIME_MONITORING"
-  | "FARGATE_RUNTIME_MONITORING"
   | "EC2_RUNTIME_MONITORING"
+  | "FARGATE_RUNTIME_MONITORING"
   | "RDS_DBI_PROTECTION_PROVISIONED"
   | "RDS_DBI_PROTECTION_SERVERLESS"
   | (string & {});
@@ -7523,7 +7389,6 @@ export const GetUsageStatisticsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           UsageStatisticType: "usageStatisticsType",
           UsageCriteria: "usageCriteria",
           Unit: "unit",
@@ -7708,7 +7573,6 @@ export const InviteMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
         AccountIds: "accountIds",
         DisableEmailNotification: "disableEmailNotification",
         Message: "message",
@@ -7742,11 +7606,11 @@ export const InviteMembersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteMembersResponse>;
 export type CoverageSortKey =
   | "ACCOUNT_ID"
-  | "CLUSTER_NAME"
   | "COVERAGE_STATUS"
   | "ISSUE"
   | "ADDON_VERSION"
   | "UPDATED_AT"
+  | "CLUSTER_NAME"
   | "EKS_CLUSTER_NAME"
   | "ECS_CLUSTER_NAME"
   | "INSTANCE_ID"
@@ -7781,7 +7645,6 @@ export const ListCoverageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
         NextToken: "nextToken",
         MaxResults: "maxResults",
         FilterCriteria: "filterCriteria",
@@ -7934,23 +7797,23 @@ export const CoverageEc2InstanceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<CoverageEc2InstanceDetails>;
 export interface CoverageResourceDetails {
   EksClusterDetails?: CoverageEksClusterDetails;
-  ResourceType?: ResourceType;
   EcsClusterDetails?: CoverageEcsClusterDetails;
   Ec2InstanceDetails?: CoverageEc2InstanceDetails;
+  ResourceType?: ResourceType;
 }
 export const CoverageResourceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       EksClusterDetails: S.optional(CoverageEksClusterDetails),
-      ResourceType: S.optional(ResourceType),
       EcsClusterDetails: S.optional(CoverageEcsClusterDetails),
       Ec2InstanceDetails: S.optional(CoverageEc2InstanceDetails),
+      ResourceType: S.optional(ResourceType),
     }).pipe(
       S.encodeKeys({
         EksClusterDetails: "eksClusterDetails",
-        ResourceType: "resourceType",
         EcsClusterDetails: "ecsClusterDetails",
         Ec2InstanceDetails: "ec2InstanceDetails",
+        ResourceType: "resourceType",
       }),
     ),
 ).annotate({
@@ -8011,18 +7874,16 @@ export const ListDetectorsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  })
-    .pipe(S.encodeKeys({ MaxResults: "maxResults", NextToken: "nextToken" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/detector" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListDetectorsRequest",
 }) as any as S.Schema<ListDetectorsRequest>;
@@ -8050,24 +7911,16 @@ export const ListFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  })
-    .pipe(
-      S.encodeKeys({
-        DetectorId: "detectorId",
-        MaxResults: "maxResults",
-        NextToken: "nextToken",
-      }),
-    )
-    .pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/detector/{DetectorId}/filter" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector/{DetectorId}/filter" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListFiltersRequest",
 }) as any as S.Schema<ListFiltersRequest>;
@@ -8102,7 +7955,6 @@ export const ListFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
         FindingCriteria: "findingCriteria",
         SortCriteria: "sortCriteria",
         MaxResults: "maxResults",
@@ -8143,18 +7995,16 @@ export const ListInvitationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(S.encodeKeys({ MaxResults: "maxResults", NextToken: "nextToken" }))
-      .pipe(
-        T.all(
-          T.Http({ method: "GET", uri: "/invitation" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/invitation" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
 ).annotate({
   identifier: "ListInvitationsRequest",
 }) as any as S.Schema<ListInvitationsRequest>;
@@ -8206,24 +8056,16 @@ export const ListIPSetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  })
-    .pipe(
-      S.encodeKeys({
-        DetectorId: "detectorId",
-        MaxResults: "maxResults",
-        NextToken: "nextToken",
-      }),
-    )
-    .pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListIPSetsRequest",
 }) as any as S.Schema<ListIPSetsRequest>;
@@ -8246,18 +8088,18 @@ export interface ListMalwareProtectionPlansRequest {
 }
 export const ListMalwareProtectionPlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) })
-      .pipe(S.encodeKeys({ NextToken: "nextToken" }))
-      .pipe(
-        T.all(
-          T.Http({ method: "GET", uri: "/malware-protection-plan" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/malware-protection-plan" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "ListMalwareProtectionPlansRequest",
   }) as any as S.Schema<ListMalwareProtectionPlansRequest>;
@@ -8358,8 +8200,6 @@ export const ListMalwareScansRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     })
       .pipe(
         S.encodeKeys({
-          MaxResults: "maxResults",
-          NextToken: "nextToken",
           FilterCriteria: "filterCriteria",
           SortCriteria: "sortCriteria",
         }),
@@ -8439,25 +8279,16 @@ export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     OnlyAssociated: S.optional(S.String).pipe(T.HttpQuery("onlyAssociated")),
-  })
-    .pipe(
-      S.encodeKeys({
-        DetectorId: "detectorId",
-        MaxResults: "maxResults",
-        NextToken: "nextToken",
-        OnlyAssociated: "onlyAssociated",
-      }),
-    )
-    .pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/detector/{DetectorId}/member" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector/{DetectorId}/member" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListMembersRequest",
 }) as any as S.Schema<ListMembersRequest>;
@@ -8488,18 +8319,16 @@ export const ListOrganizationAdminAccountsRequest =
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(S.encodeKeys({ MaxResults: "maxResults", NextToken: "nextToken" }))
-      .pipe(
-        T.all(
-          T.Http({ method: "GET", uri: "/admin" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/admin" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "ListOrganizationAdminAccountsRequest",
   }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
@@ -8548,27 +8377,19 @@ export const ListPublishingDestinationsRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          MaxResults: "maxResults",
-          NextToken: "nextToken",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/publishingDestination",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/publishingDestination",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "ListPublishingDestinationsRequest",
   }) as any as S.Schema<ListPublishingDestinationsRequest>;
@@ -8616,18 +8437,16 @@ export interface ListTagsForResourceRequest {
 }
 export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) })
-      .pipe(S.encodeKeys({ ResourceArn: "resourceArn" }))
-      .pipe(
-        T.all(
-          T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -8651,27 +8470,19 @@ export const ListThreatEntitySetsRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          MaxResults: "maxResults",
-          NextToken: "nextToken",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/threatentityset",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/threatentityset",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "ListThreatEntitySetsRequest",
   }) as any as S.Schema<ListThreatEntitySetsRequest>;
@@ -8706,27 +8517,16 @@ export const ListThreatIntelSetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          MaxResults: "maxResults",
-          NextToken: "nextToken",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/threatintelset",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/detector/{DetectorId}/threatintelset" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
 ).annotate({
   identifier: "ListThreatIntelSetsRequest",
 }) as any as S.Schema<ListThreatIntelSetsRequest>;
@@ -8761,27 +8561,19 @@ export const ListTrustedEntitySetsRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          MaxResults: "maxResults",
-          NextToken: "nextToken",
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/trustedentityset",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "GET",
-            uri: "/detector/{DetectorId}/trustedentityset",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
+    ),
   ).annotate({
     identifier: "ListTrustedEntitySetsRequest",
   }) as any as S.Schema<ListTrustedEntitySetsRequest>;
@@ -8931,9 +8723,7 @@ export const StartMonitoringMembersRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       AccountIds: S.optional(AccountIds),
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }),
-      )
+      .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
       .pipe(
         T.all(
           T.Http({
@@ -8974,9 +8764,7 @@ export const StopMonitoringMembersRequest =
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       AccountIds: S.optional(AccountIds),
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", AccountIds: "accountIds" }),
-      )
+      .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
       .pipe(
         T.all(
           T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/stop" }),
@@ -9005,15 +8793,15 @@ export const StopMonitoringMembersResponse =
     identifier: "StopMonitoringMembersResponse",
   }) as any as S.Schema<StopMonitoringMembersResponse>;
 export interface TagResourceRequest {
-  ResourceArn: string;
-  Tags?: { [key: string]: string | undefined };
+  ResourceArn?: string;
+  Tags: { [key: string]: string | undefined };
 }
 export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Tags: S.optional(TagMap),
+    ResourceArn: S.optional(S.String).pipe(T.HttpLabel("ResourceArn")),
+    Tags: TagMap,
   })
-    .pipe(S.encodeKeys({ ResourceArn: "resourceArn", Tags: "tags" }))
+    .pipe(S.encodeKeys({ Tags: "tags" }))
     .pipe(
       T.all(
         T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -9043,9 +8831,7 @@ export const UnarchiveFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
       FindingIds: S.optional(FindingIds),
     })
-      .pipe(
-        S.encodeKeys({ DetectorId: "detectorId", FindingIds: "findingIds" }),
-      )
+      .pipe(S.encodeKeys({ FindingIds: "findingIds" }))
       .pipe(
         T.all(
           T.Http({
@@ -9078,18 +8864,16 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: S.optional(TagKeyList).pipe(T.HttpQuery("tagKeys")),
-  })
-    .pipe(S.encodeKeys({ ResourceArn: "resourceArn", TagKeys: "tagKeys" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
@@ -9116,7 +8900,6 @@ export const UpdateDetectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
         Enable: "enable",
         FindingPublishingFrequency: "findingPublishingFrequency",
         DataSources: "dataSources",
@@ -9161,8 +8944,6 @@ export const UpdateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
-        FilterName: "filterName",
         Description: "description",
         Action: "action",
         Rank: "rank",
@@ -9211,7 +8992,6 @@ export const UpdateFindingsFeedbackRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           FindingIds: "findingIds",
           Feedback: "feedback",
           Comments: "comments",
@@ -9240,7 +9020,7 @@ export const UpdateFindingsFeedbackResponse =
   }) as any as S.Schema<UpdateFindingsFeedbackResponse>;
 export interface UpdateIPSetRequest {
   DetectorId: string;
-  IpSetId: string;
+  IpSetId?: string;
   Name?: string;
   Location?: string;
   Activate?: boolean;
@@ -9249,7 +9029,7 @@ export interface UpdateIPSetRequest {
 export const UpdateIPSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-    IpSetId: S.String.pipe(T.HttpLabel("IpSetId")),
+    IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
     Name: S.optional(S.String),
     Location: S.optional(S.String),
     Activate: S.optional(S.Boolean),
@@ -9257,8 +9037,6 @@ export const UpdateIPSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   })
     .pipe(
       S.encodeKeys({
-        DetectorId: "detectorId",
-        IpSetId: "ipSetId",
         Name: "name",
         Location: "location",
         Activate: "activate",
@@ -9327,7 +9105,6 @@ export const UpdateMalwareProtectionPlanRequest =
     })
       .pipe(
         S.encodeKeys({
-          MalwareProtectionPlanId: "malwareProtectionPlanId",
           Role: "role",
           Actions: "actions",
           ProtectedResource: "protectedResource",
@@ -9368,7 +9145,6 @@ export const UpdateMalwareScanSettingsRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           ScanResourceCriteria: "scanResourceCriteria",
           EbsSnapshotPreservation: "ebsSnapshotPreservation",
         }),
@@ -9451,7 +9227,6 @@ export const UpdateMemberDetectorsRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           AccountIds: "accountIds",
           DataSources: "dataSources",
           Features: "features",
@@ -9640,7 +9415,6 @@ export const UpdateOrganizationConfigurationRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
           AutoEnable: "autoEnable",
           DataSources: "dataSources",
           Features: "features",
@@ -9677,13 +9451,7 @@ export const UpdatePublishingDestinationRequest =
       DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
       DestinationProperties: S.optional(DestinationProperties),
     })
-      .pipe(
-        S.encodeKeys({
-          DetectorId: "detectorId",
-          DestinationId: "destinationId",
-          DestinationProperties: "destinationProperties",
-        }),
-      )
+      .pipe(S.encodeKeys({ DestinationProperties: "destinationProperties" }))
       .pipe(
         T.all(
           T.Http({
@@ -9707,7 +9475,7 @@ export const UpdatePublishingDestinationResponse =
   }) as any as S.Schema<UpdatePublishingDestinationResponse>;
 export interface UpdateThreatEntitySetRequest {
   DetectorId: string;
-  ThreatEntitySetId: string;
+  ThreatEntitySetId?: string;
   Name?: string;
   Location?: string;
   ExpectedBucketOwner?: string;
@@ -9717,7 +9485,9 @@ export const UpdateThreatEntitySetRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-      ThreatEntitySetId: S.String.pipe(T.HttpLabel("ThreatEntitySetId")),
+      ThreatEntitySetId: S.optional(S.String).pipe(
+        T.HttpLabel("ThreatEntitySetId"),
+      ),
       Name: S.optional(S.String),
       Location: S.optional(S.String),
       ExpectedBucketOwner: S.optional(S.String),
@@ -9725,8 +9495,6 @@ export const UpdateThreatEntitySetRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
-          ThreatEntitySetId: "threatEntitySetId",
           Name: "name",
           Location: "location",
           ExpectedBucketOwner: "expectedBucketOwner",
@@ -9774,8 +9542,6 @@ export const UpdateThreatIntelSetRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
-          ThreatIntelSetId: "threatIntelSetId",
           Name: "name",
           Location: "location",
           Activate: "activate",
@@ -9823,8 +9589,6 @@ export const UpdateTrustedEntitySetRequest =
     })
       .pipe(
         S.encodeKeys({
-          DetectorId: "detectorId",
-          TrustedEntitySetId: "trustedEntitySetId",
           Name: "name",
           Location: "location",
           ExpectedBucketOwner: "expectedBucketOwner",
@@ -9881,8 +9645,7 @@ export type AcceptAdministratorInvitationError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Accepts the invitation to be a member account and get monitored by a GuardDuty
- * administrator account that sent the invitation.
+ * Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation.
  */
 export const acceptAdministratorInvitation: API.OperationMethod<
   AcceptAdministratorInvitationRequest,
@@ -9918,8 +9681,7 @@ export type ArchiveFindingsError =
 /**
  * Archives GuardDuty findings that are specified by the list of finding IDs.
  *
- * Only the administrator account can archive findings. Member accounts don't have
- * permission to archive findings from their accounts.
+ * Only the administrator account can archive findings. Member accounts don't have permission to archive findings from their accounts.
  */
 export const archiveFindings: API.OperationMethod<
   ArchiveFindingsRequest,
@@ -9936,27 +9698,15 @@ export type CreateDetectorError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a single GuardDuty detector. A detector is a resource that represents the
- * GuardDuty service. To start using GuardDuty, you must create a detector in each Region where
- * you enable the service. You can have only one detector per account per Region. All data
- * sources are enabled in a new detector by default.
+ * Creates a single GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
  *
- * - When you don't specify any `features`, with an
- * exception to `RUNTIME_MONITORING`, all the optional features are
- * enabled by default.
+ * - When you don't specify any `features`, with an exception to `RUNTIME_MONITORING`, all the optional features are enabled by default.
  *
- * - When you specify some of the `features`, any feature that is not specified in the
- * API call gets enabled by default, with an exception to `RUNTIME_MONITORING`.
+ * - When you specify some of the `features`, any feature that is not specified in the API call gets enabled by default, with an exception to `RUNTIME_MONITORING`.
  *
- * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`)
- * and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error.
- * You can add only one of these two features because Runtime Monitoring already includes the
- * threat detection for Amazon EKS resources. For more information, see
- * Runtime Monitoring.
+ * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can add only one of these two features because Runtime Monitoring already includes the threat detection for Amazon EKS resources. For more information, see Runtime Monitoring.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const createDetector: API.OperationMethod<
   CreateDetectorRequest,
@@ -9973,8 +9723,7 @@ export type CreateFilterError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a filter using the specified finding criteria. The maximum number of saved filters
- * per Amazon Web Services account per Region is 100. For more information, see Quotas for GuardDuty.
+ * Creates a filter using the specified finding criteria. The maximum number of saved filters per Amazon Web Services account per Region is 100. For more information, see Quotas for GuardDuty.
  */
 export const createFilter: API.OperationMethod<
   CreateFilterRequest,
@@ -9992,10 +9741,7 @@ export type CreateIPSetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a new IPSet, which is called a trusted IP list in the console user interface. An
- * IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services
- * infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are
- * included in IPSets. Only users from the administrator account can use this operation.
+ * Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.
  */
 export const createIPSet: API.OperationMethod<
   CreateIPSetRequest,
@@ -10020,8 +9766,7 @@ export type CreateMalwareProtectionPlanError =
 /**
  * Creates a new Malware Protection plan for the protected resource.
  *
- * When you create a Malware Protection plan, the Amazon Web Services service terms for GuardDuty Malware
- * Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
+ * When you create a Malware Protection plan, the Amazon Web Services service terms for GuardDuty Malware Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
  */
 export const createMalwareProtectionPlan: API.OperationMethod<
   CreateMalwareProtectionPlanRequest,
@@ -10043,30 +9788,15 @@ export type CreateMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account
- * IDs. This step is a prerequisite for managing the associated member accounts either by
- * invitation or through an organization.
+ * Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs. This step is a prerequisite for managing the associated member accounts either by invitation or through an organization.
  *
- * As a delegated administrator, using `CreateMembers` will enable GuardDuty in
- * the added member accounts, with the exception of the
- * organization delegated administrator account. A delegated administrator must enable GuardDuty
- * prior to being added as a member.
+ * As a delegated administrator, using `CreateMembers` will enable GuardDuty in the added member accounts, with the exception of the organization delegated administrator account. A delegated administrator must enable GuardDuty prior to being added as a member.
  *
- * When you use CreateMembers as an Organizations delegated
- * administrator, GuardDuty applies your organization's auto-enable settings to the member
- * accounts in this request, irrespective of the accounts being new or existing members. For
- * more information about the existing auto-enable settings for your organization, see
- * DescribeOrganizationConfiguration.
+ * When you use CreateMembers as an Organizations delegated administrator, GuardDuty applies your organization's auto-enable settings to the member accounts in this request, irrespective of the accounts being new or existing members. For more information about the existing auto-enable settings for your organization, see DescribeOrganizationConfiguration.
  *
- * If you disassociate a member account that was added by invitation, the member account details
- * obtained from this API, including the associated email addresses, will be retained.
- * This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To
- * remove the details associated with a member account, the delegated administrator must invoke the
- * DeleteMembers API.
+ * If you disassociate a member account that was added by invitation, the member account details obtained from this API, including the associated email addresses, will be retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.
  *
- * When the member accounts added through Organizations are later disassociated, you (administrator)
- * can't invite them by calling the InviteMembers API. You can create an association with these
- * member accounts again only by calling the CreateMembers API.
+ * When the member accounts added through Organizations are later disassociated, you (administrator) can't invite them by calling the InviteMembers API. You can create an association with these member accounts again only by calling the CreateMembers API.
  */
 export const createMembers: API.OperationMethod<
   CreateMembersRequest,
@@ -10083,8 +9813,7 @@ export type CreatePublishingDestinationError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a publishing destination where you can export your GuardDuty findings. Before you start exporting the
- * findings, the destination resource must exist.
+ * Creates a publishing destination where you can export your GuardDuty findings. Before you start exporting the findings, the destination resource must exist.
  */
 export const createPublishingDestination: API.OperationMethod<
   CreatePublishingDestinationRequest,
@@ -10101,9 +9830,7 @@ export type CreateSampleFindingsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Generates sample findings of types specified by the list of finding types. If 'NULL' is
- * specified for `findingTypes`, the API generates sample findings of all supported
- * finding types.
+ * Generates sample findings of types specified by the list of finding types. If 'NULL' is specified for `findingTypes`, the API generates sample findings of all supported finding types.
  */
 export const createSampleFindings: API.OperationMethod<
   CreateSampleFindingsRequest,
@@ -10120,11 +9847,7 @@ export type CreateThreatEntitySetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a new threat entity set. In a threat entity set, you can provide known malicious
- * IP addresses and domains for your Amazon Web Services environment.
- * GuardDuty generates findings based on the entries in the threat entity sets.
- * Only users of the administrator account can manage entity sets, which automatically apply
- * to member accounts.
+ * Creates a new threat entity set. In a threat entity set, you can provide known malicious IP addresses and domains for your Amazon Web Services environment. GuardDuty generates findings based on the entries in the threat entity sets. Only users of the administrator account can manage entity sets, which automatically apply to member accounts.
  */
 export const createThreatEntitySet: API.OperationMethod<
   CreateThreatEntitySetRequest,
@@ -10142,9 +9865,7 @@ export type CreateThreatIntelSetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses.
- * GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator
- * account can use this operation.
+ * Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator account can use this operation.
  */
 export const createThreatIntelSet: API.OperationMethod<
   CreateThreatIntelSetRequest,
@@ -10165,13 +9886,9 @@ export type CreateTrustedEntitySetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a new trusted entity set. In the trusted entity set, you can provide IP addresses
- * and domains that you believe are secure for communication in your Amazon Web Services environment. GuardDuty
- * will not generate findings for the entries that are specified in a trusted entity set. At any
- * given time, you can have only one trusted entity set.
+ * Creates a new trusted entity set. In the trusted entity set, you can provide IP addresses and domains that you believe are secure for communication in your Amazon Web Services environment. GuardDuty will not generate findings for the entries that are specified in a trusted entity set. At any given time, you can have only one trusted entity set.
  *
- * Only users of the administrator account can manage the entity sets, which automatically
- * apply to member accounts.
+ * Only users of the administrator account can manage the entity sets, which automatically apply to member accounts.
  */
 export const createTrustedEntitySet: API.OperationMethod<
   CreateTrustedEntitySetRequest,
@@ -10188,8 +9905,7 @@ export type DeclineInvitationsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Declines invitations sent to the current member account by Amazon Web Services accounts specified by
- * their account IDs.
+ * Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
  */
 export const declineInvitations: API.OperationMethod<
   DeclineInvitationsRequest,
@@ -10240,8 +9956,7 @@ export type DeleteInvitationsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Deletes invitations sent to the current member account by Amazon Web Services accounts specified by
- * their account IDs.
+ * Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
  */
 export const deleteInvitations: API.OperationMethod<
   DeleteInvitationsRequest,
@@ -10258,8 +9973,7 @@ export type DeleteIPSetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Deletes the IPSet specified by the `ipSetId`. IPSets are called trusted IP
- * lists in the console user interface.
+ * Deletes the IPSet specified by the `ipSetId`. IPSets are called trusted IP lists in the console user interface.
  */
 export const deleteIPSet: API.OperationMethod<
   DeleteIPSetRequest,
@@ -10278,9 +9992,7 @@ export type DeleteMalwareProtectionPlanError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Deletes the Malware Protection plan ID associated with the Malware Protection plan resource.
- * Use this API only when you no longer want to protect the resource associated with this
- * Malware Protection plan ID.
+ * Deletes the Malware Protection plan ID associated with the Malware Protection plan resource. Use this API only when you no longer want to protect the resource associated with this Malware Protection plan ID.
  */
 export const deleteMalwareProtectionPlan: API.OperationMethod<
   DeleteMalwareProtectionPlanRequest,
@@ -10302,12 +10014,9 @@ export type DeleteMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Deletes GuardDuty member accounts (to the current GuardDuty administrator account)
- * specified by the account IDs.
+ * Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs.
  *
- * With `autoEnableOrganizationMembers` configuration for your organization set to
- * `ALL`, you'll receive an error if you attempt to disable GuardDuty for a member
- * account in your organization.
+ * With `autoEnableOrganizationMembers` configuration for your organization set to `ALL`, you'll receive an error if you attempt to disable GuardDuty for a member account in your organization.
  */
 export const deleteMembers: API.OperationMethod<
   DeleteMembersRequest,
@@ -10341,8 +10050,7 @@ export type DeleteThreatEntitySetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Deletes the threat entity set that is associated with the specified
- * `threatEntitySetId`.
+ * Deletes the threat entity set that is associated with the specified `threatEntitySetId`.
  */
 export const deleteThreatEntitySet: API.OperationMethod<
   DeleteThreatEntitySetRequest,
@@ -10376,8 +10084,7 @@ export type DeleteTrustedEntitySetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Deletes the trusted entity set that is associated with the specified
- * `trustedEntitySetId`.
+ * Deletes the trusted entity set that is associated with the specified `trustedEntitySetId`.
  */
 export const deleteTrustedEntitySet: API.OperationMethod<
   DeleteTrustedEntitySetRequest,
@@ -10394,12 +10101,9 @@ export type DescribeMalwareScansError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Returns a list of malware scans. Each member account can view the malware scans for their
- * own accounts. An administrator can view the malware scans for all the member accounts.
+ * Returns a list of malware scans. Each member account can view the malware scans for their own accounts. An administrator can view the malware scans for all the member accounts.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const describeMalwareScans: API.OperationMethod<
   DescribeMalwareScansRequest,
@@ -10437,12 +10141,9 @@ export type DescribeOrganizationConfigurationError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Returns information about the account selected as the delegated administrator for
- * GuardDuty.
+ * Returns information about the account selected as the delegated administrator for GuardDuty.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const describeOrganizationConfiguration: API.OperationMethod<
   DescribeOrganizationConfigurationRequest,
@@ -10479,8 +10180,7 @@ export type DescribePublishingDestinationError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Returns information about the publishing destination specified by the provided
- * `destinationId`.
+ * Returns information about the publishing destination specified by the provided `destinationId`.
  */
 export const describePublishingDestination: API.OperationMethod<
   DescribePublishingDestinationRequest,
@@ -10497,9 +10197,7 @@ export type DisableOrganizationAdminAccountError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Removes the existing GuardDuty delegated
- * administrator of the organization. Only the organization's management account can run this
- * API operation.
+ * Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.
  */
 export const disableOrganizationAdminAccount: API.OperationMethod<
   DisableOrganizationAdminAccountRequest,
@@ -10518,16 +10216,9 @@ export type DisassociateFromAdministratorAccountError =
 /**
  * Disassociates the current GuardDuty member account from its administrator account.
  *
- * When you
- * disassociate an invited member from a GuardDuty delegated administrator, the member account details
- * obtained from the CreateMembers API, including the associated email addresses, are retained. This is
- * done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To
- * remove the details associated with a member account, the delegated administrator must invoke the
- * DeleteMembers API.
+ * When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.
  *
- * With `autoEnableOrganizationMembers` configuration for your organization set to
- * `ALL`, you'll receive an error if you attempt to disable GuardDuty in a member
- * account.
+ * With `autoEnableOrganizationMembers` configuration for your organization set to `ALL`, you'll receive an error if you attempt to disable GuardDuty in a member account.
  */
 export const disassociateFromAdministratorAccount: API.OperationMethod<
   DisassociateFromAdministratorAccountRequest,
@@ -10546,12 +10237,7 @@ export type DisassociateFromMasterAccountError =
 /**
  * Disassociates the current GuardDuty member account from its administrator account.
  *
- * When you
- * disassociate an invited member from a GuardDuty delegated administrator, the member account details
- * obtained from the CreateMembers API, including the associated email addresses, are retained. This is
- * done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To
- * remove the details associated with a member account, the delegated administrator must invoke the
- * DeleteMembers API.
+ * When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.
  */
 export const disassociateFromMasterAccount: API.OperationMethod<
   DisassociateFromMasterAccountRequest,
@@ -10568,29 +10254,15 @@ export type DisassociateMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Disassociates GuardDuty member accounts (from the current administrator account) specified
- * by the account IDs.
+ * Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs.
  *
- * When you
- * disassociate an invited member from a GuardDuty delegated administrator, the member account details
- * obtained from the CreateMembers API, including the associated email addresses, are retained. This is
- * done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To
- * remove the details associated with a member account, the delegated administrator must invoke the
- * DeleteMembers API.
+ * When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.
  *
- * With `autoEnableOrganizationMembers` configuration for your organization set to
- * `ALL`, you'll receive an error if you attempt to disassociate a member account
- * before removing them from your organization.
+ * With `autoEnableOrganizationMembers` configuration for your organization set to `ALL`, you'll receive an error if you attempt to disassociate a member account before removing them from your organization.
  *
- * If you disassociate a member account that was added by invitation, the member account details
- * obtained from this API, including the associated email addresses, will be retained.
- * This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To
- * remove the details associated with a member account, the delegated administrator must invoke the
- * DeleteMembers API.
+ * If you disassociate a member account that was added by invitation, the member account details obtained from this API, including the associated email addresses, will be retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.
  *
- * When the member accounts added through Organizations are later disassociated, you (administrator)
- * can't invite them by calling the InviteMembers API. You can create an association with these
- * member accounts again only by calling the CreateMembers API.
+ * When the member accounts added through Organizations are later disassociated, you (administrator) can't invite them by calling the InviteMembers API. You can create an association with these member accounts again only by calling the CreateMembers API.
  */
 export const disassociateMembers: API.OperationMethod<
   DisassociateMembersRequest,
@@ -10607,9 +10279,7 @@ export type EnableOrganizationAdminAccountError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Designates an Amazon Web Services account within the organization as your GuardDuty delegated
- * administrator. Only the organization's management account can run this
- * API operation.
+ * Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.
  */
 export const enableOrganizationAdminAccount: API.OperationMethod<
   EnableOrganizationAdminAccountRequest,
@@ -10626,18 +10296,15 @@ export type GetAdministratorAccountError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Provides the details of the GuardDuty administrator account associated with the current
- * GuardDuty member account.
+ * Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account.
  *
  * Based on the type of account that runs this API, the following list shows how the API behavior varies:
  *
  * - When the GuardDuty administrator account runs this API, it will return success (`HTTP 200`) but no content.
  *
- * - When a member account runs this API, it will return the details of the GuardDuty administrator account that is associated
- * with this calling member account.
+ * - When a member account runs this API, it will return the details of the GuardDuty administrator account that is associated with this calling member account.
  *
- * - When an individual account (not associated with an organization) runs this API, it will return success (`HTTP 200`)
- * but no content.
+ * - When an individual account (not associated with an organization) runs this API, it will return success (`HTTP 200`) but no content.
  */
 export const getAdministratorAccount: API.OperationMethod<
   GetAdministratorAccountRequest,
@@ -10654,10 +10321,7 @@ export type GetCoverageStatisticsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Retrieves aggregated statistics for your account. If you are a GuardDuty administrator, you
- * can retrieve the statistics for all the resources associated with the active member accounts
- * in your organization who have enabled Runtime Monitoring and have the GuardDuty security agent running
- * on their resources.
+ * Retrieves aggregated statistics for your account. If you are a GuardDuty administrator, you can retrieve the statistics for all the resources associated with the active member accounts in your organization who have enabled Runtime Monitoring and have the GuardDuty security agent running on their resources.
  */
 export const getCoverageStatistics: API.OperationMethod<
   GetCoverageStatisticsRequest,
@@ -10676,9 +10340,7 @@ export type GetDetectorError =
 /**
  * Retrieves a GuardDuty detector specified by the detectorId.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const getDetector: API.OperationMethod<
   GetDetectorRequest,
@@ -10731,12 +10393,9 @@ export type GetFindingsStatisticsError =
 /**
  * Lists GuardDuty findings statistics for the specified detector ID.
  *
- * You must provide either `findingStatisticTypes` or
- * `groupBy` parameter, and not both. You can use the `maxResults` and `orderBy`
- * parameters only when using `groupBy`.
+ * You must provide either `findingStatisticTypes` or `groupBy` parameter, and not both. You can use the `maxResults` and `orderBy` parameters only when using `groupBy`.
  *
- * There might be regional differences because some flags might not be available in all the Regions where GuardDuty
- * is currently supported. For more information, see Regions and endpoints.
+ * There might be regional differences because some flags might not be available in all the Regions where GuardDuty is currently supported. For more information, see Regions and endpoints.
  */
 export const getFindingsStatistics: API.OperationMethod<
   GetFindingsStatisticsRequest,
@@ -10753,8 +10412,7 @@ export type GetInvitationsCountError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Returns the count of all GuardDuty membership invitations that were sent to the current
- * member account except the currently accepted invitation.
+ * Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
  */
 export const getInvitationsCount: API.OperationMethod<
   GetInvitationsCountRequest,
@@ -10790,8 +10448,7 @@ export type GetMalwareProtectionPlanError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Retrieves the Malware Protection plan details associated with a Malware Protection
- * plan ID.
+ * Retrieves the Malware Protection plan details associated with a Malware Protection plan ID.
  */
 export const getMalwareProtectionPlan: API.OperationMethod<
   GetMalwareProtectionPlanRequest,
@@ -10814,12 +10471,9 @@ export type GetMalwareScanError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Retrieves the detailed information for a specific malware scan. Each member account can view the malware scan details for their
- * own account. An administrator can view malware scan details for all accounts in the organization.
+ * Retrieves the detailed information for a specific malware scan. Each member account can view the malware scan details for their own account. An administrator can view malware scan details for all accounts in the organization.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const getMalwareScan: API.OperationMethod<
   GetMalwareScanRequest,
@@ -10842,9 +10496,7 @@ export type GetMalwareScanSettingsError =
 /**
  * Returns the details of the malware scan settings.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const getMalwareScanSettings: API.OperationMethod<
   GetMalwareScanSettingsRequest,
@@ -10861,8 +10513,7 @@ export type GetMasterAccountError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Provides the details for the GuardDuty administrator account associated with the current
- * GuardDuty member account.
+ * Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
  */
 export const getMasterAccount: API.OperationMethod<
   GetMasterAccountRequest,
@@ -10881,9 +10532,7 @@ export type GetMemberDetectorsError =
 /**
  * Describes which data sources are enabled for the member account's detector.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const getMemberDetectors: API.OperationMethod<
   GetMemberDetectorsRequest,
@@ -10900,8 +10549,7 @@ export type GetMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Retrieves GuardDuty member accounts (of the current GuardDuty administrator account)
- * specified by the account IDs.
+ * Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.
  */
 export const getMembers: API.OperationMethod<
   GetMembersRequest,
@@ -10918,11 +10566,9 @@ export type GetOrganizationStatisticsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Retrieves how many active member accounts have
- * each feature enabled within GuardDuty. Only a delegated GuardDuty administrator of an organization can run this API.
+ * Retrieves how many active member accounts have each feature enabled within GuardDuty. Only a delegated GuardDuty administrator of an organization can run this API.
  *
- * When you create a new organization, it might take up to 24
- * hours to generate the statistics for the entire organization.
+ * When you create a new organization, it might take up to 24 hours to generate the statistics for the entire organization.
  */
 export const getOrganizationStatistics: API.OperationMethod<
   GetOrganizationStatisticsRequest,
@@ -10939,8 +10585,7 @@ export type GetRemainingFreeTrialDaysError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Provides the number of days left for each data source used in the free trial
- * period.
+ * Provides the number of days left for each data source used in the free trial period.
  */
 export const getRemainingFreeTrialDays: API.OperationMethod<
   GetRemainingFreeTrialDaysRequest,
@@ -11008,10 +10653,7 @@ export type GetUsageStatisticsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector
- * ID. For newly enabled detectors or data sources, the cost returned will include only the usage
- * so far under 30 days. This may differ from the cost metrics in the console, which project
- * usage over 30 days to provide a monthly cost estimate. For more information, see Understanding How Usage Costs are Calculated.
+ * Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see Understanding How Usage Costs are Calculated.
  */
 export const getUsageStatistics: API.OperationMethod<
   GetUsageStatisticsRequest,
@@ -11048,36 +10690,15 @@ export type InviteMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account
- * that invokes this API. If you are using Amazon Web Services Organizations to manage your GuardDuty environment, this step is not
- * needed. For more information, see Managing accounts with organizations.
+ * Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manage your GuardDuty environment, this step is not needed. For more information, see Managing accounts with organizations.
  *
- * To invite Amazon Web Services accounts, the first step is
- * to ensure that GuardDuty has been enabled in the potential member accounts. You can now invoke this API
- * to add accounts by invitation. The
- * invited accounts can either accept or decline the invitation from their GuardDuty accounts. Each invited Amazon Web Services account can
- * choose to accept the invitation from only one Amazon Web Services account. For more information, see
- * Managing GuardDuty accounts
- * by invitation.
+ * To invite Amazon Web Services accounts, the first step is to ensure that GuardDuty has been enabled in the potential member accounts. You can now invoke this API to add accounts by invitation. The invited accounts can either accept or decline the invitation from their GuardDuty accounts. Each invited Amazon Web Services account can choose to accept the invitation from only one Amazon Web Services account. For more information, see Managing GuardDuty accounts by invitation.
  *
- * After the invite has been accepted and you choose to disassociate a member account
- * (by using DisassociateMembers) from your account,
- * the details of the member account obtained by invoking CreateMembers, including the
- * associated email addresses, will be retained.
- * This is done so that you can invoke InviteMembers without the need to invoke
- * CreateMembers again. To
- * remove the details associated with a member account, you must also invoke
- * DeleteMembers.
+ * After the invite has been accepted and you choose to disassociate a member account (by using DisassociateMembers) from your account, the details of the member account obtained by invoking CreateMembers, including the associated email addresses, will be retained. This is done so that you can invoke InviteMembers without the need to invoke CreateMembers again. To remove the details associated with a member account, you must also invoke DeleteMembers.
  *
- * If you disassociate a member account that was added by invitation, the member account details
- * obtained from this API, including the associated email addresses, will be retained.
- * This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To
- * remove the details associated with a member account, the delegated administrator must invoke the
- * DeleteMembers API.
+ * If you disassociate a member account that was added by invitation, the member account details obtained from this API, including the associated email addresses, will be retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.
  *
- * When the member accounts added through Organizations are later disassociated, you (administrator)
- * can't invite them by calling the InviteMembers API. You can create an association with these
- * member accounts again only by calling the CreateMembers API.
+ * When the member accounts added through Organizations are later disassociated, you (administrator) can't invite them by calling the InviteMembers API. You can create an association with these member accounts again only by calling the CreateMembers API.
  */
 export const inviteMembers: API.OperationMethod<
   InviteMembersRequest,
@@ -11094,11 +10715,9 @@ export type ListCoverageError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists coverage details for your GuardDuty account. If you're a GuardDuty administrator, you can
- * retrieve all resources associated with the active member accounts in your organization.
+ * Lists coverage details for your GuardDuty account. If you're a GuardDuty administrator, you can retrieve all resources associated with the active member accounts in your organization.
  *
- * Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent running on
- * their resources.
+ * Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent running on their resources.
  */
 export const listCoverage: API.OperationMethod<
   ListCoverageRequest,
@@ -11214,8 +10833,7 @@ export type ListFindingsError =
 /**
  * Lists GuardDuty findings for the specified detector ID.
  *
- * There might be regional differences because some flags might not be available in all the Regions where GuardDuty
- * is currently supported. For more information, see Regions and endpoints.
+ * There might be regional differences because some flags might not be available in all the Regions where GuardDuty is currently supported. For more information, see Regions and endpoints.
  */
 export const listFindings: API.OperationMethod<
   ListFindingsRequest,
@@ -11253,8 +10871,7 @@ export type ListInvitationsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services
- * account.
+ * Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account.
  */
 export const listInvitations: API.OperationMethod<
   ListInvitationsRequest,
@@ -11292,9 +10909,7 @@ export type ListIPSetsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this
- * operation from a member account, the IPSets returned are the IPSets from the associated
- * administrator account.
+ * Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.
  */
 export const listIPSets: API.OperationMethod<
   ListIPSetsRequest,
@@ -11333,8 +10948,7 @@ export type ListMalwareProtectionPlansError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists the Malware Protection plan IDs associated with the protected
- * resources in your Amazon Web Services account.
+ * Lists the Malware Protection plan IDs associated with the protected resources in your Amazon Web Services account.
  */
 export const listMalwareProtectionPlans: API.OperationMethod<
   ListMalwareProtectionPlansRequest,
@@ -11355,8 +10969,7 @@ export type ListMalwareScansError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Returns a list of malware scans. Each member account can view the malware scans for their
- * own accounts. An administrator can view the malware scans for all of its members' accounts.
+ * Returns a list of malware scans. Each member account can view the malware scans for their own accounts. An administrator can view the malware scans for all of its members' accounts.
  */
 export const listMalwareScans: API.OperationMethod<
   ListMalwareScansRequest,
@@ -11394,8 +11007,7 @@ export type ListMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists details about all member accounts for the current GuardDuty administrator
- * account.
+ * Lists details about all member accounts for the current GuardDuty administrator account.
  */
 export const listMembers: API.OperationMethod<
   ListMembersRequest,
@@ -11433,9 +11045,7 @@ export type ListOrganizationAdminAccountsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists the accounts designated as GuardDuty delegated administrators.
- * Only the organization's management account can run this
- * API operation.
+ * Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.
  */
 export const listOrganizationAdminAccounts: API.OperationMethod<
   ListOrganizationAdminAccountsRequest,
@@ -11473,8 +11083,7 @@ export type ListPublishingDestinationsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Returns a list of publishing destinations associated with the specified
- * `detectorId`.
+ * Returns a list of publishing destinations associated with the specified `detectorId`.
  */
 export const listPublishingDestinations: API.OperationMethod<
   ListPublishingDestinationsRequest,
@@ -11512,10 +11121,7 @@ export type ListTagsForResourceError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists tags for a resource. Tagging is currently supported for detectors, finding filters,
- * IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per resource.
- * When invoked, this
- * operation returns all assigned tags for a given resource.
+ * Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
  */
 export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
@@ -11536,9 +11142,7 @@ export type ListThreatEntitySetsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists the threat entity sets associated with the specified GuardDuty detector ID. If you use this
- * operation from a member account, the threat entity sets that are returned as a response, belong to the
- * administrator account.
+ * Lists the threat entity sets associated with the specified GuardDuty detector ID. If you use this operation from a member account, the threat entity sets that are returned as a response, belong to the administrator account.
  */
 export const listThreatEntitySets: API.OperationMethod<
   ListThreatEntitySetsRequest,
@@ -11576,9 +11180,7 @@ export type ListThreatIntelSetsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you
- * use this operation from a member account, the ThreatIntelSets associated with the
- * administrator account are returned.
+ * Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the ThreatIntelSets associated with the administrator account are returned.
  */
 export const listThreatIntelSets: API.OperationMethod<
   ListThreatIntelSetsRequest,
@@ -11616,9 +11218,7 @@ export type ListTrustedEntitySetsError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Lists the trusted entity sets associated with the specified GuardDuty detector ID. If you use this
- * operation from a member account, the trusted entity sets that are returned as a response, belong to the
- * administrator account.
+ * Lists the trusted entity sets associated with the specified GuardDuty detector ID. If you use this operation from a member account, the trusted entity sets that are returned as a response, belong to the administrator account.
  */
 export const listTrustedEntitySets: API.OperationMethod<
   ListTrustedEntitySetsRequest,
@@ -11659,8 +11259,7 @@ export type SendObjectMalwareScanError =
 /**
  * Initiates a malware scan for a specific S3 object. This API allows you to perform on-demand malware scanning of individual objects in S3 buckets that have Malware Protection for S3 enabled.
  *
- * When you use this API, the Amazon Web Services service terms for GuardDuty Malware
- * Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
+ * When you use this API, the Amazon Web Services service terms for GuardDuty Malware Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
  */
 export const sendObjectMalwareScan: API.OperationMethod<
   SendObjectMalwareScanRequest,
@@ -11682,14 +11281,11 @@ export type StartMalwareScanError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Initiates the malware scan. Invoking this API will automatically create the Service-linked role in
- * the corresponding account if the resourceArn belongs to an EC2 instance.
+ * Initiates the malware scan. Invoking this API will automatically create the Service-linked role in the corresponding account if the resourceArn belongs to an EC2 instance.
  *
- * When the malware scan starts, you can use the associated scan ID to track the status of the scan. For more information,
- * see ListMalwareScans and GetMalwareScan.
+ * When the malware scan starts, you can use the associated scan ID to track the status of the scan. For more information, see ListMalwareScans and GetMalwareScan.
  *
- * When you use this API, the Amazon Web Services service terms for GuardDuty Malware
- * Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
+ * When you use this API, the Amazon Web Services service terms for GuardDuty Malware Protection apply. For more information, see Amazon Web Services service terms for GuardDuty Malware Protection.
  */
 export const startMalwareScan: API.OperationMethod<
   StartMalwareScanRequest,
@@ -11710,8 +11306,7 @@ export type StartMonitoringMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Turns on GuardDuty monitoring of the specified member accounts. Use this operation to
- * restart monitoring of accounts that you stopped monitoring with the StopMonitoringMembers operation.
+ * Turns on GuardDuty monitoring of the specified member accounts. Use this operation to restart monitoring of accounts that you stopped monitoring with the StopMonitoringMembers operation.
  */
 export const startMonitoringMembers: API.OperationMethod<
   StartMonitoringMembersRequest,
@@ -11728,13 +11323,9 @@ export type StopMonitoringMembersError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Stops GuardDuty monitoring for the specified member accounts. Use the
- * `StartMonitoringMembers` operation to restart monitoring for those
- * accounts.
+ * Stops GuardDuty monitoring for the specified member accounts. Use the `StartMonitoringMembers` operation to restart monitoring for those accounts.
  *
- * With `autoEnableOrganizationMembers` configuration for your organization set to
- * `ALL`, you'll receive an error if you attempt to stop monitoring the member
- * accounts in your organization.
+ * With `autoEnableOrganizationMembers` configuration for your organization set to `ALL`, you'll receive an error if you attempt to stop monitoring the member accounts in your organization.
  */
 export const stopMonitoringMembers: API.OperationMethod<
   StopMonitoringMembersRequest,
@@ -11814,15 +11405,9 @@ export type UpdateDetectorError =
 /**
  * Updates the GuardDuty detector specified by the detector ID.
  *
- * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`)
- * and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error.
- * You can add only one of these two features because Runtime Monitoring already includes the
- * threat detection for Amazon EKS resources. For more information, see
- * Runtime Monitoring.
+ * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can add only one of these two features because Runtime Monitoring already includes the threat detection for Amazon EKS resources. For more information, see Runtime Monitoring.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const updateDetector: API.OperationMethod<
   UpdateDetectorRequest,
@@ -11921,9 +11506,7 @@ export type UpdateMalwareScanSettingsError =
 /**
  * Updates the malware scan settings.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const updateMalwareScanSettings: API.OperationMethod<
   UpdateMalwareScanSettingsRequest,
@@ -11942,15 +11525,9 @@ export type UpdateMemberDetectorsError =
 /**
  * Contains information on member accounts to be updated.
  *
- * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`)
- * and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error.
- * You can add only one of these two features because Runtime Monitoring already includes the
- * threat detection for Amazon EKS resources. For more information, see
- * Runtime Monitoring.
+ * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can add only one of these two features because Runtime Monitoring already includes the threat detection for Amazon EKS resources. For more information, see Runtime Monitoring.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const updateMemberDetectors: API.OperationMethod<
   UpdateMemberDetectorsRequest,
@@ -11967,18 +11544,11 @@ export type UpdateOrganizationConfigurationError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Configures the delegated administrator account with the provided values. You must provide
- * a value for either `autoEnableOrganizationMembers` or `autoEnable`, but not both.
+ * Configures the delegated administrator account with the provided values. You must provide a value for either `autoEnableOrganizationMembers` or `autoEnable`, but not both.
  *
- * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`)
- * and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error.
- * You can add only one of these two features because Runtime Monitoring already includes the
- * threat detection for Amazon EKS resources. For more information, see
- * Runtime Monitoring.
+ * Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can add only one of these two features because Runtime Monitoring already includes the threat detection for Amazon EKS resources. For more information, see Runtime Monitoring.
  *
- * There might be regional differences because some data sources might not be
- * available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more
- * information, see Regions and endpoints.
+ * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
 export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationRequest,
@@ -11995,8 +11565,7 @@ export type UpdatePublishingDestinationError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Updates information about the publishing destination specified by the
- * `destinationId`.
+ * Updates information about the publishing destination specified by the `destinationId`.
  */
 export const updatePublishingDestination: API.OperationMethod<
   UpdatePublishingDestinationRequest,

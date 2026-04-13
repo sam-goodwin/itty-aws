@@ -21,6 +21,7 @@ export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "SIGTERM",
       "SIGTRAP",
       "SIGUSR1",
+      "SIGUSR2",
     ]),
   ),
 }).pipe(

@@ -10,6 +10,983 @@ import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
+export const AgentsConnectorsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
+    }),
+  );
+export type AgentsConnectorsCreateOrUpdateInput =
+  typeof AgentsConnectorsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AgentsConnectorsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentsConnectorsCreateOrUpdateOutput =
+  typeof AgentsConnectorsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Agent Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ * @param connectorName - The name of the AgentConnector
+ */
+export const AgentsConnectorsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentsConnectorsCreateOrUpdateInput,
+    outputSchema: AgentsConnectorsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const AgentsConnectorsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
+    }),
+  );
+export type AgentsConnectorsDeleteInput =
+  typeof AgentsConnectorsDeleteInput.Type;
+
+// Output Schema
+export const AgentsConnectorsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentsConnectorsDeleteOutput =
+  typeof AgentsConnectorsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete an Agent Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ * @param connectorName - The name of the AgentConnector
+ */
+export const AgentsConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentsConnectorsDeleteInput,
+    outputSchema: AgentsConnectorsDeleteOutput,
+  }),
+);
+// Input Schema
+export const AgentsConnectorsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}",
+    }),
+  );
+export type AgentsConnectorsGetInput = typeof AgentsConnectorsGetInput.Type;
+
+// Output Schema
+export const AgentsConnectorsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentsConnectorsGetOutput = typeof AgentsConnectorsGetOutput.Type;
+
+// The operation
+/**
+ * Get the properties of an Agent Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ * @param connectorName - The name of the AgentConnector
+ */
+export const AgentsConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentsConnectorsGetInput,
+  outputSchema: AgentsConnectorsGetOutput,
+}));
+// Input Schema
+export const AgentsConnectorsListByAgentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors",
+    }),
+  );
+export type AgentsConnectorsListByAgentInput =
+  typeof AgentsConnectorsListByAgentInput.Type;
+
+// Output Schema
+export const AgentsConnectorsListByAgentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentsConnectorsListByAgentOutput =
+  typeof AgentsConnectorsListByAgentOutput.Type;
+
+// The operation
+/**
+ * Get all the connectors for an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsConnectorsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentsConnectorsListByAgentInput,
+    outputSchema: AgentsConnectorsListByAgentOutput,
+  }),
+);
+// Input Schema
+export const AgentsConnectorsListSecretsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors/{connectorName}/listSecrets",
+    }),
+  );
+export type AgentsConnectorsListSecretsInput =
+  typeof AgentsConnectorsListSecretsInput.Type;
+
+// Output Schema
+export const AgentsConnectorsListSecretsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentsConnectorsListSecretsOutput =
+  typeof AgentsConnectorsListSecretsOutput.Type;
+
+// The operation
+/**
+ * Get a Data Connector with secrets from an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ * @param connectorName - The name of the AgentConnector
+ */
+export const AgentsConnectorsListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentsConnectorsListSecretsInput,
+    outputSchema: AgentsConnectorsListSecretsOutput,
+  }),
+);
+// Input Schema
+export const AgentsConnectorsListWithSecretsByAgentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/listConnectorsWithSecrets",
+    }),
+  );
+export type AgentsConnectorsListWithSecretsByAgentInput =
+  typeof AgentsConnectorsListWithSecretsByAgentInput.Type;
+
+// Output Schema
+export const AgentsConnectorsListWithSecretsByAgentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentsConnectorsListWithSecretsByAgentOutput =
+  typeof AgentsConnectorsListWithSecretsByAgentOutput.Type;
+
+// The operation
+/**
+ * List all Data Connectors with secrets from an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsConnectorsListWithSecretsByAgent =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentsConnectorsListWithSecretsByAgentInput,
+    outputSchema: AgentsConnectorsListWithSecretsByAgentOutput,
+  }));
+// Input Schema
+export const AgentsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+    }),
+  );
+export type AgentsCreateOrUpdateInput = typeof AgentsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AgentsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type AgentsCreateOrUpdateOutput = typeof AgentsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentsCreateOrUpdateInput,
+    outputSchema: AgentsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  agentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+  }),
+);
+export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
+
+// Output Schema
+export const AgentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentsDeleteOutput = typeof AgentsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentsDeleteInput,
+  outputSchema: AgentsDeleteOutput,
+}));
+// Input Schema
+export const AgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  agentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+  }),
+);
+export type AgentsGetInput = typeof AgentsGetInput.Type;
+
+// Output Schema
+export const AgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+});
+export type AgentsGetOutput = typeof AgentsGetOutput.Type;
+
+// The operation
+/**
+ * Get the properties of an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentsGetInput,
+  outputSchema: AgentsGetOutput,
+}));
+// Input Schema
+export const AgentsListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents",
+    }),
+  );
+export type AgentsListByResourceGroupInput =
+  typeof AgentsListByResourceGroupInput.Type;
+
+// Output Schema
+export const AgentsListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentsListByResourceGroupOutput =
+  typeof AgentsListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Get all the agents in a resource group
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const AgentsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentsListByResourceGroupInput,
+    outputSchema: AgentsListByResourceGroupOutput,
+  }),
+);
+// Input Schema
+export const AgentsListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.App/agents",
+    }),
+  );
+export type AgentsListBySubscriptionInput =
+  typeof AgentsListBySubscriptionInput.Type;
+
+// Output Schema
+export const AgentsListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentsListBySubscriptionOutput =
+  typeof AgentsListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Get all agents for a subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const AgentsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentsListBySubscriptionInput,
+    outputSchema: AgentsListBySubscriptionOutput,
+  }),
+);
+// Input Schema
+export const AgentSpacesConnectorsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors/{connectorName}",
+    }),
+  );
+export type AgentSpacesConnectorsCreateOrUpdateInput =
+  typeof AgentSpacesConnectorsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AgentSpacesConnectorsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentSpacesConnectorsCreateOrUpdateOutput =
+  typeof AgentSpacesConnectorsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Agent Space Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ * @param connectorName - The name of the AgentSpaceConnector
+ */
+export const AgentSpacesConnectorsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentSpacesConnectorsCreateOrUpdateInput,
+    outputSchema: AgentSpacesConnectorsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const AgentSpacesConnectorsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors/{connectorName}",
+    }),
+  );
+export type AgentSpacesConnectorsDeleteInput =
+  typeof AgentSpacesConnectorsDeleteInput.Type;
+
+// Output Schema
+export const AgentSpacesConnectorsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentSpacesConnectorsDeleteOutput =
+  typeof AgentSpacesConnectorsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete an Agent Space Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ * @param connectorName - The name of the AgentSpaceConnector
+ */
+export const AgentSpacesConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentSpacesConnectorsDeleteInput,
+    outputSchema: AgentSpacesConnectorsDeleteOutput,
+  }),
+);
+// Input Schema
+export const AgentSpacesConnectorsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors/{connectorName}",
+    }),
+  );
+export type AgentSpacesConnectorsGetInput =
+  typeof AgentSpacesConnectorsGetInput.Type;
+
+// Output Schema
+export const AgentSpacesConnectorsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentSpacesConnectorsGetOutput =
+  typeof AgentSpacesConnectorsGetOutput.Type;
+
+// The operation
+/**
+ * Get the properties of an Agent Space Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ * @param connectorName - The name of the AgentSpaceConnector
+ */
+export const AgentSpacesConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentSpacesConnectorsGetInput,
+    outputSchema: AgentSpacesConnectorsGetOutput,
+  }),
+);
+// Input Schema
+export const AgentSpacesConnectorsListAllSecretsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/listConnectorsWithSecrets",
+    }),
+  );
+export type AgentSpacesConnectorsListAllSecretsInput =
+  typeof AgentSpacesConnectorsListAllSecretsInput.Type;
+
+// Output Schema
+export const AgentSpacesConnectorsListAllSecretsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentSpacesConnectorsListAllSecretsOutput =
+  typeof AgentSpacesConnectorsListAllSecretsOutput.Type;
+
+// The operation
+/**
+ * List all secrets for AgentSpace Connectors
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ */
+export const AgentSpacesConnectorsListAllSecrets =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentSpacesConnectorsListAllSecretsInput,
+    outputSchema: AgentSpacesConnectorsListAllSecretsOutput,
+  }));
+// Input Schema
+export const AgentSpacesConnectorsListByAgentSpaceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors",
+    }),
+  );
+export type AgentSpacesConnectorsListByAgentSpaceInput =
+  typeof AgentSpacesConnectorsListByAgentSpaceInput.Type;
+
+// Output Schema
+export const AgentSpacesConnectorsListByAgentSpaceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentSpacesConnectorsListByAgentSpaceOutput =
+  typeof AgentSpacesConnectorsListByAgentSpaceOutput.Type;
+
+// The operation
+/**
+ * Get all the connectors for an Agent Space
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ */
+export const AgentSpacesConnectorsListByAgentSpace =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentSpacesConnectorsListByAgentSpaceInput,
+    outputSchema: AgentSpacesConnectorsListByAgentSpaceOutput,
+  }));
+// Input Schema
+export const AgentSpacesConnectorsListSecretsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    connectorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}/connectors/{connectorName}/listSecrets",
+    }),
+  );
+export type AgentSpacesConnectorsListSecretsInput =
+  typeof AgentSpacesConnectorsListSecretsInput.Type;
+
+// Output Schema
+export const AgentSpacesConnectorsListSecretsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentSpacesConnectorsListSecretsOutput =
+  typeof AgentSpacesConnectorsListSecretsOutput.Type;
+
+// The operation
+/**
+ * List secrets for an Agent Space Connector
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ * @param connectorName - The name of the AgentSpaceConnector
+ */
+export const AgentSpacesConnectorsListSecrets =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentSpacesConnectorsListSecretsInput,
+    outputSchema: AgentSpacesConnectorsListSecretsOutput,
+  }));
+// Input Schema
+export const AgentSpacesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
+    }),
+  );
+export type AgentSpacesCreateOrUpdateInput =
+  typeof AgentSpacesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AgentSpacesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type AgentSpacesCreateOrUpdateOutput =
+  typeof AgentSpacesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Agent Space
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ */
+export const AgentSpacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentSpacesCreateOrUpdateInput,
+    outputSchema: AgentSpacesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const AgentSpacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
+  }),
+);
+export type AgentSpacesDeleteInput = typeof AgentSpacesDeleteInput.Type;
+
+// Output Schema
+export const AgentSpacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentSpacesDeleteOutput = typeof AgentSpacesDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete an Agent Space
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ */
+export const AgentSpacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentSpacesDeleteInput,
+  outputSchema: AgentSpacesDeleteOutput,
+}));
+// Input Schema
+export const AgentSpacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  agentSpaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
+  }),
+);
+export type AgentSpacesGetInput = typeof AgentSpacesGetInput.Type;
+
+// Output Schema
+export const AgentSpacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+});
+export type AgentSpacesGetOutput = typeof AgentSpacesGetOutput.Type;
+
+// The operation
+/**
+ * Get the properties of an Agent Space
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ */
+export const AgentSpacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentSpacesGetInput,
+  outputSchema: AgentSpacesGetOutput,
+}));
+// Input Schema
+export const AgentSpacesListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces",
+    }),
+  );
+export type AgentSpacesListByResourceGroupInput =
+  typeof AgentSpacesListByResourceGroupInput.Type;
+
+// Output Schema
+export const AgentSpacesListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentSpacesListByResourceGroupOutput =
+  typeof AgentSpacesListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Get all the agent spaces in a resource group
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const AgentSpacesListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentSpacesListByResourceGroupInput,
+    outputSchema: AgentSpacesListByResourceGroupOutput,
+  }));
+// Input Schema
+export const AgentSpacesListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.App/agentSpaces",
+    }),
+  );
+export type AgentSpacesListBySubscriptionInput =
+  typeof AgentSpacesListBySubscriptionInput.Type;
+
+// Output Schema
+export const AgentSpacesListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AgentSpacesListBySubscriptionOutput =
+  typeof AgentSpacesListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Get all agent spaces for a subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const AgentSpacesListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentSpacesListBySubscriptionInput,
+    outputSchema: AgentSpacesListBySubscriptionOutput,
+  }));
+// Input Schema
+export const AgentSpacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    agentSpaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agentSpaces/{agentSpaceName}",
+  }),
+);
+export type AgentSpacesUpdateInput = typeof AgentSpacesUpdateInput.Type;
+
+// Output Schema
+export const AgentSpacesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type AgentSpacesUpdateOutput = typeof AgentSpacesUpdateOutput.Type;
+
+// The operation
+/**
+ * Update Agent Space's properties
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentSpaceName - The name of the AgentSpace
+ */
+export const AgentSpacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentSpacesUpdateInput,
+  outputSchema: AgentSpacesUpdateOutput,
+}));
+// Input Schema
+export const AgentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  agentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/start",
+  }),
+);
+export type AgentsStartInput = typeof AgentsStartInput.Type;
+
+// Output Schema
+export const AgentsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+});
+export type AgentsStartOutput = typeof AgentsStartOutput.Type;
+
+// The operation
+/**
+ * Start an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentsStartInput,
+  outputSchema: AgentsStartOutput,
+}));
+// Input Schema
+export const AgentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  agentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/stop",
+  }),
+);
+export type AgentsStopInput = typeof AgentsStopInput.Type;
+
+// Output Schema
+export const AgentsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+});
+export type AgentsStopOutput = typeof AgentsStopOutput.Type;
+
+// The operation
+/**
+ * Stop an Agent
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentsStopInput,
+  outputSchema: AgentsStopOutput,
+}));
+// Input Schema
+export const AgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  agentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}",
+  }),
+);
+export type AgentsUpdateInput = typeof AgentsUpdateInput.Type;
+
+// Output Schema
+export const AgentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+});
+export type AgentsUpdateOutput = typeof AgentsUpdateOutput.Type;
+
+// The operation
+/**
+ * Update Agent's properties
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param agentName - The name of the Agent
+ */
+export const AgentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentsUpdateInput,
+  outputSchema: AgentsUpdateOutput,
+}));
+// Input Schema
 export const AvailableWorkloadProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5760,6 +6737,43 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
+// Input Schema
+export const SupportedAgentModelsListByLocationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/supportedAgentModels",
+    }),
+  );
+export type SupportedAgentModelsListByLocationInput =
+  typeof SupportedAgentModelsListByLocationInput.Type;
+
+// Output Schema
+export const SupportedAgentModelsListByLocationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SupportedAgentModelsListByLocationOutput =
+  typeof SupportedAgentModelsListByLocationOutput.Type;
+
+// The operation
+/**
+ * List SupportedAgentModel resources by SubscriptionLocationResource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ */
+export const SupportedAgentModelsListByLocation =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SupportedAgentModelsListByLocationInput,
+    outputSchema: SupportedAgentModelsListByLocationOutput,
+  }));
 // Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),

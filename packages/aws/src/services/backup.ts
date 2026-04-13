@@ -2942,6 +2942,9 @@ export type BackupVaultEvent =
   | "RECOVERY_POINT_INDEX_COMPLETED"
   | "RECOVERY_POINT_INDEX_DELETED"
   | "RECOVERY_POINT_INDEXING_FAILED"
+  | "EKS_RESTORE_OBJECT_FAILED"
+  | "EKS_RESTORE_OBJECT_SKIPPED"
+  | "EKS_BACKUP_OBJECT_FAILED"
   | (string & {});
 export const BackupVaultEvent = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type BackupVaultEvents = BackupVaultEvent[];
@@ -7365,9 +7368,7 @@ export type DescribeGlobalSettingsError =
   | ServiceUnavailableException
   | CommonErrors;
 /**
- * Describes whether the Amazon Web Services account is opted in to cross-account backup.
- * Returns an error if the account is not a member of an Organizations organization.
- * Example: `describe-global-settings --region us-west-2`
+ * Describes whether the Amazon Web Services account has enabled different cross-account management options, including cross-account backup, multi-party approval, and delegated administrator. Returns an error if the account is not a member of an Organizations organization. Example: `describe-global-settings --region us-west-2`
  */
 export const describeGlobalSettings: API.OperationMethod<
   DescribeGlobalSettingsInput,
@@ -9714,9 +9715,7 @@ export type UpdateGlobalSettingsError =
   | ServiceUnavailableException
   | CommonErrors;
 /**
- * Updates whether the Amazon Web Services account is opted in to cross-account backup.
- * Returns an error if the account is not an Organizations management account. Use the
- * `DescribeGlobalSettings` API to determine the current settings.
+ * Updates whether the Amazon Web Services account has enabled different cross-account management options, including cross-account backup, multi-party approval, and delegated administrator. Returns an error if the account is not an Organizations management account. Use the `DescribeGlobalSettings` API to determine the current settings.
  */
 export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsInput,

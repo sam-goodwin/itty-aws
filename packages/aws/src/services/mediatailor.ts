@@ -1244,6 +1244,7 @@ export interface CreateProgramRequest {
   SourceLocationName: string;
   VodSourceName?: string;
   AudienceMedia?: AudienceMedia[];
+  Tags?: { [key: string]: string | undefined };
 }
 export const CreateProgramRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1255,19 +1256,22 @@ export const CreateProgramRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SourceLocationName: S.String,
     VodSourceName: S.optional(S.String),
     AudienceMedia: S.optional(__listOfAudienceMedia),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/channel/{ChannelName}/program/{ProgramName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
+    Tags: S.optional(__mapOf__string),
+  })
+    .pipe(S.encodeKeys({ Tags: "tags" }))
+    .pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/channel/{ChannelName}/program/{ProgramName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
-  ),
 ).annotate({
   identifier: "CreateProgramRequest",
 }) as any as S.Schema<CreateProgramRequest>;
@@ -1284,6 +1288,7 @@ export interface CreateProgramResponse {
   ClipRange?: ClipRange;
   DurationMillis?: number;
   AudienceMedia?: AudienceMedia[];
+  Tags?: { [key: string]: string | undefined };
 }
 export const CreateProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1301,7 +1306,8 @@ export const CreateProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ClipRange: S.optional(ClipRange),
     DurationMillis: S.optional(S.Number),
     AudienceMedia: S.optional(__listOfAudienceMedia),
-  }),
+    Tags: S.optional(__mapOf__string),
+  }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "CreateProgramResponse",
 }) as any as S.Schema<CreateProgramResponse>;
@@ -1343,6 +1349,7 @@ export interface DescribeProgramResponse {
   ClipRange?: ClipRange;
   DurationMillis?: number;
   AudienceMedia?: AudienceMedia[];
+  Tags?: { [key: string]: string | undefined };
 }
 export const DescribeProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1361,7 +1368,8 @@ export const DescribeProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ClipRange: S.optional(ClipRange),
       DurationMillis: S.optional(S.Number),
       AudienceMedia: S.optional(__listOfAudienceMedia),
-    }),
+      Tags: S.optional(__mapOf__string),
+    }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "DescribeProgramResponse",
 }) as any as S.Schema<DescribeProgramResponse>;
@@ -1434,6 +1442,7 @@ export interface UpdateProgramResponse {
   DurationMillis?: number;
   ScheduledStartTime?: Date;
   AudienceMedia?: AudienceMedia[];
+  Tags?: { [key: string]: string | undefined };
 }
 export const UpdateProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1451,7 +1460,8 @@ export const UpdateProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
     AudienceMedia: S.optional(__listOfAudienceMedia),
-  }),
+    Tags: S.optional(__mapOf__string),
+  }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "UpdateProgramResponse",
 }) as any as S.Schema<UpdateProgramResponse>;
@@ -2383,6 +2393,7 @@ export interface CreatePrefetchScheduleRequest {
   RecurringPrefetchConfiguration?: RecurringPrefetchConfiguration;
   ScheduleType?: PrefetchScheduleType;
   StreamId?: string;
+  Tags?: { [key: string]: string | undefined };
 }
 export const CreatePrefetchScheduleRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2398,19 +2409,22 @@ export const CreatePrefetchScheduleRequest =
       ),
       ScheduleType: S.optional(PrefetchScheduleType),
       StreamId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
+      Tags: S.optional(__mapOf__string),
+    })
+      .pipe(S.encodeKeys({ Tags: "tags" }))
+      .pipe(
+        T.all(
+          T.Http({
+            method: "POST",
+            uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}",
+          }),
+          svc,
+          auth,
+          proto,
+          ver,
+          rules,
+        ),
       ),
-    ),
   ).annotate({
     identifier: "CreatePrefetchScheduleRequest",
   }) as any as S.Schema<CreatePrefetchScheduleRequest>;
@@ -2423,6 +2437,7 @@ export interface CreatePrefetchScheduleResponse {
   RecurringPrefetchConfiguration?: RecurringPrefetchConfiguration;
   ScheduleType?: PrefetchScheduleType;
   StreamId?: string;
+  Tags?: { [key: string]: string | undefined };
 }
 export const CreatePrefetchScheduleResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2437,7 +2452,8 @@ export const CreatePrefetchScheduleResponse =
       ),
       ScheduleType: S.optional(PrefetchScheduleType),
       StreamId: S.optional(S.String),
-    }),
+      Tags: S.optional(__mapOf__string),
+    }).pipe(S.encodeKeys({ Tags: "tags" })),
   ).annotate({
     identifier: "CreatePrefetchScheduleResponse",
   }) as any as S.Schema<CreatePrefetchScheduleResponse>;
@@ -2477,6 +2493,7 @@ export interface GetPrefetchScheduleResponse {
   ScheduleType?: PrefetchScheduleType;
   RecurringPrefetchConfiguration?: RecurringPrefetchConfiguration;
   StreamId?: string;
+  Tags?: { [key: string]: string | undefined };
 }
 export const GetPrefetchScheduleResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2491,7 +2508,8 @@ export const GetPrefetchScheduleResponse =
         RecurringPrefetchConfiguration,
       ),
       StreamId: S.optional(S.String),
-    }),
+      Tags: S.optional(__mapOf__string),
+    }).pipe(S.encodeKeys({ Tags: "tags" })),
   ).annotate({
     identifier: "GetPrefetchScheduleResponse",
   }) as any as S.Schema<GetPrefetchScheduleResponse>;
@@ -2575,6 +2593,7 @@ export interface PrefetchSchedule {
   ScheduleType?: PrefetchScheduleType;
   RecurringPrefetchConfiguration?: RecurringPrefetchConfiguration;
   StreamId?: string;
+  Tags?: { [key: string]: string | undefined };
 }
 export const PrefetchSchedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2586,7 +2605,8 @@ export const PrefetchSchedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ScheduleType: S.optional(PrefetchScheduleType),
     RecurringPrefetchConfiguration: S.optional(RecurringPrefetchConfiguration),
     StreamId: S.optional(S.String),
-  }),
+    Tags: S.optional(__mapOf__string),
+  }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "PrefetchSchedule",
 }) as any as S.Schema<PrefetchSchedule>;

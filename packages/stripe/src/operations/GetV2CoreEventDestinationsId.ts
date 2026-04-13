@@ -31,9 +31,7 @@ export const GetV2CoreEventDestinationsIdOutput =
     description: Schema.String,
     enabled_events: Schema.Array(Schema.String),
     event_payload: Schema.Literals(["snapshot", "thin"]),
-    events_from: Schema.optional(
-      Schema.Array(Schema.Literals(["other_accounts", "self"])),
-    ),
+    events_from: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.String,
     livemode: Schema.Boolean,
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),

@@ -649,6 +649,7 @@ export const PermissionsListForResourceGroup =
 // Input Schema
 export const ProviderOperationsMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -666,39 +667,6 @@ export const ProviderOperationsMetadataGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    resourceTypes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                description: Schema.optional(Schema.String),
-                origin: Schema.optional(Schema.String),
-                properties: Schema.optional(Schema.Unknown),
-                isDataAction: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
-    operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          origin: Schema.optional(Schema.String),
-          properties: Schema.optional(Schema.Unknown),
-          isDataAction: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    ),
   });
 export type ProviderOperationsMetadataGetOutput =
   typeof ProviderOperationsMetadataGetOutput.Type;
@@ -708,6 +676,7 @@ export type ProviderOperationsMetadataGetOutput =
  * Gets provider operations metadata for the specified resource provider.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceProviderNamespace - The namespace of the resource provider.
  * @param $expand - Specifies whether to expand the values.
  */
 export const ProviderOperationsMetadataGet =
@@ -732,47 +701,12 @@ export type ProviderOperationsMetadataListInput =
 // Output Schema
 export const ProviderOperationsMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          resourceTypes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                operations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      description: Schema.optional(Schema.String),
-                      origin: Schema.optional(Schema.String),
-                      properties: Schema.optional(Schema.Unknown),
-                      isDataAction: Schema.optional(Schema.Boolean),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-          operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                description: Schema.optional(Schema.String),
-                origin: Schema.optional(Schema.String),
-                properties: Schema.optional(Schema.Unknown),
-                isDataAction: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -795,6 +729,7 @@ export const ProviderOperationsMetadataList =
 export const RoleAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
+    roleAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -806,35 +741,7 @@ export type RoleAssignmentsCreateInput = typeof RoleAssignmentsCreateInput.Type;
 
 // Output Schema
 export const RoleAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.String,
-        principalId: Schema.String,
-        principalType: Schema.optional(
-          Schema.Literals([
-            "User",
-            "Group",
-            "ServicePrincipal",
-            "ForeignGroup",
-            "Device",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-        delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type RoleAssignmentsCreateOutput =
   typeof RoleAssignmentsCreateOutput.Type;
 
@@ -842,8 +749,9 @@ export type RoleAssignmentsCreateOutput =
 /**
  * Create or update a role assignment by scope and name.
  *
- * @param scope - The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
  * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param roleAssignmentName - The name of the role assignment. It can be any valid GUID.
  */
 export const RoleAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -854,6 +762,7 @@ export const RoleAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RoleAssignmentsCreateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(T.Http({ method: "PUT", path: "/{roleAssignmentId}" }));
 export type RoleAssignmentsCreateByIdInput =
@@ -861,35 +770,7 @@ export type RoleAssignmentsCreateByIdInput =
 
 // Output Schema
 export const RoleAssignmentsCreateByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.String,
-        principalId: Schema.String,
-        principalType: Schema.optional(
-          Schema.Literals([
-            "User",
-            "Group",
-            "ServicePrincipal",
-            "ForeignGroup",
-            "Device",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-        delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type RoleAssignmentsCreateByIdOutput =
   typeof RoleAssignmentsCreateByIdOutput.Type;
 
@@ -898,6 +779,7 @@ export type RoleAssignmentsCreateByIdOutput =
  * Create or update a role assignment by ID.
  *
  * @param api-version - The API version to use for this operation.
+ * @param roleAssignmentId - The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>
  */
 export const RoleAssignmentsCreateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -909,7 +791,9 @@ export const RoleAssignmentsCreateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RoleAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
+    roleAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -920,35 +804,7 @@ export type RoleAssignmentsDeleteInput = typeof RoleAssignmentsDeleteInput.Type;
 
 // Output Schema
 export const RoleAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.String,
-        principalId: Schema.String,
-        principalType: Schema.optional(
-          Schema.Literals([
-            "User",
-            "Group",
-            "ServicePrincipal",
-            "ForeignGroup",
-            "Device",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-        delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type RoleAssignmentsDeleteOutput =
   typeof RoleAssignmentsDeleteOutput.Type;
 
@@ -956,8 +812,10 @@ export type RoleAssignmentsDeleteOutput =
 /**
  * Delete a role assignment by scope and name.
  *
- * @param scope - The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
  * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param tenantId - Tenant ID for cross-tenant request
+ * @param roleAssignmentName - The name of the role assignment. It can be any valid GUID.
  */
 export const RoleAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -968,42 +826,16 @@ export const RoleAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RoleAssignmentsDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    tenantId: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "DELETE", path: "/{roleAssignmentId}" }));
 export type RoleAssignmentsDeleteByIdInput =
   typeof RoleAssignmentsDeleteByIdInput.Type;
 
 // Output Schema
 export const RoleAssignmentsDeleteByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.String,
-        principalId: Schema.String,
-        principalType: Schema.optional(
-          Schema.Literals([
-            "User",
-            "Group",
-            "ServicePrincipal",
-            "ForeignGroup",
-            "Device",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-        delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type RoleAssignmentsDeleteByIdOutput =
   typeof RoleAssignmentsDeleteByIdOutput.Type;
 
@@ -1012,6 +844,8 @@ export type RoleAssignmentsDeleteByIdOutput =
  * Delete a role assignment by ID.
  *
  * @param api-version - The API version to use for this operation.
+ * @param roleAssignmentId - The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>
+ * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1023,7 +857,9 @@ export const RoleAssignmentsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RoleAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
+    roleAssignmentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1034,43 +870,17 @@ export type RoleAssignmentsGetInput = typeof RoleAssignmentsGetInput.Type;
 
 // Output Schema
 export const RoleAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.String,
-        principalId: Schema.String,
-        principalType: Schema.optional(
-          Schema.Literals([
-            "User",
-            "Group",
-            "ServicePrincipal",
-            "ForeignGroup",
-            "Device",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-        delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type RoleAssignmentsGetOutput = typeof RoleAssignmentsGetOutput.Type;
 
 // The operation
 /**
  * Get a role assignment by scope and name.
  *
- * @param scope - The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
  * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param tenantId - Tenant ID for cross-tenant request
+ * @param roleAssignmentName - The name of the role assignment. It can be any valid GUID.
  */
 export const RoleAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RoleAssignmentsGetInput,
@@ -1079,42 +889,16 @@ export const RoleAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RoleAssignmentsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    roleAssignmentId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    tenantId: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "GET", path: "/{roleAssignmentId}" }));
 export type RoleAssignmentsGetByIdInput =
   typeof RoleAssignmentsGetByIdInput.Type;
 
 // Output Schema
 export const RoleAssignmentsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        roleDefinitionId: Schema.String,
-        principalId: Schema.String,
-        principalType: Schema.optional(
-          Schema.Literals([
-            "User",
-            "Group",
-            "ServicePrincipal",
-            "ForeignGroup",
-            "Device",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-        delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type RoleAssignmentsGetByIdOutput =
   typeof RoleAssignmentsGetByIdOutput.Type;
 
@@ -1123,6 +907,8 @@ export type RoleAssignmentsGetByIdOutput =
  * Get a role assignment by ID.
  *
  * @param api-version - The API version to use for this operation.
+ * @param roleAssignmentId - The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>
+ * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1139,6 +925,8 @@ export const RoleAssignmentsListForResourceInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1151,41 +939,7 @@ export type RoleAssignmentsListForResourceInput =
 // Output Schema
 export const RoleAssignmentsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              scope: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              principalId: Schema.String,
-              principalType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Group",
-                  "ServicePrincipal",
-                  "ForeignGroup",
-                  "Device",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-              delegatedManagedIdentityResourceId: Schema.optional(
-                Schema.String,
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForResourceOutput =
@@ -1195,12 +949,14 @@ export type RoleAssignmentsListForResourceOutput =
 /**
  * List all role assignments that apply to a resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceProviderNamespace - The namespace of the resource provider.
- * @param resourceType - The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
- * @param resourceName - The resource name.
- * @param api-version - The API version to use for this operation.
+ * @param resourceType - The resource type of the resource.
+ * @param resourceName - The name of the resource to get role assignments for.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal.
+ * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsListForResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1213,6 +969,8 @@ export const RoleAssignmentsListForResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1225,41 +983,7 @@ export type RoleAssignmentsListForResourceGroupInput =
 // Output Schema
 export const RoleAssignmentsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              scope: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              principalId: Schema.String,
-              principalType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Group",
-                  "ServicePrincipal",
-                  "ForeignGroup",
-                  "Device",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-              delegatedManagedIdentityResourceId: Schema.optional(
-                Schema.String,
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForResourceGroupOutput =
@@ -1269,9 +993,11 @@ export type RoleAssignmentsListForResourceGroupOutput =
 /**
  * List all role assignments that apply to a resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal.
+ * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsListForResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1283,6 +1009,9 @@ export const RoleAssignmentsListForScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1295,41 +1024,7 @@ export type RoleAssignmentsListForScopeInput =
 // Output Schema
 export const RoleAssignmentsListForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              scope: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              principalId: Schema.String,
-              principalType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Group",
-                  "ServicePrincipal",
-                  "ForeignGroup",
-                  "Device",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-              delegatedManagedIdentityResourceId: Schema.optional(
-                Schema.String,
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForScopeOutput =
@@ -1339,8 +1034,11 @@ export type RoleAssignmentsListForScopeOutput =
 /**
  * List all role assignments that apply to a scope.
  *
- * @param scope - The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
  * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal.
+ * @param tenantId - Tenant ID for cross-tenant request
+ * @param $skipToken - The skipToken to apply on the operation. Use $skipToken={skiptoken} to return paged role assignments following the skipToken passed. Only supported on provider level calls.
  */
 export const RoleAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1353,6 +1051,8 @@ export const RoleAssignmentsListForSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1365,41 +1065,7 @@ export type RoleAssignmentsListForSubscriptionInput =
 // Output Schema
 export const RoleAssignmentsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              scope: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              principalId: Schema.String,
-              principalType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Group",
-                  "ServicePrincipal",
-                  "ForeignGroup",
-                  "Device",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-              delegatedManagedIdentityResourceId: Schema.optional(
-                Schema.String,
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForSubscriptionOutput =
@@ -1409,8 +1075,10 @@ export type RoleAssignmentsListForSubscriptionOutput =
 /**
  * List all role assignments that apply to a subscription.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal.
+ * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsListForSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

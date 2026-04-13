@@ -100,6 +100,80 @@ export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
     identifier: "CancelOperationRequest",
   }) as any as Schema.Schema<CancelOperationRequest>;
 
+export interface TeamFolder {
+  /** Identifier. The TeamFolder's name. */
+  name?: string;
+  /** Required. The TeamFolder's user-friendly name. */
+  displayName?: string;
+  /** Output only. The timestamp of when the TeamFolder was created. */
+  createTime?: string;
+  /** Output only. The timestamp of when the TeamFolder was last updated. */
+  updateTime?: string;
+  /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
+  internalMetadata?: string;
+  /** Output only. The IAM principal identifier of the creator of the TeamFolder. */
+  creatorIamPrincipal?: string;
+}
+
+export const TeamFolder: Schema.Schema<TeamFolder> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      createTime: Schema.optional(Schema.String),
+      updateTime: Schema.optional(Schema.String),
+      internalMetadata: Schema.optional(Schema.String),
+      creatorIamPrincipal: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "TeamFolder" }) as any as Schema.Schema<TeamFolder>;
+
+export interface DeleteTeamFolderTreeRequest {
+  /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
+  force?: boolean;
+}
+
+export const DeleteTeamFolderTreeRequest: Schema.Schema<DeleteTeamFolderTreeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      force: Schema.optional(Schema.Boolean),
+    }),
+  ).annotate({
+    identifier: "DeleteTeamFolderTreeRequest",
+  }) as any as Schema.Schema<DeleteTeamFolderTreeRequest>;
+
+export interface Folder {
+  /** Identifier. The Folder's name. */
+  name?: string;
+  /** Required. The Folder's user-friendly name. */
+  displayName?: string;
+  /** Optional. The containing Folder resource name. This should take the format: projects/{project}/locations/{location}/folders/{folder}, projects/{project}/locations/{location}/teamFolders/{teamFolder}, or just projects/{project}/locations/{location} if this is a root Folder. This field can only be updated through MoveFolder. */
+  containingFolder?: string;
+  /** Output only. The resource name of the TeamFolder that this Folder is associated with. This should take the format: projects/{project}/locations/{location}/teamFolders/{teamFolder}. If this is not set, the Folder is not associated with a TeamFolder and is a UserFolder. */
+  teamFolderName?: string;
+  /** Output only. The timestamp of when the Folder was created. */
+  createTime?: string;
+  /** Output only. The timestamp of when the Folder was last updated. */
+  updateTime?: string;
+  /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
+  internalMetadata?: string;
+  /** Output only. The IAM principal identifier of the creator of the Folder. */
+  creatorIamPrincipal?: string;
+}
+
+export const Folder: Schema.Schema<Folder> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      containingFolder: Schema.optional(Schema.String),
+      teamFolderName: Schema.optional(Schema.String),
+      createTime: Schema.optional(Schema.String),
+      updateTime: Schema.optional(Schema.String),
+      internalMetadata: Schema.optional(Schema.String),
+      creatorIamPrincipal: Schema.optional(Schema.String),
+    }),
+  ).annotate({ identifier: "Folder" }) as any as Schema.Schema<Folder>;
+
 export interface SshAuthenticationConfig {
   /** Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/* /secrets/* /versions/*`. */
   userPrivateKeySecretVersion?: string;
@@ -185,6 +259,10 @@ export const DataEncryptionState: Schema.Schema<DataEncryptionState> =
 export interface Repository {
   /** Identifier. The repository's name. */
   name?: string;
+  /** Optional. The name of the containing folder of the repository. The field is immutable and it can be modified via a MoveRepository operation. Format: `projects/* /locations/* /folders/*`. or `projects/* /locations/* /teamFolders/*`. */
+  containingFolder?: string;
+  /** Output only. The resource name of the TeamFolder that this Repository is associated with. This should take the format: projects/{project}/locations/{location}/teamFolders/{teamFolder}. If this is not set, the Repository is not associated with a TeamFolder. */
+  teamFolderName?: string;
   /** Output only. The timestamp of when the repository was created. */
   createTime?: string;
   /** Optional. The repository's user-friendly name. */
@@ -213,6 +291,8 @@ export const Repository: Schema.Schema<Repository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
+      containingFolder: Schema.optional(Schema.String),
+      teamFolderName: Schema.optional(Schema.String),
       createTime: Schema.optional(Schema.String),
       displayName: Schema.optional(Schema.String),
       gitRemoteSettings: Schema.optional(GitRemoteSettings),
@@ -228,6 +308,167 @@ export const Repository: Schema.Schema<Repository> =
       internalMetadata: Schema.optional(Schema.String),
     }),
   ).annotate({ identifier: "Repository" }) as any as Schema.Schema<Repository>;
+
+export interface TeamFolderContentsEntry {
+  /** A subfolder. */
+  folder?: Folder;
+  /** A repository. */
+  repository?: Repository;
+}
+
+export const TeamFolderContentsEntry: Schema.Schema<TeamFolderContentsEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      folder: Schema.optional(Folder),
+      repository: Schema.optional(Repository),
+    }),
+  ).annotate({
+    identifier: "TeamFolderContentsEntry",
+  }) as any as Schema.Schema<TeamFolderContentsEntry>;
+
+export interface QueryTeamFolderContentsResponse {
+  /** List of entries in the TeamFolder. */
+  entries?: Array<TeamFolderContentsEntry>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const QueryTeamFolderContentsResponse: Schema.Schema<QueryTeamFolderContentsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      entries: Schema.optional(Schema.Array(TeamFolderContentsEntry)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "QueryTeamFolderContentsResponse",
+  }) as any as Schema.Schema<QueryTeamFolderContentsResponse>;
+
+export interface TeamFolderSearchResult {
+  /** A TeamFolder resource that is in the project / location. */
+  teamFolder?: TeamFolder;
+}
+
+export const TeamFolderSearchResult: Schema.Schema<TeamFolderSearchResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      teamFolder: Schema.optional(TeamFolder),
+    }),
+  ).annotate({
+    identifier: "TeamFolderSearchResult",
+  }) as any as Schema.Schema<TeamFolderSearchResult>;
+
+export interface SearchTeamFoldersResponse {
+  /** List of TeamFolders that match the search query. */
+  results?: Array<TeamFolderSearchResult>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const SearchTeamFoldersResponse: Schema.Schema<SearchTeamFoldersResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      results: Schema.optional(Schema.Array(TeamFolderSearchResult)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "SearchTeamFoldersResponse",
+  }) as any as Schema.Schema<SearchTeamFoldersResponse>;
+
+export interface DeleteFolderTreeRequest {
+  /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
+  force?: boolean;
+}
+
+export const DeleteFolderTreeRequest: Schema.Schema<DeleteFolderTreeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      force: Schema.optional(Schema.Boolean),
+    }),
+  ).annotate({
+    identifier: "DeleteFolderTreeRequest",
+  }) as any as Schema.Schema<DeleteFolderTreeRequest>;
+
+export interface FolderContentsEntry {
+  /** A subfolder. */
+  folder?: Folder;
+  /** A repository. */
+  repository?: Repository;
+}
+
+export const FolderContentsEntry: Schema.Schema<FolderContentsEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      folder: Schema.optional(Folder),
+      repository: Schema.optional(Repository),
+    }),
+  ).annotate({
+    identifier: "FolderContentsEntry",
+  }) as any as Schema.Schema<FolderContentsEntry>;
+
+export interface QueryFolderContentsResponse {
+  /** List of entries in the folder. */
+  entries?: Array<FolderContentsEntry>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const QueryFolderContentsResponse: Schema.Schema<QueryFolderContentsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      entries: Schema.optional(Schema.Array(FolderContentsEntry)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "QueryFolderContentsResponse",
+  }) as any as Schema.Schema<QueryFolderContentsResponse>;
+
+export interface RootContentsEntry {
+  /** A subfolder. */
+  folder?: Folder;
+  /** A repository. */
+  repository?: Repository;
+}
+
+export const RootContentsEntry: Schema.Schema<RootContentsEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      folder: Schema.optional(Folder),
+      repository: Schema.optional(Repository),
+    }),
+  ).annotate({
+    identifier: "RootContentsEntry",
+  }) as any as Schema.Schema<RootContentsEntry>;
+
+export interface QueryUserRootContentsResponse {
+  /** List of entries in the folder. */
+  entries?: Array<RootContentsEntry>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const QueryUserRootContentsResponse: Schema.Schema<QueryUserRootContentsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      entries: Schema.optional(Schema.Array(RootContentsEntry)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "QueryUserRootContentsResponse",
+  }) as any as Schema.Schema<QueryUserRootContentsResponse>;
+
+export interface MoveFolderRequest {
+  /** Optional. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format of: "" to move into the root User folder, `projects/* /locations/* /folders/*`, `projects/* /locations/* /teamFolders/*` */
+  destinationContainingFolder?: string;
+}
+
+export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      destinationContainingFolder: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "MoveFolderRequest",
+  }) as any as Schema.Schema<MoveFolderRequest>;
 
 export interface ListRepositoriesResponse {
   /** List of repositories. */
@@ -248,6 +489,20 @@ export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
   ).annotate({
     identifier: "ListRepositoriesResponse",
   }) as any as Schema.Schema<ListRepositoriesResponse>;
+
+export interface MoveRepositoryRequest {
+  /** Optional. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the format of: "" to move into the root User folder, `projects/* /locations/* /folders/*`, `projects/* /locations/* /teamFolders/*` */
+  destinationContainingFolder?: string;
+}
+
+export const MoveRepositoryRequest: Schema.Schema<MoveRepositoryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      destinationContainingFolder: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "MoveRepositoryRequest",
+  }) as any as Schema.Schema<MoveRepositoryRequest>;
 
 export interface CommitAuthor {
   /** Required. The commit author's name. */
@@ -369,11 +624,30 @@ export const ReadRepositoryFileResponse: Schema.Schema<ReadRepositoryFileRespons
     identifier: "ReadRepositoryFileResponse",
   }) as any as Schema.Schema<ReadRepositoryFileResponse>;
 
+export interface FilesystemEntryMetadata {
+  /** Output only. Provides the size of the entry in bytes. For directories, this will be 0. */
+  sizeBytes?: string;
+  /** Output only. Represents the time of the last modification of the entry. */
+  updateTime?: string;
+}
+
+export const FilesystemEntryMetadata: Schema.Schema<FilesystemEntryMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sizeBytes: Schema.optional(Schema.String),
+      updateTime: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "FilesystemEntryMetadata",
+  }) as any as Schema.Schema<FilesystemEntryMetadata>;
+
 export interface DirectoryEntry {
   /** A file in the directory. */
   file?: string;
   /** A child directory in the directory. */
   directory?: string;
+  /** Entry with metadata. */
+  metadata?: FilesystemEntryMetadata;
 }
 
 export const DirectoryEntry: Schema.Schema<DirectoryEntry> =
@@ -381,6 +655,7 @@ export const DirectoryEntry: Schema.Schema<DirectoryEntry> =
     Schema.Struct({
       file: Schema.optional(Schema.String),
       directory: Schema.optional(Schema.String),
+      metadata: Schema.optional(FilesystemEntryMetadata),
     }),
   ).annotate({
     identifier: "DirectoryEntry",
@@ -450,6 +725,7 @@ export interface ComputeRepositoryAccessTokenStatusResponse {
     | "NOT_FOUND"
     | "INVALID"
     | "VALID"
+    | "PERMISSION_DENIED"
     | (string & {});
 }
 
@@ -499,6 +775,8 @@ export interface Workspace {
   dataEncryptionState?: DataEncryptionState;
   /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
   internalMetadata?: string;
+  /** Optional. If set to true, workspaces will not be moved if its linked Repository is moved. Instead, it will be deleted. */
+  disableMoves?: boolean;
   /** Output only. Metadata indicating whether this resource is user-scoped. For `Workspace` resources, the `user_scoped` field is always `true`. */
   privateResourceMetadata?: PrivateResourceMetadata;
 }
@@ -510,6 +788,7 @@ export const Workspace: Schema.Schema<Workspace> =
       createTime: Schema.optional(Schema.String),
       dataEncryptionState: Schema.optional(DataEncryptionState),
       internalMetadata: Schema.optional(Schema.String),
+      disableMoves: Schema.optional(Schema.Boolean),
       privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
     }),
   ).annotate({ identifier: "Workspace" }) as any as Schema.Schema<Workspace>;
@@ -2230,6 +2509,57 @@ export const IamPolicyOverrideView: Schema.Schema<IamPolicyOverrideView> =
 // Operations
 // ==========================================================================
 
+export interface QueryUserRootContentsProjectsLocationsRequest {
+  /** Required. Location of the user root folder whose contents to list. Format: projects/* /locations/* */
+  location: string;
+  /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Page token received from a previous `QueryUserRootContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryUserRootFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: display_name (default), created_at, last_modified_at. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` */
+  orderBy?: string;
+  /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` */
+  filter?: string;
+}
+
+export const QueryUserRootContentsProjectsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.HttpPath("location")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}:queryUserRootContents",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<QueryUserRootContentsProjectsLocationsRequest>;
+
+export type QueryUserRootContentsProjectsLocationsResponse =
+  QueryUserRootContentsResponse;
+export const QueryUserRootContentsProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ QueryUserRootContentsResponse;
+
+export type QueryUserRootContentsProjectsLocationsError = DefaultErrors;
+
+/** Returns the contents of a caller's root folder in a given location. The root folder contains all resources that are created by the user and not contained in any other folder. */
+export const queryUserRootContentsProjectsLocations: API.PaginatedOperationMethod<
+  QueryUserRootContentsProjectsLocationsRequest,
+  QueryUserRootContentsProjectsLocationsResponse,
+  QueryUserRootContentsProjectsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: QueryUserRootContentsProjectsLocationsRequest,
+  output: QueryUserRootContentsProjectsLocationsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface GetConfigProjectsLocationsRequest {
   /** Required. The config name. */
   name: string;
@@ -2338,7 +2668,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2546,6 +2876,799 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   errors: [],
 }));
 
+export interface GetProjectsLocationsTeamFoldersRequest {
+  /** Required. The TeamFolder's name. */
+  name: string;
+}
+
+export const GetProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsTeamFoldersRequest>;
+
+export type GetProjectsLocationsTeamFoldersResponse = TeamFolder;
+export const GetProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TeamFolder;
+
+export type GetProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Fetches a single TeamFolder. */
+export const getProjectsLocationsTeamFolders: API.OperationMethod<
+  GetProjectsLocationsTeamFoldersRequest,
+  GetProjectsLocationsTeamFoldersResponse,
+  GetProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsTeamFoldersRequest,
+  output: GetProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsTeamFoldersRequest {
+  /** Required. The location in which to create the TeamFolder. Must be in the format `projects/* /locations/*`. */
+  parent: string;
+  /** Request body */
+  body?: TeamFolder;
+}
+
+export const CreateProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(TeamFolder).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsTeamFoldersRequest>;
+
+export type CreateProjectsLocationsTeamFoldersResponse = TeamFolder;
+export const CreateProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TeamFolder;
+
+export type CreateProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Creates a new TeamFolder in a given project and location. */
+export const createProjectsLocationsTeamFolders: API.OperationMethod<
+  CreateProjectsLocationsTeamFoldersRequest,
+  CreateProjectsLocationsTeamFoldersResponse,
+  CreateProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsTeamFoldersRequest,
+  output: CreateProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsTeamFoldersRequest {
+  /** Identifier. The TeamFolder's name. */
+  name: string;
+  /** Optional. Specifies the fields to be updated in the Folder. If left unset, all fields will be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: TeamFolder;
+}
+
+export const PatchProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(TeamFolder).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsTeamFoldersRequest>;
+
+export type PatchProjectsLocationsTeamFoldersResponse = TeamFolder;
+export const PatchProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TeamFolder;
+
+export type PatchProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Updates a single TeamFolder. */
+export const patchProjectsLocationsTeamFolders: API.OperationMethod<
+  PatchProjectsLocationsTeamFoldersRequest,
+  PatchProjectsLocationsTeamFoldersResponse,
+  PatchProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsTeamFoldersRequest,
+  output: PatchProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsTeamFoldersRequest {
+  /** Required. The TeamFolder's name. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsTeamFoldersRequest>;
+
+export type DeleteProjectsLocationsTeamFoldersResponse = Empty;
+export const DeleteProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Deletes a single TeamFolder. */
+export const deleteProjectsLocationsTeamFolders: API.OperationMethod<
+  DeleteProjectsLocationsTeamFoldersRequest,
+  DeleteProjectsLocationsTeamFoldersResponse,
+  DeleteProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsTeamFoldersRequest,
+  output: DeleteProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
+  /** Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} */
+  name: string;
+  /** Request body */
+  body?: DeleteTeamFolderTreeRequest;
+}
+
+export const DeleteTreeProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeleteTeamFolderTreeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:deleteTree",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
+
+export type DeleteTreeProjectsLocationsTeamFoldersResponse = Operation;
+export const DeleteTreeProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteTreeProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
+export const deleteTreeProjectsLocationsTeamFolders: API.OperationMethod<
+  DeleteTreeProjectsLocationsTeamFoldersRequest,
+  DeleteTreeProjectsLocationsTeamFoldersResponse,
+  DeleteTreeProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTreeProjectsLocationsTeamFoldersRequest,
+  output: DeleteTreeProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface QueryContentsProjectsLocationsTeamFoldersRequest {
+  /** Required. Name of the team_folder whose contents to list. Format: `projects/* /locations/* /teamFolders/*`. */
+  teamFolder: string;
+  /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Page token received from a previous `QueryTeamFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryTeamFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: `display_name` (default), `create_time`, last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` */
+  orderBy?: string;
+  /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` */
+  filter?: string;
+}
+
+export const QueryContentsProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    teamFolder: Schema.String.pipe(T.HttpPath("teamFolder")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:queryContents",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<QueryContentsProjectsLocationsTeamFoldersRequest>;
+
+export type QueryContentsProjectsLocationsTeamFoldersResponse =
+  QueryTeamFolderContentsResponse;
+export const QueryContentsProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ QueryTeamFolderContentsResponse;
+
+export type QueryContentsProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Returns the contents of a given TeamFolder. */
+export const queryContentsProjectsLocationsTeamFolders: API.PaginatedOperationMethod<
+  QueryContentsProjectsLocationsTeamFoldersRequest,
+  QueryContentsProjectsLocationsTeamFoldersResponse,
+  QueryContentsProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: QueryContentsProjectsLocationsTeamFoldersRequest,
+  output: QueryContentsProjectsLocationsTeamFoldersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface SearchProjectsLocationsTeamFoldersRequest {
+  /** Required. Location in which to query TeamFolders. Format: `projects/* /locations/*`. */
+  location: string;
+  /** Optional. Maximum number of TeamFolders to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Page token received from a previous `SearchTeamFolders` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchTeamFolders`, with the exception of `page_size`, must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field to additionally sort results by. Supported keywords: `display_name` (default), `create_time`, `last_modified_time`. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` */
+  orderBy?: string;
+  /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` */
+  filter?: string;
+}
+
+export const SearchProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.HttpPath("location")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders:search",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SearchProjectsLocationsTeamFoldersRequest>;
+
+export type SearchProjectsLocationsTeamFoldersResponse =
+  SearchTeamFoldersResponse;
+export const SearchProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SearchTeamFoldersResponse;
+
+export type SearchProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Returns all TeamFolders in a given location that the caller has access to and match the provided filter. */
+export const searchProjectsLocationsTeamFolders: API.PaginatedOperationMethod<
+  SearchProjectsLocationsTeamFoldersRequest,
+  SearchProjectsLocationsTeamFoldersResponse,
+  SearchProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SearchProjectsLocationsTeamFoldersRequest,
+  output: SearchProjectsLocationsTeamFoldersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetIamPolicyProjectsLocationsTeamFoldersRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
+
+export type GetIamPolicyProjectsLocationsTeamFoldersResponse = Policy;
+export const GetIamPolicyProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
+  GetIamPolicyProjectsLocationsTeamFoldersRequest,
+  GetIamPolicyProjectsLocationsTeamFoldersResponse,
+  GetIamPolicyProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsTeamFoldersRequest,
+  output: GetIamPolicyProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface SetIamPolicyProjectsLocationsTeamFoldersRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
+
+export type SetIamPolicyProjectsLocationsTeamFoldersResponse = Policy;
+export const SetIamPolicyProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
+  SetIamPolicyProjectsLocationsTeamFoldersRequest,
+  SetIamPolicyProjectsLocationsTeamFoldersResponse,
+  SetIamPolicyProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsTeamFoldersRequest,
+  output: SetIamPolicyProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
+
+export type TestIamPermissionsProjectsLocationsTeamFoldersResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsTeamFolders: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsTeamFoldersRequest,
+  TestIamPermissionsProjectsLocationsTeamFoldersResponse,
+  TestIamPermissionsProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsTeamFoldersRequest,
+  output: TestIamPermissionsProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsFoldersRequest {
+  /** Required. The Folder's name. */
+  name: string;
+}
+
+export const GetProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsFoldersRequest>;
+
+export type GetProjectsLocationsFoldersResponse = Folder;
+export const GetProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type GetProjectsLocationsFoldersError = DefaultErrors;
+
+/** Fetches a single Folder. */
+export const getProjectsLocationsFolders: API.OperationMethod<
+  GetProjectsLocationsFoldersRequest,
+  GetProjectsLocationsFoldersResponse,
+  GetProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsFoldersRequest,
+  output: GetProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsFoldersRequest {
+  /** Required. The location in which to create the Folder. Must be in the format `projects/* /locations/*`. */
+  parent: string;
+  /** Request body */
+  body?: Folder;
+}
+
+export const CreateProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Folder).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsFoldersRequest>;
+
+export type CreateProjectsLocationsFoldersResponse = Folder;
+export const CreateProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type CreateProjectsLocationsFoldersError = DefaultErrors;
+
+/** Creates a new Folder in a given project and location. */
+export const createProjectsLocationsFolders: API.OperationMethod<
+  CreateProjectsLocationsFoldersRequest,
+  CreateProjectsLocationsFoldersResponse,
+  CreateProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsFoldersRequest,
+  output: CreateProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsFoldersRequest {
+  /** Identifier. The Folder's name. */
+  name: string;
+  /** Optional. Specifies the fields to be updated in the Folder. If left unset, all fields that can be updated, will be updated. A few fields cannot be updated and will be ignored if specified in the update_mask (e.g. parent_name, team_folder_name). */
+  updateMask?: string;
+  /** Request body */
+  body?: Folder;
+}
+
+export const PatchProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Folder).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsFoldersRequest>;
+
+export type PatchProjectsLocationsFoldersResponse = Folder;
+export const PatchProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Folder;
+
+export type PatchProjectsLocationsFoldersError = DefaultErrors;
+
+/** Updates a single Folder. */
+export const patchProjectsLocationsFolders: API.OperationMethod<
+  PatchProjectsLocationsFoldersRequest,
+  PatchProjectsLocationsFoldersResponse,
+  PatchProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsFoldersRequest,
+  output: PatchProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsFoldersRequest {
+  /** Required. The Folder's name. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsFoldersRequest>;
+
+export type DeleteProjectsLocationsFoldersResponse = Empty;
+export const DeleteProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsFoldersError = DefaultErrors;
+
+/** Deletes a single Folder. */
+export const deleteProjectsLocationsFolders: API.OperationMethod<
+  DeleteProjectsLocationsFoldersRequest,
+  DeleteProjectsLocationsFoldersResponse,
+  DeleteProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsFoldersRequest,
+  output: DeleteProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteTreeProjectsLocationsFoldersRequest {
+  /** Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} */
+  name: string;
+  /** Request body */
+  body?: DeleteFolderTreeRequest;
+}
+
+export const DeleteTreeProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeleteFolderTreeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:deleteTree",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
+
+export type DeleteTreeProjectsLocationsFoldersResponse = Operation;
+export const DeleteTreeProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteTreeProjectsLocationsFoldersError = DefaultErrors;
+
+/** Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
+export const deleteTreeProjectsLocationsFolders: API.OperationMethod<
+  DeleteTreeProjectsLocationsFoldersRequest,
+  DeleteTreeProjectsLocationsFoldersResponse,
+  DeleteTreeProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTreeProjectsLocationsFoldersRequest,
+  output: DeleteTreeProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface QueryFolderContentsProjectsLocationsFoldersRequest {
+  /** Required. Name of the folder whose contents to list. Format: projects/* /locations/* /folders/* */
+  folder: string;
+  /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Page token received from a previous `QueryFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: display_name (default), create_time, last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` */
+  orderBy?: string;
+  /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` */
+  filter?: string;
+}
+
+export const QueryFolderContentsProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    folder: Schema.String.pipe(T.HttpPath("folder")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:queryFolderContents",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<QueryFolderContentsProjectsLocationsFoldersRequest>;
+
+export type QueryFolderContentsProjectsLocationsFoldersResponse =
+  QueryFolderContentsResponse;
+export const QueryFolderContentsProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ QueryFolderContentsResponse;
+
+export type QueryFolderContentsProjectsLocationsFoldersError = DefaultErrors;
+
+/** Returns the contents of a given Folder. */
+export const queryFolderContentsProjectsLocationsFolders: API.PaginatedOperationMethod<
+  QueryFolderContentsProjectsLocationsFoldersRequest,
+  QueryFolderContentsProjectsLocationsFoldersResponse,
+  QueryFolderContentsProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: QueryFolderContentsProjectsLocationsFoldersRequest,
+  output: QueryFolderContentsProjectsLocationsFoldersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface MoveProjectsLocationsFoldersRequest {
+  /** Required. The full resource name of the Folder to move. */
+  name: string;
+  /** Request body */
+  body?: MoveFolderRequest;
+}
+
+export const MoveProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:move",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<MoveProjectsLocationsFoldersRequest>;
+
+export type MoveProjectsLocationsFoldersResponse = Operation;
+export const MoveProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type MoveProjectsLocationsFoldersError = DefaultErrors;
+
+/** Moves a Folder to a new Folder, TeamFolder, or the root location. */
+export const moveProjectsLocationsFolders: API.OperationMethod<
+  MoveProjectsLocationsFoldersRequest,
+  MoveProjectsLocationsFoldersResponse,
+  MoveProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveProjectsLocationsFoldersRequest,
+  output: MoveProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface GetIamPolicyProjectsLocationsFoldersRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFoldersRequest>;
+
+export type GetIamPolicyProjectsLocationsFoldersResponse = Policy;
+export const GetIamPolicyProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsFoldersError = DefaultErrors;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsFolders: API.OperationMethod<
+  GetIamPolicyProjectsLocationsFoldersRequest,
+  GetIamPolicyProjectsLocationsFoldersResponse,
+  GetIamPolicyProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsFoldersRequest,
+  output: GetIamPolicyProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface SetIamPolicyProjectsLocationsFoldersRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsFoldersRequest>;
+
+export type SetIamPolicyProjectsLocationsFoldersResponse = Policy;
+export const SetIamPolicyProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsFoldersError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsFolders: API.OperationMethod<
+  SetIamPolicyProjectsLocationsFoldersRequest,
+  SetIamPolicyProjectsLocationsFoldersResponse,
+  SetIamPolicyProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsFoldersRequest,
+  output: SetIamPolicyProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsProjectsLocationsFoldersRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>;
+
+export type TestIamPermissionsProjectsLocationsFoldersResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsFoldersError = DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsFolders: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsFoldersRequest,
+  TestIamPermissionsProjectsLocationsFoldersResponse,
+  TestIamPermissionsProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsFoldersRequest,
+  output: TestIamPermissionsProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
 export interface ListProjectsLocationsRepositoriesRequest {
   /** Required. The location in which to list repositories. Must be in the format `projects/* /locations/*`. */
   parent: string;
@@ -2749,6 +3872,44 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRepositoriesRequest,
   output: DeleteProjectsLocationsRepositoriesResponse,
+  errors: [],
+}));
+
+export interface MoveProjectsLocationsRepositoriesRequest {
+  /** Required. The full resource name of the repository to move. */
+  name: string;
+  /** Request body */
+  body?: MoveRepositoryRequest;
+}
+
+export const MoveProjectsLocationsRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(MoveRepositoryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/repositories/{repositoriesId}:move",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<MoveProjectsLocationsRepositoriesRequest>;
+
+export type MoveProjectsLocationsRepositoriesResponse = Operation;
+export const MoveProjectsLocationsRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type MoveProjectsLocationsRepositoriesError = DefaultErrors;
+
+/** Moves a Repository to a new location. */
+export const moveProjectsLocationsRepositories: API.OperationMethod<
+  MoveProjectsLocationsRepositoriesRequest,
+  MoveProjectsLocationsRepositoriesResponse,
+  MoveProjectsLocationsRepositoriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveProjectsLocationsRepositoriesRequest,
+  output: MoveProjectsLocationsRepositoriesResponse,
   errors: [],
 }));
 
@@ -3601,6 +4762,12 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRe
   pageSize?: number;
   /** Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. */
+  view?:
+    | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
+    | "DIRECTORY_CONTENTS_VIEW_BASIC"
+    | "DIRECTORY_CONTENTS_VIEW_METADATA"
+    | (string & {});
 }
 
 export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest =
@@ -3609,6 +4776,7 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesReques
     path: Schema.optional(Schema.String).pipe(T.HttpQuery("path")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4927,236 +6095,4 @@ export const queryProjectsLocationsRepositoriesWorkflowInvocations: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetIamPolicyProjectsLocationsFoldersRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:getIamPolicy",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFoldersRequest>;
-
-export type GetIamPolicyProjectsLocationsFoldersResponse = Policy;
-export const GetIamPolicyProjectsLocationsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsFoldersError = DefaultErrors;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsFolders: API.OperationMethod<
-  GetIamPolicyProjectsLocationsFoldersRequest,
-  GetIamPolicyProjectsLocationsFoldersResponse,
-  GetIamPolicyProjectsLocationsFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsFoldersRequest,
-  output: GetIamPolicyProjectsLocationsFoldersResponse,
-  errors: [],
-}));
-
-export interface SetIamPolicyProjectsLocationsFoldersRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsFoldersRequest>;
-
-export type SetIamPolicyProjectsLocationsFoldersResponse = Policy;
-export const SetIamPolicyProjectsLocationsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsFoldersError = DefaultErrors;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsFolders: API.OperationMethod<
-  SetIamPolicyProjectsLocationsFoldersRequest,
-  SetIamPolicyProjectsLocationsFoldersResponse,
-  SetIamPolicyProjectsLocationsFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsFoldersRequest,
-  output: SetIamPolicyProjectsLocationsFoldersResponse,
-  errors: [],
-}));
-
-export interface TestIamPermissionsProjectsLocationsFoldersRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>;
-
-export type TestIamPermissionsProjectsLocationsFoldersResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsFoldersError = DefaultErrors;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsFolders: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsFoldersRequest,
-  TestIamPermissionsProjectsLocationsFoldersResponse,
-  TestIamPermissionsProjectsLocationsFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsFoldersRequest,
-  output: TestIamPermissionsProjectsLocationsFoldersResponse,
-  errors: [],
-}));
-
-export interface GetIamPolicyProjectsLocationsTeamFoldersRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:getIamPolicy",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
-
-export type GetIamPolicyProjectsLocationsTeamFoldersResponse = Policy;
-export const GetIamPolicyProjectsLocationsTeamFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsTeamFoldersError = DefaultErrors;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
-  GetIamPolicyProjectsLocationsTeamFoldersRequest,
-  GetIamPolicyProjectsLocationsTeamFoldersResponse,
-  GetIamPolicyProjectsLocationsTeamFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsTeamFoldersRequest,
-  output: GetIamPolicyProjectsLocationsTeamFoldersResponse,
-  errors: [],
-}));
-
-export interface SetIamPolicyProjectsLocationsTeamFoldersRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
-
-export type SetIamPolicyProjectsLocationsTeamFoldersResponse = Policy;
-export const SetIamPolicyProjectsLocationsTeamFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsTeamFoldersError = DefaultErrors;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
-  SetIamPolicyProjectsLocationsTeamFoldersRequest,
-  SetIamPolicyProjectsLocationsTeamFoldersResponse,
-  SetIamPolicyProjectsLocationsTeamFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsTeamFoldersRequest,
-  output: SetIamPolicyProjectsLocationsTeamFoldersResponse,
-  errors: [],
-}));
-
-export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsTeamFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
-
-export type TestIamPermissionsProjectsLocationsTeamFoldersResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsTeamFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsTeamFoldersError = DefaultErrors;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsTeamFolders: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsTeamFoldersRequest,
-  TestIamPermissionsProjectsLocationsTeamFoldersResponse,
-  TestIamPermissionsProjectsLocationsTeamFoldersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsTeamFoldersRequest,
-  output: TestIamPermissionsProjectsLocationsTeamFoldersResponse,
-  errors: [],
 }));

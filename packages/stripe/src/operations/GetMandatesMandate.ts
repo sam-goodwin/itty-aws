@@ -136,6 +136,14 @@ export const GetMandatesMandateOutput =
         }),
       ),
       type: Schema.String,
+      upi: Schema.optional(
+        Schema.Struct({
+          amount: Schema.NullOr(Schema.Number),
+          amount_type: Schema.NullOr(Schema.Literals(["fixed", "maximum"])),
+          description: Schema.NullOr(Schema.String),
+          end_date: Schema.NullOr(Schema.Number),
+        }),
+      ),
       us_bank_account: Schema.optional(
         Schema.Struct({
           collection_method: Schema.optional(Schema.Literals(["paper"])),

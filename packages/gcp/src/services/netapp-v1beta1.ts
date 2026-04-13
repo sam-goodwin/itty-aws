@@ -182,20 +182,21 @@ export interface StoragePool {
   coldTierSizeUsedGib?: string;
   /** Output only. Total hot tier data rounded down to the nearest GiB used by the storage pool. */
   hotTierSizeUsedGib?: string;
-  /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with large capacity. If not specified during creation, it defaults to `FILE`. */
-  type?:
-    | "STORAGE_POOL_TYPE_UNSPECIFIED"
-    | "FILE"
-    | "UNIFIED"
-    | "UNIFIED_LARGE_CAPACITY"
-    | (string & {});
+  /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not specified during creation, it defaults to `FILE`. */
+  type?: "STORAGE_POOL_TYPE_UNSPECIFIED" | "FILE" | "UNIFIED" | (string & {});
   /** Optional. Mode of the storage pool. This field is used to control whether the user can perform the ONTAP operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults to `DEFAULT`. */
   mode?: "MODE_UNSPECIFIED" | "DEFAULT" | "ONTAP" | (string & {});
-  /** Optional. The effective scale tier of the storage pool. If `scale_tier` is not specified during creation, this defaults to `SCALE_TIER_STANDARD`. */
+  /** Optional. Deprecated: Use scale_type instead. The effective scale tier of the storage pool. If `scale_tier` is not specified during creation, this defaults to `SCALE_TIER_STANDARD`. */
   scaleTier?:
     | "SCALE_TIER_UNSPECIFIED"
     | "SCALE_TIER_STANDARD"
     | "SCALE_TIER_ENTERPRISE"
+    | (string & {});
+  /** Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified. */
+  scaleType?:
+    | "SCALE_TYPE_UNSPECIFIED"
+    | "SCALE_TYPE_DEFAULT"
+    | "SCALE_TYPE_SCALEOUT"
     | (string & {});
 }
 
@@ -236,6 +237,7 @@ export const StoragePool: Schema.Schema<StoragePool> =
       type: Schema.optional(Schema.String),
       mode: Schema.optional(Schema.String),
       scaleTier: Schema.optional(Schema.String),
+      scaleType: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "StoragePool",
@@ -503,7 +505,7 @@ export const SnapshotPolicy: Schema.Schema<SnapshotPolicy> =
 export interface RestoreParameters {
   /** Full name of the snapshot resource. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
   sourceSnapshot?: string;
-  /** Full name of the backup resource. Format: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} */
+  /** Full name of the backup resource. Format for standard backup: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} Format for BackupDR backup: projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup} */
   sourceBackup?: string;
 }
 
@@ -883,7 +885,7 @@ export interface Volume {
   restrictedActions?: Array<
     "RESTRICTED_ACTION_UNSPECIFIED" | "DELETE" | (string & {})
   >;
-  /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. */
+  /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and `large_capacity_config` are mutually exclusive. */
   largeCapacity?: boolean;
   /** Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints. Only the volume with large_capacity will be allowed to have multiple endpoints. */
   multipleEndpoints?: boolean;
@@ -905,7 +907,7 @@ export interface Volume {
   hotTierSizeUsedGib?: string;
   /** Optional. Block devices for the volume. Currently, only one block device is permitted per Volume. */
   blockDevices?: Array<BlockDevice>;
-  /** Optional. Large capacity config for the volume. */
+  /** Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy `large_capacity` boolean field are mutually exclusive. */
   largeCapacityConfig?: LargeCapacityConfig;
   /** Output only. If this volume is a clone, this field contains details about the clone. */
   cloneDetails?: CloneDetails;
@@ -1643,6 +1645,8 @@ export interface BackupVault {
     | (string & {});
   /** Output only. The crypto key version used to encrypt the backup vault. Format: `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}` */
   backupsCryptoKeyVersion?: string;
+  /** Optional. Indicates if the backup vault is a cross project vault. */
+  crossProjectVault?: boolean;
 }
 
 export const BackupVault: Schema.Schema<BackupVault> =
@@ -1662,6 +1666,7 @@ export const BackupVault: Schema.Schema<BackupVault> =
       kmsConfig: Schema.optional(Schema.String),
       encryptionState: Schema.optional(Schema.String),
       backupsCryptoKeyVersion: Schema.optional(Schema.String),
+      crossProjectVault: Schema.optional(Schema.Boolean),
     }),
   ).annotate({
     identifier: "BackupVault",
@@ -1706,7 +1711,7 @@ export interface Backup {
   volumeUsageBytes?: string;
   /** Output only. Type of backup, manually created or created by a backup policy. */
   backupType?: "TYPE_UNSPECIFIED" | "MANUAL" | "SCHEDULED" | (string & {});
-  /** Volume full name of this backup belongs to. Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}` */
+  /** Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}` */
   sourceVolume?: string;
   /** If specified, backup will be created from the given snapshot. If not specified, there will be a new snapshot taken to initiate the backup creation. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}` */
   sourceSnapshot?: string;
@@ -2215,7 +2220,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,

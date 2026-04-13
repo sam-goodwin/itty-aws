@@ -424,7 +424,7 @@ export const PostTestHelpersIssuingAuthorizationsInput =
             invalid_credentials_decline_rate_past_hour: Schema.optional(
               Schema.Number,
             ),
-            risk_level: Schema.Literals([
+            level: Schema.Literals([
               "elevated",
               "highest",
               "low",
@@ -450,7 +450,7 @@ export const PostTestHelpersIssuingAuthorizationsInput =
         merchant_dispute_risk: Schema.optional(
           Schema.Struct({
             dispute_rate: Schema.optional(Schema.Number),
-            risk_level: Schema.Literals([
+            level: Schema.Literals([
               "elevated",
               "highest",
               "low",
@@ -671,6 +671,7 @@ export const PostTestHelpersIssuingAuthorizationsOutput =
       id: Schema.String,
       last4: Schema.String,
       latest_fraud_warning: Schema.Unknown,
+      lifecycle_controls: Schema.Unknown,
       livemode: Schema.Boolean,
       metadata: Schema.Record(Schema.String, Schema.String),
       number: Schema.optional(Schema.String),

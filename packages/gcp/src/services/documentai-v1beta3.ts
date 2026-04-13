@@ -2915,6 +2915,8 @@ export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundat
   trainSteps?: number;
   /** Optional. The multiplier to apply to the recommended learning rate. Valid values are between 0.1 and 10. If not provided, recommended learning rate will be used. */
   learningRateMultiplier?: number;
+  /** Optional. Resource name of a previously fine tuned version id to copy the overwritten configs from. The base_processor_version should be newer than the base processor version used to fine tune this provided processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`. */
+  previousFineTunedProcessorVersionName?: string;
 }
 
 export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions: Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationModelTuningOptions> =
@@ -2922,6 +2924,7 @@ export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestFoundationM
     Schema.Struct({
       trainSteps: Schema.optional(Schema.Number),
       learningRateMultiplier: Schema.optional(Schema.Number),
+      previousFineTunedProcessorVersionName: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier:
@@ -7367,7 +7370,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,

@@ -127,6 +127,20 @@ export const TeamFolder: Schema.Schema<TeamFolder> =
     }),
   ).annotate({ identifier: "TeamFolder" }) as any as Schema.Schema<TeamFolder>;
 
+export interface DeleteTeamFolderTreeRequest {
+  /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
+  force?: boolean;
+}
+
+export const DeleteTeamFolderTreeRequest: Schema.Schema<DeleteTeamFolderTreeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      force: Schema.optional(Schema.Boolean),
+    }),
+  ).annotate({
+    identifier: "DeleteTeamFolderTreeRequest",
+  }) as any as Schema.Schema<DeleteTeamFolderTreeRequest>;
+
 export interface Folder {
   /** Identifier. The Folder's name. */
   name?: string;
@@ -359,6 +373,20 @@ export const SearchTeamFoldersResponse: Schema.Schema<SearchTeamFoldersResponse>
   ).annotate({
     identifier: "SearchTeamFoldersResponse",
   }) as any as Schema.Schema<SearchTeamFoldersResponse>;
+
+export interface DeleteFolderTreeRequest {
+  /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
+  force?: boolean;
+}
+
+export const DeleteFolderTreeRequest: Schema.Schema<DeleteFolderTreeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      force: Schema.optional(Schema.Boolean),
+    }),
+  ).annotate({
+    identifier: "DeleteFolderTreeRequest",
+  }) as any as Schema.Schema<DeleteFolderTreeRequest>;
 
 export interface FolderContentsEntry {
   /** A subfolder. */
@@ -596,11 +624,30 @@ export const ReadRepositoryFileResponse: Schema.Schema<ReadRepositoryFileRespons
     identifier: "ReadRepositoryFileResponse",
   }) as any as Schema.Schema<ReadRepositoryFileResponse>;
 
+export interface FilesystemEntryMetadata {
+  /** Output only. Provides the size of the entry in bytes. For directories, this will be 0. */
+  sizeBytes?: string;
+  /** Output only. Represents the time of the last modification of the entry. */
+  updateTime?: string;
+}
+
+export const FilesystemEntryMetadata: Schema.Schema<FilesystemEntryMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sizeBytes: Schema.optional(Schema.String),
+      updateTime: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "FilesystemEntryMetadata",
+  }) as any as Schema.Schema<FilesystemEntryMetadata>;
+
 export interface DirectoryEntry {
   /** A file in the directory. */
   file?: string;
   /** A child directory in the directory. */
   directory?: string;
+  /** Entry with metadata. */
+  metadata?: FilesystemEntryMetadata;
 }
 
 export const DirectoryEntry: Schema.Schema<DirectoryEntry> =
@@ -608,6 +655,7 @@ export const DirectoryEntry: Schema.Schema<DirectoryEntry> =
     Schema.Struct({
       file: Schema.optional(Schema.String),
       directory: Schema.optional(Schema.String),
+      metadata: Schema.optional(FilesystemEntryMetadata),
     }),
   ).annotate({
     identifier: "DirectoryEntry",
@@ -677,6 +725,7 @@ export interface ComputeRepositoryAccessTokenStatusResponse {
     | "NOT_FOUND"
     | "INVALID"
     | "VALID"
+    | "PERMISSION_DENIED"
     | (string & {});
 }
 
@@ -2619,7 +2668,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2864,7 +2913,7 @@ export const getProjectsLocationsTeamFolders: API.OperationMethod<
 export interface CreateProjectsLocationsTeamFoldersRequest {
   /** Required. The location in which to create the TeamFolder. Must be in the format `projects/* /locations/*`. */
   parent: string;
-  /** The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. */
+  /** Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. */
   teamFolderId?: string;
   /** Request body */
   body?: TeamFolder;
@@ -2976,6 +3025,44 @@ export const deleteProjectsLocationsTeamFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTeamFoldersRequest,
   output: DeleteProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
+  /** Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} */
+  name: string;
+  /** Request body */
+  body?: DeleteTeamFolderTreeRequest;
+}
+
+export const DeleteTreeProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeleteTeamFolderTreeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:deleteTree",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
+
+export type DeleteTreeProjectsLocationsTeamFoldersResponse = Operation;
+export const DeleteTreeProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteTreeProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
+export const deleteTreeProjectsLocationsTeamFolders: API.OperationMethod<
+  DeleteTreeProjectsLocationsTeamFoldersRequest,
+  DeleteTreeProjectsLocationsTeamFoldersResponse,
+  DeleteTreeProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTreeProjectsLocationsTeamFoldersRequest,
+  output: DeleteTreeProjectsLocationsTeamFoldersResponse,
   errors: [],
 }));
 
@@ -3234,7 +3321,7 @@ export const getProjectsLocationsFolders: API.OperationMethod<
 export interface CreateProjectsLocationsFoldersRequest {
   /** Required. The location in which to create the Folder. Must be in the format `projects/* /locations/*`. */
   parent: string;
-  /** The ID to use for the Folder, which will become the final component of the Folder's resource name. */
+  /** Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the Folder, which will become the final component of the Folder's resource name. */
   folderId?: string;
   /** Request body */
   body?: Folder;
@@ -3344,6 +3431,44 @@ export const deleteProjectsLocationsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsFoldersRequest,
   output: DeleteProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteTreeProjectsLocationsFoldersRequest {
+  /** Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} */
+  name: string;
+  /** Request body */
+  body?: DeleteFolderTreeRequest;
+}
+
+export const DeleteTreeProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeleteFolderTreeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:deleteTree",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
+
+export type DeleteTreeProjectsLocationsFoldersResponse = Operation;
+export const DeleteTreeProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteTreeProjectsLocationsFoldersError = DefaultErrors;
+
+/** Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
+export const deleteTreeProjectsLocationsFolders: API.OperationMethod<
+  DeleteTreeProjectsLocationsFoldersRequest,
+  DeleteTreeProjectsLocationsFoldersResponse,
+  DeleteTreeProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTreeProjectsLocationsFoldersRequest,
+  output: DeleteTreeProjectsLocationsFoldersResponse,
   errors: [],
 }));
 
@@ -4645,6 +4770,12 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRe
   pageSize?: number;
   /** Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. */
+  view?:
+    | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
+    | "DIRECTORY_CONTENTS_VIEW_BASIC"
+    | "DIRECTORY_CONTENTS_VIEW_METADATA"
+    | (string & {});
 }
 
 export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest =
@@ -4653,6 +4784,7 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesReques
     path: Schema.optional(Schema.String).pipe(T.HttpQuery("path")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({
       method: "GET",

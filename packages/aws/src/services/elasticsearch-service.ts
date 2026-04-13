@@ -779,6 +779,7 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
   | "Policy-Min-TLS-1-2-PFS-2023-10"
+  | "Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08"
   | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DomainEndpointOptions {

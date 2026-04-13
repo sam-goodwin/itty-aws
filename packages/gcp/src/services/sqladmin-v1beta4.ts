@@ -551,6 +551,7 @@ export interface Operation {
     | "ENHANCED_BACKUP"
     | "REPAIR_READ_POOL"
     | "CREATE_READ_POOL"
+    | "PRE_CHECK_MAJOR_VERSION_UPGRADE"
     | (string & {});
   /** The context for import operation, if applicable. */
   importContext?: ImportContext;
@@ -1335,6 +1336,10 @@ export interface PscConfig {
   pscAutoConnections?: Array<PscAutoConnectionConfig>;
   /** Optional. The network attachment of the consumer network that the Private Service Connect enabled Cloud SQL instance is authorized to connect via PSC interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID */
   networkAttachmentUri?: string;
+  /** Optional. Indicates whether PSC DNS automation is enabled for this instance. When enabled, Cloud SQL provisions a universal DNS record across all networks configured with Private Service Connect (PSC) auto-connections. This will default to true for new instances when Private Service Connect is enabled. */
+  pscAutoDnsEnabled?: boolean;
+  /** Optional. Indicates whether PSC write endpoint DNS automation is enabled for this instance. When enabled, Cloud SQL provisions a universal global DNS record across all networks configured with Private Service Connect (PSC) auto-connections that always points to the cluster primary instance. This feature is only supported for Enterprise Plus edition. This will default to true for new enterprise plus instances when `psc_auto_dns_enabled` is enabled. */
+  pscWriteEndpointDnsEnabled?: boolean;
 }
 
 export const PscConfig: Schema.Schema<PscConfig> =
@@ -1346,6 +1351,8 @@ export const PscConfig: Schema.Schema<PscConfig> =
         Schema.Array(PscAutoConnectionConfig),
       ),
       networkAttachmentUri: Schema.optional(Schema.String),
+      pscAutoDnsEnabled: Schema.optional(Schema.Boolean),
+      pscWriteEndpointDnsEnabled: Schema.optional(Schema.Boolean),
     }),
   ).annotate({ identifier: "PscConfig" }) as any as Schema.Schema<PscConfig>;
 
@@ -3586,6 +3593,12 @@ export interface PointInTimeRestoreContext {
   preferredZone?: string;
   /** Optional. Point-in-time recovery of a regional instance in the specified zones. If not specified, clone to the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field. */
   preferredSecondaryZone?: string;
+  /** Optional. Specifies the instance settings that will be overridden from the source instance. This field is only applicable for cross project PITRs. */
+  targetInstanceSettings?: DatabaseInstance;
+  /** Optional. Specifies the instance settings that will be cleared from the source instance. This field is only applicable for cross project PITRs. */
+  targetInstanceClearSettingsFieldNames?: Array<string>;
+  /** Optional. The region of the target instance where the datasource will be restored. For example: "us-central1". */
+  region?: string;
 }
 
 export const PointInTimeRestoreContext: Schema.Schema<PointInTimeRestoreContext> =
@@ -3598,6 +3611,11 @@ export const PointInTimeRestoreContext: Schema.Schema<PointInTimeRestoreContext>
       allocatedIpRange: Schema.optional(Schema.String),
       preferredZone: Schema.optional(Schema.String),
       preferredSecondaryZone: Schema.optional(Schema.String),
+      targetInstanceSettings: Schema.optional(DatabaseInstance),
+      targetInstanceClearSettingsFieldNames: Schema.optional(
+        Schema.Array(Schema.String),
+      ),
+      region: Schema.optional(Schema.String),
     }),
   ).annotate({
     identifier: "PointInTimeRestoreContext",
@@ -4846,7 +4864,7 @@ export const addEntraIdCertificateInstances: API.OperationMethod<
 }));
 
 export interface CloneInstancesRequest {
-  /** Project ID of the source as well as the clone Cloud SQL instance. */
+  /** Project ID of the source Cloud SQL instance. */
   project: string;
   /** The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID. */
   instance: string;

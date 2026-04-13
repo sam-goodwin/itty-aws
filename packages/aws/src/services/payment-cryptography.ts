@@ -508,10 +508,15 @@ export const GetDefaultKeyReplicationRegionsOutput =
 export interface GetParametersForExportInput {
   KeyMaterialType: string;
   SigningKeyAlgorithm: string;
+  ReuseLastGeneratedToken?: boolean;
 }
 export const GetParametersForExportInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ KeyMaterialType: S.String, SigningKeyAlgorithm: S.String }).pipe(
+    S.Struct({
+      KeyMaterialType: S.String,
+      SigningKeyAlgorithm: S.String,
+      ReuseLastGeneratedToken: S.optional(S.Boolean),
+    }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
   ).annotate({
@@ -541,12 +546,14 @@ export const GetParametersForExportOutput =
 export interface GetParametersForImportInput {
   KeyMaterialType: string;
   WrappingKeyAlgorithm: string;
+  ReuseLastGeneratedToken?: boolean;
 }
 export const GetParametersForImportInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       KeyMaterialType: S.String,
       WrappingKeyAlgorithm: S.String,
+      ReuseLastGeneratedToken: S.optional(S.Boolean),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1594,6 +1601,8 @@ export type GetParametersForExportError =
  *
  * The signing key certificate signs the wrapped key under export within the TR-34 key payload. The export token and signing key certificate must be in place and operational before calling ExportKey. The export token expires in 30 days. You can use the same export token to export multiple keys from your service account.
  *
+ * To return a previously generated export token and signing key certificate instead of generating new ones, set `ReuseLastGeneratedToken` to `true`.
+ *
  * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
  *
  * **Related operations:**
@@ -1635,6 +1644,8 @@ export type GetParametersForImportError =
  * Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock or a RSA WrappedKeyCryptogram import into Amazon Web Services Payment Cryptography.
  *
  * The wrapping key certificate wraps the key under import. The import token and wrapping key certificate must be in place and operational before calling ImportKey. The import token expires in 30 days. You can use the same import token to import multiple keys into your service account.
+ *
+ * To return a previously generated import token and wrapping key certificate instead of generating new ones, set `ReuseLastGeneratedToken` to `true`.
  *
  * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
  *

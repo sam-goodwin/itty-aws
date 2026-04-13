@@ -31,7 +31,7 @@ export type GetV2CoreAccountsAccountIdPersonTokensIdOutput =
 
 // The operation
 /**
- * Retrieve a Person Token
+ * Retrieve a person token
  *
  * Retrieves a Person Token associated with an Account.
  *

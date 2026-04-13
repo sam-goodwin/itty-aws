@@ -20,7 +20,7 @@ export type V1UpsertAMigrationOutput = typeof V1UpsertAMigrationOutput.Type;
 
 // The operation
 /**
- * [Beta] Upsert a database migration without applying
+ * Upsert a database migration without applying
  *
  * Only available to selected partner OAuth apps
  *

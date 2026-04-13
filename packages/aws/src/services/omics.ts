@@ -117,6 +117,17 @@ export type SchemaValueType = string;
 export type StoreStatus = string;
 export type StatusMessage = string;
 export type VersionStatus = string;
+export type ConfigurationName = string;
+export type ConfigurationDescription = string;
+export type SecurityGroupId = string;
+export type SubnetId = string;
+export type ConfigurationRequestId = string;
+export type ConfigurationArn = string;
+export type ConfigurationUuid = string;
+export type VpcId = string;
+export type ConfigurationStatus = string;
+export type ConfigurationTimestamp = Date;
+export type ConfigurationListToken = string;
 export type ReferenceStoreName = string;
 export type ReferenceStoreDescription = string;
 export type ClientToken = string;
@@ -137,40 +148,53 @@ export type ReferenceCreationType = string;
 export type CreationJobId = string;
 export type Range = string;
 export type ReferenceFile = string;
+export type BatchName = string;
+export type BatchRequestId = string;
+export type WorkflowId = string;
+export type WorkflowType = string;
+export type RunRoleArn = string;
+export type RunName = string;
+export type NumericIdInArn = string;
 export type CacheBehavior = string;
+export type RunGroupId = string;
+export type RunParameters = unknown;
+export type RunOutputUri = string;
+export type RunLogLevel = string;
+export type RunRetentionMode = string;
+export type StorageType = string;
+export type WorkflowOwnerId = string;
+export type AwsAccountId = string;
+export type WorkflowVersionName = string;
+export type RunSettingId = string;
+export type S3UriSettings = string;
+export type BatchId = string;
+export type BatchArn = string;
+export type BatchStatus = string;
+export type BatchUuid = string;
+export type BatchTimestamp = Date;
+export type ListToken = string;
+export type SubmissionStatus = string;
+export type RunId = string;
+export type RunUuid = string;
+export type RunArn = string;
+export type SubmissionFailureReason = string;
+export type SubmissionFailureMessage = string;
 export type S3UriForBucketOrObject = string;
 export type UserCustomDescription = string;
 export type UserCustomName = string;
 export type RunCacheRequestId = string;
-export type AwsAccountId = string;
 export type RunCacheArn = string;
 export type RunCacheId = string;
 export type RunCacheStatus = string;
 export type RunCacheTimestamp = Date;
-export type ListToken = string;
 export type RunGroupName = string;
 export type RunGroupRequestId = string;
 export type RunGroupArn = string;
-export type RunGroupId = string;
 export type RunGroupTimestamp = Date;
 export type RunGroupListToken = string;
-export type WorkflowId = string;
-export type WorkflowType = string;
-export type RunId = string;
-export type RunRoleArn = string;
-export type RunName = string;
-export type NumericIdInArn = string;
-export type RunParameters = unknown;
-export type RunOutputUri = string;
-export type RunLogLevel = string;
 export type RunRequestId = string;
-export type RunRetentionMode = string;
-export type StorageType = string;
-export type WorkflowOwnerId = string;
-export type WorkflowVersionName = string;
-export type RunArn = string;
+export type NetworkingMode = string;
 export type RunStatus = string;
-export type RunUuid = string;
 export type RunExport = string;
 export type EngineVersion = string;
 export type WorkflowDefinition = string;
@@ -1291,6 +1315,232 @@ export const DeleteAnnotationStoreVersionsResponse =
   ).annotate({
     identifier: "DeleteAnnotationStoreVersionsResponse",
   }) as any as S.Schema<DeleteAnnotationStoreVersionsResponse>;
+export type SecurityGroupIds = string[];
+export const SecurityGroupIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type SubnetIds = string[];
+export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface VpcConfig {
+  securityGroupIds?: string[];
+  subnetIds?: string[];
+}
+export const VpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    securityGroupIds: S.optional(SecurityGroupIds),
+    subnetIds: S.optional(SubnetIds),
+  }),
+).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
+export interface RunConfigurations {
+  vpcConfig?: VpcConfig;
+}
+export const RunConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ vpcConfig: S.optional(VpcConfig) }),
+).annotate({
+  identifier: "RunConfigurations",
+}) as any as S.Schema<RunConfigurations>;
+export interface CreateConfigurationRequest {
+  name: string;
+  description?: string;
+  runConfigurations: RunConfigurations;
+  tags?: { [key: string]: string | undefined };
+  requestId: string;
+}
+export const CreateConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      description: S.optional(S.String),
+      runConfigurations: RunConfigurations,
+      tags: S.optional(TagMap),
+      requestId: S.String.pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/configuration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateConfigurationRequest",
+}) as any as S.Schema<CreateConfigurationRequest>;
+export interface VpcConfigResponse {
+  securityGroupIds?: string[];
+  subnetIds?: string[];
+  vpcId?: string;
+}
+export const VpcConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    securityGroupIds: S.optional(SecurityGroupIds),
+    subnetIds: S.optional(SubnetIds),
+    vpcId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VpcConfigResponse",
+}) as any as S.Schema<VpcConfigResponse>;
+export interface RunConfigurationsResponse {
+  vpcConfig?: VpcConfigResponse;
+}
+export const RunConfigurationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ vpcConfig: S.optional(VpcConfigResponse) }),
+).annotate({
+  identifier: "RunConfigurationsResponse",
+}) as any as S.Schema<RunConfigurationsResponse>;
+export interface CreateConfigurationResponse {
+  arn?: string;
+  uuid?: string;
+  name?: string;
+  description?: string;
+  runConfigurations?: RunConfigurationsResponse;
+  status?: string;
+  creationTime?: Date;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.optional(S.String),
+      uuid: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      runConfigurations: S.optional(RunConfigurationsResponse),
+      status: S.optional(S.String),
+      creationTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      tags: S.optional(TagMap),
+    }),
+  ).annotate({
+    identifier: "CreateConfigurationResponse",
+  }) as any as S.Schema<CreateConfigurationResponse>;
+export interface GetConfigurationRequest {
+  name: string;
+}
+export const GetConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ name: S.String.pipe(T.HttpLabel("name")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/configuration/{name}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetConfigurationRequest",
+}) as any as S.Schema<GetConfigurationRequest>;
+export interface GetConfigurationResponse {
+  arn?: string;
+  uuid?: string;
+  name?: string;
+  description?: string;
+  runConfigurations?: RunConfigurationsResponse;
+  status?: string;
+  creationTime?: Date;
+  tags?: { [key: string]: string | undefined };
+}
+export const GetConfigurationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      arn: S.optional(S.String),
+      uuid: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      runConfigurations: S.optional(RunConfigurationsResponse),
+      status: S.optional(S.String),
+      creationTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      tags: S.optional(TagMap),
+    }),
+).annotate({
+  identifier: "GetConfigurationResponse",
+}) as any as S.Schema<GetConfigurationResponse>;
+export interface DeleteConfigurationRequest {
+  name: string;
+}
+export const DeleteConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ name: S.String.pipe(T.HttpLabel("name")) }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/configuration/{name}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteConfigurationRequest",
+}) as any as S.Schema<DeleteConfigurationRequest>;
+export interface DeleteConfigurationResponse {}
+export const DeleteConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteConfigurationResponse",
+  }) as any as S.Schema<DeleteConfigurationResponse>;
+export interface ListConfigurationsRequest {
+  maxResults?: number;
+  startingToken?: string;
+}
+export const ListConfigurationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      startingToken: S.optional(S.String).pipe(T.HttpQuery("startingToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/configuration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListConfigurationsRequest",
+}) as any as S.Schema<ListConfigurationsRequest>;
+export interface ConfigurationListItem {
+  arn?: string;
+  name?: string;
+  description?: string;
+  status?: string;
+  creationTime?: Date;
+}
+export const ConfigurationListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    status: S.optional(S.String),
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "ConfigurationListItem",
+}) as any as S.Schema<ConfigurationListItem>;
+export type ConfigurationList = ConfigurationListItem[];
+export const ConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ConfigurationListItem,
+);
+export interface ListConfigurationsResponse {
+  items?: ConfigurationListItem[];
+  nextToken?: string;
+}
+export const ListConfigurationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      items: S.optional(ConfigurationList),
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListConfigurationsResponse",
+}) as any as S.Schema<ListConfigurationsResponse>;
 export interface CreateReferenceStoreRequest {
   name: string;
   description?: string;
@@ -1963,6 +2213,429 @@ export const GetReferenceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReferenceResponse",
 }) as any as S.Schema<GetReferenceResponse>;
+export interface DefaultRunSetting {
+  workflowId: string;
+  workflowType?: string;
+  roleArn: string;
+  name?: string;
+  cacheId?: string;
+  cacheBehavior?: string;
+  runGroupId?: string;
+  priority?: number;
+  parameters?: any;
+  storageCapacity?: number;
+  outputUri?: string;
+  logLevel?: string;
+  runTags?: { [key: string]: string | undefined };
+  retentionMode?: string;
+  storageType?: string;
+  workflowOwnerId?: string;
+  outputBucketOwnerId?: string;
+  workflowVersionName?: string;
+}
+export const DefaultRunSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.String,
+    workflowType: S.optional(S.String),
+    roleArn: S.String,
+    name: S.optional(S.String),
+    cacheId: S.optional(S.String),
+    cacheBehavior: S.optional(S.String),
+    runGroupId: S.optional(S.String),
+    priority: S.optional(S.Number),
+    parameters: S.optional(S.Any),
+    storageCapacity: S.optional(S.Number),
+    outputUri: S.optional(S.String),
+    logLevel: S.optional(S.String),
+    runTags: S.optional(TagMap),
+    retentionMode: S.optional(S.String),
+    storageType: S.optional(S.String),
+    workflowOwnerId: S.optional(S.String),
+    outputBucketOwnerId: S.optional(S.String),
+    workflowVersionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DefaultRunSetting",
+}) as any as S.Schema<DefaultRunSetting>;
+export interface InlineSetting {
+  runSettingId: string;
+  name?: string;
+  outputUri?: string;
+  priority?: number;
+  parameters?: any;
+  outputBucketOwnerId?: string;
+  runTags?: { [key: string]: string | undefined };
+}
+export const InlineSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runSettingId: S.String,
+    name: S.optional(S.String),
+    outputUri: S.optional(S.String),
+    priority: S.optional(S.Number),
+    parameters: S.optional(S.Any),
+    outputBucketOwnerId: S.optional(S.String),
+    runTags: S.optional(TagMap),
+  }),
+).annotate({ identifier: "InlineSetting" }) as any as S.Schema<InlineSetting>;
+export type InlineSettings = InlineSetting[];
+export const InlineSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(InlineSetting);
+export type BatchRunSettings =
+  | { inlineSettings: InlineSetting[]; s3UriSettings?: never }
+  | { inlineSettings?: never; s3UriSettings: string };
+export const BatchRunSettings = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ inlineSettings: InlineSettings }),
+  S.Struct({ s3UriSettings: S.String }),
+]);
+export interface StartRunBatchRequest {
+  batchName?: string;
+  requestId: string;
+  tags?: { [key: string]: string | undefined };
+  defaultRunSetting: DefaultRunSetting;
+  batchRunSettings: BatchRunSettings;
+}
+export const StartRunBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchName: S.optional(S.String),
+    requestId: S.String.pipe(T.IdempotencyToken()),
+    tags: S.optional(TagMap),
+    defaultRunSetting: DefaultRunSetting,
+    batchRunSettings: BatchRunSettings,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/runBatch" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartRunBatchRequest",
+}) as any as S.Schema<StartRunBatchRequest>;
+export interface StartRunBatchResponse {
+  id?: string;
+  arn?: string;
+  status?: string;
+  uuid?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const StartRunBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    status: S.optional(S.String),
+    uuid: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "StartRunBatchResponse",
+}) as any as S.Schema<StartRunBatchResponse>;
+export interface GetBatchRequest {
+  batchId: string;
+}
+export const GetBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ batchId: S.String.pipe(T.HttpLabel("batchId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/runBatch/{batchId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetBatchRequest",
+}) as any as S.Schema<GetBatchRequest>;
+export interface SubmissionSummary {
+  successfulStartSubmissionCount?: number;
+  failedStartSubmissionCount?: number;
+  pendingStartSubmissionCount?: number;
+  successfulCancelSubmissionCount?: number;
+  failedCancelSubmissionCount?: number;
+  successfulDeleteSubmissionCount?: number;
+  failedDeleteSubmissionCount?: number;
+}
+export const SubmissionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successfulStartSubmissionCount: S.optional(S.Number),
+    failedStartSubmissionCount: S.optional(S.Number),
+    pendingStartSubmissionCount: S.optional(S.Number),
+    successfulCancelSubmissionCount: S.optional(S.Number),
+    failedCancelSubmissionCount: S.optional(S.Number),
+    successfulDeleteSubmissionCount: S.optional(S.Number),
+    failedDeleteSubmissionCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SubmissionSummary",
+}) as any as S.Schema<SubmissionSummary>;
+export interface RunSummary {
+  pendingRunCount?: number;
+  startingRunCount?: number;
+  runningRunCount?: number;
+  stoppingRunCount?: number;
+  completedRunCount?: number;
+  deletedRunCount?: number;
+  failedRunCount?: number;
+  cancelledRunCount?: number;
+}
+export const RunSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pendingRunCount: S.optional(S.Number),
+    startingRunCount: S.optional(S.Number),
+    runningRunCount: S.optional(S.Number),
+    stoppingRunCount: S.optional(S.Number),
+    completedRunCount: S.optional(S.Number),
+    deletedRunCount: S.optional(S.Number),
+    failedRunCount: S.optional(S.Number),
+    cancelledRunCount: S.optional(S.Number),
+  }),
+).annotate({ identifier: "RunSummary" }) as any as S.Schema<RunSummary>;
+export interface GetBatchResponse {
+  id?: string;
+  arn?: string;
+  uuid?: string;
+  name?: string;
+  status?: string;
+  tags?: { [key: string]: string | undefined };
+  totalRuns?: number;
+  defaultRunSetting?: DefaultRunSetting;
+  submissionSummary?: SubmissionSummary;
+  runSummary?: RunSummary;
+  creationTime?: Date;
+  submittedTime?: Date;
+  processedTime?: Date;
+  failedTime?: Date;
+  failureReason?: string;
+}
+export const GetBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    uuid: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+    tags: S.optional(TagMap),
+    totalRuns: S.optional(S.Number),
+    defaultRunSetting: S.optional(DefaultRunSetting),
+    submissionSummary: S.optional(SubmissionSummary),
+    runSummary: S.optional(RunSummary),
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    submittedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    processedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    failedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    failureReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBatchResponse",
+}) as any as S.Schema<GetBatchResponse>;
+export interface DeleteBatchRequest {
+  batchId: string;
+}
+export const DeleteBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ batchId: S.String.pipe(T.HttpLabel("batchId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/runBatch/{batchId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteBatchRequest",
+}) as any as S.Schema<DeleteBatchRequest>;
+export interface DeleteBatchResponse {}
+export const DeleteBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBatchResponse",
+}) as any as S.Schema<DeleteBatchResponse>;
+export interface ListBatchRequest {
+  maxItems?: number;
+  startingToken?: string;
+  status?: string;
+  name?: string;
+  runGroupId?: string;
+}
+export const ListBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+    startingToken: S.optional(S.String).pipe(T.HttpQuery("startingToken")),
+    status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    name: S.optional(S.String).pipe(T.HttpQuery("name")),
+    runGroupId: S.optional(S.String).pipe(T.HttpQuery("runGroupId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/runBatch" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListBatchRequest",
+}) as any as S.Schema<ListBatchRequest>;
+export interface BatchListItem {
+  id?: string;
+  name?: string;
+  status?: string;
+  createdAt?: Date;
+  totalRuns?: number;
+  workflowId?: string;
+}
+export const BatchListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    totalRuns: S.optional(S.Number),
+    workflowId: S.optional(S.String),
+  }),
+).annotate({ identifier: "BatchListItem" }) as any as S.Schema<BatchListItem>;
+export type BatchList = BatchListItem[];
+export const BatchList = /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchListItem);
+export interface ListBatchResponse {
+  items?: BatchListItem[];
+  nextToken?: string;
+}
+export const ListBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ items: S.optional(BatchList), nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListBatchResponse",
+}) as any as S.Schema<ListBatchResponse>;
+export interface CancelRunBatchRequest {
+  batchId: string;
+}
+export const CancelRunBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ batchId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/runBatch/cancel" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CancelRunBatchRequest",
+}) as any as S.Schema<CancelRunBatchRequest>;
+export interface CancelRunBatchResponse {}
+export const CancelRunBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CancelRunBatchResponse",
+}) as any as S.Schema<CancelRunBatchResponse>;
+export interface DeleteRunBatchRequest {
+  batchId: string;
+}
+export const DeleteRunBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ batchId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/runBatch/delete" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteRunBatchRequest",
+}) as any as S.Schema<DeleteRunBatchRequest>;
+export interface DeleteRunBatchResponse {}
+export const DeleteRunBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteRunBatchResponse",
+}) as any as S.Schema<DeleteRunBatchResponse>;
+export interface ListRunsInBatchRequest {
+  batchId: string;
+  maxItems?: number;
+  startingToken?: string;
+  submissionStatus?: string;
+  runSettingId?: string;
+  runId?: string;
+}
+export const ListRunsInBatchRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchId: S.String.pipe(T.HttpLabel("batchId")),
+      maxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+      startingToken: S.optional(S.String).pipe(T.HttpQuery("startingToken")),
+      submissionStatus: S.optional(S.String).pipe(
+        T.HttpQuery("submissionStatus"),
+      ),
+      runSettingId: S.optional(S.String).pipe(T.HttpQuery("runSettingId")),
+      runId: S.optional(S.String).pipe(T.HttpQuery("runId")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/runBatch/{batchId}/run" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListRunsInBatchRequest",
+}) as any as S.Schema<ListRunsInBatchRequest>;
+export interface RunBatchListItem {
+  runSettingId?: string;
+  runId?: string;
+  runInternalUuid?: string;
+  runArn?: string;
+  submissionStatus?: string;
+  submissionFailureReason?: string;
+  submissionFailureMessage?: string;
+}
+export const RunBatchListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runSettingId: S.optional(S.String),
+    runId: S.optional(S.String),
+    runInternalUuid: S.optional(S.String),
+    runArn: S.optional(S.String),
+    submissionStatus: S.optional(S.String),
+    submissionFailureReason: S.optional(S.String),
+    submissionFailureMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunBatchListItem",
+}) as any as S.Schema<RunBatchListItem>;
+export type RunBatchList = RunBatchListItem[];
+export const RunBatchList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RunBatchListItem);
+export interface ListRunsInBatchResponse {
+  runs?: RunBatchListItem[];
+  nextToken?: string;
+}
+export const ListRunsInBatchResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      runs: S.optional(RunBatchList),
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListRunsInBatchResponse",
+}) as any as S.Schema<ListRunsInBatchResponse>;
 export interface CreateRunCacheRequest {
   cacheBehavior?: string;
   cacheS3Location: string;
@@ -2405,6 +3078,8 @@ export interface StartRunRequest {
   storageType?: string;
   workflowOwnerId?: string;
   workflowVersionName?: string;
+  networkingMode?: string;
+  configurationName?: string;
 }
 export const StartRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2427,6 +3102,8 @@ export const StartRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     storageType: S.optional(S.String),
     workflowOwnerId: S.optional(S.String),
     workflowVersionName: S.optional(S.String),
+    networkingMode: S.optional(S.String),
+    configurationName: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/run" }),
@@ -2440,6 +3117,20 @@ export const StartRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartRunRequest",
 }) as any as S.Schema<StartRunRequest>;
+export interface ConfigurationDetails {
+  name?: string;
+  arn?: string;
+  uuid?: string;
+}
+export const ConfigurationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    uuid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigurationDetails",
+}) as any as S.Schema<ConfigurationDetails>;
 export interface StartRunResponse {
   arn?: string;
   id?: string;
@@ -2447,6 +3138,8 @@ export interface StartRunResponse {
   tags?: { [key: string]: string | undefined };
   uuid?: string;
   runOutputUri?: string;
+  configuration?: ConfigurationDetails;
+  networkingMode?: string;
 }
 export const StartRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2456,6 +3149,8 @@ export const StartRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     tags: S.optional(TagMap),
     uuid: S.optional(S.String),
     runOutputUri: S.optional(S.String),
+    configuration: S.optional(ConfigurationDetails),
+    networkingMode: S.optional(S.String),
   }),
 ).annotate({
   identifier: "StartRunResponse",
@@ -2509,6 +3204,7 @@ export interface GetRunResponse {
   roleArn?: string;
   name?: string;
   runGroupId?: string;
+  batchId?: string;
   priority?: number;
   definition?: string;
   digest?: string;
@@ -2533,6 +3229,9 @@ export interface GetRunResponse {
   workflowOwnerId?: string;
   workflowVersionName?: string;
   workflowUuid?: string;
+  networkingMode?: string;
+  configuration?: ConfigurationDetails;
+  vpcConfig?: VpcConfigResponse;
 }
 export const GetRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2548,6 +3247,7 @@ export const GetRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     roleArn: S.optional(S.String),
     name: S.optional(S.String),
     runGroupId: S.optional(S.String),
+    batchId: S.optional(S.String),
     priority: S.optional(S.Number),
     definition: S.optional(S.String),
     digest: S.optional(S.String),
@@ -2576,6 +3276,9 @@ export const GetRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     workflowOwnerId: S.optional(S.String),
     workflowVersionName: S.optional(S.String),
     workflowUuid: S.optional(S.String),
+    networkingMode: S.optional(S.String),
+    configuration: S.optional(ConfigurationDetails),
+    vpcConfig: S.optional(VpcConfigResponse),
   }),
 ).annotate({ identifier: "GetRunResponse" }) as any as S.Schema<GetRunResponse>;
 export interface DeleteRunRequest {
@@ -2604,6 +3307,7 @@ export const DeleteRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListRunsRequest {
   name?: string;
   runGroupId?: string;
+  batchId?: string;
   startingToken?: string;
   maxResults?: number;
   status?: string;
@@ -2612,6 +3316,7 @@ export const ListRunsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String).pipe(T.HttpQuery("name")),
     runGroupId: S.optional(S.String).pipe(T.HttpQuery("runGroupId")),
+    batchId: S.optional(S.String).pipe(T.HttpQuery("batchId")),
     startingToken: S.optional(S.String).pipe(T.HttpQuery("startingToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     status: S.optional(S.String).pipe(T.HttpQuery("status")),
@@ -2626,6 +3331,7 @@ export interface RunListItem {
   id?: string;
   status?: string;
   workflowId?: string;
+  batchId?: string;
   name?: string;
   priority?: number;
   storageCapacity?: number;
@@ -2641,6 +3347,7 @@ export const RunListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     status: S.optional(S.String),
     workflowId: S.optional(S.String),
+    batchId: S.optional(S.String),
     name: S.optional(S.String),
     priority: S.optional(S.Number),
     storageCapacity: S.optional(S.Number),
@@ -6138,7 +6845,7 @@ export type StartAnnotationImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Starts an annotation import job.
  */
@@ -6167,7 +6874,7 @@ export type GetAnnotationImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Gets information about an annotation import job.
  */
@@ -6195,7 +6902,7 @@ export type CancelAnnotationImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Cancels an annotation import job.
  */
@@ -6223,7 +6930,7 @@ export type ListAnnotationImportJobsError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Retrieves a list of annotation import jobs.
  */
@@ -6274,7 +6981,7 @@ export type CreateAnnotationStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Creates an annotation store.
  */
@@ -6304,7 +7011,7 @@ export type GetAnnotationStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Gets information about an annotation store.
  */
@@ -6332,7 +7039,7 @@ export type UpdateAnnotationStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Updates an annotation store.
  */
@@ -6361,7 +7068,7 @@ export type DeleteAnnotationStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Deletes an annotation store.
  */
@@ -6390,7 +7097,7 @@ export type ListAnnotationStoresError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Retrieves a list of annotation stores.
  */
@@ -6587,6 +7294,155 @@ export const deleteAnnotationStoreVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+}));
+export type CreateConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a new configuration.
+ */
+export const createConfiguration: API.OperationMethod<
+  CreateConfigurationRequest,
+  CreateConfigurationResponse,
+  CreateConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateConfigurationRequest,
+  output: CreateConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieve configuration details for specified name.
+ */
+export const getConfiguration: API.OperationMethod<
+  GetConfigurationRequest,
+  GetConfigurationResponse,
+  GetConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete an existing configuration.
+ */
+export const deleteConfiguration: API.OperationMethod<
+  DeleteConfigurationRequest,
+  DeleteConfigurationResponse,
+  DeleteConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationRequest,
+  output: DeleteConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListConfigurationsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List all configurations for the account.
+ */
+export const listConfigurations: API.OperationMethod<
+  ListConfigurationsRequest,
+  ListConfigurationsResponse,
+  ListConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigurationsRequest,
+  ) => stream.Stream<
+    ListConfigurationsResponse,
+    ListConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigurationsRequest,
+  ) => stream.Stream<
+    ConfigurationListItem,
+    ListConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListConfigurationsRequest,
+  output: ListConfigurationsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "startingToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
 }));
 export type CreateReferenceStoreError =
   | AccessDeniedException
@@ -6976,6 +7832,270 @@ export const getReference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+}));
+export type StartRunBatchError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a batch of workflow runs. You can group up to 100,000 runs into a single batch that share a common configuration defined in `defaultRunSetting`. Per-run overrides can be provided either inline via `inlineSettings` (up to 100 runs) or via a JSON file stored in Amazon S3 via `s3UriSettings` (up to 100,000 runs).
+ *
+ * `StartRunBatch` validates common fields synchronously and returns immediately with a batch ID and status `PENDING`. Runs are submitted gradually and asynchronously at a rate governed by your `StartRun` throughput quota.
+ */
+export const startRunBatch: API.OperationMethod<
+  StartRunBatchRequest,
+  StartRunBatchResponse,
+  StartRunBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartRunBatchRequest,
+  output: StartRunBatchResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetBatchError =
+  | AccessDeniedException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves details and current status for a specific run batch, including submission progress and run execution counts.
+ */
+export const getBatch: API.OperationMethod<
+  GetBatchRequest,
+  GetBatchResponse,
+  GetBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetBatchRequest,
+  output: GetBatchResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteBatchError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call `DeleteRunBatch` before calling `DeleteBatch`.
+ *
+ * `DeleteBatch` requires the batch to be in a terminal state: `PROCESSED`, `FAILED`, `CANCELLED`, or `RUNS_DELETED`. After `DeleteBatch` completes, the batch metadata is no longer accessible. You cannot call `GetBatch`, `ListRunsInBatch`, `DeleteRunBatch`, or `CancelRunBatch` on a deleted batch.
+ */
+export const deleteBatch: API.OperationMethod<
+  DeleteBatchRequest,
+  DeleteBatchResponse,
+  DeleteBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteBatchRequest,
+  output: DeleteBatchResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListBatchError =
+  | AccessDeniedException
+  | InternalServerException
+  | RequestTimeoutException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of run batches in your account, with optional filtering by status, name, or run group. Results are paginated. Only one filter per call is supported.
+ */
+export const listBatch: API.OperationMethod<
+  ListBatchRequest,
+  ListBatchResponse,
+  ListBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBatchRequest,
+  ) => stream.Stream<
+    ListBatchResponse,
+    ListBatchError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBatchRequest,
+  ) => stream.Stream<
+    BatchListItem,
+    ListBatchError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListBatchRequest,
+  output: ListBatchResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    RequestTimeoutException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "startingToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxItems",
+  } as const,
+}));
+export type CancelRunBatchError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Cancels all runs within a specified batch. This operation prevents not-yet-submitted runs from starting and submits `CancelRun` requests for runs that have already started.
+ *
+ * Cancel is only allowed on batches in `PENDING`, `SUBMITTING`, or `INPROGRESS` state. Cancel operations are non-atomic and may be partially successful. Use `GetBatch` to review `successfulCancelSubmissionCount` and `failedCancelSubmissionCount` in the `submissionSummary`. Only one cancel or delete operation per batch is allowed at a time.
+ */
+export const cancelRunBatch: API.OperationMethod<
+  CancelRunBatchRequest,
+  CancelRunBatchResponse,
+  CancelRunBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelRunBatchRequest,
+  output: CancelRunBatchResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteRunBatchError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the individual workflow runs within a batch. This operation is separate from `DeleteBatch`, which removes the batch metadata.
+ *
+ * Delete is only allowed on batches in `PROCESSED` or `CANCELLED` state. Delete operations are non-atomic and may be partially successful. Use `GetBatch` to review `successfulDeleteSubmissionCount` and `failedDeleteSubmissionCount` in the `submissionSummary`. Only one cancel or delete operation per batch is allowed at a time.
+ */
+export const deleteRunBatch: API.OperationMethod<
+  DeleteRunBatchRequest,
+  DeleteRunBatchResponse,
+  DeleteRunBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRunBatchRequest,
+  output: DeleteRunBatchResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListRunsInBatchError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | RequestTimeoutException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a paginated list of individual workflow runs within a specific batch. Use this operation to map each `runSettingId` to its HealthOmics-generated `runId`, and to check the submission status of each run. Only one filter per call is supported.
+ */
+export const listRunsInBatch: API.OperationMethod<
+  ListRunsInBatchRequest,
+  ListRunsInBatchResponse,
+  ListRunsInBatchError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRunsInBatchRequest,
+  ) => stream.Stream<
+    ListRunsInBatchResponse,
+    ListRunsInBatchError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRunsInBatchRequest,
+  ) => stream.Stream<
+    RunBatchListItem,
+    ListRunsInBatchError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRunsInBatchRequest,
+  output: ListRunsInBatchResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    RequestTimeoutException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "startingToken",
+    outputToken: "nextToken",
+    items: "runs",
+    pageSize: "maxItems",
+  } as const,
 }));
 export type CreateRunCacheError =
   | AccessDeniedException
@@ -8852,7 +9972,7 @@ export type StartVariantImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Starts a variant import job.
  */
@@ -8881,7 +10001,7 @@ export type GetVariantImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Gets information about a variant import job.
  */
@@ -8909,7 +10029,7 @@ export type CancelVariantImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Cancels a variant import job.
  */
@@ -8937,7 +10057,7 @@ export type ListVariantImportJobsError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Retrieves a list of variant import jobs.
  */
@@ -8988,7 +10108,7 @@ export type CreateVariantStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Creates a variant store.
  */
@@ -9018,7 +10138,7 @@ export type GetVariantStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Gets information about a variant store.
  */
@@ -9046,7 +10166,7 @@ export type UpdateVariantStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Updates a variant store.
  */
@@ -9075,7 +10195,7 @@ export type DeleteVariantStoreError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Deletes a variant store.
  */
@@ -9104,7 +10224,7 @@ export type ListVariantStoresError =
   | ValidationException
   | CommonErrors;
 /**
- * Amazon Web Services HealthOmics variant stores and annotation stores will no longer be open to new customers starting November 7, 2025. If you would like to use variant stores or annotation stores, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
+ * Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change.
  *
  * Retrieves a list of variant stores.
  */

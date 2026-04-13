@@ -63,6 +63,50 @@ export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
     identifier: "ListLocationsResponse",
   }) as any as Schema.Schema<ListLocationsResponse>;
 
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: Array<Record<string, unknown>>;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.optional(Schema.Number),
+      message: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      ),
+    }),
+  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+}
+
+export const Operation: Schema.Schema<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      done: Schema.optional(Schema.Boolean),
+      error: Schema.optional(Status),
+      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+
 export interface AppEngineRouting {
   /** App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string. */
   service?: string;
@@ -660,26 +704,6 @@ export const HttpRequest: Schema.Schema<HttpRequest> =
     identifier: "HttpRequest",
   }) as any as Schema.Schema<HttpRequest>;
 
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
-
 export interface AttemptStatus {
   /** Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond. */
   scheduleTime?: string;
@@ -973,7 +997,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -1052,7 +1076,7 @@ export const UpdateCmekConfigProjectsLocationsResponse =
 
 export type UpdateCmekConfigProjectsLocationsError = DefaultErrors;
 
-/** Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud Tasks location (Creates if the key does not already exist). All new tasks created in the location will be encrypted at-rest with the KMS-key provided in the config. */
+/** Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud Tasks location (Creates if the key does not already exist). All new tasks created in the location will be encrypted at-rest with the KMS-key provided in the config. */
 export const updateCmekConfigProjectsLocations: API.OperationMethod<
   UpdateCmekConfigProjectsLocationsRequest,
   UpdateCmekConfigProjectsLocationsResponse,
@@ -1095,6 +1119,40 @@ export const getCmekConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekConfigProjectsLocationsRequest,
   output: GetCmekConfigProjectsLocationsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v2beta2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError = DefaultErrors;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
   errors: [],
 }));
 

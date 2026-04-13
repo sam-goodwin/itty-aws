@@ -24,7 +24,7 @@ export type V1RestoreABranchOutput = typeof V1RestoreABranchOutput.Type;
  *
  * Cancels scheduled deletion and restores the branch to active state
  *
- * @param branch_id_or_ref - Branch ID
+ * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
 export const v1RestoreABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1RestoreABranchInput,

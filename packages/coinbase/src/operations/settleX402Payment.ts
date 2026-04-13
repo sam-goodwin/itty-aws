@@ -72,6 +72,7 @@ export const SettleX402PaymentOutput =
     payer: Schema.String,
     transaction: Schema.String,
     network: Schema.String,
+    amount: Schema.optional(Schema.String),
   });
 export type SettleX402PaymentOutput = typeof SettleX402PaymentOutput.Type;
 

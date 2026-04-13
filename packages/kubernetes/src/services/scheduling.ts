@@ -155,6 +155,7 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -162,6 +163,28 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -185,6 +208,14 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -279,7 +310,30 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
+          disruptionMode: Schema.optional(Schema.String),
           name: Schema.String,
+          priority: Schema.optional(Schema.Number),
+          priorityClassName: Schema.optional(Schema.String),
+          resourceClaims: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                resourceClaimName: Schema.optional(Schema.String),
+                resourceClaimTemplateName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          schedulingConstraints: Schema.optional(
+            Schema.Struct({
+              topology: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                  }),
+                ),
+              ),
+            }),
+          ),
           schedulingPolicy: Schema.Struct({
             basic: Schema.optional(Schema.Unknown),
             gang: Schema.optional(
@@ -351,6 +405,11 @@ export const DeleteSchedulingV1CollectionPriorityClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -414,6 +473,11 @@ export const DeleteSchedulingV1PriorityClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -477,6 +541,11 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -540,6 +609,11 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -603,6 +677,11 @@ export const DeleteSchedulingV1alpha2NamespacedPodGroupOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -666,6 +745,11 @@ export const DeleteSchedulingV1alpha2NamespacedWorkloadOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -893,6 +977,11 @@ export const ListSchedulingV1PriorityClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -974,6 +1063,7 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
           }),
         ),
         spec: Schema.Struct({
+          disruptionMode: Schema.optional(Schema.String),
           podGroupTemplateRef: Schema.optional(
             Schema.Struct({
               workload: Schema.optional(
@@ -981,6 +1071,28 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
                   podGroupTemplateName: Schema.String,
                   workloadName: Schema.String,
                 }),
+              ),
+            }),
+          ),
+          priority: Schema.optional(Schema.Number),
+          priorityClassName: Schema.optional(Schema.String),
+          resourceClaims: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                resourceClaimName: Schema.optional(Schema.String),
+                resourceClaimTemplateName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          schedulingConstraints: Schema.optional(
+            Schema.Struct({
+              topology: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                  }),
+                ),
               ),
             }),
           ),
@@ -1007,6 +1119,14 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
                 }),
               ),
             ),
+            resourceClaimStatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  resourceClaimName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
           }),
         ),
       }),
@@ -1018,6 +1138,11 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -1108,7 +1233,30 @@ export const ListSchedulingV1alpha2NamespacedWorkloadOutput =
           ),
           podGroupTemplates: Schema.Array(
             Schema.Struct({
+              disruptionMode: Schema.optional(Schema.String),
               name: Schema.String,
+              priority: Schema.optional(Schema.Number),
+              priorityClassName: Schema.optional(Schema.String),
+              resourceClaims: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    resourceClaimName: Schema.optional(Schema.String),
+                    resourceClaimTemplateName: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              schedulingConstraints: Schema.optional(
+                Schema.Struct({
+                  topology: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                      }),
+                    ),
+                  ),
+                }),
+              ),
               schedulingPolicy: Schema.Struct({
                 basic: Schema.optional(Schema.Unknown),
                 gang: Schema.optional(
@@ -1129,6 +1277,11 @@ export const ListSchedulingV1alpha2NamespacedWorkloadOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -1210,6 +1363,7 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
           }),
         ),
         spec: Schema.Struct({
+          disruptionMode: Schema.optional(Schema.String),
           podGroupTemplateRef: Schema.optional(
             Schema.Struct({
               workload: Schema.optional(
@@ -1217,6 +1371,28 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
                   podGroupTemplateName: Schema.String,
                   workloadName: Schema.String,
                 }),
+              ),
+            }),
+          ),
+          priority: Schema.optional(Schema.Number),
+          priorityClassName: Schema.optional(Schema.String),
+          resourceClaims: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                resourceClaimName: Schema.optional(Schema.String),
+                resourceClaimTemplateName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          schedulingConstraints: Schema.optional(
+            Schema.Struct({
+              topology: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                  }),
+                ),
               ),
             }),
           ),
@@ -1243,6 +1419,14 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
                 }),
               ),
             ),
+            resourceClaimStatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  resourceClaimName: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
           }),
         ),
       }),
@@ -1254,6 +1438,11 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -1344,7 +1533,30 @@ export const ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
           ),
           podGroupTemplates: Schema.Array(
             Schema.Struct({
+              disruptionMode: Schema.optional(Schema.String),
               name: Schema.String,
+              priority: Schema.optional(Schema.Number),
+              priorityClassName: Schema.optional(Schema.String),
+              resourceClaims: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    resourceClaimName: Schema.optional(Schema.String),
+                    resourceClaimTemplateName: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              schedulingConstraints: Schema.optional(
+                Schema.Struct({
+                  topology: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                      }),
+                    ),
+                  ),
+                }),
+              ),
               schedulingPolicy: Schema.Struct({
                 basic: Schema.optional(Schema.Unknown),
                 gang: Schema.optional(
@@ -1365,6 +1577,11 @@ export const ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -1527,6 +1744,7 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -1534,6 +1752,28 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -1557,6 +1797,14 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -1642,6 +1890,7 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -1649,6 +1898,28 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -1672,6 +1943,14 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -1766,7 +2045,30 @@ export const PatchSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
+          disruptionMode: Schema.optional(Schema.String),
           name: Schema.String,
+          priority: Schema.optional(Schema.Number),
+          priorityClassName: Schema.optional(Schema.String),
+          resourceClaims: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                resourceClaimName: Schema.optional(Schema.String),
+                resourceClaimTemplateName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          schedulingConstraints: Schema.optional(
+            Schema.Struct({
+              topology: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                  }),
+                ),
+              ),
+            }),
+          ),
           schedulingPolicy: Schema.Struct({
             basic: Schema.optional(Schema.Unknown),
             gang: Schema.optional(
@@ -1932,6 +2234,7 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -1939,6 +2242,28 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -1962,6 +2287,14 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -2041,6 +2374,7 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -2048,6 +2382,28 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -2071,6 +2427,14 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -2159,7 +2523,30 @@ export const ReadSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
+          disruptionMode: Schema.optional(Schema.String),
           name: Schema.String,
+          priority: Schema.optional(Schema.Number),
+          priorityClassName: Schema.optional(Schema.String),
+          resourceClaims: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                resourceClaimName: Schema.optional(Schema.String),
+                resourceClaimTemplateName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          schedulingConstraints: Schema.optional(
+            Schema.Struct({
+              topology: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                  }),
+                ),
+              ),
+            }),
+          ),
           schedulingPolicy: Schema.Struct({
             basic: Schema.optional(Schema.Unknown),
             gang: Schema.optional(
@@ -2331,6 +2718,7 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -2338,6 +2726,28 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -2361,6 +2771,14 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -2446,6 +2864,7 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
       }),
     ),
     spec: Schema.Struct({
+      disruptionMode: Schema.optional(Schema.String),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -2453,6 +2872,28 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
               podGroupTemplateName: Schema.String,
               workloadName: Schema.String,
             }),
+          ),
+        }),
+      ),
+      priority: Schema.optional(Schema.Number),
+      priorityClassName: Schema.optional(Schema.String),
+      resourceClaims: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            resourceClaimName: Schema.optional(Schema.String),
+            resourceClaimTemplateName: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      schedulingConstraints: Schema.optional(
+        Schema.Struct({
+          topology: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+              }),
+            ),
           ),
         }),
       ),
@@ -2476,6 +2917,14 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
               reason: Schema.String,
               status: Schema.String,
               type: Schema.String,
+            }),
+          ),
+        ),
+        resourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              resourceClaimName: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -2570,7 +3019,30 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
+          disruptionMode: Schema.optional(Schema.String),
           name: Schema.String,
+          priority: Schema.optional(Schema.Number),
+          priorityClassName: Schema.optional(Schema.String),
+          resourceClaims: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                resourceClaimName: Schema.optional(Schema.String),
+                resourceClaimTemplateName: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          schedulingConstraints: Schema.optional(
+            Schema.Struct({
+              topology: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                  }),
+                ),
+              ),
+            }),
+          ),
           schedulingPolicy: Schema.Struct({
             basic: Schema.optional(Schema.Unknown),
             gang: Schema.optional(

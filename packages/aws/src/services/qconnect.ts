@@ -4632,6 +4632,7 @@ export interface Span {
   endTimestamp: Date;
   status: string;
   requestId: string;
+  originRequestId?: string;
   attributes: SpanAttributes;
 }
 export const Span = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4646,6 +4647,7 @@ export const Span = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     endTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: S.String,
     requestId: S.String,
+    originRequestId: S.optional(S.String),
     attributes: SpanAttributes,
   }),
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
@@ -4725,6 +4727,7 @@ export interface SendMessageRequest {
   clientToken?: string;
   orchestratorUseCase?: string;
   metadata?: { [key: string]: string | undefined };
+  originRequestId?: string;
 }
 export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4738,6 +4741,7 @@ export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     orchestratorUseCase: S.optional(S.String),
     metadata: S.optional(MessageMetadata),
+    originRequestId: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({

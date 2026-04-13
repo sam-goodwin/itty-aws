@@ -12,7 +12,7 @@ export const GetConsumptionHistoryPerProjectV2Input =
     to: Schema.String,
     granularity: Schema.String,
     org_id: Schema.String,
-    metrics: Schema.optional(Schema.String),
+    metrics: Schema.String,
   }).pipe(T.Http({ method: "GET", path: "/consumption_history/v2/projects" }));
 export type GetConsumptionHistoryPerProjectV2Input =
   typeof GetConsumptionHistoryPerProjectV2Input.Type;

@@ -131,9 +131,11 @@ export type ConnectionName = string;
 export type SubnetId = string;
 export type Password = string | redacted.Redacted<string>;
 export type Username = string;
+export type GlueConnectionName = string;
 export type S3Uri = string;
 export type S3AccessGrantLocationId = string;
 export type EnvironmentProfileId = string;
+export type EnvironmentConfigurationName = string | redacted.Redacted<string>;
 export type EnvironmentName = string | redacted.Redacted<string>;
 export type DeploymentMessage = string;
 export type EnvironmentBlueprintId = string;
@@ -144,7 +146,6 @@ export type EnvironmentProfileName = string | redacted.Redacted<string>;
 export type TagKey = string;
 export type TagValue = string;
 export type ProjectProfileId = string;
-export type EnvironmentConfigurationName = string | redacted.Redacted<string>;
 export type ProjectProfileName = string | redacted.Redacted<string>;
 export type ParameterStorePath = string;
 export type EnvironmentConfigurationParameterName = string;
@@ -2031,6 +2032,24 @@ export const AwsLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     iamConnectionId: S.optional(S.String),
   }),
 ).annotate({ identifier: "AwsLocation" }) as any as S.Schema<AwsLocation>;
+export type PropertyMap = { [key: string]: string | undefined };
+export const PropertyMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface Configuration {
+  classification?: string;
+  properties?: { [key: string]: string | undefined };
+}
+export const Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    classification: S.optional(S.String),
+    properties: S.optional(PropertyMap),
+  }),
+).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
+export type Configurations = Configuration[];
+export const Configurations =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(Configuration);
 export interface AthenaPropertiesInput {
   workgroupName?: string;
 }
@@ -2088,11 +2107,6 @@ export const ComputeEnvironments = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ComputeEnvironmentsList = ComputeEnvironments[];
 export const ComputeEnvironmentsList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ComputeEnvironments);
-export type PropertyMap = { [key: string]: string | undefined };
-export const PropertyMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
 export type AuthenticationType = "BASIC" | "OAUTH2" | "CUSTOM" | (string & {});
 export const AuthenticationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type OAuth2GrantType =
@@ -2361,9 +2375,14 @@ export interface SparkGlueArgs {
 export const SparkGlueArgs = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ connection: S.optional(S.String) }),
 ).annotate({ identifier: "SparkGlueArgs" }) as any as S.Schema<SparkGlueArgs>;
+export type GlueConnectionNames = string[];
+export const GlueConnectionNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export interface SparkGluePropertiesInput {
   additionalArgs?: SparkGlueArgs;
   glueConnectionName?: string;
+  glueConnectionNames?: string[];
   glueVersion?: string;
   idleTimeout?: number;
   javaVirtualEnv?: string;
@@ -2376,6 +2395,7 @@ export const SparkGluePropertiesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       additionalArgs: S.optional(SparkGlueArgs),
       glueConnectionName: S.optional(S.String),
+      glueConnectionNames: S.optional(GlueConnectionNames),
       glueVersion: S.optional(S.String),
       idleTimeout: S.optional(S.Number),
       javaVirtualEnv: S.optional(S.String),
@@ -2389,9 +2409,14 @@ export const SparkGluePropertiesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface S3PropertiesInput {
   s3Uri: string;
   s3AccessGrantLocationId?: string;
+  registerS3AccessGrantLocation?: boolean;
 }
 export const S3PropertiesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.String, s3AccessGrantLocationId: S.optional(S.String) }),
+  S.Struct({
+    s3Uri: S.String,
+    s3AccessGrantLocationId: S.optional(S.String),
+    registerS3AccessGrantLocation: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "S3PropertiesInput",
 }) as any as S.Schema<S3PropertiesInput>;
@@ -2622,6 +2647,7 @@ export const ConnectionScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateConnectionInput {
   awsLocation?: AwsLocation;
   clientToken?: string;
+  configurations?: Configuration[];
   description?: string | redacted.Redacted<string>;
   domainIdentifier: string;
   environmentIdentifier?: string;
@@ -2634,6 +2660,7 @@ export const CreateConnectionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     awsLocation: S.optional(AwsLocation),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    configurations: S.optional(Configurations),
     description: S.optional(SensitiveString),
     domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
     environmentIdentifier: S.optional(S.String),
@@ -2769,6 +2796,7 @@ export const Protocol = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface PhysicalEndpoint {
   awsLocation?: AwsLocation;
   glueConnectionName?: string;
+  glueConnectionNames?: string[];
   glueConnection?: GlueConnection;
   enableTrustedIdentityPropagation?: boolean;
   host?: string;
@@ -2780,6 +2808,7 @@ export const PhysicalEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     awsLocation: S.optional(AwsLocation),
     glueConnectionName: S.optional(S.String),
+    glueConnectionNames: S.optional(GlueConnectionNames),
     glueConnection: S.optional(GlueConnection),
     enableTrustedIdentityPropagation: S.optional(S.Boolean),
     host: S.optional(S.String),
@@ -2937,6 +2966,7 @@ export const SparkEmrPropertiesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface SparkGluePropertiesOutput {
   additionalArgs?: SparkGlueArgs;
   glueConnectionName?: string;
+  glueConnectionNames?: string[];
   glueVersion?: string;
   idleTimeout?: number;
   javaVirtualEnv?: string;
@@ -2949,6 +2979,7 @@ export const SparkGluePropertiesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       additionalArgs: S.optional(SparkGlueArgs),
       glueConnectionName: S.optional(S.String),
+      glueConnectionNames: S.optional(GlueConnectionNames),
       glueVersion: S.optional(S.String),
       idleTimeout: S.optional(S.Number),
       javaVirtualEnv: S.optional(S.String),
@@ -2962,6 +2993,7 @@ export const SparkGluePropertiesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface S3PropertiesOutput {
   s3Uri: string;
   s3AccessGrantLocationId?: string;
+  registerS3AccessGrantLocation?: boolean;
   status?: ConnectionStatus;
   errorMessage?: string;
 }
@@ -2969,6 +3001,7 @@ export const S3PropertiesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     s3Uri: S.String,
     s3AccessGrantLocationId: S.optional(S.String),
+    registerS3AccessGrantLocation: S.optional(S.Boolean),
     status: S.optional(ConnectionStatus),
     errorMessage: S.optional(S.String),
   }),
@@ -3199,6 +3232,7 @@ export const ConnectionPropertiesOutput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
 ]);
 export interface CreateConnectionOutput {
   connectionId: string;
+  configurations?: Configuration[];
   description?: string | redacted.Redacted<string>;
   domainId: string;
   domainUnitId: string;
@@ -3214,6 +3248,7 @@ export const CreateConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       connectionId: S.String,
+      configurations: S.optional(Configurations),
       description: S.optional(SensitiveString),
       domainId: S.String,
       domainUnitId: S.String,
@@ -3255,6 +3290,7 @@ export interface CreateEnvironmentInput {
   environmentBlueprintIdentifier?: string;
   deploymentOrder?: number;
   environmentConfigurationId?: string;
+  environmentConfigurationName?: string | redacted.Redacted<string>;
 }
 export const CreateEnvironmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3271,6 +3307,7 @@ export const CreateEnvironmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       environmentBlueprintIdentifier: S.optional(S.String),
       deploymentOrder: S.optional(S.Number),
       environmentConfigurationId: S.optional(S.String),
+      environmentConfigurationName: S.optional(SensitiveString),
     }).pipe(
       T.all(
         T.Http({
@@ -3471,6 +3508,7 @@ export interface CreateEnvironmentOutput {
   deploymentProperties?: DeploymentProperties;
   environmentBlueprintId?: string;
   environmentConfigurationId?: string | redacted.Redacted<string>;
+  environmentConfigurationName?: string | redacted.Redacted<string>;
 }
 export const CreateEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3501,6 +3539,7 @@ export const CreateEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       deploymentProperties: S.optional(DeploymentProperties),
       environmentBlueprintId: S.optional(S.String),
       environmentConfigurationId: S.optional(SensitiveString),
+      environmentConfigurationName: S.optional(SensitiveString),
     }),
 ).annotate({
   identifier: "CreateEnvironmentOutput",
@@ -5440,6 +5479,7 @@ export const ConnectionCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionCredentials>;
 export interface GetConnectionOutput {
   connectionCredentials?: ConnectionCredentials;
+  configurations?: Configuration[];
   connectionId: string;
   description?: string | redacted.Redacted<string>;
   domainId: string;
@@ -5456,6 +5496,7 @@ export interface GetConnectionOutput {
 export const GetConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionCredentials: S.optional(ConnectionCredentials),
+    configurations: S.optional(Configurations),
     connectionId: S.String,
     description: S.optional(SensitiveString),
     domainId: S.String,
@@ -5578,6 +5619,7 @@ export interface GetEnvironmentOutput {
   deploymentProperties?: DeploymentProperties;
   environmentBlueprintId?: string;
   environmentConfigurationId?: string | redacted.Redacted<string>;
+  environmentConfigurationName?: string | redacted.Redacted<string>;
 }
 export const GetEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5607,6 +5649,7 @@ export const GetEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     deploymentProperties: S.optional(DeploymentProperties),
     environmentBlueprintId: S.optional(S.String),
     environmentConfigurationId: S.optional(SensitiveString),
+    environmentConfigurationName: S.optional(SensitiveString),
   }),
 ).annotate({
   identifier: "GetEnvironmentOutput",
@@ -6935,6 +6978,7 @@ export const ListConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListConnectionsInput",
 }) as any as S.Schema<ListConnectionsInput>;
 export interface ConnectionSummary {
+  configurations?: Configuration[];
   connectionId: string;
   domainId: string;
   domainUnitId: string;
@@ -6948,6 +6992,7 @@ export interface ConnectionSummary {
 }
 export const ConnectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
+    configurations: S.optional(Configurations),
     connectionId: S.String,
     domainId: S.String,
     domainUnitId: S.String,
@@ -7524,6 +7569,7 @@ export interface EnvironmentSummary {
   provider: string;
   status?: EnvironmentStatus;
   environmentConfigurationId?: string | redacted.Redacted<string>;
+  environmentConfigurationName?: string | redacted.Redacted<string>;
 }
 export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7545,6 +7591,7 @@ export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     provider: S.String,
     status: S.optional(EnvironmentStatus),
     environmentConfigurationId: S.optional(SensitiveString),
+    environmentConfigurationName: S.optional(SensitiveString),
   }),
 ).annotate({
   identifier: "EnvironmentSummary",
@@ -10610,9 +10657,14 @@ export const SparkEmrPropertiesPatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface S3PropertiesPatch {
   s3Uri: string;
   s3AccessGrantLocationId?: string;
+  registerS3AccessGrantLocation?: boolean;
 }
 export const S3PropertiesPatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.String, s3AccessGrantLocationId: S.optional(S.String) }),
+  S.Struct({
+    s3Uri: S.String,
+    s3AccessGrantLocationId: S.optional(S.String),
+    registerS3AccessGrantLocation: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "S3PropertiesPatch",
 }) as any as S.Schema<S3PropertiesPatch>;
@@ -10731,6 +10783,7 @@ export const ConnectionPropertiesPatch = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ mlflowProperties: MlflowPropertiesPatch }),
 ]);
 export interface UpdateConnectionInput {
+  configurations?: Configuration[];
   domainIdentifier: string;
   identifier: string;
   description?: string | redacted.Redacted<string>;
@@ -10739,6 +10792,7 @@ export interface UpdateConnectionInput {
 }
 export const UpdateConnectionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
+    configurations: S.optional(Configurations),
     domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
     identifier: S.String.pipe(T.HttpLabel("identifier")),
     description: S.optional(SensitiveString),
@@ -10761,6 +10815,7 @@ export const UpdateConnectionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateConnectionInput",
 }) as any as S.Schema<UpdateConnectionInput>;
 export interface UpdateConnectionOutput {
+  configurations?: Configuration[];
   connectionId: string;
   description?: string | redacted.Redacted<string>;
   domainId: string;
@@ -10776,6 +10831,7 @@ export interface UpdateConnectionOutput {
 export const UpdateConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      configurations: S.optional(Configurations),
       connectionId: S.String,
       description: S.optional(SensitiveString),
       domainId: S.String,
@@ -10799,6 +10855,7 @@ export interface UpdateEnvironmentInput {
   glossaryTerms?: string[];
   blueprintVersion?: string;
   userParameters?: EnvironmentParameter[];
+  environmentConfigurationName?: string | redacted.Redacted<string>;
 }
 export const UpdateEnvironmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -10810,6 +10867,7 @@ export const UpdateEnvironmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       glossaryTerms: S.optional(GlossaryTerms),
       blueprintVersion: S.optional(S.String),
       userParameters: S.optional(EnvironmentParametersList),
+      environmentConfigurationName: S.optional(SensitiveString),
     }).pipe(
       T.all(
         T.Http({
@@ -10849,6 +10907,7 @@ export interface UpdateEnvironmentOutput {
   deploymentProperties?: DeploymentProperties;
   environmentBlueprintId?: string;
   environmentConfigurationId?: string | redacted.Redacted<string>;
+  environmentConfigurationName?: string | redacted.Redacted<string>;
 }
 export const UpdateEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -10879,6 +10938,7 @@ export const UpdateEnvironmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       deploymentProperties: S.optional(DeploymentProperties),
       environmentBlueprintId: S.optional(S.String),
       environmentConfigurationId: S.optional(SensitiveString),
+      environmentConfigurationName: S.optional(SensitiveString),
     }),
 ).annotate({
   identifier: "UpdateEnvironmentOutput",

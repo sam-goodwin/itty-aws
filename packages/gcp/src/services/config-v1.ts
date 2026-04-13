@@ -132,6 +132,37 @@ export const TerraformVariable: Schema.Schema<TerraformVariable> =
     identifier: "TerraformVariable",
   }) as any as Schema.Schema<TerraformVariable>;
 
+export interface DeploymentSource {
+  /** Required. The resource name of the source Deployment to import the output from. Format: projects/{project}/locations/{location}/deployments/{deployment} The source deployment must be in the same project and location. */
+  deployment?: string;
+  /** Required. The name of the output variable in the source deployment's latest successfully applied revision. */
+  outputName?: string;
+}
+
+export const DeploymentSource: Schema.Schema<DeploymentSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deployment: Schema.optional(Schema.String),
+      outputName: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DeploymentSource",
+  }) as any as Schema.Schema<DeploymentSource>;
+
+export interface ExternalValueSource {
+  /** A source from a Deployment. */
+  deploymentSource?: DeploymentSource;
+}
+
+export const ExternalValueSource: Schema.Schema<ExternalValueSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deploymentSource: Schema.optional(DeploymentSource),
+    }),
+  ).annotate({
+    identifier: "ExternalValueSource",
+  }) as any as Schema.Schema<ExternalValueSource>;
+
 export interface TerraformBlueprint {
   /** URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an object version for zipped objects. Format: `gs://{bucket}/{object}#{version}` */
   gcsSource?: string;
@@ -139,6 +170,8 @@ export interface TerraformBlueprint {
   gitSource?: GitSource;
   /** Optional. Input variable values for the Terraform blueprint. */
   inputValues?: Record<string, TerraformVariable>;
+  /** Optional. Map of input variable names in this blueprint to configurations for importing values from external sources. */
+  externalValues?: Record<string, ExternalValueSource>;
 }
 
 export const TerraformBlueprint: Schema.Schema<TerraformBlueprint> =
@@ -148,6 +181,9 @@ export const TerraformBlueprint: Schema.Schema<TerraformBlueprint> =
       gitSource: Schema.optional(GitSource),
       inputValues: Schema.optional(
         Schema.Record(Schema.String, TerraformVariable),
+      ),
+      externalValues: Schema.optional(
+        Schema.Record(Schema.String, ExternalValueSource),
       ),
     }),
   ).annotate({
@@ -1106,6 +1142,206 @@ export const AutoMigrationConfig: Schema.Schema<AutoMigrationConfig> =
     identifier: "AutoMigrationConfig",
   }) as any as Schema.Schema<AutoMigrationConfig>;
 
+export interface DeploymentUnit {
+  /** The id of the deployment unit. Must be unique within the deployment group. */
+  id?: string;
+  /** Optional. The name of the deployment to be provisioned. Format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
+  deployment?: string;
+  /** Required. The IDs of the deployment units within the deployment group that this unit depends on. */
+  dependencies?: Array<string>;
+}
+
+export const DeploymentUnit: Schema.Schema<DeploymentUnit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      deployment: Schema.optional(Schema.String),
+      dependencies: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "DeploymentUnit",
+  }) as any as Schema.Schema<DeploymentUnit>;
+
+export interface DeploymentGroup {
+  /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name?: string;
+  /** Output only. Time when the deployment group was created. */
+  createTime?: string;
+  /** Output only. Time when the deployment group was last updated. */
+  updateTime?: string;
+  /** Optional. User-defined metadata for the deployment group. */
+  labels?: Record<string, string>;
+  /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployment group during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
+  annotations?: Record<string, string>;
+  /** Output only. Current state of the deployment group. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "ACTIVE"
+    | "UPDATING"
+    | "DELETING"
+    | "FAILED"
+    | "SUSPENDED"
+    | "DELETED"
+    | (string & {});
+  /** Output only. Additional information regarding the current state. */
+  stateDescription?: string;
+  /** The deployment units of the deployment group in a DAG like structure. When a deployment group is being provisioned, the deployment units are deployed in a DAG order. The provided units must be in a DAG order, otherwise an error will be returned. */
+  deploymentUnits?: Array<DeploymentUnit>;
+  /** Output only. The provisioning state of the deployment group. */
+  provisioningState?:
+    | "PROVISIONING_STATE_UNSPECIFIED"
+    | "PROVISIONING"
+    | "PROVISIONED"
+    | "FAILED_TO_PROVISION"
+    | "DEPROVISIONING"
+    | "DEPROVISIONED"
+    | "FAILED_TO_DEPROVISION"
+    | (string & {});
+  /** Output only. Additional information regarding the current provisioning state. */
+  provisioningStateDescription?: string;
+  /** Output only. The error status of the deployment group provisioning or deprovisioning. */
+  provisioningError?: Status;
+}
+
+export const DeploymentGroup: Schema.Schema<DeploymentGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      createTime: Schema.optional(Schema.String),
+      updateTime: Schema.optional(Schema.String),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      state: Schema.optional(Schema.String),
+      stateDescription: Schema.optional(Schema.String),
+      deploymentUnits: Schema.optional(Schema.Array(DeploymentUnit)),
+      provisioningState: Schema.optional(Schema.String),
+      provisioningStateDescription: Schema.optional(Schema.String),
+      provisioningError: Schema.optional(Status),
+    }),
+  ).annotate({
+    identifier: "DeploymentGroup",
+  }) as any as Schema.Schema<DeploymentGroup>;
+
+export interface ListDeploymentGroupsResponse {
+  /** The deployment groups from the specified collection. */
+  deploymentGroups?: Array<DeploymentGroup>;
+  /** Token to be supplied to the next ListDeploymentGroups request via `page_token` to obtain the next set of results. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListDeploymentGroupsResponse: Schema.Schema<ListDeploymentGroupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deploymentGroups: Schema.optional(Schema.Array(DeploymentGroup)),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListDeploymentGroupsResponse",
+  }) as any as Schema.Schema<ListDeploymentGroupsResponse>;
+
+export interface DeploymentSpec {
+  /** Required. The id of the deployment to be created which doesn't include the project id and location. */
+  deploymentId?: string;
+  /** Required. The deployment to be created. */
+  deployment?: Deployment;
+}
+
+export const DeploymentSpec: Schema.Schema<DeploymentSpec> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deploymentId: Schema.optional(Schema.String),
+      deployment: Schema.optional(Deployment),
+    }),
+  ).annotate({
+    identifier: "DeploymentSpec",
+  }) as any as Schema.Schema<DeploymentSpec>;
+
+export interface ProvisionDeploymentGroupRequest {
+  /** Optional. The deployment specs of the deployment units to be created within the same project and location of the deployment group. The key is the unit ID, and the value is the `DeploymentSpec`. Provisioning will fail if a `deployment_spec` has a `deployment_id` that matches an existing deployment in the same project and location. If an existing deployment was part of the last successful revision but is no longer in the current DeploymentGroup's `deployment_units`, it will be recreated if included in `deployment_specs`. */
+  deploymentSpecs?: Record<string, DeploymentSpec>;
+}
+
+export const ProvisionDeploymentGroupRequest: Schema.Schema<ProvisionDeploymentGroupRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deploymentSpecs: Schema.optional(
+        Schema.Record(Schema.String, DeploymentSpec),
+      ),
+    }),
+  ).annotate({
+    identifier: "ProvisionDeploymentGroupRequest",
+  }) as any as Schema.Schema<ProvisionDeploymentGroupRequest>;
+
+export interface DeprovisionDeploymentGroupRequest {
+  /** Optional. If set to true, this option is propagated to the deletion of each deployment in the group. This corresponds to the 'force' field in DeleteDeploymentRequest. */
+  force?: boolean;
+  /** Optional. Policy on how resources within each deployment should be handled during deletion. This policy is applied globally to the deletion of all deployments in this group. This corresponds to the 'delete_policy' field in DeleteDeploymentRequest. */
+  deletePolicy?:
+    | "DELETE_POLICY_UNSPECIFIED"
+    | "DELETE"
+    | "ABANDON"
+    | (string & {});
+}
+
+export const DeprovisionDeploymentGroupRequest: Schema.Schema<DeprovisionDeploymentGroupRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      force: Schema.optional(Schema.Boolean),
+      deletePolicy: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DeprovisionDeploymentGroupRequest",
+  }) as any as Schema.Schema<DeprovisionDeploymentGroupRequest>;
+
+export interface DeploymentGroupRevision {
+  /** Identifier. The name of the deployment group revision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'. */
+  name?: string;
+  /** Output only. The snapshot of the deployment group at this revision. */
+  snapshot?: DeploymentGroup;
+  /** Output only. Time when the deployment group revision was created. */
+  createTime?: string;
+  /** Output only. The alternative IDs of the deployment group revision. */
+  alternativeIds?: Array<string>;
+}
+
+export const DeploymentGroupRevision: Schema.Schema<DeploymentGroupRevision> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      snapshot: Schema.optional(DeploymentGroup),
+      createTime: Schema.optional(Schema.String),
+      alternativeIds: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "DeploymentGroupRevision",
+  }) as any as Schema.Schema<DeploymentGroupRevision>;
+
+export interface ListDeploymentGroupRevisionsResponse {
+  /** The deployment group revisions from the specified collection. */
+  deploymentGroupRevisions?: Array<DeploymentGroupRevision>;
+  /** Token to be supplied to the next ListDeploymentGroupRevisions request via `page_token` to obtain the next set of results. */
+  nextPageToken?: string;
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListDeploymentGroupRevisionsResponse: Schema.Schema<ListDeploymentGroupRevisionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deploymentGroupRevisions: Schema.optional(
+        Schema.Array(DeploymentGroupRevision),
+      ),
+      nextPageToken: Schema.optional(Schema.String),
+      unreachable: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ListDeploymentGroupRevisionsResponse",
+  }) as any as Schema.Schema<ListDeploymentGroupRevisionsResponse>;
+
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
@@ -1363,11 +1599,131 @@ export const PreviewOperationMetadata: Schema.Schema<PreviewOperationMetadata> =
     identifier: "PreviewOperationMetadata",
   }) as any as Schema.Schema<PreviewOperationMetadata>;
 
+export interface DeploymentOperationSummary {
+  /** Output only. The current step the deployment operation is running. */
+  deploymentStep?:
+    | "DEPLOYMENT_STEP_UNSPECIFIED"
+    | "PREPARING_STORAGE_BUCKET"
+    | "DOWNLOADING_BLUEPRINT"
+    | "RUNNING_TF_INIT"
+    | "RUNNING_TF_PLAN"
+    | "RUNNING_TF_APPLY"
+    | "RUNNING_TF_DESTROY"
+    | "RUNNING_TF_VALIDATE"
+    | "UNLOCKING_DEPLOYMENT"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "VALIDATING_REPOSITORY"
+    | "RUNNING_QUOTA_VALIDATION"
+    | (string & {});
+  /** Output only. Cloud Build instance UUID associated with this operation. */
+  build?: string;
+  /** Output only. Location of Deployment operations logs in `gs://{bucket}/{object}` format. */
+  logs?: string;
+  /** Output only. Location of Deployment operations content in `gs://{bucket}/{object}` format. */
+  content?: string;
+  /** Output only. Location of Deployment operations artifacts in `gs://{bucket}/{object}` format. */
+  artifacts?: string;
+}
+
+export const DeploymentOperationSummary: Schema.Schema<DeploymentOperationSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      deploymentStep: Schema.optional(Schema.String),
+      build: Schema.optional(Schema.String),
+      logs: Schema.optional(Schema.String),
+      content: Schema.optional(Schema.String),
+      artifacts: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DeploymentOperationSummary",
+  }) as any as Schema.Schema<DeploymentOperationSummary>;
+
+export interface DeploymentUnitProgress {
+  /** Output only. The unit id of the deployment unit to be provisioned. */
+  unitId?: string;
+  /** Output only. The name of the deployment to be provisioned. Format: 'projects/{project}/locations/{location}/deployments/{deployment}'. */
+  deployment?: string;
+  /** Output only. The current step of the deployment unit provisioning. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "QUEUED"
+    | "APPLYING_DEPLOYMENT"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "ABORTED"
+    | "SKIPPED"
+    | "DELETING_DEPLOYMENT"
+    | "PREVIEWING_DEPLOYMENT"
+    | (string & {});
+  /** Output only. Additional information regarding the current state. */
+  stateDescription?: string;
+  /** Output only. The summary of the deployment operation. */
+  deploymentOperationSummary?: DeploymentOperationSummary;
+  /** Output only. Holds the error status of the deployment unit provisioning. */
+  error?: Status;
+  /** Output only. The intent of the deployment unit. */
+  intent?:
+    | "INTENT_UNSPECIFIED"
+    | "CREATE_DEPLOYMENT"
+    | "UPDATE_DEPLOYMENT"
+    | "DELETE_DEPLOYMENT"
+    | "RECREATE_DEPLOYMENT"
+    | "CLEAN_UP"
+    | "UNCHANGED"
+    | (string & {});
+}
+
+export const DeploymentUnitProgress: Schema.Schema<DeploymentUnitProgress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      unitId: Schema.optional(Schema.String),
+      deployment: Schema.optional(Schema.String),
+      state: Schema.optional(Schema.String),
+      stateDescription: Schema.optional(Schema.String),
+      deploymentOperationSummary: Schema.optional(DeploymentOperationSummary),
+      error: Schema.optional(Status),
+      intent: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DeploymentUnitProgress",
+  }) as any as Schema.Schema<DeploymentUnitProgress>;
+
+export interface ProvisionDeploymentGroupOperationMetadata {
+  /** Output only. The current step of the deployment group operation. */
+  step?:
+    | "PROVISION_DEPLOYMENT_GROUP_STEP_UNSPECIFIED"
+    | "VALIDATING_DEPLOYMENT_GROUP"
+    | "ASSOCIATING_DEPLOYMENTS_TO_DEPLOYMENT_GROUP"
+    | "PROVISIONING_DEPLOYMENT_UNITS"
+    | "DISASSOCIATING_DEPLOYMENTS_FROM_DEPLOYMENT_GROUP"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "DEPROVISIONING_DEPLOYMENT_UNITS"
+    | (string & {});
+  /** Output only. Progress information for each deployment unit within the operation. */
+  deploymentUnitProgresses?: Array<DeploymentUnitProgress>;
+}
+
+export const ProvisionDeploymentGroupOperationMetadata: Schema.Schema<ProvisionDeploymentGroupOperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      step: Schema.optional(Schema.String),
+      deploymentUnitProgresses: Schema.optional(
+        Schema.Array(DeploymentUnitProgress),
+      ),
+    }),
+  ).annotate({
+    identifier: "ProvisionDeploymentGroupOperationMetadata",
+  }) as any as Schema.Schema<ProvisionDeploymentGroupOperationMetadata>;
+
 export interface OperationMetadata {
   /** Output only. Metadata about the deployment operation state. */
   deploymentMetadata?: DeploymentOperationMetadata;
   /** Output only. Metadata about the preview operation state. */
   previewMetadata?: PreviewOperationMetadata;
+  /** Output only. Metadata about ProvisionDeploymentGroup operation state. */
+  provisionDeploymentGroupMetadata?: ProvisionDeploymentGroupOperationMetadata;
   /** Output only. Time when the operation was created. */
   createTime?: string;
   /** Output only. Time when the operation finished running. */
@@ -1389,6 +1745,9 @@ export const OperationMetadata: Schema.Schema<OperationMetadata> =
     Schema.Struct({
       deploymentMetadata: Schema.optional(DeploymentOperationMetadata),
       previewMetadata: Schema.optional(PreviewOperationMetadata),
+      provisionDeploymentGroupMetadata: Schema.optional(
+        ProvisionDeploymentGroupOperationMetadata,
+      ),
       createTime: Schema.optional(Schema.String),
       endTime: Schema.optional(Schema.String),
       target: Schema.optional(Schema.String),
@@ -1514,7 +1873,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2956,4 +3315,385 @@ export const getProjectsLocationsTerraformVersions: API.OperationMethod<
   input: GetProjectsLocationsTerraformVersionsRequest,
   output: GetProjectsLocationsTerraformVersionsResponse,
   errors: [],
+}));
+
+export interface GetProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of the deployment group to retrieve. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+}
+
+export const GetProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentGroupsRequest>;
+
+export type GetProjectsLocationsDeploymentGroupsResponse = DeploymentGroup;
+export const GetProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeploymentGroup;
+
+export type GetProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Get a DeploymentGroup for a given project and location. */
+export const getProjectsLocationsDeploymentGroups: API.OperationMethod<
+  GetProjectsLocationsDeploymentGroupsRequest,
+  GetProjectsLocationsDeploymentGroupsResponse,
+  GetProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsDeploymentGroupsRequest,
+  output: GetProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The parent in whose context the Deployment Group is created. The parent value is in the format: 'projects/{project_id}/locations/{location}' */
+  parent: string;
+  /** Required. The deployment group ID. */
+  deploymentGroupId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: DeploymentGroup;
+}
+
+export const CreateProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deploymentGroupId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("deploymentGroupId"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(DeploymentGroup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentGroupsRequest>;
+
+export type CreateProjectsLocationsDeploymentGroupsResponse = Operation;
+export const CreateProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Creates a DeploymentGroup The newly created DeploymentGroup will be in the `CREATING` state and can be retrieved via Get and List calls. */
+export const createProjectsLocationsDeploymentGroups: API.OperationMethod<
+  CreateProjectsLocationsDeploymentGroupsRequest,
+  CreateProjectsLocationsDeploymentGroupsResponse,
+  CreateProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsDeploymentGroupsRequest,
+  output: CreateProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsDeploymentGroupsRequest {
+  /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+  /** Optional. Field mask used to specify the fields to be overwritten in the Deployment Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: DeploymentGroup;
+}
+
+export const PatchProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(DeploymentGroup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsDeploymentGroupsRequest>;
+
+export type PatchProjectsLocationsDeploymentGroupsResponse = Operation;
+export const PatchProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Updates a DeploymentGroup */
+export const patchProjectsLocationsDeploymentGroups: API.OperationMethod<
+  PatchProjectsLocationsDeploymentGroupsRequest,
+  PatchProjectsLocationsDeploymentGroupsResponse,
+  PatchProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsDeploymentGroupsRequest,
+  output: PatchProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of DeploymentGroup in the format projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup} */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. If set to true, any revisions for this deployment group will also be deleted. (Otherwise, the request will only work if the deployment group has no revisions.) */
+  force?: boolean;
+  /** Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If unspecified, the default behavior is to fail the deletion if any deployments currently referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not deleted. */
+  deploymentReferencePolicy?:
+    | "DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED"
+    | "FAIL_IF_ANY_REFERENCES_EXIST"
+    | "FAIL_IF_METADATA_REFERENCES_EXIST"
+    | "IGNORE_DEPLOYMENT_REFERENCES"
+    | (string & {});
+}
+
+export const DeleteProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    deploymentReferencePolicy: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("deploymentReferencePolicy"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentGroupsRequest>;
+
+export type DeleteProjectsLocationsDeploymentGroupsResponse = Operation;
+export const DeleteProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Deletes a DeploymentGroup */
+export const deleteProjectsLocationsDeploymentGroups: API.OperationMethod<
+  DeleteProjectsLocationsDeploymentGroupsRequest,
+  DeleteProjectsLocationsDeploymentGroupsResponse,
+  DeleteProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsDeploymentGroupsRequest,
+  output: DeleteProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The parent, which owns this collection of deployment groups. Format: 'projects/{project_id}/locations/{location}'. */
+  parent: string;
+  /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
+  pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListDeploymentGroups' which specifies the position in the list from where to continue listing the deployment groups. */
+  pageToken?: string;
+  /** Optional. Lists the DeploymentGroups that match the filter expression. A filter expression filters the deployment groups listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deploymentGroups/bar" - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - DeploymentGroups in CREATING state. state=CREATING */
+  filter?: string;
+  /** Optional. Field to use to sort the list. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentGroupsRequest>;
+
+export type ListProjectsLocationsDeploymentGroupsResponse =
+  ListDeploymentGroupsResponse;
+export const ListProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentGroupsResponse;
+
+export type ListProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** List DeploymentGroups for a given project and location. */
+export const listProjectsLocationsDeploymentGroups: API.PaginatedOperationMethod<
+  ListProjectsLocationsDeploymentGroupsRequest,
+  ListProjectsLocationsDeploymentGroupsResponse,
+  ListProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsDeploymentGroupsRequest,
+  output: ListProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ProvisionProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of the deployment group to provision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+  /** Request body */
+  body?: ProvisionDeploymentGroupRequest;
+}
+
+export const ProvisionProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ProvisionDeploymentGroupRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}:provision",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ProvisionProjectsLocationsDeploymentGroupsRequest>;
+
+export type ProvisionProjectsLocationsDeploymentGroupsResponse = Operation;
+export const ProvisionProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ProvisionProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Provisions a deployment group. NOTE: As a first step of this operation, Infra Manager will automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup` call), along with their actuated resources. */
+export const provisionProjectsLocationsDeploymentGroups: API.OperationMethod<
+  ProvisionProjectsLocationsDeploymentGroupsRequest,
+  ProvisionProjectsLocationsDeploymentGroupsResponse,
+  ProvisionProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ProvisionProjectsLocationsDeploymentGroupsRequest,
+  output: ProvisionProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface DeprovisionProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of the deployment group to deprovision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+  /** Request body */
+  body?: DeprovisionDeploymentGroupRequest;
+}
+
+export const DeprovisionProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeprovisionDeploymentGroupRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}:deprovision",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeprovisionProjectsLocationsDeploymentGroupsRequest>;
+
+export type DeprovisionProjectsLocationsDeploymentGroupsResponse = Operation;
+export const DeprovisionProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeprovisionProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Deprovisions a deployment group. NOTE: As a first step of this operation, Infra Manager will automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup` call), along with their actuated resources. */
+export const deprovisionProjectsLocationsDeploymentGroups: API.OperationMethod<
+  DeprovisionProjectsLocationsDeploymentGroupsRequest,
+  DeprovisionProjectsLocationsDeploymentGroupsResponse,
+  DeprovisionProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeprovisionProjectsLocationsDeploymentGroupsRequest,
+  output: DeprovisionProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsDeploymentGroupsRevisionsRequest {
+  /** Required. The name of the deployment group revision to retrieve. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'. */
+  name: string;
+}
+
+export const GetProjectsLocationsDeploymentGroupsRevisionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}/revisions/{revisionsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentGroupsRevisionsRequest>;
+
+export type GetProjectsLocationsDeploymentGroupsRevisionsResponse =
+  DeploymentGroupRevision;
+export const GetProjectsLocationsDeploymentGroupsRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeploymentGroupRevision;
+
+export type GetProjectsLocationsDeploymentGroupsRevisionsError = DefaultErrors;
+
+/** Gets details about a DeploymentGroupRevision. */
+export const getProjectsLocationsDeploymentGroupsRevisions: API.OperationMethod<
+  GetProjectsLocationsDeploymentGroupsRevisionsRequest,
+  GetProjectsLocationsDeploymentGroupsRevisionsResponse,
+  GetProjectsLocationsDeploymentGroupsRevisionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsDeploymentGroupsRevisionsRequest,
+  output: GetProjectsLocationsDeploymentGroupsRevisionsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsDeploymentGroupsRevisionsRequest {
+  /** Required. The parent, which owns this collection of deployment group revisions. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  parent: string;
+  /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, a sensible default will be used by the server. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListDeploymentGroupRevisions' which specifies the position in the list from where to continue listing the deployment group revisions. All other parameters provided to `ListDeploymentGroupRevisions` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsDeploymentGroupsRevisionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}/revisions",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentGroupsRevisionsRequest>;
+
+export type ListProjectsLocationsDeploymentGroupsRevisionsResponse =
+  ListDeploymentGroupRevisionsResponse;
+export const ListProjectsLocationsDeploymentGroupsRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentGroupRevisionsResponse;
+
+export type ListProjectsLocationsDeploymentGroupsRevisionsError = DefaultErrors;
+
+/** Lists DeploymentGroupRevisions in a given DeploymentGroup. */
+export const listProjectsLocationsDeploymentGroupsRevisions: API.PaginatedOperationMethod<
+  ListProjectsLocationsDeploymentGroupsRevisionsRequest,
+  ListProjectsLocationsDeploymentGroupsRevisionsResponse,
+  ListProjectsLocationsDeploymentGroupsRevisionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsDeploymentGroupsRevisionsRequest,
+  output: ListProjectsLocationsDeploymentGroupsRevisionsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

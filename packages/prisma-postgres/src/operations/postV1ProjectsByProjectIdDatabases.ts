@@ -26,6 +26,7 @@ export const PostV1ProjectsByProjectIdDatabasesInput =
         backupId: Schema.optional(Schema.String),
       }),
     ),
+    source: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/projects/{projectId}/databases" }),
   );
@@ -100,6 +101,7 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
         id: Schema.String,
         name: Schema.String,
       }),
+      source: Schema.Unknown,
       apiKeys: Schema.Array(
         Schema.Struct({
           id: Schema.String,

@@ -2047,7 +2047,14 @@ export const CreatedByInfo = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ ConnectUserArn: S.String }),
   S.Struct({ AWSIdentityArn: S.String }),
 ]);
-export type FileUseCaseType = "EMAIL_MESSAGE" | "ATTACHMENT" | (string & {});
+export type FileUseCaseType =
+  | "CONTACT_ANALYSIS"
+  | "EMAIL_MESSAGE"
+  | "EMAIL_MESSAGE_PLAIN_TEXT"
+  | "EMAIL_MESSAGE_REDACTED"
+  | "EMAIL_MESSAGE_PLAIN_TEXT_REDACTED"
+  | "ATTACHMENT"
+  | (string & {});
 export const FileUseCaseType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
@@ -2576,6 +2583,8 @@ export type ReferenceType =
   | "EMAIL"
   | "EMAIL_MESSAGE"
   | "EMAIL_MESSAGE_PLAIN_TEXT"
+  | "EMAIL_MESSAGE_PLAIN_TEXT_REDACTED"
+  | "EMAIL_MESSAGE_REDACTED"
   | (string & {});
 export const ReferenceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ReferenceStatus =
@@ -3808,7 +3817,11 @@ export const EvaluationReviewConfiguration =
   ).annotate({
     identifier: "EvaluationReviewConfiguration",
   }) as any as S.Schema<EvaluationReviewConfiguration>;
-export type ContactInteractionType = "AGENT" | "AUTOMATED" | (string & {});
+export type ContactInteractionType =
+  | "AGENT"
+  | "AUTOMATED"
+  | "CUSTOMER"
+  | (string & {});
 export const ContactInteractionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EvaluationFormTargetConfiguration {
   ContactInteractionType: ContactInteractionType;
@@ -3826,6 +3839,9 @@ export type EvaluationFormLanguageCode =
   | "fr-FR"
   | "it-IT"
   | "pt-BR"
+  | "ja-JP"
+  | "ko-KR"
+  | "zh-CN"
   | (string & {});
 export const EvaluationFormLanguageCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EvaluationFormLanguageConfiguration {
@@ -7729,6 +7745,7 @@ export interface AgentInfo {
   AfterContactWorkEndTimestamp?: Date;
   AgentInitiatedHoldDuration?: number;
   StateTransitions?: StateTransition[];
+  VoiceEnhancementMode?: VoiceEnhancementMode;
 }
 export const AgentInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7755,6 +7772,7 @@ export const AgentInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     AgentInitiatedHoldDuration: S.optional(S.Number),
     StateTransitions: S.optional(StateTransitions),
+    VoiceEnhancementMode: S.optional(VoiceEnhancementMode),
   }),
 ).annotate({ identifier: "AgentInfo" }) as any as S.Schema<AgentInfo>;
 export type AiUseCase = "AgentAssistance" | "SelfService" | (string & {});
@@ -8502,6 +8520,7 @@ export type ContactParticipantRole =
   | "AGENT"
   | "SYSTEM"
   | "CUSTOM_BOT"
+  | "CUSTOMER"
   | (string & {});
 export const ContactParticipantRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EvaluationContactParticipant {
@@ -14239,7 +14258,9 @@ export type ReferenceSummary =
       Url: UrlReference;
       Attachment?: never;
       EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number?: never;
       Date?: never;
@@ -14249,7 +14270,9 @@ export type ReferenceSummary =
       Url?: never;
       Attachment: AttachmentReference;
       EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number?: never;
       Date?: never;
@@ -14259,7 +14282,9 @@ export type ReferenceSummary =
       Url?: never;
       Attachment?: never;
       EmailMessage: EmailMessageReference;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number?: never;
       Date?: never;
@@ -14269,7 +14294,21 @@ export type ReferenceSummary =
       Url?: never;
       Attachment?: never;
       EmailMessage?: never;
+      EmailMessageRedacted: EmailMessageReference;
+      EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
+      String?: never;
+      Number?: never;
+      Date?: never;
+      Email?: never;
+    }
+  | {
+      Url?: never;
+      Attachment?: never;
+      EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText: EmailMessageReference;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number?: never;
       Date?: never;
@@ -14279,7 +14318,21 @@ export type ReferenceSummary =
       Url?: never;
       Attachment?: never;
       EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted: EmailMessageReference;
+      String?: never;
+      Number?: never;
+      Date?: never;
+      Email?: never;
+    }
+  | {
+      Url?: never;
+      Attachment?: never;
+      EmailMessage?: never;
+      EmailMessageRedacted?: never;
+      EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String: StringReference;
       Number?: never;
       Date?: never;
@@ -14289,7 +14342,9 @@ export type ReferenceSummary =
       Url?: never;
       Attachment?: never;
       EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number: NumberReference;
       Date?: never;
@@ -14299,7 +14354,9 @@ export type ReferenceSummary =
       Url?: never;
       Attachment?: never;
       EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number?: never;
       Date: DateReference;
@@ -14309,7 +14366,9 @@ export type ReferenceSummary =
       Url?: never;
       Attachment?: never;
       EmailMessage?: never;
+      EmailMessageRedacted?: never;
       EmailMessagePlainText?: never;
+      EmailMessagePlainTextRedacted?: never;
       String?: never;
       Number?: never;
       Date?: never;
@@ -14319,7 +14378,9 @@ export const ReferenceSummary = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ Url: UrlReference }),
   S.Struct({ Attachment: AttachmentReference }),
   S.Struct({ EmailMessage: EmailMessageReference }),
+  S.Struct({ EmailMessageRedacted: EmailMessageReference }),
   S.Struct({ EmailMessagePlainText: EmailMessageReference }),
+  S.Struct({ EmailMessagePlainTextRedacted: EmailMessageReference }),
   S.Struct({ String: StringReference }),
   S.Struct({ Number: NumberReference }),
   S.Struct({ Date: DateReference }),
@@ -37995,6 +38056,10 @@ export type UpdateTrafficDistributionError =
  * For more information about updating a traffic distribution group, see Update telephony traffic distribution
  * across Amazon Web Services Regions
  * in the *Amazon Connect Administrator Guide*.
+ *
+ * **Important things to know**
+ *
+ * - Invoke the UpdateTrafficDistribution API in the region that should handle traffic.
  */
 export const updateTrafficDistribution: API.OperationMethod<
   UpdateTrafficDistributionRequest,

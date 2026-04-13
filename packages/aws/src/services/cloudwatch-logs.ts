@@ -121,6 +121,9 @@ export type DetectorKmsKeyArn = string;
 export type AnomalyVisibilityTime = number;
 export type AnomalyDetectorArn = string;
 export type DeletionProtectionEnabled = boolean;
+export type LookupTableName = string;
+export type LookupTableDescription = string;
+export type TableBody = string;
 export type ScheduledQueryName = string;
 export type ScheduledQueryDescription = string;
 export type QueryString = string;
@@ -129,6 +132,7 @@ export type ScheduleExpression = string;
 export type ScheduleTimezone = string;
 export type StartTimeOffset = number;
 export type S3Uri = string;
+export type AccountId = string;
 export type PolicyName = string;
 export type DeliveryDestinationName = string;
 export type DestinationName = string;
@@ -139,7 +143,6 @@ export type QueryId = string;
 export type Success = boolean;
 export type ExpectedRevisionId = string;
 export type ScheduledQueryIdentifier = string;
-export type AccountId = string;
 export type NextToken = string;
 export type AccountPolicyDocument = string;
 export type SelectionCriteria = string;
@@ -162,6 +165,8 @@ export type FilterCount = number;
 export type BearerTokenAuthenticationEnabled = boolean;
 export type Descending = boolean;
 export type SequenceToken = string;
+export type DescribeLookupTablesMaxResults = number;
+export type RecordsCount = number;
 export type MetricName = string;
 export type MetricNamespace = string;
 export type MetricValue = string;
@@ -172,9 +177,15 @@ export type ApplyOnTransformedLogs = boolean;
 export type FieldSelectionCriteria = string;
 export type SystemField = string;
 export type DescribeQueriesMaxResults = number;
+export type QueryDuration = number;
+export type BytesScannedValue = number;
+export type UserIdentity = string;
 export type QueryDefinitionName = string;
 export type QueryListMaxResults = number;
 export type QueryDefinitionString = string;
+export type QueryParameterName = string;
+export type QueryParameterDefaultValue = string;
+export type QueryParameterDescription = string;
 export type DestinationArn = string;
 export type EventsLimit = number;
 export type Interleaved = boolean;
@@ -212,6 +223,7 @@ export type Target = string;
 export type QuoteCharacter = string;
 export type Delimiter = string;
 export type Column = string;
+export type DestinationField = string;
 export type TargetFormat = string;
 export type MatchPattern = string;
 export type SourceTimezone = string;
@@ -221,7 +233,6 @@ export type WithKey = string;
 export type GrokMatch = string;
 export type ValueKey = string;
 export type Flatten = boolean;
-export type DestinationField = string;
 export type ParserFieldDelimiter = string;
 export type KeyValueDelimiter = string;
 export type KeyPrefix = string;
@@ -718,6 +729,48 @@ export const CreateLogStreamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateLogStreamResponse",
 }) as any as S.Schema<CreateLogStreamResponse>;
+export interface CreateLookupTableRequest {
+  lookupTableName: string;
+  description?: string;
+  tableBody: string;
+  kmsKeyId?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateLookupTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lookupTableName: S.String,
+      description: S.optional(S.String),
+      tableBody: S.String,
+      kmsKeyId: S.optional(S.String),
+      tags: S.optional(Tags),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateLookupTableRequest",
+}) as any as S.Schema<CreateLookupTableRequest>;
+export interface CreateLookupTableResponse {
+  lookupTableArn?: string;
+  createdAt?: number;
+}
+export const CreateLookupTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lookupTableArn: S.optional(S.String),
+      createdAt: S.optional(S.Number),
+    }).pipe(ns),
+).annotate({
+  identifier: "CreateLookupTableResponse",
+}) as any as S.Schema<CreateLookupTableResponse>;
 export type QueryLanguage = "CWLI" | "SQL" | "PPL" | (string & {});
 export const QueryLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ScheduledQueryLogGroupIdentifiers = string[];
@@ -726,9 +779,16 @@ export const ScheduledQueryLogGroupIdentifiers =
 export interface S3Configuration {
   destinationIdentifier: string;
   roleArn: string;
+  ownerAccountId?: string;
+  kmsKeyId?: string;
 }
 export const S3Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ destinationIdentifier: S.String, roleArn: S.String }),
+  S.Struct({
+    destinationIdentifier: S.String,
+    roleArn: S.String,
+    ownerAccountId: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "S3Configuration",
 }) as any as S.Schema<S3Configuration>;
@@ -1105,6 +1165,31 @@ export const DeleteLogStreamResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteLogStreamResponse",
 }) as any as S.Schema<DeleteLogStreamResponse>;
+export interface DeleteLookupTableRequest {
+  lookupTableArn: string;
+}
+export const DeleteLookupTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ lookupTableArn: S.String }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteLookupTableRequest",
+}) as any as S.Schema<DeleteLookupTableRequest>;
+export interface DeleteLookupTableResponse {}
+export const DeleteLookupTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteLookupTableResponse",
+}) as any as S.Schema<DeleteLookupTableResponse>;
 export interface DeleteMetricFilterRequest {
   logGroupName: string;
   filterName: string;
@@ -2221,6 +2306,70 @@ export const DescribeLogStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeLogStreamsResponse",
 }) as any as S.Schema<DescribeLogStreamsResponse>;
+export interface DescribeLookupTablesRequest {
+  lookupTableNamePrefix?: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const DescribeLookupTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lookupTableNamePrefix: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeLookupTablesRequest",
+  }) as any as S.Schema<DescribeLookupTablesRequest>;
+export type TableFields = string[];
+export const TableFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface LookupTable {
+  lookupTableArn?: string;
+  lookupTableName?: string;
+  description?: string;
+  tableFields?: string[];
+  recordsCount?: number;
+  sizeBytes?: number;
+  lastUpdatedTime?: number;
+  kmsKeyId?: string;
+}
+export const LookupTable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lookupTableArn: S.optional(S.String),
+    lookupTableName: S.optional(S.String),
+    description: S.optional(S.String),
+    tableFields: S.optional(TableFields),
+    recordsCount: S.optional(S.Number),
+    sizeBytes: S.optional(S.Number),
+    lastUpdatedTime: S.optional(S.Number),
+    kmsKeyId: S.optional(S.String),
+  }),
+).annotate({ identifier: "LookupTable" }) as any as S.Schema<LookupTable>;
+export type LookupTables = LookupTable[];
+export const LookupTables = /*@__PURE__*/ /*#__PURE__*/ S.Array(LookupTable);
+export interface DescribeLookupTablesResponse {
+  lookupTables?: LookupTable[];
+  nextToken?: string;
+}
+export const DescribeLookupTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lookupTables: S.optional(LookupTables),
+      nextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeLookupTablesResponse",
+  }) as any as S.Schema<DescribeLookupTablesResponse>;
 export interface DescribeMetricFiltersRequest {
   logGroupName?: string;
   filterNamePrefix?: string;
@@ -2395,6 +2544,9 @@ export interface QueryInfo {
   status?: QueryStatus;
   createTime?: number;
   logGroupName?: string;
+  queryDuration?: number;
+  bytesScanned?: number;
+  userIdentity?: string;
 }
 export const QueryInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2404,6 +2556,9 @@ export const QueryInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     status: S.optional(QueryStatus),
     createTime: S.optional(S.Number),
     logGroupName: S.optional(S.String),
+    queryDuration: S.optional(S.Number),
+    bytesScanned: S.optional(S.Number),
+    userIdentity: S.optional(S.String),
   }),
 ).annotate({ identifier: "QueryInfo" }) as any as S.Schema<QueryInfo>;
 export type QueryInfoList = QueryInfo[];
@@ -2450,6 +2605,21 @@ export const DescribeQueryDefinitionsRequest =
   }) as any as S.Schema<DescribeQueryDefinitionsRequest>;
 export type LogGroupNames = string[];
 export const LogGroupNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface QueryParameter {
+  name: string;
+  defaultValue?: string;
+  description?: string;
+}
+export const QueryParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    defaultValue: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
+export type QueryParameterList = QueryParameter[];
+export const QueryParameterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QueryParameter);
 export interface QueryDefinition {
   queryLanguage?: QueryLanguage;
   queryDefinitionId?: string;
@@ -2457,6 +2627,7 @@ export interface QueryDefinition {
   queryString?: string;
   lastModified?: number;
   logGroupNames?: string[];
+  parameters?: QueryParameter[];
 }
 export const QueryDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2466,6 +2637,7 @@ export const QueryDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     queryString: S.optional(S.String),
     lastModified: S.optional(S.Number),
     logGroupNames: S.optional(LogGroupNames),
+    parameters: S.optional(QueryParameterList),
   }),
 ).annotate({
   identifier: "QueryDefinition",
@@ -3437,6 +3609,47 @@ export const GetLogRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogRecordResponse",
 }) as any as S.Schema<GetLogRecordResponse>;
+export interface GetLookupTableRequest {
+  lookupTableArn: string;
+}
+export const GetLookupTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ lookupTableArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetLookupTableRequest",
+}) as any as S.Schema<GetLookupTableRequest>;
+export interface GetLookupTableResponse {
+  lookupTableArn?: string;
+  lookupTableName?: string;
+  description?: string;
+  tableBody?: string;
+  sizeBytes?: number;
+  lastUpdatedTime?: number;
+  kmsKeyId?: string;
+}
+export const GetLookupTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lookupTableArn: S.optional(S.String),
+      lookupTableName: S.optional(S.String),
+      description: S.optional(S.String),
+      tableBody: S.optional(S.String),
+      sizeBytes: S.optional(S.Number),
+      lastUpdatedTime: S.optional(S.Number),
+      kmsKeyId: S.optional(S.String),
+    }).pipe(ns),
+).annotate({
+  identifier: "GetLookupTableResponse",
+}) as any as S.Schema<GetLookupTableResponse>;
 export interface GetQueryResultsRequest {
   queryId: string;
 }
@@ -3748,6 +3961,7 @@ export interface CSV {
   delimiter?: string;
   columns?: string[];
   source?: string;
+  destination?: string;
 }
 export const CSV = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3755,6 +3969,7 @@ export const CSV = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     delimiter: S.optional(S.String),
     columns: S.optional(Columns),
     source: S.optional(S.String),
+    destination: S.optional(S.String),
   }),
 ).annotate({ identifier: "CSV" }) as any as S.Schema<CSV>;
 export type MatchPatterns = string[];
@@ -5288,6 +5503,7 @@ export interface PutQueryDefinitionRequest {
   logGroupNames?: string[];
   queryString: string;
   clientToken?: string;
+  parameters?: QueryParameter[];
 }
 export const PutQueryDefinitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5298,6 +5514,7 @@ export const PutQueryDefinitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       logGroupNames: S.optional(LogGroupNames),
       queryString: S.String,
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      parameters: S.optional(QueryParameterList),
     }).pipe(
       T.all(
         ns,
@@ -6030,6 +6247,46 @@ export const UpdateLogAnomalyDetectorResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "UpdateLogAnomalyDetectorResponse",
   }) as any as S.Schema<UpdateLogAnomalyDetectorResponse>;
+export interface UpdateLookupTableRequest {
+  lookupTableArn: string;
+  description?: string;
+  tableBody: string;
+  kmsKeyId?: string;
+}
+export const UpdateLookupTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lookupTableArn: S.String,
+      description: S.optional(S.String),
+      tableBody: S.String,
+      kmsKeyId: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateLookupTableRequest",
+}) as any as S.Schema<UpdateLookupTableRequest>;
+export interface UpdateLookupTableResponse {
+  lookupTableArn?: string;
+  lastUpdatedTime?: number;
+}
+export const UpdateLookupTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lookupTableArn: S.optional(S.String),
+      lastUpdatedTime: S.optional(S.Number),
+    }).pipe(ns),
+).annotate({
+  identifier: "UpdateLookupTableResponse",
+}) as any as S.Schema<UpdateLookupTableResponse>;
 export interface UpdateScheduledQueryRequest {
   identifier: string;
   description?: string;
@@ -6679,6 +6936,39 @@ export const createLogStream: API.OperationMethod<
     ServiceUnavailableException,
   ],
 }));
+export type CreateLookupTableError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | LimitExceededException
+  | ResourceAlreadyExistsException
+  | ServiceUnavailableException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a lookup table by uploading CSV data. You can use lookup tables to enrich log
+ * data in CloudWatch Logs Insights queries with reference data such as user details, application
+ * names, or error descriptions.
+ *
+ * The table name must be unique within your account and Region. The CSV content must include
+ * a header row with column names, use UTF-8 encoding, and not exceed 10 MB.
+ */
+export const createLookupTable: API.OperationMethod<
+  CreateLookupTableRequest,
+  CreateLookupTableResponse,
+  CreateLookupTableError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateLookupTableRequest,
+  output: CreateLookupTableResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
+    LimitExceededException,
+    ResourceAlreadyExistsException,
+    ServiceUnavailableException,
+    ValidationException,
+  ],
+}));
 export type CreateScheduledQueryError =
   | AccessDeniedException
   | ConflictException
@@ -7087,6 +7377,33 @@ export const deleteLogStream: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
     ValidationException,
+  ],
+}));
+export type DeleteLookupTableError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | CommonErrors;
+/**
+ * Deletes a lookup table permanently. This operation cannot be undone.
+ *
+ * Queries that reference a deleted table will return an error. Before deleting a lookup
+ * table, review any saved queries or dashboards that may reference it.
+ */
+export const deleteLookupTable: API.OperationMethod<
+  DeleteLookupTableRequest,
+  DeleteLookupTableResponse,
+  DeleteLookupTableError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteLookupTableRequest,
+  output: DeleteLookupTableResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
   ],
 }));
 export type DeleteMetricFilterError =
@@ -7792,6 +8109,31 @@ export const describeLogStreams: API.OperationMethod<
     items: "logStreams",
     pageSize: "limit",
   } as const,
+}));
+export type DescribeLookupTablesError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | CommonErrors;
+/**
+ * Retrieves metadata about lookup tables in your account. You can optionally filter the
+ * results by table name prefix. Results are sorted by table name in ascending order.
+ */
+export const describeLookupTables: API.OperationMethod<
+  DescribeLookupTablesRequest,
+  DescribeLookupTablesResponse,
+  DescribeLookupTablesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeLookupTablesRequest,
+  output: DescribeLookupTablesResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+  ],
 }));
 export type DescribeMetricFiltersError =
   | InvalidParameterException
@@ -8502,6 +8844,30 @@ export const getLogRecord: API.OperationMethod<
   errors: [
     InvalidParameterException,
     LimitExceededException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+  ],
+}));
+export type GetLookupTableError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | CommonErrors;
+/**
+ * Retrieves the full content of a lookup table, including the CSV data.
+ */
+export const getLookupTable: API.OperationMethod<
+  GetLookupTableRequest,
+  GetLookupTableResponse,
+  GetLookupTableError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetLookupTableRequest,
+  output: GetLookupTableResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
@@ -10316,7 +10682,7 @@ export type StartQueryError =
  * CloudWatch cross-account observability. For a cross-account `StartQuery`
  * operation, the query definition must be defined in the monitoring account.
  *
- * You can have up to 30 concurrent CloudWatch Logs insights queries, including queries
+ * You can have up to 100 concurrent CloudWatch Logs insights queries, including queries
  * that have been added to dashboards.
  */
 export const startQuery: API.OperationMethod<
@@ -10610,6 +10976,36 @@ export const updateLogAnomalyDetector: API.OperationMethod<
     OperationAbortedException,
     ResourceNotFoundException,
     ServiceUnavailableException,
+  ],
+}));
+export type UpdateLookupTableError =
+  | AccessDeniedException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing lookup table by replacing all of its CSV content. After the update
+ * completes, queries that use this table will use the new data.
+ *
+ * This is a full replacement operation. All existing content is replaced with the new CSV
+ * data.
+ */
+export const updateLookupTable: API.OperationMethod<
+  UpdateLookupTableRequest,
+  UpdateLookupTableResponse,
+  UpdateLookupTableError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateLookupTableRequest,
+  output: UpdateLookupTableResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ValidationException,
   ],
 }));
 export type UpdateScheduledQueryError =

@@ -305,36 +305,8 @@ export type ApplicationGroupsCreateOrUpdateInput =
 // Output Schema
 export const ApplicationGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ApplicationGroupsCreateOrUpdateOutput =
   typeof ApplicationGroupsCreateOrUpdateOutput.Type;
@@ -404,36 +376,8 @@ export type ApplicationGroupsGetInput = typeof ApplicationGroupsGetInput.Type;
 // Output Schema
 export const ApplicationGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ApplicationGroupsGetOutput = typeof ApplicationGroupsGetOutput.Type;
 
@@ -476,36 +420,8 @@ export const ApplicationGroupsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -552,36 +468,8 @@ export const ApplicationGroupsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -621,36 +509,8 @@ export type ApplicationGroupsUpdateInput =
 // Output Schema
 export const ApplicationGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ApplicationGroupsUpdateOutput =
   typeof ApplicationGroupsUpdateOutput.Type;
@@ -1102,36 +962,8 @@ export type HostPoolsCreateOrUpdateInput =
 // Output Schema
 export const HostPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type HostPoolsCreateOrUpdateOutput =
   typeof HostPoolsCreateOrUpdateOutput.Type;
@@ -1196,36 +1028,8 @@ export type HostPoolsGetInput = typeof HostPoolsGetInput.Type;
 
 // Output Schema
 export const HostPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managedBy: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-      ),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  plan: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      publisher: Schema.String,
-      product: Schema.String,
-      promotionCode: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type HostPoolsGetOutput = typeof HostPoolsGetOutput.Type;
 
@@ -1261,36 +1065,8 @@ export const HostPoolsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        managedBy: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        etag: Schema.optional(Schema.String),
-        identity: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-          }),
-        ),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            tier: Schema.optional(
-              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-            ),
-            size: Schema.optional(Schema.String),
-            family: Schema.optional(Schema.String),
-            capacity: Schema.optional(Schema.Number),
-          }),
-        ),
-        plan: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            publisher: Schema.String,
-            product: Schema.String,
-            promotionCode: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-          }),
-        ),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
       }),
     ),
   ),
@@ -1336,36 +1112,8 @@ export const HostPoolsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -1489,36 +1237,8 @@ export type HostPoolsUpdateInput = typeof HostPoolsUpdateInput.Type;
 
 // Output Schema
 export const HostPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managedBy: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-      ),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  plan: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      publisher: Schema.String,
-      product: Schema.String,
-      promotionCode: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type HostPoolsUpdateOutput = typeof HostPoolsUpdateOutput.Type;
 
@@ -1609,7 +1329,7 @@ export const MSIXPackagesCreateOrUpdateInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
     }),
   );
 export type MSIXPackagesCreateOrUpdateInput =
@@ -1662,7 +1382,7 @@ export const MSIXPackagesDeleteInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
     }),
   );
 export type MSIXPackagesDeleteInput = typeof MSIXPackagesDeleteInput.Type;
@@ -1691,7 +1411,7 @@ export const MSIXPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
   }),
 );
 export type MSIXPackagesGetInput = typeof MSIXPackagesGetInput.Type;
@@ -1741,7 +1461,7 @@ export const MSIXPackagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages",
   }),
 );
 export type MSIXPackagesListInput = typeof MSIXPackagesListInput.Type;
@@ -1811,7 +1531,7 @@ export const MSIXPackagesUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
     }),
   );
 export type MSIXPackagesUpdateInput = typeof MSIXPackagesUpdateInput.Type;
@@ -1864,38 +1584,36 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                    }),
-                  ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      isDataAction: Schema.optional(Schema.Boolean),
+      properties: Schema.optional(
+        Schema.Struct({
+          serviceSpecification: Schema.optional(
+            Schema.Struct({
+              logSpecifications: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    displayName: Schema.optional(Schema.String),
+                    blobDuration: Schema.optional(Schema.String),
+                  }),
                 ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1903,7 +1621,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * List all of the available operations the Desktop Virtualization resource provider supports.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -2001,28 +1719,7 @@ export type PrivateEndpointConnectionsGetByHostPoolInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetByHostPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsGetByHostPoolOutput =
   typeof PrivateEndpointConnectionsGetByHostPoolOutput.Type;
 
@@ -2058,28 +1755,7 @@ export type PrivateEndpointConnectionsGetByWorkspaceInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsGetByWorkspaceOutput =
   typeof PrivateEndpointConnectionsGetByWorkspaceOutput.Type;
 
@@ -2118,37 +1794,7 @@ export type PrivateEndpointConnectionsListByHostPoolInput =
 // Output Schema
 export const PrivateEndpointConnectionsListByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupIds: Schema.optional(Schema.Array(Schema.String)),
-              privateEndpoint: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              privateLinkServiceConnectionState: Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals(["Pending", "Approved", "Rejected"]),
-                ),
-                description: Schema.optional(Schema.String),
-                actionsRequired: Schema.optional(Schema.String),
-              }),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Creating",
-                  "Deleting",
-                  "Failed",
-                ]),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListByHostPoolOutput =
@@ -2188,37 +1834,7 @@ export type PrivateEndpointConnectionsListByWorkspaceInput =
 // Output Schema
 export const PrivateEndpointConnectionsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupIds: Schema.optional(Schema.Array(Schema.String)),
-              privateEndpoint: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              privateLinkServiceConnectionState: Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals(["Pending", "Approved", "Rejected"]),
-                ),
-                description: Schema.optional(Schema.String),
-                actionsRequired: Schema.optional(Schema.String),
-              }),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Creating",
-                  "Deleting",
-                  "Failed",
-                ]),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListByWorkspaceOutput =
@@ -2244,26 +1860,6 @@ export const PrivateEndpointConnectionsUpdateByHostPoolInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2275,28 +1871,7 @@ export type PrivateEndpointConnectionsUpdateByHostPoolInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsUpdateByHostPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsUpdateByHostPoolOutput =
   typeof PrivateEndpointConnectionsUpdateByHostPoolOutput.Type;
 
@@ -2308,7 +1883,6 @@ export type PrivateEndpointConnectionsUpdateByHostPoolOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
- * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsUpdateByHostPool =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2322,26 +1896,6 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2353,28 +1907,7 @@ export type PrivateEndpointConnectionsUpdateByWorkspaceInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsUpdateByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsUpdateByWorkspaceOutput =
   typeof PrivateEndpointConnectionsUpdateByWorkspaceOutput.Type;
 
@@ -2386,7 +1919,6 @@ export type PrivateEndpointConnectionsUpdateByWorkspaceOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
- * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsUpdateByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3004,36 +2536,8 @@ export type ScalingPlansCreateInput = typeof ScalingPlansCreateInput.Type;
 // Output Schema
 export const ScalingPlansCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ScalingPlansCreateOutput = typeof ScalingPlansCreateOutput.Type;
 
@@ -3094,36 +2598,8 @@ export type ScalingPlansGetInput = typeof ScalingPlansGetInput.Type;
 
 // Output Schema
 export const ScalingPlansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managedBy: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-      ),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  plan: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      publisher: Schema.String,
-      product: Schema.String,
-      promotionCode: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type ScalingPlansGetOutput = typeof ScalingPlansGetOutput.Type;
 
@@ -3163,36 +2639,8 @@ export const ScalingPlansListByHostPoolOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -3242,36 +2690,8 @@ export const ScalingPlansListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -3319,36 +2739,8 @@ export const ScalingPlansListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -3389,36 +2781,8 @@ export type ScalingPlansUpdateInput = typeof ScalingPlansUpdateInput.Type;
 // Output Schema
 export const ScalingPlansUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ScalingPlansUpdateOutput = typeof ScalingPlansUpdateOutput.Type;
 
@@ -4025,36 +3389,8 @@ export type WorkspacesCreateOrUpdateInput =
 // Output Schema
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
@@ -4117,36 +3453,8 @@ export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managedBy: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-      ),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  plan: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      publisher: Schema.String,
-      product: Schema.String,
-      promotionCode: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 
@@ -4186,36 +3494,8 @@ export const WorkspacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -4260,36 +3540,8 @@ export const WorkspacesListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              promotionCode: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -4326,36 +3578,8 @@ export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 // Output Schema
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    managedBy: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        promotionCode: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   },
 );
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;

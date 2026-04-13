@@ -104,9 +104,10 @@ export type PostV1DatabasesByTargetDatabaseIdRestoreOutput =
 
 // The operation
 /**
- * Restore database
+ * Restore database (destructive)
  *
- * Replaces the data in an existing database from a backup. Connections and credentials are preserved — only the data layer is replaced. Cannot be used on default databases.
+ * ⚠️ **Destructive operation** — this immediately and irreversibly overwrites all data in the target database with the contents of the specified backup. Any data written since the backup was taken will be lost. Ensure you have a recent backup of the target database before proceeding.
+ * Replaces the data in an existing database from a backup. Connections and credentials are preserved — only the data layer is replaced.
  */
 export const postV1DatabasesByTargetDatabaseIdRestore =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

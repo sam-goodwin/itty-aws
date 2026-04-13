@@ -223,6 +223,7 @@ export const PostCheckoutSessionsInput =
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",
@@ -231,6 +232,7 @@ export const PostCheckoutSessionsInput =
     ),
     expand: Schema.optional(Schema.Array(Schema.String)),
     expires_at: Schema.optional(Schema.Number),
+    integration_identifier: Schema.optional(Schema.String),
     invoice_creation: Schema.optional(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -583,6 +585,11 @@ export const PostCheckoutSessionsInput =
             ),
           }),
         ),
+        crypto: Schema.optional(
+          Schema.Struct({
+            setup_future_usage: Schema.optional(Schema.Literals(["none"])),
+          }),
+        ),
         customer_balance: Schema.optional(
           Schema.Struct({
             bank_transfer: Schema.optional(
@@ -866,6 +873,23 @@ export const PostCheckoutSessionsInput =
             setup_future_usage: Schema.optional(Schema.Literals(["none"])),
           }),
         ),
+        upi: Schema.optional(
+          Schema.Struct({
+            mandate_options: Schema.optional(
+              Schema.Struct({
+                amount: Schema.optional(Schema.Number),
+                amount_type: Schema.optional(
+                  Schema.Literals(["fixed", "maximum"]),
+                ),
+                description: Schema.optional(Schema.String),
+                end_date: Schema.optional(Schema.Number),
+              }),
+            ),
+            setup_future_usage: Schema.optional(
+              Schema.Literals(["", "none", "off_session", "on_session"]),
+            ),
+          }),
+        ),
         us_bank_account: Schema.optional(
           Schema.Struct({
             financial_connections: Schema.optional(
@@ -955,6 +979,7 @@ export const PostCheckoutSessionsInput =
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",
@@ -1345,6 +1370,12 @@ export const PostCheckoutSessionsInput =
         ),
         metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
         on_behalf_of: Schema.optional(Schema.String),
+        pending_invoice_item_interval: Schema.optional(
+          Schema.Struct({
+            interval: Schema.Literals(["day", "month", "week", "year"]),
+            interval_count: Schema.optional(Schema.Number),
+          }),
+        ),
         proration_behavior: Schema.optional(
           Schema.Literals(["create_prorations", "none"]),
         ),
@@ -1376,7 +1407,9 @@ export const PostCheckoutSessionsInput =
         required: Schema.optional(Schema.Literals(["if_supported", "never"])),
       }),
     ),
-    ui_mode: Schema.optional(Schema.Literals(["custom", "embedded", "hosted"])),
+    ui_mode: Schema.optional(
+      Schema.Literals(["elements", "embedded_page", "form", "hosted_page"]),
+    ),
     wallet_options: Schema.optional(
       Schema.Struct({
         link: Schema.optional(
@@ -1497,6 +1530,7 @@ export const PostCheckoutSessionsOutput =
     excluded_payment_method_types: Schema.optional(Schema.Array(Schema.String)),
     expires_at: Schema.Number,
     id: Schema.String,
+    integration_identifier: Schema.NullOr(Schema.String),
     invoice: Schema.Unknown,
     invoice_creation: Schema.Unknown,
     line_items: Schema.optional(
@@ -1752,7 +1786,9 @@ export const PostCheckoutSessionsOutput =
       }),
     ),
     total_details: Schema.Unknown,
-    ui_mode: Schema.NullOr(Schema.Literals(["custom", "embedded", "hosted"])),
+    ui_mode: Schema.NullOr(
+      Schema.Literals(["elements", "embedded_page", "form", "hosted_page"]),
+    ),
     url: Schema.NullOr(Schema.String),
     wallet_options: Schema.Unknown,
   });

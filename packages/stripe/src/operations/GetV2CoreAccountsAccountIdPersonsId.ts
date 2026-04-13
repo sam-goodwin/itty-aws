@@ -271,7 +271,7 @@ export type GetV2CoreAccountsAccountIdPersonsIdOutput =
 
 // The operation
 /**
- * Retrieve a Person
+ * Retrieve a person
  *
  * Retrieves a Person associated with an Account.
  *
